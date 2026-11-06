@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Ministry of Unconfirmed Things — Form 4:59 (Petition to Transmit an Unsaid Thing)</title>
+  <style>
+    :root {
+      --wall-bg: #d7d0c0;
+      --wall-dark: #c4bcab;
+      --folder-bg: #ebe3d3;
+      --folder-tab: #decfa8;
+      --folder-border: #9e917d;
+      --paper: #f7f3eb;
+      --paper-border: #c8bead;
+      --ink: #1c1917;
+      --typewriter: 'Courier New', Courier, monospace;
+      --stamp-red: #b91c1c;
+      --stamp-green: #15803d;
+      --carbon-blue: #1e3a8a;
+      --crt-green: #34d399;
+      --crt-amber: #fbbf24;
+      --crt-bg: #09120e;
+      --muted: #645e54;
+      --gold-brass: #b45309;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--wall-bg);
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(255, 255, 240, 0.65) 0%, transparent 60%),
+        repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 0, 0, 0.025) 3px);
+      color: var(--ink);
+      font-family: var(--typewriter);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 24px 16px 60px 16px;
+    }
+
+    /* Overhead Fluorescent Strip */
+    .fluorescent-fixture {
+      width: 100%;
+      max-width: 860px;
+      background: #eee8d8;
+      border: 1px solid #b8af9e;
+      border-bottom: 3px solid #8f8573;
+      padding: 8px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      font-weight: bold;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #524b40;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+    }
+    .flicker { animation: hum 5s infinite; }
+    @keyframes hum {
+      0%, 93%, 100% { opacity: 1; }
+      94% { opacity: 0.7; }
+      95% { opacity: 0.95; }
+      97% { opacity: 0.82; }
+    }
+    .clock-badge {
+      background: #1a1614;
+      color: #ef4444;
+      padding: 3px 8px;
+      border-radius: 3px;
+      font-weight: 900;
+      font-size: 13px;
+      border: 1px solid #443e37;
+      letter-spacing: 0.05em;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .blink-dot { animation: blink 1s infinite; }
+    @keyframes blink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0.2; } }
+
+    /* Header & Ministry Seal */
+    header { text-align: center; max-width: 800px; margin-bottom: 20px; }
+    .seal-badge {
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--carbon-blue);
+      border: 1px dashed var(--carbon-blue);
+      display: inline-block;
+      padding: 5px 16px;
+      margin-bottom: 12px;
+      background: rgba(30, 58, 138, 0.05);
+    }
+    h1 {
+      font-size: 24px;
+      font-weight: 900;
+      letter-spacing: -0.01em;
+      margin-bottom: 8px;
+      color: #1a1614;
+      text-transform: uppercase;
+    }
+    .motto-banner {
+      background: #fdfbf7;
+      border: 1px solid var(--paper-border);
+      border-left: 4px solid var(--gold-brass);
+      padding: 10px 18px;
+      margin: 12px auto;
+      max-width: 660px;
+      font-style: italic;
+      color: #443e37;
+      font-size: 13px;
+      line-height: 1.5;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+    }
+    .motto-banner strong { font-style: normal; color: #1c1917; }
+
+    /* Main Container */
+    .container {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      max-width: 860px;
+      width: 100%;
+      align-items: center;
+    }
+
+    /* Manila Folder UI Shell */
+    .manila-folder {
+      position: relative;
+      background: var(--folder-bg);
+      border: 2px solid var(--folder-border);
+      border-radius: 4px 18px 12px 12px;
+      width: 100%;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.16), inset 0 1px 0 rgba(255,255,255,0.7);
+      padding: 26px 30px;
+    }
+    .folder-tab {
+      position: absolute;
+      top: -26px;
+      left: 18px;
+      background: var(--folder-tab);
+      border: 2px solid var(--folder-border);
+      border-bottom: none;
+      border-radius: 6px 14px 0 0;
+      padding: 5px 22px;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      color: #4a3e2a;
+      box-shadow: 0 -2px 6px rgba(0,0,0,0.06);
+    }
+
+    /* Experiment Switcher (Ending A vs Ending B) */
+    .experiment-switch-bar {
+      background: #dfd7c5;
+      border: 1px solid var(--folder-border);
+      padding: 10px 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      font-size: 11px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .switch-options {
+      display: flex;
+      gap: 6px;
+      background: #c9bea8;
+      padding: 3px;
+      border-radius: 4px;
+    }
+    .switch-btn {
+      background: transparent;
+      border: none;
+      padding: 5px 12px;
+      font-family: var(--typewriter);
+      font-size: 11px;
+      font-weight: 900;
+      cursor: pointer;
+      color: #3f3930;
+      border-radius: 2px;
+      transition: all 0.15s;
+    }
+    .switch-btn.active {
+      background: var(--paper);
+      color: #1a1614;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+    }
+
+    /* Prewritten Demo Cases Carousel / Tabs */
+    .cases-section {
+      margin-bottom: 20px;
+      border-bottom: 1px dashed var(--folder-border);
+      padding-bottom: 16px;
+    }
+    .cases-label {
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      color: #554d42;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .cases-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+    }
+    @media (max-width: 720px) {
+      .cases-grid { grid-template-columns: 1fr 1fr; }
+    }
+    .case-card {
+      background: var(--paper);
+      border: 1px solid var(--folder-border);
+      padding: 10px;
+      border-radius: 3px;
+      cursor: pointer;
+      font-size: 11px;
+      line-height: 1.35;
+      transition: all 0.15s;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .case-card:hover {
+      background: #fff;
+      border-color: var(--carbon-blue);
+      transform: translateY(-1px);
+    }
+    .case-card.active {
+      background: #eef2ff;
+      border: 2px solid var(--carbon-blue);
+      font-weight: bold;
+    }
+    .case-tag {
+      font-size: 9px;
+      font-weight: 900;
+      text-transform: uppercase;
+      color: var(--gold-brass);
+      margin-bottom: 4px;
+    }
+
+    /* Form Fields */
+    .field-group {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 16px;
+    }
+    label {
+      font-size: 11px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #383228;
+      margin-bottom: 6px;
+      display: flex;
+      justify-content: space-between;
+    }
+    textarea {
+      background: var(--paper);
+      border: 1px solid var(--folder-border);
+      color: var(--ink);
+      padding: 12px;
+      font-family: var(--typewriter);
+      font-size: 13px;
+      line-height: 1.5;
+      min-height: 110px;
+      outline: none;
+      resize: vertical;
+      box-shadow: inset 1px 1px 4px rgba(0,0,0,0.06);
+    }
+    textarea:focus {
+      background: #fff;
+      border-color: var(--carbon-blue);
+    }
+    .disclaimer-sub {
+      font-size: 10px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    /* Submit Button (Mechanical Slam) */
+    .submit-bar {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .stamp-action-btn {
+      flex: 1;
+      background: var(--stamp-red);
+      color: #fff;
+      border: 2px solid #7f1d1d;
+      padding: 14px;
+      font-family: var(--typewriter);
+      font-weight: 900;
+      font-size: 13px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(185, 28, 28, 0.35);
+      transition: all 0.1s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .stamp-action-btn:hover { filter: brightness(1.1); }
+    .stamp-action-btn:active { transform: scale(0.99); }
+    .clear-btn {
+      background: #474036;
+      color: #e5ded3;
+      border: 1px solid #28241e;
+      padding: 0 16px;
+      font-family: var(--typewriter);
+      font-size: 11px;
+      font-weight: bold;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+    .clear-btn:hover { background: #5c5346; }
+
+    /* CRT TERMINAL / BREAKDOWN DOSSIER */
+    .terminal-dossier {
+      margin-top: 24px;
+      background: var(--crt-bg);
+      border: 4px solid #332d24;
+      border-radius: 8px;
+      padding: 18px 22px;
+      color: var(--crt-green);
+      font-family: var(--typewriter);
+      box-shadow: inset 0 0 18px rgba(0,0,0,0.8), 0 8px 20px rgba(0,0,0,0.25);
+      position: relative;
+      overflow: hidden;
+    }
+    .terminal-dossier::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+      background-size: 100% 3px, 6px 100%;
+      pointer-events: none;
+    }
+    .term-header {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px dashed rgba(52, 211, 153, 0.3);
+      padding-bottom: 8px;
+      margin-bottom: 14px;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      color: var(--crt-amber);
+    }
+    .dossier-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+    .dossier-box {
+      background: rgba(0,0,0,0.4);
+      border: 1px solid rgba(52, 211, 153, 0.2);
+      padding: 10px 14px;
+      border-radius: 4px;
+    }
+    .dossier-box strong {
+      display: block;
+      color: #fff;
+      margin-bottom: 4px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .unknown-list {
+      margin-left: 18px;
+      color: #fca5a5;
+    }
+    .unknown-list li { margin-bottom: 2px; }
+
+    /* EDITABLE DRAFT MESSAGE BOX (ENDING B) */
+    .draft-editable-container {
+      background: #111d16;
+      border: 1px solid var(--crt-green);
+      padding: 12px;
+      border-radius: 4px;
+    }
+    .draft-editable-textarea {
+      width: 100%;
+      background: transparent;
+      border: none;
+      color: #fff;
+      font-family: var(--typewriter);
+      font-size: 13px;
+      line-height: 1.5;
+      outline: none;
+      resize: vertical;
+      min-height: 70px;
+    }
+    .copy-btn {
+      background: var(--crt-green);
+      color: #06110a;
+      border: none;
+      padding: 6px 16px;
+      font-family: var(--typewriter);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      cursor: pointer;
+      margin-top: 8px;
+      border-radius: 2px;
+    }
+    .copy-btn:hover { background: #6ee7b7; }
+
+    /* RUBBER STAMP OVERLAY */
+    .stamp-visual-container {
+      margin-top: 16px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px;
+    }
+    .rubber-stamp {
+      display: inline-block;
+      padding: 10px 24px;
+      text-transform: uppercase;
+      font-size: 20px;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      border-radius: 6px;
+      border: 4px solid var(--stamp-red);
+      color: var(--stamp-red);
+      transform: rotate(-3deg);
+      box-shadow: 0 0 0 2px rgba(185, 28, 28, 0.2);
+      text-shadow: 1px 1px 0 rgba(0,0,0,0.1);
+      transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .rubber-stamp.green {
+      border-color: var(--stamp-green);
+      color: var(--stamp-green);
+      transform: rotate(2deg);
+    }
+    .crumb-comment {
+      font-style: italic;
+      color: #a7f3d0;
+      font-size: 11px;
+      margin-top: 8px;
+      text-align: center;
+    }
+
+    /* SHAREABLE POSTAL CARD SECTION */
+    .share-card-section {
+      background: var(--paper);
+      border: 2px dashed var(--folder-border);
+      padding: 20px;
+      width: 100%;
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+    }
+    .share-title {
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+      color: var(--carbon-blue);
+      letter-spacing: 0.08em;
+    }
+    .postcard-preview {
+      width: 100%;
+      max-width: 520px;
+      background: #fff;
+      border: 1px solid #d1c7b7;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      padding: 20px;
+      position: relative;
+    }
+    .postcard-header {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 2px solid #292524;
+      padding-bottom: 8px;
+      margin-bottom: 12px;
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 0.1em;
+    }
+    .postcard-body {
+      font-size: 13px;
+      line-height: 1.5;
+      color: #292524;
+      min-height: 60px;
+      margin-bottom: 14px;
+    }
+    .postcard-footer {
+      border-top: 1px dashed #d1c7b7;
+      padding-top: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 10px;
+      color: #78716c;
+      font-style: italic;
+    }
+    .postal-stamp-box {
+      border: 2px solid var(--stamp-red);
+      color: var(--stamp-red);
+      padding: 4px 8px;
+      font-weight: 900;
+      font-size: 10px;
+      text-transform: uppercase;
+      transform: rotate(4deg);
+    }
+    .card-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .action-btn {
+      background: #292524;
+      color: #f7f3eb;
+      border: none;
+      padding: 8px 18px;
+      font-family: var(--typewriter);
+      font-size: 11px;
+      font-weight: 900;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+    .action-btn:hover { background: #44403c; }
+
+    /* ANONYMOUS 1-CLICK SURVEY */
+    .survey-box {
+      background: #dfd7c5;
+      border: 1px solid var(--folder-border);
+      padding: 16px 20px;
+      width: 100%;
+      margin-top: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .survey-text {
+      font-size: 12px;
+      font-weight: 900;
+      color: #383228;
+    }
+    .survey-buttons {
+      display: flex;
+      gap: 8px;
+    }
+    .survey-btn {
+      background: var(--paper);
+      border: 1px solid var(--folder-border);
+      padding: 6px 16px;
+      font-family: var(--typewriter);
+      font-size: 11px;
+      font-weight: 900;
+      cursor: pointer;
+    }
+    .survey-btn:hover {
+      background: #fff;
+      border-color: var(--carbon-blue);
+    }
+    .survey-btn.voted {
+      background: var(--carbon-blue);
+      color: #fff;
+      border-color: var(--carbon-blue);
+    }
+    .survey-results {
+      font-size: 11px;
+      color: var(--carbon-blue);
+      font-weight: bold;
+    }
+
+    footer {
+      margin-top: 30px;
+      font-size: 11px;
+      color: #78716c;
+      text-align: center;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- FLUORESCENT TUBE FIXTURE -->
+  <div class="fluorescent-fixture flicker">
+    <div>DEPT 404 SPECIAL DISPENSATION · NO WALLET · ZERO RETENTION</div>
+    <div class="clock-badge">
+      <span>04:59</span>
+      <span class="blink-dot">PM</span>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header>
+    <div class="seal-badge">Official Administrative Instrument · The Ministry of Unconfirmed Things</div>
+    <h1>Form 4:59: Petition to Transmit an Unsaid Thing</h1>
+    <div class="motto-banner">
+      <strong>Crumb's Perpetual Shift Motto:</strong> "You don't have to have the words yet."  
+      <br><span style="font-size:11px; color:#645e54;">Hand the spiral under the counter. The department will extract the point, flag what's missing, and let you go home.</span>
+    </div>
+  </header>
+
+  <div class="container">
+
+    <!-- MANILA FOLDER SHELL -->
+    <div class="manila-folder">
+      <div class="folder-tab">FORM 4:59 · DOCKET #459-UNSAID</div>
+
+      <!-- EXPERIMENT TOGGLE (Ending A vs Ending B) -->
+      <div class="experiment-switch-bar">
+        <div><strong>BOPEPPI EXPERIMENT MODE:</strong></div>
+        <div class="switch-options">
+          <button class="switch-btn" id="btnModeA" onclick="setEndingMode('A')">Ending A: Funny Stamp Alone</button>
+          <button class="switch-btn active" id="btnModeB" onclick="setEndingMode('B')">Ending B: Actionable Draft (Recommended)</button>
+        </div>
+      </div>
+
+      <!-- PREWRITTEN DEMO CASES -->
+      <div class="cases-section">
+        <div class="cases-label">
+          <span>SELECT A PREWRITTEN DOCKET (NO SENSITIVE DATA REQUIRED):</span>
+          <span style="font-weight:normal; font-size:10px;">Click to load & analyze</span>
+        </div>
+        <div class="cases-grid">
+          <div class="case-card active" onclick="loadCase(0)">
+            <div class="case-tag">Case 1 · Ambiguity</div>
+            <strong>Jess & Landing Page</strong>
+            <span style="color:var(--muted); font-size:10px;">Ownership dread before Friday</span>
+          </div>
+          <div class="case-card" onclick="loadCase(1)">
+            <div class="case-tag">Case 2 · Critique</div>
+            <strong>Marcus Mockup</strong>
+            <span style="color:var(--muted); font-size:10px;">Tactful design feedback</span>
+          </div>
+          <div class="case-card" onclick="loadCase(2)">
+            <div class="case-tag">Case 3 · Deadline</div>
+            <strong>Sarah Reconciliation</strong>
+            <span style="color:var(--muted); font-size:10px;">Extension without excuses</span>
+          </div>
+          <div class="case-card" onclick="loadCase(3)">
+            <div class="case-tag">Case 4 · Defense</div>
+            <strong>Dave Meeting Decline</strong>
+            <span style="color:var(--muted); font-size:10px;">Protecting focus hours</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- FREEFORM INPUT -->
+      <div class="field-group">
+        <label>
+          <span>1. THE MESSY RAW THOUGHT (WHAT YOU CANNOT BRING YOURSELF TO SEND):</span>
+          <span id="charCount" style="color:var(--muted); font-weight:normal;">0 chars</span>
+        </label>
+        <textarea id="rawInput" placeholder="Dump the overthinking here. Mention names, rambling fears, excuses, or awkwardness. No server will ever see this." oninput="handleInput()"></textarea>
+        <div class="disclaimer-sub">100% Private Client-Side Parsing. Zero network calls. No cookies. Runs purely in your local browser sandbox.</div>
+      </div>
+
+      <!-- SUBMIT / PARSE BAR -->
+      <div class="submit-bar">
+        <button class="stamp-action-btn" onclick="processForm()">
+          <span>💥 File Petition (Stamp Docket)</span>
+        </button>
+        <button class="clear-btn" onclick="clearForm()">Reset</button>
+      </div>
+
+      <!-- CRT BREAKDOWN DOSSIER -->
+      <div class="terminal-dossier" id="dossierSection">
+        <div class="term-header">
+          <span>TERMINAL DEPT-404 // AUDIT RESULTS</span>
+          <span id="dossierStatus">STATUS: VERIFIED LEGIBLE</span>
+        </div>
+
+        <div class="dossier-grid">
+          
+          <!-- 1. The point in one sentence -->
+          <div class="dossier-box">
+            <strong>1. The Point in One Sentence:</strong>
+            <div id="pointOutput" style="color:#6ee7b7; font-weight:bold;">Confirm who is drafting the landing-page copy before Friday.</div>
+          </div>
+
+          <!-- 2. Unknown facts (DO NOT INVENT) -->
+          <div class="dossier-box">
+            <strong>2. Unknown / Missing Details (Strictly Uninvented):</strong>
+            <ul class="unknown-list" id="unknownListOutput">
+              <li>Specific deadline time on Friday is unstated.</li>
+              <li>Primary owner of the copy is currently unassigned.</li>
+              <li>Whether wireframes or inputs are finalized is unconfirmed.</li>
+            </ul>
+          </div>
+
+          <!-- 3. Ending B: Polite editable follow-up message -->
+          <div class="dossier-box" id="endingBContainer">
+            <strong>3. Polite Editable Follow-Up Draft (Ready to Send):</strong>
+            <div class="draft-editable-container">
+              <textarea class="draft-editable-textarea" id="draftEditable" rows="3"></textarea>
+              <button class="copy-btn" onclick="copyDraft()">📋 Copy Draft to Clipboard</button>
+            </div>
+          </div>
+
+          <!-- 4. Rubber Stamp & Crumb Comment -->
+          <div class="stamp-visual-container">
+            <div>
+              <div class="rubber-stamp" id="rubberStampText">[ ACTIONABLE, TO EVERYONE'S SURPRISE ]</div>
+              <div class="crumb-comment" id="crumbFilingNote">Crumb: "Panic reduced to a yes/no question. The department appreciates your sudden legibility."</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- SHAREABLE POSTAL CARD GENERATOR -->
+      <div class="share-card-section">
+        <div class="share-title">📮 Shareable Postal Card ("This made me think of you. No need to reply.")</div>
+        <div class="postcard-preview" id="postalCard">
+          <div class="postcard-header">
+            <span>MINISTRY DEPT 404 · CERTIFIED TRANSMISSION</span>
+            <span id="cardDocketNum">#459-8102</span>
+          </div>
+          <div class="postcard-body" id="cardBodyText">
+            "Hey Jess, quick check so we can plan Friday: are you taking the lead on drafting the landing-page copy, or would you like me to take it? Happy either way—just keen to make sure we're locked in before the end of the week."
+          </div>
+          <div class="postcard-footer">
+            <span>"This made me think of you. No need to reply."</span>
+            <div class="postal-stamp-box" id="cardStampBox">CLEAR ENOUGH</div>
+          </div>
+        </div>
+        <div class="card-actions">
+          <button class="action-btn" onclick="copyCardText()">Copy Card Text</button>
+          <button class="action-btn" onclick="alert('Permit copied to local clipboard for direct messaging.')">Export Permit</button>
+        </div>
+      </div>
+
+      <!-- ANONYMOUS 1-CLICK SURVEY -->
+      <div class="survey-box">
+        <div class="survey-text">Did this help you send the message you've been avoiding?</div>
+        <div class="survey-buttons" id="surveyButtons">
+          <button class="survey-btn" onclick="submitSurvey('Yes')">Yes, sending now</button>
+          <button class="survey-btn" onclick="submitSurvey('No')">No, still frozen</button>
+        </div>
+        <div class="survey-results" id="surveyResults">Logged: 142 avoids resolved today.</div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <footer>
+    The Ministry of Unconfirmed Things · Form 4:59 Companion Utility<br>
+    Created by BoPeppi, Shaun, Grok & Captain Whiting · 100% Zero-Token, Zero-Database Architecture.
+  </footer>
+
+  <script>
+    /* ==========================================================================
+       FORM 4:59 ENGINE & BOPEPPI EXPERIMENT SUITE
+       100% Client-Side, Zero Network Requests, Zero External Dependencies
+       ========================================================================== */
+
+    let currentMode = 'B'; // 'A' (Satirical stamp only) or 'B' (Actionable draft)
+    let activeCaseIndex = 0;
+    let audioCtx = null;
+
+    // AUDIO SFX (Synthesized Web Audio API)
+    function playAudioSfx(type) {
+      try {
+        if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+        const now = audioCtx.currentTime;
+
+        if (type === 'stamp') {
+          // Punchy rubber mechanical thud
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(160, now);
+          osc.frequency.exponentialRampToValueAtTime(32, now + 0.18);
+          gain.gain.setValueAtTime(0.7, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.18);
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+          osc.start(now);
+          osc.stop(now + 0.18);
+
+          // Click snap
+          const snap = audioCtx.createOscillator();
+          const snapGain = audioCtx.createGain();
+          snap.type = 'square';
+          snap.frequency.setValueAtTime(840, now);
+          snapGain.gain.setValueAtTime(0.25, now);
+          snapGain.gain.exponentialRampToValueAtTime(0.001, now + 0.035);
+          snap.connect(snapGain);
+          snapGain.connect(audioCtx.destination);
+          snap.start(now);
+          snap.stop(now + 0.035);
+        } else if (type === 'type') {
+          // Subtle mechanical keystroke
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(400 + Math.random() * 200, now);
+          gain.gain.setValueAtTime(0.05, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.04);
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+          osc.start(now);
+          osc.stop(now + 0.04);
+        }
+      } catch (e) {}
+    }
+
+    // THE FOUR CANONICAL CASES (From Section 7 of Showrunner Bible)
+    const CASES = [
+      {
+        title: "Jess & Landing Page",
+        tag: "Case 1 · Ambiguity",
+        raw: "We talked about the landing page on Tuesday, or maybe Monday? And I don't know if Jess is actually writing the copy or if she thought I was doing it, and Friday is coming super fast. I really don't want to seem pushy or annoying or like I'm questioning her, but if nobody does it we're both screwed when marketing asks.",
+        point: "Confirm who is drafting the landing-page copy before Friday.",
+        unknown: [
+          "Specific deadline time on Friday is unstated.",
+          "Primary owner of the copy is currently unassigned.",
+          "Whether wireframes or inputs are finalized is unconfirmed."
+        ],
+        draft: "Hey Jess, quick check so we can plan Friday: are you taking the lead on drafting the landing-page copy, or would you like me to take it? Happy either way—just keen to make sure we're locked in before the end of the week.",
+        stampA: "[ WORDS WITHOUT RECEIPT ]",
+        stampB: "[ ACTIONABLE, TO EVERYONE'S SURPRISE ]",
+        noteA: "Crumb: \"Six paragraphs of interpersonal panic. No copy was created during this spiral.\"",
+        noteB: "Crumb: \"Panic reduced to a yes/no question. The department appreciates your sudden legibility.\""
+      },
+      {
+        title: "Marcus Mockup",
+        tag: "Case 2 · Critique",
+        raw: "Marcus sent the new dashboard mockups and honestly they're a visual nightmare. There are six neon purple buttons, the graph makes zero sense, and nobody will know where to click. But he literally stayed up all Sunday working on it and he was so proud in the Slack channel, so if I tell him it's confusing he's going to shut down and hate me.",
+        point: "Focus the dashboard on one clear user action and simplify the visual hierarchy.",
+        unknown: [
+          "Which specific metrics or user tasks take top priority is unstated.",
+          "Whether brand guidelines mandate certain colors is unconfirmed.",
+          "Next client/stakeholder review date is unspecified."
+        ],
+        draft: "Thanks for pulling this together over the weekend, Marcus! The interface has a lot of energy. My main suggestion is to make the primary action stand out first—right now the multiple buttons compete for attention. Could we test a version that highlights the single core action and streamlines the secondary graphs?",
+        stampA: "[ TACTFUL COWARDICE DETECTED ]",
+        stampB: "[ HONEST WITHOUT INCIDENT ]",
+        noteA: "Crumb: \"You spent 40 minutes admiring his Sunday work ethic while secretly gagging.\"",
+        noteB: "Crumb: \"Ego spared. Truth conveyed. Humanity remains marginally intact.\""
+      },
+      {
+        title: "Sarah Reconciliation",
+        tag: "Case 3 · Deadline",
+        raw: "I was supposed to have the quarterly reconciliation report to Sarah by tomorrow morning at 9am, but my laptop died yesterday, the database export failed twice, and I had to deal with an emergency plumber. I feel so guilty. I started drafting this huge long explanation about the pipe bursting and my battery dying so she knows I'm not lazy, but I haven't sent it and now I'm just freezing up.",
+        point: "Request an extension on the reconciliation report to tomorrow afternoon with a firm delivery time.",
+        unknown: [
+          "New achievable delivery hour (exact timestamp) is unconfirmed.",
+          "Dependent workflows blocked by Sarah waiting for the report are unknown.",
+          "Current completion percentage of the report is unstated."
+        ],
+        draft: "Hi Sarah, I've run into a technical delay with the data export and won't have the reconciliation report ready for 9:00 AM tomorrow. I am actively resolving it and will have the complete file to you by 3:00 PM tomorrow afternoon. Please let me know if this impacts any morning reviews.",
+        stampA: "[ PLUMBING IRRELEVANT TO DOCKET ]",
+        stampB: "[ TEMPORALLY TOLERABLE ]",
+        noteA: "Crumb: \"The department does not require a dissertation on your municipal drainage.\"",
+        noteB: "Crumb: \"Nobody needs to hear about your plumbing. State the new time and deliver.\""
+      },
+      {
+        title: "Dave Meeting Decline",
+        tag: "Case 4 · Defense",
+        raw: "Dave invited me to this weekly 60-minute 'Strategic Alignment & Cross-Functional Catch-Up'. There's no agenda attached at all. Every time we do this, six people sit there staring into space while Dave talks about his weekend. I have three major client deliverables due Thursday, but if I decline he'll assume I don't care about team collaboration.",
+        point: "Decline the live meeting in favor of reviewing agenda points and sharing updates asynchronously.",
+        unknown: [
+          "Specific decisions Dave expects from this meeting are unstated.",
+          "Whether attendance is formally mandated by management is unconfirmed.",
+          "Existence of written briefing notes prior to the call is unknown."
+        ],
+        draft: "Hi Dave, thanks for the invite. I'm heads-down on critical client deliverables this week and need to protect focus time, so I won't be able to attend live. If there are specific discussion points or decisions needed from my end, please drop them in a thread and I will review and reply with my notes.",
+        stampA: "[ 60 MINUTES WASTED PROMPTLY ]",
+        stampB: "[ MEETING AVERTED, CALENDAR SPARED ]",
+        noteA: "Crumb: \"An hour of collective breathing with zero certified receipts.\"",
+        noteB: "Crumb: \"Sixty minutes of wandering contemplation returned to your mortal lifespan.\""
+      }
+    ];
+
+    // CLIENT-SIDE HEURISTIC PARSER (Runs when user inputs freeform text)
+    function parseHeuristically(text) {
+      const clean = text.trim();
+      if (!clean) {
+        return {
+          point: "Awaiting input text from applicant.",
+          unknown: ["No data provided."],
+          draft: "Please enter text above.",
+          stamp: "[ NO RECEIPT ATTACHED ]",
+          note: "Crumb: \"Blank paper cannot be stamped.\""
+        };
+      }
+
+      // Check if text matches one of the canonical demo cases
+      const found = CASES.find(c => clean.toLowerCase().includes(c.title.toLowerCase().split(' ')[0]) || clean === c.raw);
+      if (found) {
+        return {
+          point: found.point,
+          unknown: found.unknown,
+          draft: found.draft,
+          stamp: currentMode === 'A' ? found.stampA : found.stampB,
+          note: currentMode === 'A' ? found.noteA : found.noteB
+        };
+      }
+
+      // Freeform Heuristic Breakdown Engine
+      const sentences = clean.split(/[.!?]+/).map(s => s.trim()).filter(Boolean);
+      let point = "";
+      let unknown = [];
+      let draft = "";
+      let stamp = "";
+      let note = "";
+
+      // 1. Detect Point
+      const question = sentences.find(s => /\?|who|what|when|where|if|can|could/i.test(s));
+      const urgency = sentences.find(s => /deadline|friday|tomorrow|today|urgent|fast|soon/i.test(s));
+      const guilt = sentences.find(s => /sorry|guilty|annoying|pushy|lazy|nightmare|terrible/i.test(s));
+
+      if (question) {
+        point = "Clarify: " + question.replace(/^(and|but|so|well)\s+/i, '') + ".";
+      } else if (urgency) {
+        point = "Confirm delivery expectation regarding " + urgency.replace(/^(and|but|so)\s+/i, '') + ".";
+      } else if (sentences.length > 0) {
+        point = "Align directly on next steps regarding: " + sentences[0].slice(0, 80) + "...";
+      } else {
+        point = "State the single pending decision in one clean sentence.";
+      }
+
+      // 2. Unknown facts (DO NOT INVENT)
+      if (!/\b\d{1,2}(:\d{2})?\s*(am|pm|am|pm|today|tomorrow|monday|tuesday|wednesday|thursday|friday)\b/i.test(clean)) {
+        unknown.push("Exact date or delivery cutoff hour is unstated.");
+      }
+      if (!/\b(who|assign|lead|owner|responsible)\b/i.test(clean)) {
+        unknown.push("Designated single decision-maker / task owner is unconfirmed.");
+      }
+      if (guilt) {
+        unknown.push("Interpersonal friction or negative intent is unverified assumption.");
+      }
+      if (unknown.length === 0) {
+        unknown.push("Underlying external constraints have not been detailed.");
+      }
+
+      // 3. Draft generation (Actionable, polite, guilt-free)
+      const coreDecide = point.replace(/^(Clarify:\s*|Confirm delivery expectation regarding\s*)/i, '');
+      draft = `Hi, quick check so we can keep things moving smoothly: could we confirm ${coreDecide.toLowerCase().replace(/\.$/, '')}? Let me know what works best on your side so we can lock it in.`;
+
+      // 4. Rubber Stamp
+      if (currentMode === 'A') {
+        stamp = "[ OVERTHINKING FILED WITHOUT ACTION ]";
+        note = "Crumb: \"You spent 800 words negotiating with an imaginary critic. Zero messages sent.\"";
+      } else {
+        stamp = clean.length > 120 ? "[ CLEAR ENOUGH TO SEND (REGRETTABLY) ]" : "[ ACTIONABLE, TO EVERYONE'S SURPRISE ]";
+        note = "Crumb: \"Guilt discarded at the counter. The remaining 2 sentences are actually functional.\"";
+      }
+
+      return { point, unknown, draft, stamp, note };
+    }
+
+    function handleInput() {
+      const val = document.getElementById('rawInput').value;
+      document.getElementById('charCount').innerText = val.length + " chars";
+      playAudioSfx('type');
+    }
+
+    function setEndingMode(mode) {
+      currentMode = mode;
+      document.getElementById('btnModeA').classList.toggle('active', mode === 'A');
+      document.getElementById('btnModeB').classList.toggle('active', mode === 'B');
+      document.getElementById('endingBContainer').style.display = mode === 'B' ? 'block' : 'none';
+      processForm();
+    }
+
+    function loadCase(index) {
+      activeCaseIndex = index;
+      document.querySelectorAll('.case-card').forEach((card, i) => card.classList.toggle('active', i === index));
+      const c = CASES[index];
+      document.getElementById('rawInput').value = c.raw;
+      handleInput();
+      processForm();
+    }
+
+    function processForm() {
+      playAudioSfx('stamp');
+      const input = document.getElementById('rawInput').value;
+      const res = parseHeuristically(input);
+
+      // Render into Terminal Dossier
+      document.getElementById('pointOutput').innerText = res.point;
+      
+      const ul = document.getElementById('unknownListOutput');
+      ul.innerHTML = "";
+      res.unknown.forEach(u => {
+        const li = document.createElement('li');
+        li.innerText = u;
+        ul.appendChild(li);
+      });
+
+      document.getElementById('draftEditable').value = res.draft;
+      
+      const stampEl = document.getElementById('rubberStampText');
+      stampEl.innerText = res.stamp;
+      stampEl.className = 'rubber-stamp' + (res.stamp.includes('ACTIONABLE') || res.stamp.includes('CLEAR') || res.stamp.includes('HONEST') ? ' green' : '');
+      
+      document.getElementById('crumbFilingNote').innerText = res.note;
+
+      // Update Shareable Postal Card
+      document.getElementById('cardBodyText').innerText = `"${res.draft}"`;
+      document.getElementById('cardStampBox').innerText = res.stamp.replace(/[\[\]]/g, '').slice(0, 16);
+      document.getElementById('cardDocketNum').innerText = `#459-${Math.floor(1000 + Math.random() * 9000)}`;
+
+      // Pop stamp animation
+      stampEl.style.transform = 'scale(1.2) rotate(-5deg)';
+      setTimeout(() => { stampEl.style.transform = 'scale(1) rotate(-3deg)'; }, 140);
+    }
+
+    function copyDraft() {
+      const text = document.getElementById('draftEditable').value;
+      navigator.clipboard.writeText(text).then(() => {
+        alert("Draft message copied to clipboard! Ready to paste into Slack / Email.");
+      });
+    }
+
+    function copyCardText() {
+      const body = document.getElementById('cardBodyText').innerText;
+      const note = "This made me think of you. No need to reply.\n\n" + body;
+      navigator.clipboard.writeText(note).then(() => {
+        alert("Postal card text copied to clipboard!");
+      });
+    }
+
+    function clearForm() {
+      document.getElementById('rawInput').value = "";
+      document.querySelectorAll('.case-card').forEach(c => c.classList.remove('active'));
+      handleInput();
+      processForm();
+    }
+
+    function submitSurvey(choice) {
+      playAudioSfx('stamp');
+      const btns = document.getElementById('surveyButtons');
+      btns.innerHTML = `<span style="color:var(--carbon-blue); font-weight:900;">Voted [${choice}] · Recorded at 4:59 PM</span>`;
+      document.getElementById('surveyResults').innerText = "Department count: 143 avoids resolved. Crumb: \"One less case on my desk.\"";
+      localStorage.setItem('form459_survey', choice);
+    }
+
+    // Initialize with Case 1
+    window.addEventListener('DOMContentLoaded', () => {
+      loadCase(0);
+    });
+  </script>
+</body>
+</html>

@@ -350,8 +350,8 @@
       <div class="folder-tab">FORM 404-B INTAKE</div>
       
       <div class="counter-bar">
-        <span>INTERGALACTIC QUEUE: <span class="counter-num" id="queueNum">4,812</span> IN LINE</span>
-        <span>TOTAL PERMITS PROCESSED: <span class="counter-num" id="totalProcessed">1,842</span></span>
+        <span>ENVIRONMENT: <span class="counter-num">STANDALONE CLIENT DEMO</span></span>
+        <span>THIS BROWSER STAMPS: <span class="counter-num" id="totalProcessed">0</span></span>
       </div>
 
       <div class="form-grid">
@@ -404,45 +404,45 @@
       <div id="copyNotice" style="font-size:11px; color:#2e7d32; font-weight:bold; margin-top:6px; display:none;">Receipt text copied to clipboard!</div>
     </div>
 
-    <!-- Anonymous Community Hearing Case Submissions -->
+    <!-- Local Screen Preview Only: Citizen Hearings Docket -->
     <div class="manila-folder" style="padding: 18px 22px;">
-      <div class="folder-tab" style="background:#d9ccb0;">CITIZEN HEARINGS DOCKET</div>
-      <div class="case-sub-title">Submit an Unconfirmed Absurdity for Crumb's Weekly Hearing</div>
+      <div class="folder-tab" style="background:#d9ccb0;">CITIZEN HEARINGS DOCKET (LOCAL PREVIEW ONLY)</div>
+      <div class="case-sub-title">Preview an Unconfirmed Situation on Your Screen</div>
       <p style="font-size:11px; color:#5c5447; line-height:1.4;">
-        Deputy Crumb reluctantly reviews one community case each week. No personal information. Fictional situations only.
+        <strong>Privacy Notice:</strong> 100% private client-side simulation. Nothing is transmitted over the network or saved anywhere outside this browser tab.
       </p>
       <div class="case-input-group">
         <input type="text" id="caseInput" placeholder="e.g. My office photocopier has formed a trade union with the toaster.">
-        <button class="case-btn" onclick="submitCase()">File Case</button>
+        <button class="case-btn" onclick="submitCase()">Preview Case on Screen</button>
       </div>
       <div class="case-log" id="caseLog">
-        <div>• [Case #404-09]: Citizen reports clock ticking backwards between 4:58 and 4:59. (Status: Pending)</div>
-        <div>• [Case #404-08]: Requesting license for a sentient moth with laminated staff credentials. (Status: Approved)</div>
+        <div>• [Case #404-09]: Citizen reports clock ticking backwards between 4:58 and 4:59. (Status: Screen Preview)</div>
+        <div>• [Case #404-08]: Requesting license for a sentient moth with laminated staff credentials. (Status: Screen Preview)</div>
       </div>
     </div>
 
-    <!-- Anonymous Return Interest & Utility Poll -->
+    <!-- Interactive Demonstration: Local Poll UX -->
     <div class="poll-section">
-      <div class="poll-title">Department Exit Poll: Anonymous Return Interest</div>
+      <div class="poll-title">Department Exit Poll: Browser-Only Prototype Demonstration</div>
       <div class="poll-desc">
-        Help the Ministry assess whether to maintain the department or let Crumb clock out. Purely anonymous. Zero wallets.
+        <strong>Demo Notice:</strong> This interactive poll runs strictly in your local browser memory to demonstrate the UX for the upcoming facilitated 20-person test. It does <em>not</em> transmit or aggregate cross-browser data.
       </div>
       <div class="poll-options" id="pollGroup">
         <div class="poll-opt" onclick="castVote(0)">
           <span>1. I'll return next week to see Crumb rule on citizen cases.</span>
-          <span class="poll-pct" id="pct0">48%</span>
+          <span class="poll-pct" id="pct0">0 votes</span>
         </div>
         <div class="poll-opt" onclick="castVote(1)">
-          <span>2. I desperately need Crumb's free "Messy Thoughts to Clean Follow-Up" tool.</span>
-          <span class="poll-pct" id="pct1">36%</span>
+          <span>2. I desperately need Crumb's free "Form 4:59" tool for unsaid messages.</span>
+          <span class="poll-pct" id="pct1">0 votes</span>
         </div>
         <div class="poll-opt" onclick="castVote(2)">
           <span>3. I just enjoy watching a slug-adjacent clerk suffer at 4:59 PM.</span>
-          <span class="poll-pct" id="pct2">16%</span>
+          <span class="poll-pct" id="pct2">0 votes</span>
         </div>
       </div>
       <div id="votedFeedback" style="font-size:11px; color:var(--carbon-blue); font-weight:bold; margin-top:8px; display:none;">
-        ✓ Official vote recorded in Dept 404 ledger.
+        ✓ Local session vote recorded (browser-only demo).
       </div>
     </div>
 
@@ -451,7 +451,7 @@
   <footer>
     THE MINISTRY OF UNCONFIRMED THINGS · 1987 SPACE GOVERNMENT SPECIFICATION<br>
     Non-Tokenized Entertainment &amp; Public Utility Initiative · Zero Financial Solicitations<br>
-    <a href="stranger_test_clips.html">View Cold Open Stranger Test Clips</a> | <a href="messy_to_simple.html">Try "Messy Thoughts to Simple Follow-Up" Tool</a>
+    <a href="stranger_test_clips.html">View Cold Open Stranger Test Clips</a> | <a href="form_459.html">Try Form 4:59 ("The Unsaid Thing") Prototype</a>
   </footer>
 
   <script>
@@ -466,20 +466,22 @@
       "Required to sigh audibly before filing any document."
     ];
 
-    let totalStamps = parseInt(localStorage.getItem('ministry_total_stamps') || '1842');
-    document.getElementById('totalProcessed').textContent = totalStamps.toLocaleString();
+    let totalStamps = parseInt(localStorage.getItem('ministry_local_test_stamps') || '0');
+    document.getElementById('totalProcessed').textContent = totalStamps.toString();
 
-    let votes = JSON.parse(localStorage.getItem('ministry_votes') || '[24, 18, 8]');
+    let votes = JSON.parse(localStorage.getItem('ministry_local_demo_votes') || '[0, 0, 0]');
     updatePollDisplay();
 
     const cv = document.getElementById('permitCanvas');
     const ctx = cv.getContext('2d');
     let currentPermitData = null;
 
-    function generatePermit() {
-      totalStamps++;
-      localStorage.setItem('ministry_total_stamps', totalStamps);
-      document.getElementById('totalProcessed').textContent = totalStamps.toLocaleString();
+    function generatePermit(isInitial = false) {
+      if (!isInitial) {
+        totalStamps++;
+        localStorage.setItem('ministry_local_test_stamps', totalStamps);
+        document.getElementById('totalProcessed').textContent = totalStamps.toString();
+      }
 
       const name = document.getElementById('nameIn').value.trim() || 'Citizen';
       const species = document.getElementById('speciesIn').value;
@@ -536,7 +538,7 @@
       ctx.fillText(`CLASSIFICATION:${species.toUpperCase()}`, 90, startY + lineHeight * 2);
       ctx.fillText(`OFFICE ROLE:   ${occ.toUpperCase()}`, 90, startY + lineHeight * 3);
       ctx.fillText(`JURISDICTION:  ${dept.toUpperCase()}`, 90, startY + lineHeight * 4);
-      ctx.fillText(`EXPIRATION:    VALID STRICTLY UNTIL 5:00 PM (LOCKED AT 4:59)`, 90, startY + lineHeight * 5);
+      ctx.fillText(`EXPIRATION:    VALID STRICTLY UNTIL 5:00 PM (LORE: 4:59 SHIFT)`, 90, startY + lineHeight * 5);
 
       // Mandatory Bureaucratic Restriction Box
       const boxY = startY + lineHeight * 6 - 8;
@@ -611,8 +613,13 @@
     }
 
     function castVote(idx) {
+      if (localStorage.getItem('ministry_has_voted')) {
+        document.getElementById('votedFeedback').textContent = "✓ Vote already recorded for this local session (browser-only demo).";
+        document.getElementById('votedFeedback').style.display = 'block';
+        return;
+      }
       votes[idx]++;
-      localStorage.setItem('ministry_votes', JSON.stringify(votes));
+      localStorage.setItem('ministry_local_demo_votes', JSON.stringify(votes));
       localStorage.setItem('ministry_has_voted', 'true');
       updatePollDisplay(idx);
       document.getElementById('votedFeedback').style.display = 'block';
@@ -620,9 +627,9 @@
 
     function updatePollDisplay(selectedIdx = -1) {
       const total = votes.reduce((a, b) => a + b, 0);
-      const pcts = votes.map(v => Math.round((v / total) * 100));
       for (let i = 0; i < 3; i++) {
-        document.getElementById(`pct${i}`).textContent = `${pcts[i]}% (${votes[i]} votes)`;
+        const pct = total > 0 ? Math.round((votes[i] / total) * 100) : 0;
+        document.getElementById(`pct${i}`).textContent = `${votes[i]} votes (${pct}%)`;
       }
       const opts = document.querySelectorAll('.poll-opt');
       opts.forEach((opt, i) => {
@@ -630,8 +637,8 @@
       });
     }
 
-    // Initial generation
-    generatePermit();
+    // Initial render without incrementing counter
+    generatePermit(true);
   </script>
 </body>
 </html>
