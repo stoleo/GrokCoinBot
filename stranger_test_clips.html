@@ -3,167 +3,230 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Ministry of Unconfirmed Things — Stranger Test Cold Opens</title>
+  <title>The Ministry of Unconfirmed Things — 1987 CRT Stranger Test Player</title>
   <style>
     :root {
-      --bg: #090a0f;
-      --card-bg: #12141c;
-      --border: rgba(255, 255, 255, 0.1);
-      --accent: #5be38f;
-      --text: #e2e8f0;
-      --muted: #8d9096;
-      --stamp-red: #ff3344;
-      --stamp-green: #22c55e;
+      --desk-bg: #2b2824;
+      --crt-case: #38342e;
+      --crt-bezel: #1e1c19;
+      --crt-screen: #f4efe4;
+      --ink: #1c1917;
+      --typewriter: 'Courier New', Courier, monospace;
+      --stamp-red: #b91c1c;
+      --stamp-blue: #1e3a8a;
+      --amber: #d97706;
+      --muted: #8c8273;
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      background: var(--bg);
-      color: var(--text);
+      background: var(--desk-bg);
+      background-image: 
+        radial-gradient(circle at 50% 10%, rgba(255, 250, 230, 0.15) 0%, transparent 60%),
+        repeating-linear-gradient(0deg, rgba(0,0,0,0.1), rgba(0,0,0,0.1) 1px, transparent 1px, transparent 2px);
+      color: #e6dfd3;
+      font-family: var(--typewriter);
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 30px 20px;
+      padding: 24px 16px 40px 16px;
     }
-    header { text-align: center; max-width: 800px; margin-bottom: 24px; }
-    h1 {
-      font-size: 30px;
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      margin-bottom: 8px;
-      background: linear-gradient(135deg, #fff 40%, #5be38f);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
+    header { text-align: center; max-width: 840px; margin-bottom: 18px; }
     .badge {
       display: inline-block;
-      background: rgba(91, 227, 143, 0.15);
-      color: var(--accent);
-      border: 1px solid rgba(91, 227, 143, 0.3);
-      padding: 4px 12px;
-      border-radius: 9999px;
+      background: rgba(217, 119, 6, 0.15);
+      color: #f59e0b;
+      border: 1px solid rgba(217, 119, 6, 0.4);
+      padding: 4px 14px;
       font-size: 11px;
-      font-weight: 700;
+      font-weight: 900;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
+    }
+    h1 {
+      font-size: 26px;
+      font-weight: 900;
+      letter-spacing: -0.01em;
+      margin-bottom: 6px;
+      color: #f7f3eb;
+      text-transform: uppercase;
     }
     .clip-selector {
       display: flex;
-      gap: 8px;
-      margin-bottom: 20px;
-      background: var(--card-bg);
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 6px;
+      margin-bottom: 18px;
+      background: var(--crt-case);
       padding: 6px;
-      border-radius: 9999px;
-      border: 1px solid var(--border);
+      border: 1px solid #4a443c;
     }
     .tab-btn {
       background: transparent;
-      border: none;
+      border: 1px solid transparent;
       color: var(--muted);
-      padding: 8px 18px;
-      border-radius: 9999px;
-      font-size: 13px;
-      font-weight: 600;
+      padding: 8px 16px;
+      font-family: var(--typewriter);
+      font-size: 12px;
+      font-weight: 900;
       cursor: pointer;
-      transition: all 0.2s;
+      transition: all 0.15s;
+      text-transform: uppercase;
     }
     .tab-btn.active {
-      background: #fff;
-      color: #000;
-      box-shadow: 0 4px 12px rgba(255, 255, 255, 0.15);
+      background: #eee6d6;
+      color: #1a1614;
+      border: 1px solid #fff;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
     }
-    .stage-card {
+
+    /* 1987 CRT Monitor Rig */
+    .crt-cabinet {
       width: 100%;
-      max-width: 820px;
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 20px;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+      max-width: 860px;
+      background: var(--crt-case);
+      border: 4px solid #4d463d;
+      border-radius: 12px;
+      padding: 16px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7), inset 0 2px 4px rgba(255,255,255,0.1);
+    }
+    .crt-bezel-inner {
+      background: var(--crt-bezel);
+      padding: 12px;
+      border-radius: 8px;
+      border: 2px solid #141311;
+      position: relative;
     }
     .canvas-wrapper {
       position: relative;
       width: 100%;
-      height: 420px;
-      background: #06070a;
-      border-radius: 14px;
+      height: 440px;
+      background: var(--crt-screen);
+      border-radius: 6px;
       overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.05);
+      border: 2px solid #333;
+    }
+    /* CRT Scanline Overlay */
+    .canvas-wrapper::after {
+      content: " ";
+      position: absolute;
+      top: 0; left: 0; bottom: 0; right: 0;
+      background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.15) 50%);
+      background-size: 100% 4px;
+      pointer-events: none;
     }
     canvas { width: 100%; height: 100%; display: block; }
+
     .controls-bar {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-top: 16px;
-      padding: 0 8px;
+      margin-top: 14px;
+      padding: 4px 6px;
     }
     .play-btn {
-      background: var(--accent);
-      color: #000;
-      border: none;
-      padding: 10px 24px;
-      border-radius: 9999px;
-      font-weight: 700;
-      font-size: 14px;
-      cursor: pointer;
-    }
-    .timer { font-family: monospace; font-size: 16px; color: var(--accent); font-weight: 700; }
-    .script-box {
-      margin-top: 16px;
-      padding: 12px 16px;
-      background: rgba(0, 0, 0, 0.3);
-      border-radius: 10px;
-      border-left: 3px solid var(--accent);
+      background: var(--stamp-red);
+      color: #fff;
+      border: 2px solid #7f1d1d;
+      padding: 10px 22px;
+      font-family: var(--typewriter);
+      font-weight: 900;
       font-size: 13px;
-      line-height: 1.5;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(185, 28, 28, 0.4);
     }
+    .timer-display {
+      font-family: var(--typewriter);
+      font-size: 16px;
+      font-weight: 900;
+      color: #facc15;
+      background: #111;
+      padding: 6px 14px;
+      border: 1px solid #444;
+      border-radius: 3px;
+    }
+
+    .script-box {
+      margin-top: 14px;
+      padding: 12px 14px;
+      background: #201d19;
+      border-left: 3px solid var(--amber);
+      font-size: 12px;
+      line-height: 1.5;
+      color: #d1c8b8;
+    }
+
+    /* Stranger Exit Poll */
     .voting-section {
       margin-top: 24px;
-      max-width: 820px;
+      max-width: 860px;
       width: 100%;
       text-align: center;
-      background: var(--card-bg);
+      background: var(--crt-case);
       padding: 20px;
-      border-radius: 18px;
-      border: 1px solid var(--border);
+      border: 2px solid #4a4339;
     }
-    .vote-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 12px; }
+    .vote-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin-top: 14px;
+    }
+    @media (max-width: 720px) {
+      .vote-grid { grid-template-columns: 1fr 1fr; }
+    }
     .vote-card {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid var(--border);
-      padding: 14px;
-      border-radius: 12px;
+      background: #25221d;
+      border: 1px solid #443e34;
+      padding: 12px 8px;
       cursor: pointer;
-      transition: all 0.2s;
+      transition: all 0.15s;
     }
-    .vote-card:hover { border-color: var(--accent); background: rgba(91, 227, 143, 0.05); }
+    .vote-card:hover { border-color: var(--amber); background: #2f2a24; }
+    .vote-card h4 { font-size: 12px; color: #f2ece0; margin-bottom: 4px; }
+    .vote-card small { font-size: 10px; color: var(--muted); display: block; }
+    .vote-count { font-size: 14px; font-weight: 900; color: #facc15; margin-top: 6px; }
+
+    footer {
+      margin-top: 30px;
+      font-size: 11px;
+      color: #8c8273;
+      text-align: center;
+      line-height: 1.5;
+    }
+    footer a { color: #facc15; text-decoration: underline; }
   </style>
 </head>
 <body>
 
   <header>
-    <div class="badge">Stranger Test Player · 100% Fictional Comedy · No Token Pitch</div>
+    <div class="badge">1987 Space Bureaucracy · Stranger Test Rig · No Token Pitch</div>
     <h1>The Ministry of Unconfirmed Things</h1>
-    <p style="color: var(--muted); font-size: 14px;">Creative Director Pass: Minimalist dialogue, weird moth agency, and zero preachiness.</p>
+    <p style="color: #a89d8b; font-size: 12px;">Frame-by-frame animatics testing unaided recall of Crumb, Mute Mason, The Moth, and the 4:59 clock.</p>
   </header>
 
   <div class="clip-selector">
     <button class="tab-btn active" onclick="switchClip(0)">Clip 1: The Moth's Badge</button>
     <button class="tab-btn" onclick="switchClip(1)">Clip 2: Dept 404</button>
     <button class="tab-btn" onclick="switchClip(2)">Clip 3: Words Only Flip</button>
+    <button class="tab-btn" onclick="switchClip(3)">Clip 4: The Door at 4:59 (BoPeppi)</button>
   </div>
 
-  <div class="stage-card">
-    <div class="canvas-wrapper">
-      <canvas id="stage" width="1600" height="840"></canvas>
+  <div class="crt-cabinet">
+    <div class="crt-bezel-inner">
+      <div class="canvas-wrapper">
+        <canvas id="stage" width="1600" height="880"></canvas>
+      </div>
     </div>
 
     <div class="controls-bar">
       <button class="play-btn" id="playBtn" onclick="togglePlay()">
         <span>▶ Play 10s Cold Open</span>
       </button>
-      <div class="timer" id="timer">00:00 / 00:10</div>
+      <div class="timer-display" id="timer">00:00 / 00:10</div>
     </div>
 
     <div class="script-box" id="scriptBox">
@@ -172,26 +235,40 @@
   </div>
 
   <div class="voting-section">
-    <h3 style="font-size: 16px;">Stranger Exit Poll</h3>
-    <p style="color: var(--muted); font-size: 13px; margin-top: 2px;">Which 10-second open makes you want Episode 2?</p>
+    <h3 style="font-size: 14px; text-transform:uppercase; letter-spacing:0.08em; color:#facc15;">
+      Stranger Test Exit Poll (20-Person Benchmark)
+    </h3>
+    <p style="color: var(--muted); font-size: 12px; margin-top: 2px;">
+      Which 10-second open creates instant character recall and makes you want Episode 2?
+    </p>
     <div class="vote-grid">
       <div class="vote-card" onclick="castVote(1)">
-        <h4>📦 Clip 1: The Moth's Badge</h4>
-        <small style="color:var(--muted)">Agency & ID Card</small>
-        <div id="v1" style="font-size: 16px; font-weight: bold; margin-top: 6px; color: var(--accent);">0 votes</div>
+        <h4>📦 Clip 1: The Moth</h4>
+        <small>Agency &amp; Laminated Badge</small>
+        <div class="vote-count" id="v1">0 votes</div>
       </div>
       <div class="vote-card" onclick="castVote(2)">
         <h4>🗄️ Clip 2: Dept 404</h4>
-        <small style="color:var(--muted)">No Numbers & DENIED</small>
-        <div id="v2" style="font-size: 16px; font-weight: bold; margin-top: 6px; color: var(--accent);">0 votes</div>
+        <small>No Numbers &amp; DENIED</small>
+        <div class="vote-count" id="v2">0 votes</div>
       </div>
       <div class="vote-card" onclick="castVote(3)">
         <h4>🪧 Clip 3: Sign Flip</h4>
-        <small style="color:var(--muted)">Words Only → Fictional Prop</small>
-        <div id="v3" style="font-size: 16px; font-weight: bold; margin-top: 6px; color: var(--accent);">0 votes</div>
+        <small>Words Only → Fictional Prop</small>
+        <div class="vote-count" id="v3">0 votes</div>
+      </div>
+      <div class="vote-card" onclick="castVote(4)">
+        <h4>🚪 Clip 4: Door at 4:59</h4>
+        <small>Hand on Door → "LET'S MAKE IT SIMPLE"</small>
+        <div class="vote-count" id="v4">0 votes</div>
       </div>
     </div>
   </div>
+
+  <footer>
+    THE MINISTRY OF UNCONFIRMED THINGS · 1987 RETRO SPECIFICATION<br>
+    <a href="application_to_exist.html">Generate Official "Application to Exist" Permit</a> | <a href="messy_to_simple.html">Try "Messy Thoughts to Clean Follow-Up" Tool</a>
+  </footer>
 
   <script>
     const cv = document.getElementById('stage');
@@ -211,17 +288,24 @@
         gain.connect(audioCtx.destination);
         if (type === 'stamp') {
           osc.type = 'square';
-          osc.frequency.setValueAtTime(130, audioCtx.currentTime);
-          osc.frequency.exponentialRampToValueAtTime(30, audioCtx.currentTime + 0.16);
-          gain.gain.setValueAtTime(0.4, audioCtx.currentTime);
-          gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.16);
-          osc.start(); osc.stop(audioCtx.currentTime + 0.16);
+          osc.frequency.setValueAtTime(140, audioCtx.currentTime);
+          osc.frequency.exponentialRampToValueAtTime(28, audioCtx.currentTime + 0.18);
+          gain.gain.setValueAtTime(0.5, audioCtx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.18);
+          osc.start(); osc.stop(audioCtx.currentTime + 0.18);
         } else if (type === 'ding') {
           osc.type = 'sine';
-          osc.frequency.setValueAtTime(784, audioCtx.currentTime);
-          gain.gain.setValueAtTime(0.25, audioCtx.currentTime);
+          osc.frequency.setValueAtTime(740, audioCtx.currentTime);
+          gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
           gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.4);
           osc.start(); osc.stop(audioCtx.currentTime + 0.4);
+        } else if (type === 'sigh') {
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(220, audioCtx.currentTime);
+          osc.frequency.exponentialRampToValueAtTime(110, audioCtx.currentTime + 0.5);
+          gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.5);
+          osc.start(); osc.stop(audioCtx.currentTime + 0.5);
         }
       } catch (e) {}
     }
@@ -229,7 +313,8 @@
     const scripts = [
       "<strong>Beat 1:</strong> Chaos hauls crate 'ABSOLUTELY GUARANTEED'. <strong>Beat 2:</strong> Mason opens inner box 'TRUST ME'. <strong>Beat 3:</strong> Moth flies out, flashes its OWN tiny laminated ID badge. Mason slams: <code>[ACTUALLY A MOTH]</code>.",
       "<strong>Beat 1:</strong> Deputy Crumb glares with dead eyes. <strong>Beat 2:</strong> 'TAKE A NUMBER.' Camera pans: 'NO NUMBERS EXIST.' <strong>Beat 3:</strong> Giant red stamp slams: <code>[DENIED]</code>. Crumb: 'NEXT.'",
-      "<strong>Beat 1:</strong> Chaos hypes wild arrows. <strong>Beat 2:</strong> Mason silently steps in holding wooden sign: <code>[WORDS ONLY]</code>. <strong>Beat 3:</strong> Ding rings out; Mason flips sign to <code>[FICTIONAL PROP ATTACHED]</code>. Chaos files it under 'INTERGALACTIC LIVESTOCK'."
+      "<strong>Beat 1:</strong> Chaos hypes wild arrows. <strong>Beat 2:</strong> Mason silently steps in holding wooden sign: <code>[WORDS ONLY]</code>. <strong>Beat 3:</strong> Ding rings out; Mason flips sign to <code>[FICTIONAL PROP ATTACHED]</code>. Chaos files it under 'INTERGALACTIC LIVESTOCK'.",
+      "<strong>Beat 1 (BoPeppi):</strong> 4:59 PM. Crumb has coat on, hand on door knob. <strong>Beat 2:</strong> Tiny note slips under door: 'I DON’T KNOW WHAT TO SAY.' Crumb sighs: 'Unbelievable.' <strong>Beat 3:</strong> Crumb slams stamp: <code>[LET’S MAKE IT SIMPLE]</code>. Clock snaps violently back to 4:59 PM."
     ];
 
     function switchClip(idx) {
@@ -274,60 +359,107 @@
 
     function renderFrame(t) {
       ctx.clearRect(0, 0, cv.width, cv.height);
-      ctx.fillStyle = '#07090e';
+      
+      // 1987 Beige Institutional Office Walls
+      ctx.fillStyle = '#f0ebe1';
       ctx.fillRect(0, 0, cv.width, cv.height);
 
-      // Floor
-      ctx.strokeStyle = 'rgba(255,255,255,0.04)';
-      ctx.lineWidth = 1;
-      for (let y = 560; y < cv.height; y += 35) {
+      // Fluorescent tube lighting beam at top
+      const grad = ctx.createLinearGradient(0, 0, 0, 300);
+      grad.addColorStop(0, 'rgba(255, 255, 240, 0.9)');
+      grad.addColorStop(1, 'rgba(240, 235, 225, 0)');
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, cv.width, 300);
+
+      // Office Floor & Skirting Board
+      ctx.fillStyle = '#cfc5b4';
+      ctx.fillRect(0, 600, cv.width, cv.height - 600);
+      ctx.fillStyle = '#5c5244';
+      ctx.fillRect(0, 592, cv.width, 8);
+
+      // Office Floor Grid Lines (faint linoleum tiles)
+      ctx.strokeStyle = '#b8ad9a';
+      ctx.lineWidth = 1.5;
+      for (let y = 620; y < cv.height; y += 45) {
         ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(cv.width, y); ctx.stroke();
       }
+
+      // Perpetual 4:59 PM Mechanical Wall Clock (Top Right)
+      drawWallClock();
 
       if (currentClip === 0) drawClip1(t);
       else if (currentClip === 1) drawClip2(t);
       else if (currentClip === 2) drawClip3(t);
+      else if (currentClip === 3) drawClip4(t);
+    }
+
+    function drawWallClock() {
+      ctx.save();
+      ctx.translate(1480, 90);
+      // Outer brass/bakelite casing
+      ctx.fillStyle = '#2c251e';
+      ctx.beginPath(); ctx.arc(0, 0, 62, 0, Math.PI * 2); ctx.fill();
+      ctx.fillStyle = '#fcfbf7';
+      ctx.beginPath(); ctx.arc(0, 0, 54, 0, Math.PI * 2); ctx.fill();
+      
+      // Digital readout panel inside clock
+      ctx.fillStyle = '#111';
+      ctx.fillRect(-38, -14, 76, 28);
+      ctx.font = 'bold 15px "Courier New", monospace';
+      ctx.fillStyle = '#dc2626';
+      ctx.textAlign = 'center';
+      ctx.fillText('04:59', 0, 6);
+
+      ctx.fillStyle = '#6b7280';
+      ctx.font = 'bold 8px monospace';
+      ctx.fillText('PM · LOCKED', 0, 26);
+      ctx.restore();
     }
 
     // Clip 1: Nested Crate + Moth ID Badge
     function drawClip1(t) {
-      ctx.fillStyle = '#1c212d';
+      ctx.fillStyle = '#c7bca7';
       ctx.fillRect(400, 480, 800, 220);
-      ctx.strokeStyle = '#475569';
+      ctx.strokeStyle = '#574d3f';
       ctx.lineWidth = 4;
       ctx.strokeRect(400, 480, 800, 220);
-      ctx.font = 'bold 40px sans-serif';
-      ctx.fillStyle = '#facc15';
+      ctx.font = '900 36px "Courier New", monospace';
+      ctx.fillStyle = '#1c1917';
       ctx.textAlign = 'center';
-      ctx.fillText('CRATE: "ABSOLUTELY GUARANTEED"', 800, 610);
+      ctx.fillText('CRATE: "ABSOLUTELY GUARANTEED"', 800, 605);
 
       if (t >= 3.0) {
-        ctx.fillStyle = '#b48a3c';
+        ctx.fillStyle = '#a68a56';
         ctx.fillRect(720, 360, 160, 110);
-        ctx.fillStyle = '#000';
-        ctx.font = 'bold 18px sans-serif';
-        ctx.fillText('TRUST ME', 800, 425);
+        ctx.strokeStyle = '#3d321d';
+        ctx.lineWidth = 3;
+        ctx.strokeRect(720, 360, 160, 110);
+        ctx.fillStyle = '#fff';
+        ctx.font = '900 16px "Courier New", monospace';
+        ctx.fillText('TRUST ME', 800, 420);
       }
 
       if (t >= 5.0) {
-        const mothY = 280 - (t - 5.0) * 40 + Math.sin(t * 14) * 16;
+        const mothY = 270 - (t - 5.0) * 35 + Math.sin(t * 14) * 14;
         const mothX = 800 + Math.cos(t * 7) * 70;
         
-        // Moth body & wings
-        ctx.fillStyle = '#e2e8f0';
+        // Moth body & flutter wings
+        ctx.fillStyle = '#473d31';
         ctx.beginPath(); ctx.arc(mothX, mothY, 12, 0, Math.PI * 2); ctx.fill();
         ctx.beginPath();
         ctx.ellipse(mothX - 16, mothY, 20, 10, Math.sin(t * 18), 0, Math.PI * 2);
         ctx.ellipse(mothX + 16, mothY, 20, 10, -Math.sin(t * 18), 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(226,232,240,0.6)'; ctx.fill();
+        ctx.fillStyle = 'rgba(120, 110, 95, 0.7)'; ctx.fill();
 
-        // Tiny Moth ID Badge
+        // Absurdly Oversized Sky-Blue Laminated STAFF Badge
         ctx.fillStyle = '#38bdf8';
-        ctx.fillRect(mothX + 18, mothY - 14, 48, 30);
-        ctx.fillStyle = '#000';
-        ctx.font = '900 8px monospace';
-        ctx.fillText('MOTH ID', mothX + 42, mothY - 3);
-        ctx.fillText('STAFF', mothX + 42, mothY + 8);
+        ctx.fillRect(mothX + 18, mothY - 14, 54, 34);
+        ctx.strokeStyle = '#0284c7'; ctx.lineWidth = 2;
+        ctx.strokeRect(mothX + 18, mothY - 14, 54, 34);
+        ctx.fillStyle = '#082f49';
+        ctx.font = '900 9px monospace';
+        ctx.fillText('MOTH ID', mothX + 45, mothY - 1);
+        ctx.fillText('STAFF #09', mothX + 45, mothY + 11);
       }
 
       if (t >= 7.6) {
@@ -335,11 +467,11 @@
         ctx.save();
         ctx.translate(800, 420);
         ctx.rotate(-0.06);
-        ctx.strokeStyle = '#ff3344';
+        ctx.strokeStyle = '#b91c1c';
         ctx.lineWidth = 10;
         ctx.strokeRect(-320, -55, 640, 110);
-        ctx.font = '900 50px monospace';
-        ctx.fillStyle = '#ff3344';
+        ctx.font = '900 50px "Courier New", monospace';
+        ctx.fillStyle = '#b91c1c';
         ctx.fillText('ACTUALLY A MOTH', 0, 18);
         ctx.restore();
       }
@@ -347,14 +479,27 @@
 
     // Clip 2: Dept 404 (Minimalist)
     function drawClip2(t) {
-      if (Math.sin(t * 30) > 0.82) ctx.fillStyle = 'rgba(255,255,255,0.02)';
-      else ctx.fillStyle = 'rgba(0,0,0,0.3)';
-      ctx.fillRect(0, 0, cv.width, cv.height);
+      // Slumped Clerk Silhouette
+      ctx.fillStyle = '#40382e';
+      ctx.beginPath();
+      ctx.arc(420, 520, 55, 0, Math.PI * 2); ctx.fill(); // Head
+      ctx.fillRect(380, 560, 90, 120); // Body
 
-      ctx.fillStyle = '#161922';
-      ctx.fillRect(450, 440, 700, 240);
-      ctx.font = 'bold 44px sans-serif';
-      ctx.fillStyle = '#fff';
+      // Clerk Oversized Brass Badge
+      ctx.fillStyle = '#d97706';
+      ctx.fillRect(405, 580, 40, 50);
+      ctx.fillStyle = '#000';
+      ctx.font = '900 8px monospace';
+      ctx.fillText('CRUMB', 425, 608);
+
+      // Counter desk
+      ctx.fillStyle = '#615443';
+      ctx.fillRect(450, 530, 700, 150);
+      ctx.strokeStyle = '#2b241b'; ctx.lineWidth = 4;
+      ctx.strokeRect(450, 530, 700, 150);
+
+      ctx.font = '900 40px "Courier New", monospace';
+      ctx.fillStyle = '#1c1917';
       ctx.textAlign = 'center';
 
       if (t < 3.2) {
@@ -366,15 +511,15 @@
         ctx.save();
         ctx.translate(800, 280);
         ctx.rotate(-0.06);
-        ctx.strokeStyle = '#ff3344';
+        ctx.strokeStyle = '#b91c1c';
         ctx.lineWidth = 8;
         ctx.strokeRect(-180, -50, 360, 100);
-        ctx.font = '900 56px sans-serif';
-        ctx.fillStyle = '#ff3344';
+        ctx.font = '900 56px "Courier New", monospace';
+        ctx.fillStyle = '#b91c1c';
         ctx.fillText('DENIED', 0, 20);
         ctx.restore();
-        ctx.font = 'bold 48px sans-serif';
-        ctx.fillStyle = '#fff';
+        ctx.font = '900 42px "Courier New", monospace';
+        ctx.fillStyle = '#1c1917';
         ctx.fillText('"NEXT."', 800, 400);
       }
     }
@@ -383,36 +528,121 @@
     function drawClip3(t) {
       ctx.textAlign = 'center';
       if (t < 3.8) {
-        ctx.font = 'bold 36px sans-serif';
-        ctx.fillStyle = '#fff';
+        ctx.font = 'bold 32px "Courier New", monospace';
+        ctx.fillStyle = '#1c1917';
         ctx.fillText('Chaos: "1000X ARROW! IT ONLY GOES UP!"', 800, 200);
-        ctx.strokeStyle = '#facc15';
+        ctx.strokeStyle = '#b45309';
         ctx.lineWidth = 14;
         ctx.beginPath(); ctx.moveTo(600, 520); ctx.lineTo(1000, 320); ctx.stroke();
       } else if (t < 6.8) {
-        ctx.fillStyle = '#1c1f26';
+        ctx.fillStyle = '#e8dfce';
         ctx.fillRect(540, 300, 520, 170);
-        ctx.strokeStyle = '#ff3344'; ctx.lineWidth = 6;
+        ctx.strokeStyle = '#b91c1c'; ctx.lineWidth = 6;
         ctx.strokeRect(540, 300, 520, 170);
-        ctx.font = '900 46px monospace';
-        ctx.fillStyle = '#ff3344';
+        ctx.font = '900 46px "Courier New", monospace';
+        ctx.fillStyle = '#b91c1c';
         ctx.fillText('WORDS ONLY', 800, 405);
       } else {
         if (Math.abs(t - 6.8) < 0.05) playBeep('ding');
-        ctx.fillStyle = '#14281c';
+        ctx.fillStyle = '#d9e8db';
         ctx.fillRect(480, 300, 640, 170);
-        ctx.strokeStyle = '#22c55e'; ctx.lineWidth = 6;
+        ctx.strokeStyle = '#15803d'; ctx.lineWidth = 6;
         ctx.strokeRect(480, 300, 640, 170);
-        ctx.font = '900 36px monospace';
-        ctx.fillStyle = '#22c55e';
+        ctx.font = '900 36px "Courier New", monospace';
+        ctx.fillStyle = '#15803d';
         ctx.fillText('PROP ATTACHED (FICTIONAL)', 800, 405);
-        ctx.font = 'italic 20px sans-serif';
-        ctx.fillStyle = '#8d9096';
+        ctx.font = 'italic 18px "Courier New", monospace';
+        ctx.fillStyle = '#5c5244';
         ctx.fillText('*(Chaos files receipt under "INTERGALACTIC LIVESTOCK")*', 800, 530);
       }
     }
 
-    const votes = [0, 0, 0];
+    // Clip 4: The Door at 4:59 (BoPeppi's Masterstroke)
+    function drawClip4(t) {
+      ctx.textAlign = 'center';
+
+      // Office Exit Door (Dark Wood + Frosted Glass)
+      ctx.fillStyle = '#42372d';
+      ctx.fillRect(950, 200, 280, 460);
+      ctx.strokeStyle = '#241e18'; ctx.lineWidth = 6;
+      ctx.strokeRect(950, 200, 280, 460);
+      // Frosted Glass Window on Door
+      ctx.fillStyle = '#bac4bc';
+      ctx.fillRect(1000, 240, 180, 160);
+      ctx.strokeStyle = '#1d211e'; ctx.lineWidth = 3;
+      ctx.strokeRect(1000, 240, 180, 160);
+      ctx.font = '900 13px monospace';
+      ctx.fillStyle = '#222';
+      ctx.fillText('EXIT TO COSMOS', 1090, 325);
+
+      // Brass Doorknob
+      ctx.fillStyle = '#d97706';
+      ctx.beginPath(); ctx.arc(980, 450, 14, 0, Math.PI * 2); ctx.fill();
+
+      // Deputy Crumb Silhouette with Trenchcoat On
+      ctx.fillStyle = '#2d2720';
+      ctx.beginPath(); ctx.arc(830, 420, 52, 0, Math.PI * 2); ctx.fill(); // Head
+      ctx.fillRect(780, 460, 120, 180); // Trenchcoat body
+      
+      // Arm reaching toward doorknob
+      ctx.strokeStyle = '#2d2720'; ctx.lineWidth = 26;
+      ctx.beginPath(); ctx.moveTo(850, 480); ctx.lineTo(970, 455); ctx.stroke();
+
+      // Crumb's Giant Heavy ID Badge
+      ctx.fillStyle = '#f59e0b';
+      ctx.fillRect(805, 490, 40, 55);
+      ctx.fillStyle = '#000';
+      ctx.font = '900 8px monospace';
+      ctx.fillText('CRUMB', 825, 520);
+
+      // Beat 1: Hand on knob
+      if (t < 3.2) {
+        ctx.font = 'bold 28px "Courier New", monospace';
+        ctx.fillStyle = '#1c1917';
+        ctx.fillText('CRUMB: "4:59 PM. TIME TO GO HOME."', 600, 250);
+      } 
+      // Beat 2: Form slides under door
+      else if (t < 6.8) {
+        // Sliding Paper Form
+        const paperX = Math.min(940, 1020 - (t - 3.2) * 80);
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(paperX, 620, 180, 70);
+        ctx.strokeStyle = '#991b1b'; ctx.lineWidth = 2;
+        ctx.strokeRect(paperX, 620, 180, 70);
+        ctx.font = '900 12px "Courier New", monospace';
+        ctx.fillStyle = '#991b1b';
+        ctx.fillText('"I DON\'T KNOW WHAT TO SAY."', paperX + 90, 660);
+
+        if (Math.abs(t - 3.8) < 0.05) playBeep('sigh');
+        ctx.font = 'bold 26px "Courier New", monospace';
+        ctx.fillStyle = '#1c1917';
+        ctx.fillText('Crumb freezes. Stares at the door. *Sighs*', 600, 250);
+        ctx.font = 'italic 20px "Courier New", monospace';
+        ctx.fillStyle = '#78350f';
+        ctx.fillText('"Unbelievable."', 600, 290);
+      } 
+      // Beat 3: Rubber Stamp SLAM
+      else {
+        if (Math.abs(t - 6.8) < 0.05) playBeep('stamp');
+        
+        ctx.save();
+        ctx.translate(620, 280);
+        ctx.rotate(-0.08);
+        ctx.strokeStyle = '#b91c1c';
+        ctx.lineWidth = 8;
+        ctx.strokeRect(-240, -45, 480, 90);
+        ctx.font = '900 36px "Courier New", monospace';
+        ctx.fillStyle = '#b91c1c';
+        ctx.fillText("LET'S MAKE IT SIMPLE", 0, 12);
+        ctx.restore();
+
+        ctx.font = '900 24px "Courier New", monospace';
+        ctx.fillStyle = '#dc2626';
+        ctx.fillText('CLOCK SNAPS VIOLENTLY BACK TO 4:59 PM', 620, 380);
+      }
+    }
+
+    const votes = [0, 0, 0, 0];
     function castVote(num) {
       votes[num - 1]++;
       document.getElementById('v' + num).innerText = `${votes[num - 1]} votes`;

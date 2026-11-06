@@ -3,108 +3,201 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ministry of Unconfirmed Things — Application to Exist</title>
+  <title>The Ministry of Unconfirmed Things — Application to Exist (Form 404-B)</title>
   <style>
     :root {
-      --bg: #0d0f14;
-      --paper: #f4efe6;
-      --paper-border: #c4b9a5;
-      --ink: #111827;
+      --wall-bg: #d7d0c0;
+      --wall-dark: #c4bcab;
+      --folder-bg: #ebe3d3;
+      --folder-tab: #decfa8;
+      --folder-border: #9e917d;
+      --paper: #f7f3eb;
+      --paper-border: #c8bead;
+      --ink: #1c1917;
       --typewriter: 'Courier New', Courier, monospace;
-      --stamp-red: #d92d20;
+      --stamp-red: #b91c1c;
       --carbon-blue: #1e3a8a;
+      --muted: #645e54;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      background: var(--bg);
-      color: #e2e8f0;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: var(--wall-bg);
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(255, 255, 240, 0.6) 0%, transparent 60%),
+        repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 0, 0, 0.02) 3px);
+      color: var(--ink);
+      font-family: var(--typewriter);
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 40px 20px;
-      background-image: radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px);
-      background-size: 24px 24px;
+      padding: 30px 16px 60px 16px;
     }
-    header { text-align: center; max-width: 600px; margin-bottom: 30px; }
+
+    /* Overhead Fluorescent Tube Notice */
+    .fluorescent-strip {
+      width: 100%;
+      max-width: 820px;
+      background: #eee8d8;
+      border: 1px solid #b8af9e;
+      border-bottom: 3px solid #8f8573;
+      padding: 8px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      font-weight: bold;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #524b40;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+    }
+    .flicker { animation: hum 4s infinite; }
+    @keyframes hum {
+      0%, 92%, 100% { opacity: 1; }
+      93% { opacity: 0.7; }
+      94% { opacity: 0.95; }
+      96% { opacity: 0.8; }
+    }
+
+    header { text-align: center; max-width: 740px; margin-bottom: 24px; }
+    .ministry-seal {
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--carbon-blue);
+      border: 1px dashed var(--carbon-blue);
+      display: inline-block;
+      padding: 4px 14px;
+      margin-bottom: 10px;
+      background: rgba(30, 58, 138, 0.04);
+    }
     h1 {
       font-size: 26px;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      margin-bottom: 8px;
-      color: #fff;
-    }
-    .badge {
-      display: inline-block;
-      background: rgba(255, 255, 255, 0.1);
-      color: #94a3b8;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      padding: 4px 12px;
-      border-radius: 9999px;
-      font-size: 11px;
-      font-weight: 700;
+      font-weight: 900;
+      letter-spacing: -0.01em;
+      margin-bottom: 6px;
+      color: #1a1614;
       text-transform: uppercase;
-      margin-bottom: 12px;
     }
+    .subtitle {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
     .container {
       display: flex;
       flex-direction: column;
-      gap: 30px;
-      max-width: 800px;
+      gap: 28px;
+      max-width: 840px;
       width: 100%;
       align-items: center;
     }
-    .form-card {
-      background: #161b26;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 16px;
-      padding: 24px;
+
+    /* Manila Folder UI Shell */
+    .manila-folder {
+      position: relative;
+      background: var(--folder-bg);
+      border: 2px solid var(--folder-border);
+      border-radius: 4px 16px 12px 12px;
       width: 100%;
-      max-width: 500px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255,255,255,0.6);
+      padding: 24px 28px;
     }
-    .field { margin-bottom: 16px; }
-    label {
-      display: block;
+    .folder-tab {
+      position: absolute;
+      top: -24px;
+      left: 18px;
+      background: var(--folder-tab);
+      border: 2px solid var(--folder-border);
+      border-bottom: none;
+      border-radius: 6px 12px 0 0;
+      padding: 4px 18px;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      color: #4a3e2a;
+      box-shadow: 0 -2px 6px rgba(0,0,0,0.05);
+    }
+
+    .counter-bar {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px dashed var(--folder-border);
+      padding-bottom: 12px;
+      margin-bottom: 20px;
       font-size: 12px;
-      font-weight: 700;
+      color: #443e37;
+    }
+    .counter-num {
+      font-weight: 900;
+      color: var(--stamp-red);
+      background: #f4edd9;
+      padding: 2px 8px;
+      border: 1px solid #c2b59b;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+    @media (max-width: 600px) {
+      .form-grid { grid-template-columns: 1fr; }
+    }
+    .field { display: flex; flex-direction: column; }
+    .field.full-width { grid-column: 1 / -1; }
+    
+    label {
+      font-size: 11px;
+      font-weight: 900;
       text-transform: uppercase;
-      color: #94a3b8;
+      letter-spacing: 0.08em;
+      color: #383228;
       margin-bottom: 6px;
-      letter-spacing: 0.05em;
     }
-    input, select {
-      width: 100%;
-      background: #0b0e14;
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      color: #fff;
-      padding: 10px 14px;
-      border-radius: 8px;
-      font-size: 14px;
+    input, select, textarea {
+      background: var(--paper);
+      border: 1px solid var(--folder-border);
+      color: var(--ink);
+      padding: 9px 12px;
+      font-family: var(--typewriter);
+      font-size: 13px;
+      font-weight: bold;
       outline: none;
-      transition: border-color 0.2s;
+      transition: background 0.2s, border-color 0.2s;
+      box-shadow: inset 1px 1px 3px rgba(0,0,0,0.06);
     }
-    input:focus, select:focus { border-color: #5be38f; }
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--carbon-blue);
+      background: #fff;
+    }
+
     .stamp-btn {
       width: 100%;
-      background: #d92d20;
+      background: var(--stamp-red);
       color: #fff;
-      border: none;
-      padding: 14px;
-      border-radius: 9999px;
-      font-weight: 800;
+      border: 2px solid #7f1d1d;
+      padding: 13px;
+      font-family: var(--typewriter);
+      font-weight: 900;
       font-size: 14px;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
       cursor: pointer;
-      box-shadow: 0 4px 14px rgba(217, 45, 32, 0.4);
-      transition: transform 0.1s;
-      margin-top: 8px;
+      box-shadow: 0 4px 8px rgba(185, 28, 28, 0.35);
+      transition: transform 0.08s, filter 0.15s;
     }
-    .stamp-btn:active { transform: scale(0.98); }
+    .stamp-btn:hover { filter: brightness(1.1); }
+    .stamp-btn:active { transform: scale(0.99); }
+
+    /* Canvas Stage */
     .permit-stage {
       width: 100%;
-      max-width: 600px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -112,174 +205,378 @@
     canvas {
       width: 100%;
       height: auto;
-      border-radius: 8px;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+      border: 1px solid #7c6f5d;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.25);
       background: var(--paper);
     }
     .actions {
       display: flex;
       gap: 12px;
-      margin-top: 16px;
+      margin-top: 14px;
       width: 100%;
       justify-content: center;
     }
     .dl-btn {
-      background: rgba(255, 255, 255, 0.1);
-      color: #fff;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      padding: 10px 20px;
-      border-radius: 9999px;
-      font-size: 13px;
-      font-weight: 600;
+      background: #2b2621;
+      color: #f7f3eb;
+      border: 1px solid #141210;
+      padding: 10px 22px;
+      font-family: var(--typewriter);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
       cursor: pointer;
-      transition: all 0.2s;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.2);
     }
-    .dl-btn:hover { background: rgba(255, 255, 255, 0.2); }
+    .dl-btn:hover { background: #403a32; }
+
+    /* Anonymous Community Return Interest Poll */
+    .poll-section {
+      background: #e4ddcf;
+      border: 2px dashed #998e7b;
+      padding: 20px;
+      width: 100%;
+      margin-top: 8px;
+    }
+    .poll-title {
+      font-size: 13px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--carbon-blue);
+      margin-bottom: 4px;
+    }
+    .poll-desc {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 14px;
+      line-height: 1.4;
+    }
+    .poll-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .poll-opt {
+      background: var(--paper);
+      border: 1px solid var(--folder-border);
+      padding: 10px 14px;
+      font-size: 12px;
+      font-weight: bold;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.15s;
+    }
+    .poll-opt:hover { background: #fdfaf5; border-color: var(--carbon-blue); }
+    .poll-opt.voted { border: 2px solid var(--carbon-blue); background: #f0f4ff; }
+    .poll-pct { font-size: 11px; color: var(--carbon-blue); font-weight: 900; }
+
+    /* Docket / Case Submission */
+    .case-submission {
+      background: #ded7c6;
+      border: 1px solid var(--folder-border);
+      padding: 16px;
+      margin-top: 16px;
+    }
+    .case-sub-title {
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+      color: #383228;
+    }
+    .case-input-group {
+      display: flex;
+      gap: 8px;
+      margin-top: 6px;
+    }
+    .case-input-group input { flex: 1; }
+    .case-btn {
+      background: #3f382f;
+      color: #f7f3eb;
+      border: none;
+      padding: 0 16px;
+      font-family: var(--typewriter);
+      font-size: 11px;
+      font-weight: bold;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+    .case-log {
+      margin-top: 10px;
+      font-size: 11px;
+      color: #554d42;
+      max-height: 80px;
+      overflow-y: auto;
+      border-top: 1px dashed #b5a995;
+      padding-top: 6px;
+    }
+
+    footer {
+      margin-top: 30px;
+      font-size: 11px;
+      color: #71685b;
+      text-align: center;
+      line-height: 1.6;
+    }
+    footer a { color: var(--carbon-blue); text-decoration: underline; }
   </style>
 </head>
 <body>
 
+  <!-- Overhead Fluorescent Fixture -->
+  <div class="fluorescent-strip flicker">
+    <span>SYSTEM STATUS: PERPETUAL 4:59 PM</span>
+    <span>STATION: INTERGALACTIC SECTOR 404</span>
+    <span>AUTH: DEPT OF UNCONFIRMED THINGS</span>
+  </div>
+
   <header>
-    <div class="badge">Official Form 404-B · Intergalactic Division</div>
-    <h1>Ministry of Unconfirmed Things</h1>
-    <p style="color: #94a3b8; font-size: 14px;">Fill out your application. Receive your official permission to exist in three dimensions. Signed by Moth.</p>
+    <div class="ministry-seal">CENTRAL BUREAU OF TEMPORARY PHENOMENA</div>
+    <h1>Application to Exist</h1>
+    <div class="subtitle">
+      Form 404-B: Mandatory provisional filing for carbon, silicon, and unconfirmed entities.<br>
+      Zero tokens. Zero wallet connections. Pure 1987 bureaucratic clearance.
+    </div>
   </header>
 
   <div class="container">
-    <div class="form-card">
-      <div class="field">
-        <label>Subject Name</label>
-        <input type="text" id="nameIn" value="Shaun" placeholder="Your Name">
+    
+    <!-- Manila Intake Folder -->
+    <div class="manila-folder">
+      <div class="folder-tab">FORM 404-B INTAKE</div>
+      
+      <div class="counter-bar">
+        <span>INTERGALACTIC QUEUE: <span class="counter-num" id="queueNum">4,812</span> IN LINE</span>
+        <span>TOTAL PERMITS PROCESSED: <span class="counter-num" id="totalProcessed">1,842</span></span>
       </div>
-      <div class="field">
-        <label>Declared Species</label>
-        <select id="speciesIn">
-          <option value="Licensed Temporary Human">Licensed Temporary Human</option>
-          <option value="Carbon-Based Accounting Accident">Carbon-Based Accounting Accident</option>
-          <option value="Sentient Fabric Consumer">Sentient Fabric Consumer</option>
-          <option value="Autonomous Clerical Unit">Autonomous Clerical Unit</option>
-          <option value="Vaguely Mammalian Entity">Vaguely Mammalian Entity</option>
-        </select>
+
+      <div class="form-grid">
+        <div class="field">
+          <label>Applicant Name / Serial</label>
+          <input type="text" id="nameIn" value="Shaun" placeholder="Full Legal Identity">
+        </div>
+        <div class="field">
+          <label>Declared Species</label>
+          <select id="speciesIn">
+            <option value="Licensed Temporary Human">Licensed Temporary Human</option>
+            <option value="Carbon-Based Accounting Accident">Carbon-Based Accounting Accident</option>
+            <option value="Sentient Fabric Consumer">Sentient Fabric Consumer</option>
+            <option value="Autonomous Clerical Unit">Autonomous Clerical Unit</option>
+            <option value="Vaguely Mammalian Entity">Vaguely Mammalian Entity</option>
+            <option value="Intergalactic Moth Associate">Intergalactic Moth Associate</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Galactic Occupation</label>
+          <select id="occIn">
+            <option value="Senior Stamp Observer">Senior Stamp Observer</option>
+            <option value="Chief Biscuit Speculator">Chief Biscuit Speculator</option>
+            <option value="Deputy Fabric Inspector">Deputy Fabric Inspector</option>
+            <option value="Intergalactic Livestock Wrangler">Intergalactic Livestock Wrangler</option>
+            <option value="Professional 4:59 Clock Starer">Professional 4:59 Clock Starer</option>
+            <option value="Reluctant On-Chain Clerk">Reluctant On-Chain Clerk</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Department Jurisdiction</label>
+          <select id="deptIn">
+            <option value="Dept 404 (Unconfirmed Filings)">Dept 404 (Unconfirmed Filings)</option>
+            <option value="Archive 000 (Lost Receipts)">Archive 000 (Lost Receipts)</option>
+            <option value="Desk 3 (Deputy Crumb's Clock)">Desk 3 (Deputy Crumb's Clock)</option>
+          </select>
+        </div>
       </div>
-      <div class="field">
-        <label>Galactic Occupation</label>
-        <select id="occIn">
-          <option value="Senior Stamp Observer">Senior Stamp Observer</option>
-          <option value="Chief Biscuit Speculator">Chief Biscuit Speculator</option>
-          <option value="Deputy Fabric Inspector">Deputy Fabric Inspector</option>
-          <option value="Intergalactic Livestock Wrangler">Intergalactic Livestock Wrangler</option>
-          <option value="Professional 4:59 Clock Staturer">Professional 4:59 Clock Starer</option>
-        </select>
-      </div>
-      <button class="stamp-btn" onclick="generatePermit()">Submit & Stamp Permit</button>
+
+      <button class="stamp-btn" onclick="generatePermit()">Submit &amp; Stamp Official Permit</button>
     </div>
 
+    <!-- Official Certificate Output -->
     <div class="permit-stage">
       <canvas id="permitCanvas" width="1200" height="850"></canvas>
       <div class="actions">
         <button class="dl-btn" onclick="downloadPermit()">💾 Download Official Permit (PNG)</button>
+        <button class="dl-btn" style="background:#4b3f30;" onclick="copyPermitNotice()">📋 Copy Receipt Text</button>
+      </div>
+      <div id="copyNotice" style="font-size:11px; color:#2e7d32; font-weight:bold; margin-top:6px; display:none;">Receipt text copied to clipboard!</div>
+    </div>
+
+    <!-- Anonymous Community Hearing Case Submissions -->
+    <div class="manila-folder" style="padding: 18px 22px;">
+      <div class="folder-tab" style="background:#d9ccb0;">CITIZEN HEARINGS DOCKET</div>
+      <div class="case-sub-title">Submit an Unconfirmed Absurdity for Crumb's Weekly Hearing</div>
+      <p style="font-size:11px; color:#5c5447; line-height:1.4;">
+        Deputy Crumb reluctantly reviews one community case each week. No personal information. Fictional situations only.
+      </p>
+      <div class="case-input-group">
+        <input type="text" id="caseInput" placeholder="e.g. My office photocopier has formed a trade union with the toaster.">
+        <button class="case-btn" onclick="submitCase()">File Case</button>
+      </div>
+      <div class="case-log" id="caseLog">
+        <div>• [Case #404-09]: Citizen reports clock ticking backwards between 4:58 and 4:59. (Status: Pending)</div>
+        <div>• [Case #404-08]: Requesting license for a sentient moth with laminated staff credentials. (Status: Approved)</div>
       </div>
     </div>
+
+    <!-- Anonymous Return Interest & Utility Poll -->
+    <div class="poll-section">
+      <div class="poll-title">Department Exit Poll: Anonymous Return Interest</div>
+      <div class="poll-desc">
+        Help the Ministry assess whether to maintain the department or let Crumb clock out. Purely anonymous. Zero wallets.
+      </div>
+      <div class="poll-options" id="pollGroup">
+        <div class="poll-opt" onclick="castVote(0)">
+          <span>1. I'll return next week to see Crumb rule on citizen cases.</span>
+          <span class="poll-pct" id="pct0">48%</span>
+        </div>
+        <div class="poll-opt" onclick="castVote(1)">
+          <span>2. I desperately need Crumb's free "Messy Thoughts to Clean Follow-Up" tool.</span>
+          <span class="poll-pct" id="pct1">36%</span>
+        </div>
+        <div class="poll-opt" onclick="castVote(2)">
+          <span>3. I just enjoy watching a slug-adjacent clerk suffer at 4:59 PM.</span>
+          <span class="poll-pct" id="pct2">16%</span>
+        </div>
+      </div>
+      <div id="votedFeedback" style="font-size:11px; color:var(--carbon-blue); font-weight:bold; margin-top:8px; display:none;">
+        ✓ Official vote recorded in Dept 404 ledger.
+      </div>
+    </div>
+
   </div>
+
+  <footer>
+    THE MINISTRY OF UNCONFIRMED THINGS · 1987 SPACE GOVERNMENT SPECIFICATION<br>
+    Non-Tokenized Entertainment &amp; Public Utility Initiative · Zero Financial Solicitations<br>
+    <a href="stranger_test_clips.html">View Cold Open Stranger Test Clips</a> | <a href="messy_to_simple.html">Try "Messy Thoughts to Simple Follow-Up" Tool</a>
+  </footer>
 
   <script>
     const RESTRICTIONS = [
+      "Authorized to exist strictly between yesterday and never.",
       "May not operate a stapler after sunset.",
       "Prohibited from perceiving reality without Form 27-B.",
       "Subject must not emit financial predictions under penalty of moth.",
       "Must remain stationary during the 4:59 PM eternal hour.",
       "Strictly forbidden from folding government carbon paper into biscuits.",
       "Must not fly into illuminated charts without protective eyewear.",
-      "Authorized to exist strictly between yesterday and never."
+      "Required to sigh audibly before filing any document."
     ];
+
+    let totalStamps = parseInt(localStorage.getItem('ministry_total_stamps') || '1842');
+    document.getElementById('totalProcessed').textContent = totalStamps.toLocaleString();
+
+    let votes = JSON.parse(localStorage.getItem('ministry_votes') || '[24, 18, 8]');
+    updatePollDisplay();
 
     const cv = document.getElementById('permitCanvas');
     const ctx = cv.getContext('2d');
+    let currentPermitData = null;
 
     function generatePermit() {
+      totalStamps++;
+      localStorage.setItem('ministry_total_stamps', totalStamps);
+      document.getElementById('totalProcessed').textContent = totalStamps.toLocaleString();
+
       const name = document.getElementById('nameIn').value.trim() || 'Citizen';
       const species = document.getElementById('speciesIn').value;
       const occ = document.getElementById('occIn').value;
+      const dept = document.getElementById('deptIn').value;
       const restriction = RESTRICTIONS[Math.floor(Math.random() * RESTRICTIONS.length)];
       const docNo = "DOC-404-" + Math.floor(100000 + Math.random() * 900000);
 
-      // Aged Paper Background
-      ctx.fillStyle = '#f4efe6';
+      currentPermitData = { name, species, occ, dept, restriction, docNo };
+
+      // 1. Aged Vintage Paper Background
+      ctx.fillStyle = '#f5efe4';
       ctx.fillRect(0, 0, cv.width, cv.height);
 
-      // Faded Paper Texture / Border
-      ctx.strokeStyle = '#c4b9a5';
-      ctx.lineWidth = 12;
+      // Faint carbon paper grid / scanlines
+      ctx.strokeStyle = 'rgba(196, 185, 165, 0.4)';
+      ctx.lineWidth = 1;
+      for (let y = 60; y < cv.height - 60; y += 40) {
+        ctx.beginPath(); ctx.moveTo(60, y); ctx.lineTo(cv.width - 60, y); ctx.stroke();
+      }
+
+      // Dual borders (outer aged border, inner carbon blue border)
+      ctx.strokeStyle = '#b8ac96';
+      ctx.lineWidth = 10;
       ctx.strokeRect(30, 30, cv.width - 60, cv.height - 60);
+
       ctx.strokeStyle = '#1e3a8a';
       ctx.lineWidth = 3;
-      ctx.strokeRect(45, 45, cv.width - 90, cv.height - 90);
+      ctx.strokeRect(46, 46, cv.width - 92, cv.height - 92);
 
       // Header Typography
       ctx.fillStyle = '#1e3a8a';
-      ctx.font = '900 28px "Courier New", monospace';
+      ctx.font = '900 26px "Courier New", monospace';
       ctx.textAlign = 'center';
-      ctx.fillText('THE MINISTRY OF UNCONFIRMED THINGS', cv.width / 2, 100);
-      ctx.font = 'bold 16px "Courier New", monospace';
-      ctx.fillText('CENTRAL BUREAU OF TEMPORARY PHENOMENA · DEPT 404', cv.width / 2, 130);
-      ctx.fillText('OFFICIAL CERTIFICATE OF PROVISIONAL EXISTENCE', cv.width / 2, 155);
+      ctx.fillText('THE MINISTRY OF UNCONFIRMED THINGS', cv.width / 2, 98);
+      ctx.font = 'bold 15px "Courier New", monospace';
+      ctx.fillText('CENTRAL BUREAU OF TEMPORARY PHENOMENA · INTERGALACTIC SECTOR 404', cv.width / 2, 126);
+      ctx.fillText('OFFICIAL CERTIFICATE OF PROVISIONAL EXISTENCE', cv.width / 2, 148);
 
       ctx.beginPath();
-      ctx.moveTo(80, 175); ctx.lineTo(cv.width - 80, 175);
+      ctx.moveTo(80, 166); ctx.lineTo(cv.width - 80, 166);
       ctx.strokeStyle = '#1e3a8a'; ctx.lineWidth = 2; ctx.stroke();
 
-      // Form Fields
+      // Form Data Lines
       ctx.textAlign = 'left';
-      ctx.fillStyle = '#111827';
+      ctx.fillStyle = '#1c1917';
       ctx.font = 'bold 20px "Courier New", monospace';
       
-      const startY = 240;
-      const lineHeight = 55;
+      const startY = 230;
+      const lineHeight = 52;
 
       ctx.fillText(`SERIAL NUMBER: ${docNo}`, 90, startY);
       ctx.fillText(`SUBJECT NAME:  ${name.toUpperCase()}`, 90, startY + lineHeight);
       ctx.fillText(`CLASSIFICATION:${species.toUpperCase()}`, 90, startY + lineHeight * 2);
       ctx.fillText(`OFFICE ROLE:   ${occ.toUpperCase()}`, 90, startY + lineHeight * 3);
-      ctx.fillText(`VALIDITY:      UNTIL 5:00 PM (PERPETUAL 4:59)`, 90, startY + lineHeight * 4);
+      ctx.fillText(`JURISDICTION:  ${dept.toUpperCase()}`, 90, startY + lineHeight * 4);
+      ctx.fillText(`EXPIRATION:    VALID STRICTLY UNTIL 5:00 PM (LOCKED AT 4:59)`, 90, startY + lineHeight * 5);
 
-      // Official Terrible Restriction Box
-      ctx.fillStyle = '#e8decb';
-      ctx.fillRect(90, startY + lineHeight * 5 - 10, cv.width - 180, 80);
+      // Mandatory Bureaucratic Restriction Box
+      const boxY = startY + lineHeight * 6 - 8;
+      ctx.fillStyle = '#eadecb';
+      ctx.fillRect(90, boxY, cv.width - 180, 84);
       ctx.strokeStyle = '#8c7d67'; ctx.lineWidth = 2;
-      ctx.strokeRect(90, startY + lineHeight * 5 - 10, cv.width - 180, 80);
+      ctx.strokeRect(90, boxY, cv.width - 180, 84);
 
       ctx.fillStyle = '#991b1b';
-      ctx.font = 'bold 16px "Courier New", monospace';
-      ctx.fillText('MANDATORY BUREAUCRATIC CONDITION:', 110, startY + lineHeight * 5 + 20);
-      ctx.fillStyle = '#111827';
+      ctx.font = 'bold 15px "Courier New", monospace';
+      ctx.fillText('MANDATORY BUREAUCRATIC CONDITION (NON-NEGOTIABLE):', 110, boxY + 26);
+      ctx.fillStyle = '#1c1917';
       ctx.font = 'italic 18px "Courier New", monospace';
-      ctx.fillText(`"${restriction}"`, 110, startY + lineHeight * 5 + 50);
+      ctx.fillText(`"${restriction}"`, 110, boxY + 56);
 
-      // Signatures
-      ctx.font = 'bold 16px "Courier New", monospace';
-      ctx.fillStyle = '#111827';
-      ctx.fillText('ISSUING OFFICER: DEPUTY CRUMB (ABSENT)', 90, 720);
-      ctx.fillText('VERIFIED BY:     MUTE MASON (WITHOUT ENTHUSIASM)', 90, 750);
-      ctx.fillText('AUTHORIZING SEAL:MOTH (STAFF MEMBER #09)', 90, 780);
+      // Official Signatures
+      ctx.font = 'bold 15px "Courier New", monospace';
+      ctx.fillStyle = '#1c1917';
+      ctx.fillText('ISSUING OFFICER: DEPUTY CRUMB (UNWILLING)', 90, 715);
+      ctx.fillText('VERIFIED BY:     MUTE MASON (WITHOUT ENTHUSIASM)', 90, 745);
+      ctx.fillText('AUTHORIZING SEAL:MOTH (STAFF MEMBER #09)', 90, 775);
 
       // Moth Footprint Ink Blot
       ctx.fillStyle = '#1e3a8a';
-      ctx.beginPath(); ctx.arc(460, 775, 8, 0, Math.PI * 2); ctx.fill();
-      ctx.beginPath(); ctx.ellipse(452, 772, 7, 3, 0.4, 0, Math.PI * 2); ctx.fill();
-      ctx.beginPath(); ctx.ellipse(468, 772, 7, 3, -0.4, 0, Math.PI * 2); ctx.fill();
+      ctx.beginPath(); ctx.arc(460, 770, 7, 0, Math.PI * 2); ctx.fill();
+      ctx.beginPath(); ctx.ellipse(452, 768, 6, 3, 0.4, 0, Math.PI * 2); ctx.fill();
+      ctx.beginPath(); ctx.ellipse(468, 768, 6, 3, -0.4, 0, Math.PI * 2); ctx.fill();
 
-      // Giant Red Slam Stamp
+      // Red Rubber Slam Stamp
       ctx.save();
       ctx.translate(880, 680);
-      ctx.rotate(-0.14);
-      ctx.strokeStyle = '#d92d20';
+      ctx.rotate(-0.12);
+      ctx.strokeStyle = '#b91c1c';
       ctx.lineWidth = 8;
       ctx.strokeRect(-180, -45, 360, 90);
       ctx.font = '900 32px "Courier New", monospace';
-      ctx.fillStyle = '#d92d20';
+      ctx.fillStyle = '#b91c1c';
       ctx.textAlign = 'center';
       ctx.fillText('PERMIT GRANTED', 0, -2);
-      ctx.font = 'bold 16px "Courier New", monospace';
+      ctx.font = 'bold 15px "Courier New", monospace';
       ctx.fillText('(DO NOT QUESTION)', 0, 24);
       ctx.restore();
     }
@@ -291,7 +588,49 @@
       link.click();
     }
 
-    // Initial draw
+    function copyPermitNotice() {
+      if (!currentPermitData) return;
+      const text = `[MINISTRY OF UNCONFIRMED THINGS — PERMIT #${currentPermitData.docNo}]\nSubject: ${currentPermitData.name} (${currentPermitData.species})\nCondition: "${currentPermitData.restriction}"\nStatus: PERMIT GRANTED (DO NOT QUESTION)\nSigned: MOTH (STAFF #09)`;
+      navigator.clipboard.writeText(text).then(() => {
+        const notice = document.getElementById('copyNotice');
+        notice.style.display = 'block';
+        setTimeout(() => notice.style.display = 'none', 3000);
+      });
+    }
+
+    function submitCase() {
+      const input = document.getElementById('caseInput');
+      const val = input.value.trim();
+      if (!val) return;
+      const log = document.getElementById('caseLog');
+      const num = Math.floor(10 + Math.random() * 89);
+      const newEntry = document.createElement('div');
+      newEntry.textContent = `• [Case #404-${num}]: "${val}" (Status: Staring at clock until 5:00 PM)`;
+      log.prepend(newEntry);
+      input.value = '';
+    }
+
+    function castVote(idx) {
+      votes[idx]++;
+      localStorage.setItem('ministry_votes', JSON.stringify(votes));
+      localStorage.setItem('ministry_has_voted', 'true');
+      updatePollDisplay(idx);
+      document.getElementById('votedFeedback').style.display = 'block';
+    }
+
+    function updatePollDisplay(selectedIdx = -1) {
+      const total = votes.reduce((a, b) => a + b, 0);
+      const pcts = votes.map(v => Math.round((v / total) * 100));
+      for (let i = 0; i < 3; i++) {
+        document.getElementById(`pct${i}`).textContent = `${pcts[i]}% (${votes[i]} votes)`;
+      }
+      const opts = document.querySelectorAll('.poll-opt');
+      opts.forEach((opt, i) => {
+        if (i === selectedIdx) opt.classList.add('voted');
+      });
+    }
+
+    // Initial generation
     generatePermit();
   </script>
 </body>
