@@ -8,9 +8,14 @@ Safety & Governance Rule (Jira AIOS-118):
 2. Phased Pipeline:
    - Phase 1: 3-View Character Face Sheet (`crumb_face_sheet_3view.png`)
    - Phase 2: Grok Review & Sign-Off in Slack #grokmemecoins
-   - Phase 3: Identity-Locked Stills (PFP 1024x1024, Desk Still 1920x1080, Banner 1536x512)
+   - Phase 3: Identity-Locked Stills & Marketing Posters:
+       * PFP 1024x1024, Desk Still 1920x1080, Banner 1536x512
+       * Poster 1: "Take a number. There are no numbers."
+       * Poster 2: "That is a statement. This is a receipt."
+       * Poster 3: "Clock stuck at 4:59 PM."
    - Phase 4: Video Animatic (Clip 5: "A Promise Isn't Paperwork" via Wan 2.2 / MiniMax H3)
 3. Badge Canon: Strictly `DEPT 404` (Grok art decision for clean circular avatar readability).
+4. Anatomical & Set Canon: Exactly TWO heavy drooping hooded eyes; RECEIPTS tray sits completely EMPTY before verified evidence.
 
 Author: Subagent 2 - Real-Time Engine & Visual Architect
 Reviewed: Grok (Coin Dev) & Astra (Jira AIOS-118)
@@ -30,7 +35,7 @@ OUTPUT_DIR = Path(r"C:\Projects\GrokCoinBot\assets")
 # Canon Visual Direction: Underfunded Space Government 1987 (Terry Gilliam Brazil)
 CANON_PROMPT_CORE = (
     "portrait of Deputy Crumb, tired extraterrestrial bureaucratic clerk, slumped rounded alien silhouette, "
-    "wrinkled gray-green mottled skin, heavy drooping hooded triple-eyelids, dark under-eye exhaustion circles, "
+    "wrinkled gray-green mottled skin, two heavy drooping hooded tired eyes with dark under-eye exhaustion circles, "
     "deadpan unbothered expression, wearing a rumpled faded taupe trenchcoat over a dingy cream collared shirt with a crooked skinny tie, "
     "heavy tarnished brass employee badge pinned askew engraved with bold mechanical text 'DEPT 404'. "
     "Cool fluorescent office lighting, drab pea-green watermarked institutional wall in background, "
@@ -49,7 +54,7 @@ PHASED_PIPELINE = {
         "prompt": (
             "Character design model sheet, 3 views (front view, side profile, three-quarter view) of Deputy Crumb, "
             "an exhausted alien postal clerk in an underfunded space bureaucracy in 1987. "
-            "Squashed crescent silhouette, three heavy drooping tired multi-lidded eyes, "
+            "Squashed crescent silhouette, two heavy drooping tired hooded eyes, "
             "rumpled faded taupe trenchcoat, cream shirt, skinny tie, heavy brass badge engraved 'DEPT 404'. "
             "Plain neutral gray background, studio character turnaround, consistent features, 35mm film grain."
         ),
@@ -80,7 +85,7 @@ PHASED_PIPELINE = {
             "Cinematic wide 16:9 shot of Department 404 intake station, an underfunded interstellar postal bureau in 1987. "
             "Deputy Crumb in a rumpled faded taupe trenchcoat and brass badge 'DEPT 404' sits slumped behind a scratched dark oak clerk counter. "
             "Teetering precarious towers of yellowed carbon forms labeled 'STATEMENTS (UNVERIFIED)' rise toward the ceiling on the left, "
-            "while a tiny brass tray on the right labeled 'RECEIPTS (CONFIRMED)' holds a single voucher. "
+            "while a tiny brass tray on the right labeled 'RECEIPTS (CONFIRMED)' sits completely empty. "
             "Heavy cast-iron brass stamper on red ink blotter. Bulky cream CRT monitor glowing green monochrome phosphor text 'STATUS: BACKLOG 800 YRS'. "
             "A mechanical industrial round wall clock with black metal rim prominently displays exactly 04:59 PM. "
             "Flickering fluorescent ceiling tube casting cool ambient green-white glow on drab pea-green watermarked walls, Terry Gilliam Brazil film still, 35mm grain."
@@ -97,11 +102,59 @@ PHASED_PIPELINE = {
         "prompt": (
             "Panoramic 3:1 establishing shot of Department 404 administrative counter, The Ministry of Unconfirmed Things, 1987. "
             "Frosted wire-reinforced glass partitions and beige filing cabinets behind the counter. "
-            "To the left: leaning tower of paper labeled 'STATEMENTS (UNVERIFIED)'. To the right: tiny brass tray labeled 'RECEIPTS (CONFIRMED)'. "
+            "To the left: leaning tower of paper labeled 'STATEMENTS (UNVERIFIED)'. To the right: tiny brass tray labeled 'RECEIPTS (CONFIRMED)' completely empty. "
             "In the center: Deputy Crumb slumped in a rumpled faded taupe trenchcoat with heavy brass badge 'DEPT 404', staring at the clock. "
             "A mechanical industrial round wall clock on the wall displays exactly 04:59 PM. Harsh fluorescent tube lighting, drab pea-green walls, 35mm film photography."
         ),
         "seed": 4041989
+    },
+    # Phase 3 Posters (Requested by Grok for pre-launch audience sprint)
+    "phase3_poster1_no_numbers": {
+        "id": "crumb_poster1_take_a_number",
+        "description": "Marketing Poster 1: 'Take a number. There are no numbers.'",
+        "type": "poster",
+        "width": 1080,
+        "height": 1350,
+        "format": "png",
+        "prompt": (
+            "Retro 1987 typographic institutional propaganda poster. Drab pea-green institutional paper texture. "
+            "High-contrast gritty graphic silhouette of Deputy Crumb in trenchcoat with badge 'DEPT 404', gesturing deadpan toward an empty red ticket dispenser with no roll inside. "
+            "Bold distressed mechanical linotype typography at top: 'TAKE A NUMBER.' "
+            "Sub-caption in bold red stamped ink at bottom: 'THERE ARE NO NUMBERS.' "
+            "Official Ministry seal stamped in bottom corner, vintage offset lithograph print, aged paper creases, Brazil aesthetic."
+        ),
+        "seed": 4041991
+    },
+    "phase3_poster2_statement_vs_receipt": {
+        "id": "crumb_poster2_statement_vs_receipt",
+        "description": "Marketing Poster 2: 'That is a statement. This is a receipt.'",
+        "type": "poster",
+        "width": 1080,
+        "height": 1350,
+        "format": "png",
+        "prompt": (
+            "Split-frame retro 1987 bureaucratic poster. "
+            "Left side: a teetering fragile paper mountain labeled 'STATEMENTS (WORDS ONLY)' stamped with faded ink. "
+            "Right side: a heavy solid brass anvil holding a single stamped wax-sealed card labeled 'RECEIPT (VERIFIED)'. "
+            "Bold brutalist linotype typography across the center: 'THAT IS A STATEMENT. THIS IS A RECEIPT. THEY DO NOT SHARE A ROOM.' "
+            "Monochrome pea-green and deep oxide red ink, aged parchment grain, 1980s institutional graphic design."
+        ),
+        "seed": 4041992
+    },
+    "phase3_poster3_clock_459": {
+        "id": "crumb_poster3_clock_459",
+        "description": "Marketing Poster 3: 'The Clock Stuck at 4:59 PM'",
+        "type": "poster",
+        "width": 1080,
+        "height": 1350,
+        "format": "png",
+        "prompt": (
+            "Atmospheric vintage 1987 photographic poster. Close-up on a mechanical industrial round wall clock with black metal rim, its hands permanently stuck at 04:59 PM. "
+            "In the blurred reflection on the glass, Deputy Crumb in trenchcoat stands with coat on and hand frozen reaching toward the exit knob. "
+            "Bold stencil typography at bottom: 'DEPARTMENT 404. SHIFT ENDS IN ONE MINUTE. SHIFT HAS ENDED IN ONE MINUTE FOR 800 YEARS.' "
+            "Fluorescent green reflection, gritty 35mm film grain, muted Kodak colors."
+        ),
+        "seed": 4041993
     },
     # Phase 4: Video Animatic from Approved Desk Still
     "phase4_clip5": {
@@ -115,7 +168,7 @@ PHASED_PIPELINE = {
             "Cinematic retro 1987 bureaucratic scene. Deputy Crumb in a rumpled faded taupe trenchcoat and brass badge 'DEPT 404' "
             "has his hand on the office exit doorknob, muttering 'One minute. Finally.' "
             "A vintage dot-matrix printer suddenly screeches and spits continuous green-bar paper reading 'PROMISE: BUYBACK 100%'. "
-            "Crumb freezes, turns with glacial slowness, shuffles back to his oak desk, stares deadpan directly into the camera lens: 'A promise isn't paperwork.' "
+            "Crumb freezes, turns with glacial slowness, shuffles back to his oak desk, stares deadpan directly into the camera lens with his two heavy drooping tired eyes: 'A promise isn't paperwork.' "
             "He forcefully slams a heavy brass stamper down, creating a bold red ink mark: '[ WORDS ONLY ]'. Crumb: 'Bring me a transaction. Next.' "
             "Fluorescent light flicker, mechanical printer screech, heavy metal stamper thud."
         ),
@@ -141,7 +194,7 @@ def print_manifest_info():
     print("  1. Operator acquires lease in #comfy: `comfy start [N min]` (when Wren releases GPU).")
     print("  2. Phase 1: Emit 3-view character face sheet -> submit to Grok in Slack for visual OK.")
     print("  3. Phase 2: Grok approves facial features, badge ('DEPT 404'), and 1987 styling.")
-    print("  4. Phase 3: Emit identity-locked PFP, Desk Still, and Banner.")
+    print("  4. Phase 3: Emit identity-locked PFP, Desk Still, Banner, and 3 Marketing Posters.")
     print("  5. Phase 4: Emit Clip 5 video animatic from approved desk still.")
     print("\n[ASSET MANIFEST]:")
     for phase_key, item in PHASED_PIPELINE.items():
@@ -165,7 +218,7 @@ def main():
     print_manifest_info()
 
     if not args.run:
-        print("\n[MODE: DRY-RUN / MANIFEST INSPECTION ONLY]")
+        print("\n[MODE: MANIFEST / PREFLIGHT INSPECTION ONLY]")
         print("To execute GPU generation, acquire an authorized lease in #comfy and pass --run --lease-token <TOKEN>.")
         is_connected, _ = check_comfy_connection()
         if is_connected:
