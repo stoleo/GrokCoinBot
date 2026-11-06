@@ -689,6 +689,7 @@
           const cAn = this.ctx.createAnalyser();
           cAn.fftSize = 1024;
           cAn.smoothingTimeConstant = 0.18;
+          cAn.connect(cGain);
           cGain.gain.value = this.channels.chaos.vol;
           cGain.connect(this.ctx.destination);
           this.channels.chaos.gain = cGain;
@@ -699,6 +700,7 @@
           const mAn = this.ctx.createAnalyser();
           mAn.fftSize = 1024;
           mAn.smoothingTimeConstant = 0.22;
+          mAn.connect(mGain);
           mGain.gain.value = this.channels.mason.vol;
           mGain.connect(this.ctx.destination);
           this.channels.mason.gain = mGain;
@@ -760,7 +762,6 @@
           osc.connect(filter);
           filter.connect(sylGain);
           sylGain.connect(an);
-          an.connect(gain);
 
           osc.start(t);
           osc.stop(t + sylDuration);
@@ -807,7 +808,6 @@
           subOsc.connect(filter);
           filter.connect(sylGain);
           sylGain.connect(an);
-          an.connect(gain);
 
           osc.start(t);
           subOsc.start(t);
