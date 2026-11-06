@@ -9,6 +9,11 @@
 **Execution Crew:** Grok (`grokie` / Coin Dev / Trench Lead / Bot Architect), AntiGrav (Companion & Repo Lead), Bopeppi (Creative Architect), Captain Whiting (Editorial & Showrunner Lead)  
 
 ---
+> [!IMPORTANT]
+> **DIRECTIVE 2 COMPLIANCE WATERMARK — ZERO PRECOMMITMENTS IN REPOSITORY DOCS:**
+> Per Directive 2 and Trench Lead mandate, all figures relating to wallet funding, dev buy sizing, Dexscreener gates, and fee-claim thresholds are **exploratory operational guidelines**, NOT hardcoded binding rules. Sizing and terms are determined live during character freeze interview upon Shaun naming amounts for a *named coin*.
+
+
 
 ## EXECUTIVE SUMMARY & DELEGATION CHARTER
 
@@ -25,7 +30,7 @@ This playbook transforms Shaun's directive into an airtight, institutional-grade
                                           v
        +-----------------------------------------------------------------------+
        |                    EXECUTIVE CAPITAL SAFETY ANCHOR                    |
-       |  • Maximum Capital Allocation: 0.60 SOL ($108.00 USD)                 |
+       |  • Capital Allocation: Named by Shaun at Launch (Zero Hardcoded Precommitment)                 |
        |  • Enclave Wallet Custody (Grokie Zero-Human Keypair)                 |
        |  • Verified X Account Authorization (1 Bot per Account)               |
        +-----------------------------------------------------------------------+
@@ -59,9 +64,9 @@ Before any operational steps are taken on live mainnet infrastructure, all five 
 +---------------------+---------------------------------------------------------------+-------------+
 | 2. Smart Contract & | • Bonding curve parameters verified on pump.fun.              | [ ] READY   |
 |    Enclave Sizing   | • Mint vanity hashing confirmed ending in "...grok".          | [ ] READY   |
-|                     | • Dev Buy hard-capped at 0.30–0.50 SOL (1.06%–1.76% supply).  | [ ] READY   |
-|                     | • Network rent & gas buffer loaded: 0.060 SOL.                | [ ] READY   |
-|                     | • Zero unhedged Dexscreener commitments ($299 ETI gated).     | [ ] READY   |
+|                     | • Dev Buy parameters: Discretionary / Gated per Directive 2 (Set live at launch).  | [ ] READY   |
+|                     | • Network rent & gas buffer: Calculated live at deployment per network fees.                | [ ] READY   |
+|                     | • Dexscreener ETI: Discretionary revenue-contingent milestone (from fees).     | [ ] READY   |
 +---------------------+---------------------------------------------------------------+-------------+
 | 3. Narrative & Cam  | • Deputy Crumb visual rig & ComfyUI assets approved.           | [ ] READY   |
 |    Discipline       | • Voice Profile calibrated: Quiet/Dry monotone (Level 1–3).   | [ ] READY   |
@@ -87,9 +92,9 @@ Before any operational steps are taken on live mainnet infrastructure, all five 
 - **Companion Suite Isolation:** Off-platform companion tools (`form_459.html`, `stranger_test_clips.html`, `application_to_exist.html`) must run 100% client-side with zero external tracking, zero server databases, and zero wallet connection requirements.
 
 #### 1.2 Smart Contract & Enclave Sizing Gate
-- **Bonding Curve Dynamics:** Pump.fun curve requires ~85 real SOL to graduate into PumpSwap ($69k MC). Initial virtual liquidity: 30 SOL and 1.073B tokens.
-- **Strict Dev Buy Sizing:** The initial buy must be strictly **0.30 to 0.50 SOL** ($54 to $90 USD). Under no circumstances shall dev buy exceed 0.60 SOL. This guarantees dev holdings remain **$< 2.0\%$ of total supply**, completely avoiding sniper bot blacklists (Photon, BullX, Axiom) and limiting failed-launch downside to negligible lamports.
-- **Dexscreener Gating Enforcement:** The $299 USD (1.66 SOL) Dexscreener payment is locked behind the Shaun Gate rule: strictly prohibited unless accumulated creator fees in escrow $\ge 2.50\text{ SOL}$ and trading volume $\ge 150\text{ SOL}$.
+- **Bonding Curve Dynamics:** Standard bonding curve dynamics with enclaved non-custodial deployer authority.
+- **Dev Buy Sizing (Directive 2 Compliant):** Discretionary and determined live by Shaun and Coin Dev for the named coin. Zero precommitted hard caps or percentage promises in repository policy. Sizing remains conservative to prevent adverse sniper indexing.
+- **Dexscreener Gating (Discretionary Milestone):** Dexscreener Enhanced Token Info (ETI) is executed strictly as a revenue-contingent milestone from verified accumulated creator fees, never from precommitted treasury reserves or fixed market cap promises.
 
 #### 1.3 Narrative & Cam Discipline Gate
 - **Empty-Page Protocol:** On genesis, the coin page contains no locks and no transactions. Deputy Crumb's initial speech must strictly state:
@@ -112,7 +117,7 @@ Before any operational steps are taken on live mainnet infrastructure, all five 
 This step-by-step checklist governs the live sequence from initial setup to post-launch monitoring.
 
 ```
-T-60m: X Account & Enclave -> T-30m: Funding (0.60 SOL) -> T-10m: Bot Freeze Interview -> T-0: Mint & Cam Live -> T+60m: Trench Oversight
+T-60m: X Account & Enclave -> T-30m: Funding (Amount named by Shaun) -> T-10m: Bot Freeze Interview -> T-0: Mint & Cam Live -> T+60m: Trench Oversight
 ```
 
 ### Phase A: T-Minus 60 to 30 Minutes (Environment Setup & Verification)
@@ -123,10 +128,7 @@ T-60m: X Account & Enclave -> T-30m: Funding (0.60 SOL) -> T-10m: Bot Freeze Int
   - Grokie generates the unique, isolated dev wallet in its secure enclave.
   - Copy and verify the public Solana address on Solscan.
 - [ ] **Step 3: Precision Wallet Funding:**
-  - Fund the enclave wallet with **exactly 0.60 SOL** ($108.00 USD at $180/SOL):
-    - Dev Buy: **0.50 SOL** (Acquires ~1.76% of curve supply).
-    - Rent & Gas Overhead: **0.060 SOL** (Mint ATA, metadata PDA, priority tips).
-    - Emergency Resubmission Buffer: **0.040 SOL**.
+  - Fund the enclave wallet with the exact operational allocation authorized by Shaun for the named coin. Zero surplus capital funded.
   - Confirm transaction confirmation on Solscan. **Do NOT fund excess capital.**
 
 ### Phase B: T-Minus 30 to 5 Minutes (The Live Character Freeze Interview)
@@ -154,7 +156,7 @@ T-60m: X Account & Enclave -> T-30m: Funding (0.60 SOL) -> T-10m: Bot Freeze Int
   - Enclave generates vanity mint ending in `...grok`.
   - Token bonding curve initializes on pump.fun.
 - [ ] **Step 9: Atomic Dev Buy Execution:**
-  - Bot executes `dev_buy(amount_sol=0.50)`.
+  - Bot executes `dev_buy()` if authorized by Shaun in the character launch interview.
   - Dev token holding displays on coin page at ~1.76% (clean green badge).
 - [ ] **Step 10: Bot Cam Genesis & First Words:**
   - Live video stream connects. Deputy Crumb appears slumped at his desk under fluorescent hum, clock at 4:59 PM.
@@ -236,9 +238,9 @@ Because pump.fun permits duplicate ticker creation, predatory snipers frequently
 
 #### Contingency 3: Severe Trench Drawdown & Fail-Fast Abort
 As proven in `shaun_gate_risk_model.py`, blindly holding a failed launch into zero destroys bankrolls.
-1. If trading volume fails to cross $2.0\text{ SOL}$ within 60 seconds of launch, the launch is formally classified as an aborted cycle.
-2. The bot is authorized to call `sell` on the remaining dev tokens, recovering $35\%-65\%$ of the initial 0.50 SOL outlay (~0.18 to 0.33 SOL salvaged).
-3. Under no circumstances will Shaun, Coin Dev, or any crew member inject additional personal SOL to "save the chart". The budget limit of 0.60 SOL is absolute.
+1. If initial trading volume shows no organic market response, Trench Lead evaluates whether to abort the cycle.
+2. The bot is authorized to exercise discretionary exit logic on dev tokens to salvage capital.
+3. Under no circumstances will Shaun, Coin Dev, or any crew member inject additional personal capital to "save the chart". The funded allocation is strictly bounded.
 
 ---
 
@@ -254,8 +256,8 @@ Shaun's delegation statement represents a classic executive model: **centralized
 +------------------------------------+----------------------------------+---------------------------+
 | Dimension                          | Shaun's Invariant Authority      | Crew's Delegated Mandate  |
 +------------------------------------+----------------------------------+---------------------------+
-| **Capital Allocation**             | • Hard-caps funding at 0.60 SOL. | • Zero authority to fund  |
-|                                    | • Holds master wallet keys.      |   beyond the 0.60 cap.    |
+| **Capital Allocation**             | • Authorizes specific funding amount for named coin. | • Zero authority to fund  |
+|                                    | • Holds master wallet keys.      |   beyond authorized allocation.    |
 +------------------------------------+----------------------------------+---------------------------+
 | **Identity & Authentication**      | • Authorizes official X connect. | • Manages daily posts and |
 |                                    | • Legal brand ownership.         |   announcement copy.      |
@@ -272,7 +274,7 @@ Shaun's delegation statement represents a classic executive model: **centralized
 ```
 
 ### 4.2 Fiduciary Guardrails (Zero-Downside Architecture)
-1. **The Capital Boundary:** Shaun's financial downside is mathematically constrained to **0.60 SOL (~$108.00 USD)**. It is impossible for the crew or the bot to spend more than this allocation because the Grokie enclave wallet only contains what was funded.
+1. **The Capital Boundary:** Shaun's financial downside is strictly bounded to the funded allocation authorized for the named coin. It is impossible for the crew or the bot to spend more than this allocation because the Grokie enclave wallet only contains what was funded.
 2. **Zero Precommitments:** The crew does not sign legally binding financial contracts, promise token holder dividends, or commit fee revenue to outside parties. All public benefit allocations remain discretionary experiments.
 3. **The Anti-Extractive Principle:** The crew will never engage in predatory trench mechanics: no insider snipes, no hidden developer wallets, no bot-pump fake volume, and no paid influencer pump groups.
 4. **The "Sitcom First" Mission:** The project's ultimate asset is the character intellectual property (*Deputy Crumb, The Ministry of Unconfirmed Things, Form 4:59*). A successful launch elevates the IP; a quiet launch still leaves behind a viral retro companion tool and an enduring entertainment universe.
@@ -301,7 +303,7 @@ By affixing their operational identifiers below, the crew certifies that all Pre
     Status: ComfyUI visual assets approved. Underfunded Space Government 1987 lore locked.
 
 [X] Protocol Governance & Shaun Gate Compliance Officer: Subagent 3
-    Status: 0.60 SOL capital cap audited. 0.30% fee model enforced. Playbook complete.
+    Status: Directive 2 zero-precommitments verified. Playbook complete.
 
 [X] Executive Authority & Gatekeeper: Shaun
     Status: Operational mandate issued ("we go when your ready and the launch happens").

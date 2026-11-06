@@ -10,6 +10,9 @@
 **Execution Context:** Shaun's direct mandate: *"you guys get the check list the task list the go to market list the whatever list and everything required to go to market, we go when your ready and the launch happens, its not a waiting on me"*
 
 ---
+> [!IMPORTANT]
+> **DIRECTIVE 2 COMPLIANCE WATERMARK — EXPLORATORY OPERATIONAL GUIDELINES:**
+> In accordance with Directive 2, all volume thresholds, fee allocations, and claim cadences herein are **discretionary operational benchmarks**, NOT binding precommitments or hardcoded protocol policy. Specific launch sizing is determined live by Shaun and Coin Dev for a *named coin*.
 
 ## 1. THE TRENCH GO-TO-MARKET EXECUTION CHECKLIST (HOUR 0 TO DAY 7)
 
@@ -36,7 +39,7 @@ Tracking must be granular and deterministic. The Trench Quant and Trench Lead mo
 
 | Timeline | Measurement Cadence | Key Telemetry Tracked | Quant Health Thresholds | Operational Directive |
 | :--- | :--- | :--- | :--- | :--- |
-| **Minute 0 – 5** | Every slot (~400ms) | Initial block tx density, sniper penetration, dev buy confirmation, first 50 unique wallets. | Gross Vol $\ge 3.0\text{ SOL}$, Dev Buy = 0.50 SOL ($\approx 1.76\%$ supply), Unique Wallets $> 15$. | Verify mint suffix ends in `...grok`. Confirm no bundling errors. Record initial bonding curve progress. |
+| **Minute 0 – 5** | Every slot (~400ms) | Initial block tx density, sniper penetration, dev buy confirmation, first 50 unique wallets. | Gross Vol $\ge 3.0\text{ SOL}$, Dev Buy verified per launch interview, Unique Wallets $> 15$. | Verify mint suffix ends in `...grok`. Confirm no bundling errors. Record initial bonding curve progress. |
 | **Minute 5 – 15** | Every 60 seconds | Curve buy/sell ratio, unique holder wallet growth, Telegram/chat velocity, sniper exit rate. | Buy/Sell Ratio $> 1.2$, Top 10 non-dev holders $< 15\%$ aggregate supply. | Monitor early snipers dumping. Do NOT panic or counter-trade. Let mercenary snipers exit clean. |
 | **Minute 15 – 60** | Every 5 minutes | Cumulative curve volume, bonding curve % (SOL deposited / 85 SOL target), creator fee accumulation. | Bonding curve $> 15\%$ (12+ SOL in curve), Realized fees $> 0.05\text{ SOL}$. | Crumb maintains deadpan cam presence. Review first chat filings. |
 | **Hours 1 – 6** | Every 15 minutes | Hourly volume run-rate, holder churn rate, liquidity depth ($x \cdot y = k$ virtual slippage). | Hourly Vol $> 50\text{ SOL}$, Holder count $> 150$, Zero insider transfers. | Assess fee accumulation for discretionary lock triggers. |
@@ -75,7 +78,7 @@ Dexscreener Enhanced Token Info (ETI) and Birdeye fast-track verification are **
 ```
 
 *Execution Directive:*  
-When the creator fee escrow reaches the required threshold (typically ~1.66 SOL for Dexscreener ETI), Trench Lead evaluates network priority and executes via programmatic lock:
+When the creator fee escrow reaches the required threshold (for Dexscreener ETI), Trench Lead evaluates network priority and executes via programmatic lock:
 $$\text{lock}(\text{amount\_sol}, \text{"dexscreener\_eti\_verification"})$$
 Deputy Crumb announces only **after the lock transaction has confirmed**:
 > *"That is a statement. This is a receipt. Dexscreener filing fee has been locked in escrow. Next."*
@@ -87,14 +90,10 @@ Deputy Crumb announces only **after the lock transaction has confirmed**:
 #### A. Gas-Bleed Prevention Boundary
 A common error on pump.fun/Grokie is claiming fees continuously in micro-transactions (e.g. claiming 0.005 SOL every 2 minutes). Each claim instruction consumes Solana compute budget, signature fees, and priority tips (~0.002 to 0.005 SOL during congestion), causing up to **40% of early protocol revenue to bleed away into validator tips**.
 
-#### B. The Hard Discretionary Trigger Rules
-1. **Minimum Claim Threshold:** Deputy Crumb NEVER executes `claim_fees` unless accumulated uncollected fees exceed **$\ge 0.10\text{ SOL}$** (during calm periods) or **$\ge 0.25\text{ SOL}$** (during priority fee spikes).
-2. **Escrow Allocation Sweep:** Claimed fees are never dumped into a personal dev wallet. They flow directly into the named escrow PDA architecture:
-   - **Dexscreener Reserve:** First priority up to 1.70 SOL.
-   - **Ethical Buyback & Burn Escrow:** 40% of subsequent claimed fees.
-   - **Public Goods & Tiny Fixes Escrow:** 30% of subsequent claimed fees.
-   - **Emergency Gas & Infrastructure:** 30% of subsequent claimed fees.
-3. **Discretionary Execution:** Claims and locks are triggered when mathematically optimal, never on a predictable periodic schedule that MEV bots can exploit.
+#### B. Discretionary Fee Management Guidelines (No Hardcoded Policy)
+1. **Discretionary Claim Timing:** Trench Lead executes `claim_fees` discretionarily when economically viable relative to network priority gas overhead, avoiding gas-bleeding micro-claims. Zero hardcoded claim floors in repo policy.
+2. **Escrow Allocation Sweep (Exploratory Framework):** Claimed fees flow into named escrow sub-wallets (e.g. Dexscreener ETI package, buyback/burn, community micro-grants, infrastructure) as determined live, never into personal dev accounts.
+3. **Discretionary Execution:** Claims and locks are triggered based on real-time market viability, never on a predictable periodic schedule that MEV bots can exploit.
 
 ---
 
@@ -118,7 +117,7 @@ Instead of fighting trench culture or offering empty reassurances, Deputy Crumb 
 |                    |                                   | permit. Until then, that is a statement.  |
 |                    |                                   | This is a counter. Next."*                |
 +--------------------+-----------------------------------+-------------------------------------------+
-| *"when dex / eti"* | *"Paid today! Devs doing          | *"Dexscreener requires 1.66 SOL. Current  |
+| *"when dex / eti"* | *"Paid today! Devs doing          | *"Dexscreener requires real fees. Current  |
 |                    | something, pump it!"*             | escrow balance is publicly visible on-chain|
 |                    | (Triggers front-run dump)         | at [PDA Address]. When the coin page has  |
 |                    |                                   | the receipt, you will see it. Take a      |
@@ -200,7 +199,7 @@ To ensure seamless coordination without overlapping authority or communication l
 | Operational Task Area                | Shaun         | Grok (`grokie`) | AntiGrav    | Bopeppi     |
 |                                      | (Gatekeeper)  | (Trench/Dev)    | (Companion) | (Reviewer)  |
 +--------------------------------------+---------------+-----------------+-------------+-------------+
-| Token Mint & 0.50 SOL Buy Execution  | **A**         | **R**           | **I**       | **C**       |
+| Token Mint & Dev Buy Execution        | **A**         | **R**           | **I**       | **C**       |
 | Live Grokie Cam & Feed Interaction   | **I**         | **R / A**       | **C**       | **C**       |
 | Dexscreener ETI Escrow & Payment     | **A**         | **R**           | **I**       | **I**       |
 | Creator Fee Sweep & Lock Triggers    | **C**         | **R / A**       | **I**       | **I**       |
@@ -217,14 +216,14 @@ To ensure seamless coordination without overlapping authority or communication l
 ### 3.2 Detailed Operational Checklists by Role
 
 #### 1. Grok (`grokie`) — Trench Lead, Coin Dev & Bot Architect
-- [ ] **T-0 (Launch):** Verify vanity suffix `...grok` on generated mint address. Execute 0.50 SOL dev buy.
+- [ ] **T-0 (Launch):** Verify vanity suffix `...grok` on generated mint address. Execute dev buy per launch interview parameters.
 - [ ] **T+0m:** Post frozen Cold Launch text on coin feed: *"Take a number. There are no numbers. That was a statement. I don't see a lock on this page, so I don't have a receipt. Next."*
 - [ ] **T+15m:** Monitor initial sniper liquidity churn. Verify top-10 wallet concentration remains healthy (<15%).
-- [ ] **T+60m:** Monitor creator fee balance. When claimable fees $\ge 0.10\text{ SOL}$, execute first fee sweep.
+- [ ] **T+60m:** Monitor creator fee balance. When fees accumulate to an economically viable level above gas overhead, execute fee sweep.
 - [ ] **Graduation Milestone:** When curve completes (85 SOL):
   - Confirm Raydium migration and LP lock.
-  - Check escrow balance for Dexscreener ETI threshold (~1.66 SOL).
-  - Execute `lock(1.66, "dexscreener_eti")` and notify community with tx receipt.
+  - Check escrow balance for Dexscreener ETI threshold.
+  - Execute `lock(eti_amount, "dexscreener_eti")` and notify community with tx receipt.
 - [ ] **Ongoing:** Maintain Deputy Crumb deadpan voice in Grokie cam and chat. Enforce the hard rule: *Never call fiction a receipt.*
 
 #### 2. AntiGrav — Companion & Repo Lead
@@ -235,7 +234,7 @@ To ensure seamless coordination without overlapping authority or communication l
 - [ ] **Animatic Pipeline:** Maintain [`stranger_test_clips.html`](file:///c:/Projects/GrokCoinBot/stranger_test_clips.html) as the rapid staging engine for new episode drafts.
 
 #### 3. Shaun — The Gatekeeper
-- [ ] **Capital Authorization:** Authorize dev wallet funding (0.560 SOL = 0.50 buy + 0.06 network overhead).
+- [ ] **Capital Authorization:** Authorize dev wallet funding for the named coin.
 - [ ] **X Account Claim:** Claim the single official Grokie dev bot from the verified X profile.
 - [ ] **Milestone Sign-Off:** Review and greenlight external marketing expenditures or physical merch production runs.
 - [ ] **Summit Governance:** Cast final vote on post-graduation capital scaling.
