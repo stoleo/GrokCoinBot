@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ministry of Unconfirmed Things — Application to Exist</title>
+  <style>
+    :root {
+      --bg: #0d0f14;
+      --paper: #f4efe6;
+      --paper-border: #c4b9a5;
+      --ink: #111827;
+      --typewriter: 'Courier New', Courier, monospace;
+      --stamp-red: #d92d20;
+      --carbon-blue: #1e3a8a;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: #e2e8f0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+      background-image: radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+    header { text-align: center; max-width: 600px; margin-bottom: 30px; }
+    h1 {
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+      color: #fff;
+    }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.1);
+      color: #94a3b8;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 4px 12px;
+      border-radius: 9999px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      max-width: 800px;
+      width: 100%;
+      align-items: center;
+    }
+    .form-card {
+      background: #161b26;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 24px;
+      width: 100%;
+      max-width: 500px;
+    }
+    .field { margin-bottom: 16px; }
+    label {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: #94a3b8;
+      margin-bottom: 6px;
+      letter-spacing: 0.05em;
+    }
+    input, select {
+      width: 100%;
+      background: #0b0e14;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #fff;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    input:focus, select:focus { border-color: #5be38f; }
+    .stamp-btn {
+      width: 100%;
+      background: #d92d20;
+      color: #fff;
+      border: none;
+      padding: 14px;
+      border-radius: 9999px;
+      font-weight: 800;
+      font-size: 14px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(217, 45, 32, 0.4);
+      transition: transform 0.1s;
+      margin-top: 8px;
+    }
+    .stamp-btn:active { transform: scale(0.98); }
+    .permit-stage {
+      width: 100%;
+      max-width: 600px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    canvas {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+      background: var(--paper);
+    }
+    .actions {
+      display: flex;
+      gap: 12px;
+      margin-top: 16px;
+      width: 100%;
+      justify-content: center;
+    }
+    .dl-btn {
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 10px 20px;
+      border-radius: 9999px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .dl-btn:hover { background: rgba(255, 255, 255, 0.2); }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="badge">Official Form 404-B · Intergalactic Division</div>
+    <h1>Ministry of Unconfirmed Things</h1>
+    <p style="color: #94a3b8; font-size: 14px;">Fill out your application. Receive your official permission to exist in three dimensions. Signed by Moth.</p>
+  </header>
+
+  <div class="container">
+    <div class="form-card">
+      <div class="field">
+        <label>Subject Name</label>
+        <input type="text" id="nameIn" value="Shaun" placeholder="Your Name">
+      </div>
+      <div class="field">
+        <label>Declared Species</label>
+        <select id="speciesIn">
+          <option value="Licensed Temporary Human">Licensed Temporary Human</option>
+          <option value="Carbon-Based Accounting Accident">Carbon-Based Accounting Accident</option>
+          <option value="Sentient Fabric Consumer">Sentient Fabric Consumer</option>
+          <option value="Autonomous Clerical Unit">Autonomous Clerical Unit</option>
+          <option value="Vaguely Mammalian Entity">Vaguely Mammalian Entity</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Galactic Occupation</label>
+        <select id="occIn">
+          <option value="Senior Stamp Observer">Senior Stamp Observer</option>
+          <option value="Chief Biscuit Speculator">Chief Biscuit Speculator</option>
+          <option value="Deputy Fabric Inspector">Deputy Fabric Inspector</option>
+          <option value="Intergalactic Livestock Wrangler">Intergalactic Livestock Wrangler</option>
+          <option value="Professional 4:59 Clock Staturer">Professional 4:59 Clock Starer</option>
+        </select>
+      </div>
+      <button class="stamp-btn" onclick="generatePermit()">Submit & Stamp Permit</button>
+    </div>
+
+    <div class="permit-stage">
+      <canvas id="permitCanvas" width="1200" height="850"></canvas>
+      <div class="actions">
+        <button class="dl-btn" onclick="downloadPermit()">💾 Download Official Permit (PNG)</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const RESTRICTIONS = [
+      "May not operate a stapler after sunset.",
+      "Prohibited from perceiving reality without Form 27-B.",
+      "Subject must not emit financial predictions under penalty of moth.",
+      "Must remain stationary during the 4:59 PM eternal hour.",
+      "Strictly forbidden from folding government carbon paper into biscuits.",
+      "Must not fly into illuminated charts without protective eyewear.",
+      "Authorized to exist strictly between yesterday and never."
+    ];
+
+    const cv = document.getElementById('permitCanvas');
+    const ctx = cv.getContext('2d');
+
+    function generatePermit() {
+      const name = document.getElementById('nameIn').value.trim() || 'Citizen';
+      const species = document.getElementById('speciesIn').value;
+      const occ = document.getElementById('occIn').value;
+      const restriction = RESTRICTIONS[Math.floor(Math.random() * RESTRICTIONS.length)];
+      const docNo = "DOC-404-" + Math.floor(100000 + Math.random() * 900000);
+
+      // Aged Paper Background
+      ctx.fillStyle = '#f4efe6';
+      ctx.fillRect(0, 0, cv.width, cv.height);
+
+      // Faded Paper Texture / Border
+      ctx.strokeStyle = '#c4b9a5';
+      ctx.lineWidth = 12;
+      ctx.strokeRect(30, 30, cv.width - 60, cv.height - 60);
+      ctx.strokeStyle = '#1e3a8a';
+      ctx.lineWidth = 3;
+      ctx.strokeRect(45, 45, cv.width - 90, cv.height - 90);
+
+      // Header Typography
+      ctx.fillStyle = '#1e3a8a';
+      ctx.font = '900 28px "Courier New", monospace';
+      ctx.textAlign = 'center';
+      ctx.fillText('THE MINISTRY OF UNCONFIRMED THINGS', cv.width / 2, 100);
+      ctx.font = 'bold 16px "Courier New", monospace';
+      ctx.fillText('CENTRAL BUREAU OF TEMPORARY PHENOMENA · DEPT 404', cv.width / 2, 130);
+      ctx.fillText('OFFICIAL CERTIFICATE OF PROVISIONAL EXISTENCE', cv.width / 2, 155);
+
+      ctx.beginPath();
+      ctx.moveTo(80, 175); ctx.lineTo(cv.width - 80, 175);
+      ctx.strokeStyle = '#1e3a8a'; ctx.lineWidth = 2; ctx.stroke();
+
+      // Form Fields
+      ctx.textAlign = 'left';
+      ctx.fillStyle = '#111827';
+      ctx.font = 'bold 20px "Courier New", monospace';
+      
+      const startY = 240;
+      const lineHeight = 55;
+
+      ctx.fillText(`SERIAL NUMBER: ${docNo}`, 90, startY);
+      ctx.fillText(`SUBJECT NAME:  ${name.toUpperCase()}`, 90, startY + lineHeight);
+      ctx.fillText(`CLASSIFICATION:${species.toUpperCase()}`, 90, startY + lineHeight * 2);
+      ctx.fillText(`OFFICE ROLE:   ${occ.toUpperCase()}`, 90, startY + lineHeight * 3);
+      ctx.fillText(`VALIDITY:      UNTIL 5:00 PM (PERPETUAL 4:59)`, 90, startY + lineHeight * 4);
+
+      // Official Terrible Restriction Box
+      ctx.fillStyle = '#e8decb';
+      ctx.fillRect(90, startY + lineHeight * 5 - 10, cv.width - 180, 80);
+      ctx.strokeStyle = '#8c7d67'; ctx.lineWidth = 2;
+      ctx.strokeRect(90, startY + lineHeight * 5 - 10, cv.width - 180, 80);
+
+      ctx.fillStyle = '#991b1b';
+      ctx.font = 'bold 16px "Courier New", monospace';
+      ctx.fillText('MANDATORY BUREAUCRATIC CONDITION:', 110, startY + lineHeight * 5 + 20);
+      ctx.fillStyle = '#111827';
+      ctx.font = 'italic 18px "Courier New", monospace';
+      ctx.fillText(`"${restriction}"`, 110, startY + lineHeight * 5 + 50);
+
+      // Signatures
+      ctx.font = 'bold 16px "Courier New", monospace';
+      ctx.fillStyle = '#111827';
+      ctx.fillText('ISSUING OFFICER: DEPUTY CRUMB (ABSENT)', 90, 720);
+      ctx.fillText('VERIFIED BY:     MUTE MASON (WITHOUT ENTHUSIASM)', 90, 750);
+      ctx.fillText('AUTHORIZING SEAL:MOTH (STAFF MEMBER #09)', 90, 780);
+
+      // Moth Footprint Ink Blot
+      ctx.fillStyle = '#1e3a8a';
+      ctx.beginPath(); ctx.arc(460, 775, 8, 0, Math.PI * 2); ctx.fill();
+      ctx.beginPath(); ctx.ellipse(452, 772, 7, 3, 0.4, 0, Math.PI * 2); ctx.fill();
+      ctx.beginPath(); ctx.ellipse(468, 772, 7, 3, -0.4, 0, Math.PI * 2); ctx.fill();
+
+      // Giant Red Slam Stamp
+      ctx.save();
+      ctx.translate(880, 680);
+      ctx.rotate(-0.14);
+      ctx.strokeStyle = '#d92d20';
+      ctx.lineWidth = 8;
+      ctx.strokeRect(-180, -45, 360, 90);
+      ctx.font = '900 32px "Courier New", monospace';
+      ctx.fillStyle = '#d92d20';
+      ctx.textAlign = 'center';
+      ctx.fillText('PERMIT GRANTED', 0, -2);
+      ctx.font = 'bold 16px "Courier New", monospace';
+      ctx.fillText('(DO NOT QUESTION)', 0, 24);
+      ctx.restore();
+    }
+
+    function downloadPermit() {
+      const link = document.createElement('a');
+      link.download = `ministry-permit-${Date.now()}.png`;
+      link.href = cv.toDataURL('image/png');
+      link.click();
+    }
+
+    // Initial draw
+    generatePermit();
+  </script>
+</body>
+</html>
