@@ -37,15 +37,15 @@ The following checklist establishes a disciplined, mathematical operational rhyt
 
 Tracking must be granular and deterministic. The Trench Quant and Trench Lead monitor telemetry across designated intervals:
 
-| Timeline | Measurement Cadence | Key Telemetry Tracked | Quant Health Thresholds | Operational Directive |
+| Timeline | Measurement Cadence | Key Telemetry Tracked | Discretionary Health Indicators | Operational Directive |
 | :--- | :--- | :--- | :--- | :--- |
-| **Minute 0 – 5** | Every slot (~400ms) | Initial block tx density, sniper penetration, dev buy confirmation, first 50 unique wallets. | Gross Vol $\ge 3.0\text{ SOL}$, Dev Buy verified per launch interview, Unique Wallets $> 15$. | Verify mint suffix ends in `...grok`. Confirm no bundling errors. Record initial bonding curve progress. |
-| **Minute 5 – 15** | Every 60 seconds | Curve buy/sell ratio, unique holder wallet growth, Telegram/chat velocity, sniper exit rate. | Buy/Sell Ratio $> 1.2$, Top 10 non-dev holders $< 15\%$ aggregate supply. | Monitor early snipers dumping. Do NOT panic or counter-trade. Let mercenary snipers exit clean. |
-| **Minute 15 – 60** | Every 5 minutes | Cumulative curve volume, bonding curve % (SOL deposited / 85 SOL target), creator fee accumulation. | Bonding curve $> 15\%$ (12+ SOL in curve), Realized fees $> 0.05\text{ SOL}$. | Crumb maintains deadpan cam presence. Review first chat filings. |
-| **Hours 1 – 6** | Every 15 minutes | Hourly volume run-rate, holder churn rate, liquidity depth ($x \cdot y = k$ virtual slippage). | Hourly Vol $> 50\text{ SOL}$, Holder count $> 150$, Zero insider transfers. | Assess fee accumulation for discretionary lock triggers. |
-| **Hours 6 – 24** | Hourly | Curve graduation distance, Raydium LP readiness, Dexscreener trend position, social impressions. | Approaching 85 SOL curve completion ($69k MC), Fee balance $\ge 2.0\text{ SOL}$. | Prepare for Raydium migration. Stand by for Dexscreener update upon graduation. |
-| **Days 2 – 3** | Every 4 hours | Raydium pool depth, 24h DEX volume, unique liquidity providers, holder retention curve. | 24h Vol $> \$250,000$, Holder count $> 600$, LP burn confirmation verified. | Monitor post-graduation sell walls. Execute discretionary buyback-and-burn if fees permit. |
-| **Days 4 – 7** | Every 12 hours | Multi-day volume sustainability, off-chain companion traffic (`form_459.html`), merch conversion. | Weekly Vol $> \$1,000,000$, Sustainable daily fee income $> 2.0\text{ SOL}$. | Transition from trench survival to sustained flywheel monetization. |
+| **Minute 0 – 5** | Every slot (~400ms) | Initial block tx density, sniper penetration, dev buy confirmation, unique wallet growth. | Organic tx flow, dev buy verified per launch interview, healthy holder distribution. | Verify deployer address on official channels. Confirm no bundling errors. Monitor curve. |
+| **Minute 5 – 15** | Every 60 seconds | Curve buy/sell ratio, unique holder wallet growth, chat velocity, sniper exit rate. | Organic buy interest, low top-holder concentration. | Let early mercenary snipers exit cleanly. Do NOT panic or counter-trade. |
+| **Minute 15 – 60** | Every 5 minutes | Cumulative curve volume, bonding curve progress, creator fee accumulation. | Active organic trading, positive fee accumulation above gas costs. | Crumb maintains deadpan cam presence. Review first chat filings. |
+| **Hours 1 – 6** | Every 15 minutes | Volume velocity, holder churn rate, liquidity depth. | Steady organic participation, holder base expanding. | Assess fee accumulation for discretionary lock triggers. |
+| **Hours 6 – 24** | Hourly | Curve graduation progress, Raydium LP readiness, social impressions. | Natural progress toward curve completion; fee reserve accumulating. | Prepare for Raydium migration. Stand by for Dexscreener update upon graduation. |
+| **Days 2 – 3** | Every 4 hours | Raydium pool depth, 24h DEX volume, unique liquidity providers, holder retention. | Sustainable secondary volume, LP burn confirmation verified. | Monitor post-graduation dynamics. Execute discretionary buyback-and-burn if fees permit. |
+| **Days 4 – 7** | Every 12 hours | Multi-day volume sustainability, off-chain companion traffic (`form_459.html`), merch interest. | Sustained organic audience engagement and recurring fee income. | Transition from trench survival to sustained flywheel monetization. |
 
 ---
 
@@ -67,9 +67,9 @@ Dexscreener Enhanced Token Info (ETI) and Birdeye fast-track verification are **
 | **Tier 1: Basic**   | Instant at Mint   | Automatic indexing  | Solana contract address + vanity   |
 | (Organic Indexing)  | on Grokie/pump    | via RPC feeds       | `...grok` suffix visible on chart  |
 +---------------------+-------------------+---------------------+------------------------------------+
-| **Tier 2: ETI**     | Escrow Fees       | Submit official ETI | `lock(1.66, "dexscreener_eti")`    |
-| (Enhanced Profile)  | $\ge 2.00\text{ SOL}$| package ($299 USD)  | On-chain receipt posted in chat    |
-|                     | + Shaun sign-off  | with badge & links  | Banner + socials verified on DEX   |
+| **Tier 2: ETI**     | Accumulated Fees  | Submit official ETI | `lock(eti_cost, "dexscreener_eti")`|
+| (Enhanced Profile)  | Sufficient for    | package with        | On-chain receipt posted in chat    |
+|                     | Package Cost      | badge & links       | Banner + socials verified on DEX   |
 +---------------------+-------------------+---------------------+------------------------------------+
 | **Tier 3: Birdeye** | Post-Graduation   | Submit verified     | Birdeye verified token profile     |
 | & Community Trust   | Raydium Pool Live | token metadata and  | badge active. No promotional flags.|

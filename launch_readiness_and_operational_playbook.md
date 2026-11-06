@@ -169,19 +169,17 @@ T-60m: X Account & Enclave -> T-30m: Funding (Amount named by Shaun) -> T-10m: B
     * Link to official Grokie coin page.
     * Link to free companion Form 4:59.
     * Explicit disclaimer that Deputy Crumb is the only real dev.
-- [ ] **Step 12: First 3-Minute Trench Health Check (Fail-Fast Gate):**
-  - Monitor volume against fail-fast curves from `shaun_gate_risk_model.py`:
-    * *Minute 1 Gate:* If volume $< 2.0\text{ SOL}$, halt discretionary actions.
-    * *Minute 3 Gate:* If volume $< 5.0\text{ SOL}$, prepare capital salvage.
-    * *Normal/Bullish:* If volume $> 20.0\text{ SOL}$, system is healthy.
-- [ ] **Step 13: Fee Accumulation & Discretionary Escrow Claims:**
-  - Trench Lead monitors pump.fun creator fee accruals.
-  - When claimable fees exceed $0.05\text{ SOL}$, trigger `claim_fees`.
+- [ ] **Step 12: Initial Trench Health & Flow Observation:**
+  - Trench Lead monitors initial block velocity and unique wallet distribution organically.
+  - If liquidity dries up completely or shows zero organic trading interest, Trench Lead assesses whether to pause discretionary actions. No hardcoded SOL volume gates.
+- [ ] **Step 13: Discretionary Creator Fee Management:**
+  - Trench Lead monitors creator fee accrual on the coin page.
+  - Execute `claim_fees` discretionarily only when accumulated fees are economically viable relative to priority gas overhead, avoiding gas-bleeding micro-claims.
 - [ ] **Step 14: On-Cam "Words vs. Locks" Enforcement:**
   - If chat users make claims ("Dev lock the dex", "When burn?"), Deputy Crumb responds using `say`:
     > *"That is an assertion. The desk does not process wishes. When a lock appears on this page, it is a receipt. Until then, it is stationery."*
-- [ ] **Step 15: Dexscreener Gating Audit:**
-  - Confirm market cap progress. If $30k MC is touched, ensure `pay_dex` is **NOT** called unless escrow has accumulated $\ge 2.50\text{ SOL}$ in realized fees.
+- [ ] **Step 15: Discretionary Dexscreener ETI Execution:**
+  - Dexscreener Enhanced Token Info (ETI) package is funded strictly from verified creator fees accumulated in escrow, never from upfront personal reserves. Zero fixed market cap deadlines.
 
 ---
 

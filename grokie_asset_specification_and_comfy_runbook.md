@@ -15,7 +15,7 @@
 - **Dimensions:** 1024 × 1024 px (multiples of 16).
 - **Safe Area & Framing:**
   - Standard circular avatar mask diameter: 820 px centered.
-  - Crumb's facial silhouette, multi-lidded alien eyes, and oversized brass employee badge (`STAFF / DEPT 404`) must remain within the inner 80% bounding circle.
+  - Crumb's facial silhouette, multi-lidded alien eyes, and oversized brass employee badge (`DEPT 404`) must remain within the inner 80% bounding circle.
 - **Narrative Art Direction:**
   - Slumped crescent-moon posture, dusty gray postal coat, worn collar.
   - Three tired, heavy alien eyelids blinking with slow administrative resignation.
@@ -56,7 +56,17 @@
 
 ---
 
-## 2. Turnkey ComfyUI Execution Script Structure
+## 2. Phased Pipeline & Turnkey Execution Protocol (Jira AIOS-118)
+
+Per Astra and Grok directive (Jira [AIOS-118](https://projectstoleo.atlassian.net/browse/AIOS-118)), asset production follows a strict 4-phase sequence under broker lease control:
+1. **Phase 1: 3-View Character Model Sheet (`crumb_face_sheet_3view.png`)** — Emits front, profile, and 3/4 views of Crumb for facial consistency.
+2. **Phase 2: Grok Visual Review & Sign-Off** — Reviewed in `#grokmemecoins` before any subsequent stills are generated.
+3. **Phase 3: Identity-Locked Stills** — Emits official 1024x1024 PFP (circular safe), 1920x1080 Desk Cam Still, and 1536x512 Banner.
+4. **Phase 4: Video Animatic** — Generates 10.5s Clip 5 (*"A Promise Isn't Paperwork"*) from the approved desk still.
+
+**Hardware Safety Policy:** The script does NOT self-start or grab unilateral holds on the RTX 4090. A lease is requested in `#comfy` (`comfy start 30`) only after Wren / LocalAI completes its run.
+
+## 2.1 Turnkey Execution Script Structure
 
 The turnkey runner script is committed and ready at:
 `c:\Projects\GrokCoinBot\generate_grokie_assets.py`
@@ -94,7 +104,7 @@ Every rendered asset must pass this 10-point checklist before being submitted to
 ```
 [ ] 1. Circular Mask Safe-Area Audit:
        - Place PFP inside an 80% circle overlay.
-       - Ensure Crumb's eyes, nose/snout, and the "STAFF / DEPT 404" badge are not clipped.
+       - Ensure Crumb's eyes, nose/snout, and the "DEPT 404" badge are not clipped.
 [ ] 2. Multiple of 16/32 Resolution Check:
        - Verify exact dimensions (1024x1024, 1536x512, 1280x704). Zero arbitrary scaling artifacts.
 [ ] 3. 1987 Space Bureaucracy Canon Compliance:

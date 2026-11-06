@@ -220,7 +220,7 @@ Deputy Crumb’s responses in the live coin stream feed are strictly governed by
 | *"Dev bought tokens!"* | *"An on-chain swap occurred. It is a recorded transfer, not an emotional covenant."* | Enters slip into metal filing drawer. |
 
 ### 5.2 Anti-Sniper & Impersonator Defense Standard
-1. **The Enclave Vanity Lock:** The team will publicly broadcast: *"Authentic Deputy Crumb tokens ONLY originate from deployer enclave ending in `...grok`. Anyone launching on `...pump` without the official Grokie signature is an unauthorized copycat."*
+1. **Deployer Address Verification (Suffix != Authentication):** The team will publicly broadcast: *"Authentic Deputy Crumb tokens ONLY originate from the official Grokie deployer enclave address announced on our verified project X handle. The `...grok` suffix is solely an aesthetic vanity pattern that can be mined by anyone; it is NOT deployer authentication. Always verify the exact contract address against our pinned announcements."*
 2. **Zero Pre-Announced Timers:** To prevent automated MEV bots and snipers from front-running liquidity, the exact second of minting will NOT be countdown-marketed on social media. Launch happens organically on stream.
 
 ### 5.3 Emergency Circuit Breaker Triggers
