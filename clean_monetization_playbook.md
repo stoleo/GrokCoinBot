@@ -10,6 +10,10 @@
 
 ---
 
+> [!CAUTION]
+> **GOVERNANCE STATUS: EXPLORATORY HYPOTHETICAL SCENARIOS ONLY — PARKED PENDING SHAUN GATE SUMMIT**
+> All volume tiers, return multipliers (e.g., 195x–3,900x), sniper badge interpretations, and merchandise margin models in this document represent **unapproved theoretical scenarios**. They do NOT constitute launch instructions, operational commitments, or financial guarantees. Dev buy sizing, holding duration, and fee actions remain strictly subject to Shaun's formal Go/No-Go decision and cannot be deployed or precommitted from this repository.
+
 ## 1. EXECUTIVE SUMMARY & THE ETHICAL QUANT THESIS
 
 ### 1.1 The False Dichotomy of Memecoins
@@ -141,33 +145,30 @@ Many inexperienced crypto teams build models assuming a gross 1.00% to 1.25% cre
 
 In addition, pump.fun awards a fixed **0.50 SOL protocol incentive** to the creator wallet upon completing the bonding curve ($69k MC graduation).
 
-#### B. Comprehensive Creator Fee Realization Schedule
+#### B. Exploratory Creator Fee Realization Model (0.30% Gross Scenario)
 
 ```
 +----------------------------------------------------------------------------------------------------+
-|                  EMPIRICAL CREATOR FEE CASHFLOW MODEL (0.30% Net Realization)                      |
+|                  HYPOTHETICAL CREATOR FEE CASHFLOW MODEL (0.30% Gross Scenario)                    |
 +----------------+----------------+----------------+----------------+----------------+---------------+
-| Cumulative Vol | Volume in SOL  | Realized Fee   | Graduation Payout| Total Net SOL  | Net USD Value |
-| (USD)          | (@ $180/SOL)   | (0.30% Net)    | (Fixed 0.50 SOL) | Claimable      | (@ $180/SOL)  |
+| Cumulative Vol | Volume in SOL  | Gross Fee      | Priority/Gas   | Estimated Net  | Net USD Value |
+| (USD)          | (@ $180/SOL)   | (0.30% Gross)  | Sweep Friction | SOL Claimable  | (@ $180/SOL)  |
 +----------------+----------------+----------------+----------------+----------------+---------------+
-| $50,000        | 277.8 SOL      | 0.833 SOL      | 0.000 SOL      | 0.833 SOL      | $150.00       |
-| $100,000       | 555.6 SOL      | 1.667 SOL      | 0.500 SOL      | 2.167 SOL      | $390.00       |
-| $250,000       | 1,388.9 SOL    | 4.167 SOL      | 0.500 SOL      | 4.667 SOL      | $840.00       |
-| $500,000       | 2,777.8 SOL    | 8.333 SOL      | 0.500 SOL      | 8.833 SOL      | $1,590.00     |
-| $1,000,000     | 5,555.6 SOL    | 16.667 SOL     | 0.500 SOL      | 17.167 SOL     | $3,090.00     |
-| $2,500,000     | 13,888.9 SOL   | 41.667 SOL     | 0.500 SOL      | 42.167 SOL     | $7,590.00     |
-| $5,000,000     | 27,777.8 SOL   | 83.333 SOL     | 0.500 SOL      | 83.833 SOL     | $15,090.00    |
-| $10,000,000    | 55,555.6 SOL   | 166.667 SOL    | 0.500 SOL      | 167.167 SOL    | $30,090.00    |
-| $20,000,000    | 111,111.1 SOL  | 333.333 SOL    | 0.500 SOL      | 333.833 SOL    | $60,090.00    |
+| $50,000        | 277.8 SOL      | 0.833 SOL      | ~0.033 SOL     | ~0.800 SOL     | ~$144.00      |
+| $100,000       | 555.6 SOL      | 1.667 SOL      | ~0.050 SOL     | ~1.617 SOL     | ~$291.00      |
+| $250,000       | 1,388.9 SOL    | 4.167 SOL      | ~0.080 SOL     | ~4.087 SOL     | ~$735.00      |
+| $500,000       | 2,777.8 SOL    | 8.333 SOL      | ~0.120 SOL     | ~8.213 SOL     | ~$1,478.00    |
+| $1,000,000     | 5,555.6 SOL    | 16.667 SOL     | ~0.200 SOL     | ~16.467 SOL    | ~$2,964.00    |
+| $2,500,000     | 13,888.9 SOL   | 41.667 SOL     | ~0.350 SOL     | ~41.317 SOL    | ~$7,437.00    |
+| $5,000,000     | 27,777.8 SOL   | 83.333 SOL     | ~0.600 SOL     | ~82.733 SOL    | ~$14,892.00   |
+| $10,000,000    | 55,555.6 SOL   | 166.667 SOL    | ~1.100 SOL     | ~165.567 SOL   | ~$29,802.00   |
+| $20,000,000    | 111,111.1 SOL  | 333.333 SOL    | ~2.000 SOL     | ~331.333 SOL   | ~$59,640.00   |
 +----------------+----------------+----------------+----------------+----------------+---------------+
 ```
 
-#### C. Quant Takeaway: Volume Pays the Bills
-- At $\$1\text{M}$ volume (typical for an active 48-hour graduation run), the protocol collects **17.167 SOL ($\approx \$3,090$)**.
-- At $\$5\text{M}$ volume (a solid mid-tier trending runner), the protocol generates **83.833 SOL ($\approx \$15,090$)**.
-- At $\$20\text{M}$ volume (a viral narrative breakout), creator fees deliver **333.833 SOL ($\approx \$60,090$)**.
-
-**Zero tokens sold. Zero market dumping. 100% pure protocol revenue.**
+#### C. Quant Takeaway: Theoretical Volume vs. Real Costs
+- At $\$1\text{M}$ volume, a 0.30% gross fee generates **$3,000 gross** (approx **16.67 SOL** before platform gas/slippage).
+- All numbers in this table are **exploratory modeling scenarios**, not guaranteed income or launch commitments. Operational parameters will be finalized exclusively at the Shaun Gate Summit.
 
 ---
 

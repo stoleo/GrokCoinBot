@@ -29,6 +29,11 @@ To prove the narrative stands on its own **without any token pitch, wallet, or c
    - *Beat 1:* 4:59 PM. Deputy Crumb has his coat on, hand on the exit knob, desperate to go home after 800 years.
    - *Beat 2:* A shaky paper slips under the door: *"I DON'T KNOW WHAT TO SAY."* Crumb freezes, stares, deep slug-sigh: *"Unbelievable."*
    - *Beat 3:* Crumb brings down his stamper: **`[LET'S MAKE IT SIMPLE]`**. The clock snaps back to 4:59 PM.
+5. **Clip 5: A Promise Isn't Paperwork (Shaun's Native Dev Voice)**
+   - *Beat 1 (0–3s):* Crumb with coat on, hand on exit doorknob: *"One minute. Finally."*
+   - *Beat 2 (3–6s):* Dot-matrix printer feeds out a slip: *"WHAT IF THE BOT PROMISES TO BUY BACK?"*
+   - *Beat 3 (6–9s):* Crumb turns deadpan to camera: *"A promise isn't paperwork."*
+   - *Beat 4 (9–12s):* Slams **`[WORDS ONLY]`** onto empty file: *"Bring me a transaction. Next."*
 
 ---
 

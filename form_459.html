@@ -665,6 +665,9 @@
           <span>1. THE MESSY RAW THOUGHT (WHAT YOU CANNOT BRING YOURSELF TO SEND):</span>
           <span id="charCount" style="color:var(--muted); font-weight:normal;">0 chars</span>
         </label>
+        <div style="background:#e5ded0; border-left:3px solid var(--carbon-blue); padding:6px 10px; font-size:11px; margin-bottom:6px; color:#4a4237;">
+          <strong>NOTICE:</strong> Simple local rule-based prototype (not general reliable AI). Analyzes grammatical structure in-browser. Always review output before using.
+        </div>
         <textarea id="rawInput" placeholder="Dump the overthinking here. Mention names, rambling fears, excuses, or awkwardness. No server will ever see this." oninput="handleInput()"></textarea>
         <div class="disclaimer-sub">100% Private Client-Side Parsing. Zero network calls. No cookies. Runs purely in your local browser sandbox.</div>
       </div>
@@ -704,10 +707,13 @@
 
           <!-- 3. Ending B: Polite editable follow-up message -->
           <div class="dossier-box" id="endingBContainer">
-            <strong>3. Polite Editable Follow-Up Draft (Ready to Send):</strong>
+            <strong>3. Polite Editable Follow-Up Draft (Private - Ready to Send):</strong>
             <div class="draft-editable-container">
               <textarea class="draft-editable-textarea" id="draftEditable" rows="3"></textarea>
-              <button class="copy-btn" onclick="copyDraft()">📋 Copy Draft to Clipboard</button>
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-top:6px; flex-wrap:wrap; gap:8px;">
+                <button class="copy-btn" onclick="copyDraft()">📋 Copy Private Message to Clipboard</button>
+                <span style="font-size:10px; color:#a7f3d0;">🔒 Private only — never shared in postcard</span>
+              </div>
             </div>
           </div>
 
@@ -722,25 +728,28 @@
         </div>
       </div>
 
-      <!-- SHAREABLE POSTAL CARD GENERATOR -->
+      <!-- SHAREABLE POSTAL CARD GENERATOR (GENERIC INVITATION ONLY - ZERO PRIVATE TEXT) -->
       <div class="share-card-section">
-        <div class="share-title">📮 Shareable Postal Card ("This made me think of you. No need to reply.")</div>
+        <div class="share-title">📮 Shareable Postcard ("This made me think of you. No need to reply.")</div>
+        <p style="font-size:11px; color:#5c5447; margin-bottom:10px;">
+          <strong>Privacy Guarantee:</strong> This card contains only the gentle generic invitation. Your personal draft above is <em>never</em> included.
+        </p>
         <div class="postcard-preview" id="postalCard">
           <div class="postcard-header">
-            <span>MINISTRY DEPT 404 · CERTIFIED TRANSMISSION</span>
-            <span id="cardDocketNum">#459-8102</span>
+            <span>MINISTRY DEPT 404 · TRANSMISSION INVITATION</span>
+            <span id="cardDocketNum">#459-OFFICIAL</span>
           </div>
           <div class="postcard-body" id="cardBodyText">
-            "Hey Jess, quick check so we can plan Friday: are you taking the lead on drafting the landing-page copy, or would you like me to take it? Happy either way—just keen to make sure we're locked in before the end of the week."
+            "You don't have to have the words yet.<br><br>Whenever you're ready, the Ministry of Unconfirmed Things has filed Form 4:59 on your behalf.<br><br>This made me think of you. No need to reply."
           </div>
           <div class="postcard-footer">
-            <span>"This made me think of you. No need to reply."</span>
-            <div class="postal-stamp-box" id="cardStampBox">CLEAR ENOUGH</div>
+            <span>The Ministry of Unconfirmed Things · Form 4:59</span>
+            <div class="postal-stamp-box" id="cardStampBox">OFFICIAL</div>
           </div>
         </div>
         <div class="card-actions">
-          <button class="action-btn" onclick="copyCardText()">Copy Card Text</button>
-          <button class="action-btn" onclick="alert('Permit copied to local clipboard for direct messaging.')">Export Permit</button>
+          <button class="action-btn" onclick="copyCardText()">📋 Copy Generic Postcard Text</button>
+          <button class="action-btn" onclick="downloadPostcardPNG()">💾 Download Postcard (PNG)</button>
         </div>
       </div>
 
@@ -751,7 +760,7 @@
           <button class="survey-btn" onclick="submitSurvey('Yes')">Yes, sending now</button>
           <button class="survey-btn" onclick="submitSurvey('No')">No, still frozen</button>
         </div>
-        <div class="survey-results" id="surveyResults">Logged: 142 avoids resolved today.</div>
+        <div class="survey-results" id="surveyResults">Demo feedback stored in local browser session only.</div>
       </div>
 
     </div>
@@ -859,17 +868,17 @@
         title: "Sarah Reconciliation",
         tag: "Case 3 · Deadline",
         raw: "I was supposed to have the quarterly reconciliation report to Sarah by tomorrow morning at 9am, but my laptop died yesterday, the database export failed twice, and I had to deal with an emergency plumber. I feel so guilty. I started drafting this huge long explanation about the pipe bursting and my battery dying so she knows I'm not lazy, but I haven't sent it and now I'm just freezing up.",
-        point: "Request an extension on the reconciliation report to tomorrow afternoon with a firm delivery time.",
+        point: "Request an extension on the reconciliation report without inventing a replacement ETA.",
         unknown: [
           "New achievable delivery hour (exact timestamp) is unconfirmed.",
           "Dependent workflows blocked by Sarah waiting for the report are unknown.",
           "Current completion percentage of the report is unstated."
         ],
-        draft: "Hi Sarah, I've run into a technical delay with the data export and won't have the reconciliation report ready for 9:00 AM tomorrow. I am actively resolving it and will have the complete file to you by 3:00 PM tomorrow afternoon. Please let me know if this impacts any morning reviews.",
+        draft: "Hi Sarah, I've run into a technical delay with the data export and won't have the reconciliation report ready for 9:00 AM tomorrow. I am actively resolving it—could we push the delivery to later tomorrow afternoon, and does that impact any morning reviews?",
         stampA: "[ PLUMBING IRRELEVANT TO DOCKET ]",
         stampB: "[ TEMPORALLY TOLERABLE ]",
         noteA: "Crumb: \"The department does not require a dissertation on your municipal drainage.\"",
-        noteB: "Crumb: \"Nobody needs to hear about your plumbing. State the new time and deliver.\""
+        noteB: "Crumb: \"Nobody needs to hear about your plumbing. State the delay honestly and ask for the extension.\""
       },
       {
         title: "Dave Meeting Decline",
@@ -902,9 +911,9 @@
         };
       }
 
-      // Check if text matches one of the canonical demo cases
-      const found = CASES.find(c => clean.toLowerCase().includes(c.title.toLowerCase().split(' ')[0]) || clean === c.raw);
-      if (found) {
+      // Check if text strictly matches the actively selected demo case
+      if (activeCaseIndex >= 0 && activeCaseIndex < CASES.length && clean === CASES[activeCaseIndex].raw) {
+        const found = CASES[activeCaseIndex];
         return {
           point: found.point,
           unknown: found.unknown,
@@ -1014,8 +1023,7 @@
       
       document.getElementById('crumbFilingNote').innerText = res.note;
 
-      // Update Shareable Postal Card
-      document.getElementById('cardBodyText').innerText = `"${res.draft}"`;
+      // Update Shareable Postal Card (Generic Only - Never User Draft)
       document.getElementById('cardStampBox').innerText = res.stamp.replace(/[\[\]]/g, '').slice(0, 16);
       document.getElementById('cardDocketNum').innerText = `#459-${Math.floor(1000 + Math.random() * 9000)}`;
 
@@ -1027,19 +1035,47 @@
     function copyDraft() {
       const text = document.getElementById('draftEditable').value;
       navigator.clipboard.writeText(text).then(() => {
-        alert("Draft message copied to clipboard! Ready to paste into Slack / Email.");
+        alert("Your private follow-up draft was copied to your clipboard!\n\n(Reminder: This private message is not shared in the postcard.)");
       });
     }
 
     function copyCardText() {
-      const body = document.getElementById('cardBodyText').innerText;
-      const note = "This made me think of you. No need to reply.\n\n" + body;
+      const note = "You don't have to have the words yet.\n\nWhenever you're ready, the Ministry of Unconfirmed Things has filed Form 4:59 on your behalf.\n\nThis made me think of you. No need to reply.\n\nLink: https://htmlpreview.github.io/?https://github.com/stoleo/GrokCoinBot/blob/master/form_459.html";
       navigator.clipboard.writeText(note).then(() => {
-        alert("Postal card text copied to clipboard!");
+        alert("Generic postcard invitation copied to clipboard! (Zero personal text included).");
       });
     }
 
+    function downloadPostcardPNG() {
+      const pc = document.createElement('canvas');
+      pc.width = 800; pc.height = 450;
+      const pctx = pc.getContext('2d');
+      pctx.fillStyle = '#f5efe4'; pctx.fillRect(0, 0, pc.width, pc.height);
+      pctx.strokeStyle = '#9e917d'; pctx.lineWidth = 4; pctx.strokeRect(20, 20, pc.width - 40, pc.height - 40);
+      pctx.fillStyle = '#1e3a8a'; pctx.font = 'bold 18px "Courier New", monospace';
+      pctx.fillText('MINISTRY OF UNCONFIRMED THINGS · DEPT 404', 50, 70);
+      pctx.font = 'bold 13px "Courier New", monospace'; pctx.fillStyle = '#645e54';
+      pctx.fillText('OFFICIAL TRANSMISSION INVITATION · FORM 4:59', 50, 95);
+      
+      pctx.fillStyle = '#1c1917'; pctx.font = 'italic 20px "Courier New", monospace';
+      pctx.fillText('"You don\'t have to have the words yet."', 50, 180);
+      pctx.font = '16px "Courier New", monospace';
+      pctx.fillText('Whenever you\'re ready, Form 4:59 is filed on your behalf.', 50, 230);
+      pctx.fillText('This made me think of you. No need to reply.', 50, 280);
+
+      pctx.strokeStyle = '#b91c1c'; pctx.lineWidth = 3; pctx.strokeRect(550, 310, 200, 70);
+      pctx.fillStyle = '#b91c1c'; pctx.font = '900 16px "Courier New", monospace'; pctx.textAlign = 'center';
+      pctx.fillText('FORM 4:59', 650, 340);
+      pctx.font = 'bold 11px monospace'; pctx.fillText('OFFICIAL CLEARANCE', 650, 360);
+
+      const link = document.createElement('a');
+      link.download = `form-459-invitation-${Date.now()}.png`;
+      link.href = pc.toDataURL('image/png');
+      link.click();
+    }
+
     function clearForm() {
+      activeCaseIndex = -1;
       document.getElementById('rawInput').value = "";
       document.querySelectorAll('.case-card').forEach(c => c.classList.remove('active'));
       handleInput();
@@ -1050,7 +1086,7 @@
       playAudioSfx('stamp');
       const btns = document.getElementById('surveyButtons');
       btns.innerHTML = `<span style="color:var(--carbon-blue); font-weight:900;">Voted [${choice}] · Recorded at 4:59 PM</span>`;
-      document.getElementById('surveyResults').innerText = "Department count: 143 avoids resolved. Crumb: \"One less case on my desk.\"";
+      document.getElementById('surveyResults').innerText = "Your browser-only demo response was recorded locally; no community totals available.";
       localStorage.setItem('form459_survey', choice);
     }
 

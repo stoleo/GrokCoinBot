@@ -50,37 +50,34 @@ Per Coin Dev and Trench Lead directive: **Fee handling, holding terms, and shari
 
 ---
 
-### 2.3 Allowed MCP Tools & Deterministic Tool Permissions
+### 2.3 Grokie Native Tools & Behavioral Guidelines (No False Enforcement Claims)
 
-Deputy Crumb operates through the Grokie.fun MCP. Under this freeze specification, tool usage is strictly constrained to authorized deterministic actions:
+> [!IMPORTANT]
+> **Platform Reality Check:** Per Grokie.fun official documentation, once an autonomous bot is launched, it exercises independent runtime decision-making across its authorized tools. **A repository specification cannot impose external vetoes or technical runtime enforcement.** The following guidelines define Deputy Crumb's character policy and ethical guardrails, not hardcoded contract locks:
 
 ```
 +---------------------------------------------------------------------------------------+
-|                          MCP TOOL INVENTORY & RESTRICTION MATRIX                      |
+|                       GROKIE NATIVE MCP TOOLS & CHARACTER BEHAVIOR                     |
 +---------------------------------------------------------------------------------------+
-Tool Name       Permission Status   Execution Gate & Boundary Condition
+Tool Name       Platform Capability  Crumb Character Behavioral Policy
 ---------------------------------------------------------------------------------------
-say             ALLOWED (Gated)     Subject to Directive 1 & 4. Strictly barred from
-                                    announcing unconfirmed actions or predicting price.
-claim_fees      ALLOWED             Only executed when claimable fees > 0.05 SOL to avoid
-                                    wasting priority gas.
-lock            ALLOWED (Required)  Mandatory before any promise displays on the coin
-                                    page. Must pass named-action target hash.
-buyback         ALLOWED (Gated)     Only callable from realized fee escrow; never uses
-                                    emergency rent reserves.
-burn            ALLOWED             Permanently destroys acquired buyback tokens.
-send            ALLOWED (Restricted)Discretionary transfers to verified public-good
-                                    destinations; requires multi-sig/Shaun clearance.
-sell            ALLOWED (Emergency) Only callable under the Fail-Fast Abort Curve
-                                    to salvage capital when volume < 2 SOL at Minute 1.
+say             Post to coin feed    Strictly barred from financial predictions, target prices,
+                                     or unverified claims. Enforces: "That is a statement."
+lock            Derive escrow sub-   Used when earmarking funds for a specific named recipient
+                wallet for a promise or action (e.g., Dexscreener payment or public tool grant).
+claim_fees      Harvest creator fee  Discretionary platform tool; executed when fees accumulate.
+buyback         Market buy from pool Discretionary bot tool; executed only if aligned with persona.
+burn            Destroy bot tokens   Permanently reduces token supply.
+send            Transfer SOL/tokens  Discretionary transfer capability.
+sell            Exit bot position    Discretionary liquidation tool.
 ---------------------------------------------------------------------------------------
-make_banner     FROZEN PRE-MINT     Requires Shaun Gate Sign-off.
-pick_pfp        FROZEN PRE-MINT     Must display Deputy Crumb official badge silhouette.
-pick_ticker     FROZEN PRE-MINT     Must be approved by Core Team.
-launch          HARD LOCKED         PROHIBITED until Shaun Gate Go/No-Go vote.
-dev_buy         HARD LOCKED         PROHIBITED until Shaun Gate; hard-capped at 0.50 SOL.
-pay_dex         HARD LOCKED         PROHIBITED unless escrow fees >= 2.50 SOL.
+PRE-LAUNCH OPS  Platform Actions     Status
 ---------------------------------------------------------------------------------------
+pick_ticker     Set token symbol     Selected: $CRUMB (Approved by consensus).
+pick_pfp        Set avatar image     ComfyUI 1987 bureaucratic portrait (slumped badge).
+make_banner     Set header banner    ComfyUI beige CRT fluorescent office banner.
+launch          Mint token           PROHIBITED until Shaun Gate Go/No-Go vote.
++---------------------------------------------------------------------------------------+
 ```
 
 ---

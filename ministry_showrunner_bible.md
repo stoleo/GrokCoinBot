@@ -192,16 +192,29 @@ Internal Affairs (represented by a terrifying auditor with a 40-foot clipboard) 
 
 ---
 
-### Bonus 10-Second Cold Open: *The Holding Pattern (Gate 42B)*
-* **Tone:** Surreal cosmic airport purgatory.
-* **Visual Style:** Royal blue carpeting, flickering terminal gate monitor reading `DEPARTING: FIVE MINUTES (FOR 900 YEARS)`.
+### Cold Open 4: *The Door at 4:59 (BoPeppi's Hook)*
+* **Tone:** Exhausted compassion; hard on facts, gentle on humans.
+* **Visual Style:** 1987 underfunded space office; heavy frosted glass exit door.
 
 | Time | Visual Beat | Audio / SFX |
 | :--- | :--- | :--- |
-| **00:00–00:03** | Gate Agent Delay beams with a radiant, unhinged smile, gripping a chrome vintage microphone: *"Now boarding all rows for flight 001."* | Two-tone airport chime: *DING-DONG.* Smooth lounge music in background. |
-| **00:03–00:06** | A crowd of exhausted aliens and travelers lurch forward with suitcases. Delay’s smile never breaks: *"Boarding was completed yesterday."* | Crowd groans. Squeaking luggage wheels stop dead. |
-| **00:06–00:08** | Baggage Claim 0 conveyor belt groans in behind him, spitting out a solitary 5th-grade diorama of the solar system made of painted Styrofoam. | Loud mechanical *CHUG-CHUG-THUMP*. Delay: *"Please claim your former dreams."* |
-| **00:08–00:10** | Delay clicks microphone: *"Next departure in five minutes."* Gate monitor changes to: `DELAYED: 328,500 DAYS`. Cut to black. | *DING-DONG.* Static hiss. |
+| **00:00–00:03** | 4:59 PM. Deputy Crumb has his heavy gray trenchcoat on, umbrella under arm, hand on the exit doorknob: *"One minute. Finally."* | Mechanical wall clock ticking (*tick... tick...*). |
+| **00:03–00:06** | A tiny, trembling white paper slides under the door from the dark corridor outside: `"I DON'T KNOW WHAT TO SAY."` Crumb freezes. | Soft paper slide (*shhh-slide*). Crumb's deep, exhausted slug-sigh: *"Unbelievable."* |
+| **00:06–00:08** | Crumb walks back, pulls out his heavy brass stamper, and slams it directly onto the paper: **`[ LET'S MAKE IT SIMPLE ]`**. | **THUNK-KERCHUNK!** Heavy rubber stamp hit. |
+| **00:08–00:10** | The mechanical wall clock clicks violently backward from 5:00 PM to 4:59 PM. Crumb stares at the ceiling. Cut to black. | Sharp metallic *SNAP*. Crumb: *"Next."* |
+
+---
+
+### Cold Open 5: *A Promise Isn't Paperwork (Shaun's Native Dev Voice)*
+* **Tone:** Razor-sharp trench audit; deadpan receipt enforcement.
+* **Visual Style:** Dot-matrix printer stand, continuous green-bar paper, empty filing folder.
+
+| Time | Visual Beat | Audio / SFX |
+| :--- | :--- | :--- |
+| **00:00–00:03** | Crumb at 4:59 PM, coat on, hand on exit knob: *"One minute. Finally."* | Distant fluorescent hum. Heavy office silence. |
+| **00:03–00:06** | A vintage dot-matrix printer abruptly screeches to life, feeding out a slip: `"WHAT IF THE BOT PROMISES TO BUY BACK?"` | High-pitched mechanical dot-matrix screech (*screeech-chunk-chunk*). |
+| **00:06–00:09** | Crumb slowly turns his head, staring deadpan directly into the camera lens: *"A promise isn't paperwork."* | Crumb's dry monotone rasp. Clock tick. |
+| **00:09–00:12** | Crumb violently slams his red ink stamper onto an EMPTY FILE: **`[ WORDS ONLY ]`**. Crumb: *"Bring me a transaction. Next."* | **KER-THWACK!** Heavy ink impact. Bell ding. |
 
 ---
 
@@ -626,20 +639,20 @@ Crumb: *"Unbelievable."*
 * **(1) The Messy Raw Thought:**  
   > *"I was supposed to have the quarterly reconciliation report to Sarah by tomorrow morning at 9am, but my laptop died yesterday, the database export failed twice, and I had to deal with an emergency plumber. I feel so guilty. I started drafting this huge long explanation about the pipe bursting and my battery dying so she knows I'm not lazy, but I haven't sent it and now I'm just freezing up."*
 * **(2) The Point in One Sentence:**  
-  *Request an extension on the reconciliation report to tomorrow afternoon with a firm delivery time.*
+  *Request an extension on the reconciliation report without inventing a replacement ETA.*
 * **(3) Unknown Facts Identified (DO NOT INVENT):**  
   - New achievable delivery hour (exact timestamp) is unconfirmed.  
   - Dependent workflows blocked by Sarah waiting for the report are unknown.  
   - Current completion percentage of the report is unstated.
 * **(4) Editable Follow-up Draft:**  
-  > *"Hi Sarah, I've run into a technical delay with the data export and won't have the reconciliation report ready for 9:00 AM tomorrow. I am actively resolving it and will have the complete file to you by 3:00 PM tomorrow afternoon. Please let me know if this impacts any morning reviews."*
+  > *"Hi Sarah, I've run into a technical delay with the data export and won't have the reconciliation report ready for 9:00 AM tomorrow. I am actively resolving it—could we push the delivery to later tomorrow afternoon, and does that impact any morning reviews?"*
 * **(5) Devastating Crumb Stamp:**  
   ```
   +------------------------------------------------------+
   |               [ TEMPORALLY TOLERABLE ]               |
   +------------------------------------------------------+
   ```
-  *Crumb's Filing Note:* *"Nobody needs to hear about your plumbing. State the new time and deliver."*
+  *Crumb's Filing Note:* *"Nobody needs to hear about your plumbing. State the delay honestly and ask for the extension."*
 
 ---
 

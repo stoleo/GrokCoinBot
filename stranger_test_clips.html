@@ -213,6 +213,7 @@
     <button class="tab-btn" onclick="switchClip(1)">Clip 2: Dept 404</button>
     <button class="tab-btn" onclick="switchClip(2)">Clip 3: Words Only Flip</button>
     <button class="tab-btn" onclick="switchClip(3)">Clip 4: The Door at 4:59 (BoPeppi)</button>
+    <button class="tab-btn" onclick="switchClip(4)">Clip 5: A Promise Isn't Paperwork (Shaun)</button>
   </div>
 
   <div class="crt-cabinet">
@@ -241,7 +242,7 @@
     <p style="color: var(--muted); font-size: 12px; margin-top: 2px;">
       Interactive preview for animatic timing. For the official 20-person test, votes are recorded on an external consented rubric to prevent self-reporting bias.
     </p>
-    <div class="vote-grid">
+    <div class="vote-grid" style="grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));">
       <div class="vote-card" onclick="castVote(1)">
         <h4>📦 Clip 1: The Moth</h4>
         <small>Agency &amp; Laminated Badge</small>
@@ -261,6 +262,11 @@
         <h4>🚪 Clip 4: Door at 4:59</h4>
         <small>Hand on Door → "LET'S MAKE IT SIMPLE"</small>
         <div class="vote-count" id="v4">0 votes</div>
+      </div>
+      <div class="vote-card" onclick="castVote(5)">
+        <h4>📜 Clip 5: Paperwork</h4>
+        <small>Promise ≠ Paperwork → WORDS ONLY</small>
+        <div class="vote-count" id="v5">0 votes</div>
       </div>
     </div>
   </div>
@@ -314,7 +320,8 @@
       "<strong>Beat 1:</strong> Chaos hauls crate 'ABSOLUTELY GUARANTEED'. <strong>Beat 2:</strong> Mason opens inner box 'TRUST ME'. <strong>Beat 3:</strong> Moth flies out, flashes its OWN tiny laminated ID badge. Mason slams: <code>[ACTUALLY A MOTH]</code>.",
       "<strong>Beat 1:</strong> Deputy Crumb glares with dead eyes. <strong>Beat 2:</strong> 'TAKE A NUMBER.' Camera pans: 'NO NUMBERS EXIST.' <strong>Beat 3:</strong> Giant red stamp slams: <code>[DENIED]</code>. Crumb: 'NEXT.'",
       "<strong>Beat 1:</strong> Chaos hypes wild arrows. <strong>Beat 2:</strong> Mason silently steps in holding wooden sign: <code>[WORDS ONLY]</code>. <strong>Beat 3:</strong> Ding rings out; Mason flips sign to <code>[FICTIONAL PROP ATTACHED]</code>. Chaos files it under 'INTERGALACTIC LIVESTOCK'.",
-      "<strong>Beat 1 (BoPeppi):</strong> 4:59 PM. Crumb has coat on, hand on door knob. <strong>Beat 2:</strong> Tiny note slips under door: 'I DON’T KNOW WHAT TO SAY.' Crumb sighs: 'Unbelievable.' <strong>Beat 3:</strong> Crumb slams stamp: <code>[LET’S MAKE IT SIMPLE]</code>. Clock snaps violently back to 4:59 PM."
+      "<strong>Beat 1 (BoPeppi):</strong> 4:59 PM. Crumb has coat on, hand on door knob. <strong>Beat 2:</strong> Tiny note slips under door: 'I DON’T KNOW WHAT TO SAY.' Crumb sighs: 'Unbelievable.' <strong>Beat 3:</strong> Crumb slams stamp: <code>[LET’S MAKE IT SIMPLE]</code>. Clock snaps violently back to 4:59 PM.",
+      "<strong>Beat 1 (Shaun):</strong> 4:59 PM. Crumb with coat on, hand on exit: <em>\"One minute. Finally.\"</em> <strong>Beat 2:</strong> Printer feeds slip: <em>\"WHAT IF THE BOT PROMISES TO BUY BACK?\"</em> <strong>Beat 3:</strong> Crumb turns to camera: <em>\"A promise isn't paperwork.\"</em> <strong>Beat 4:</strong> Slams <code>[WORDS ONLY]</code>: <em>\"Bring me a transaction. Next.\"</em>"
     ];
 
     function switchClip(idx) {
@@ -391,6 +398,7 @@
       else if (currentClip === 1) drawClip2(t);
       else if (currentClip === 2) drawClip3(t);
       else if (currentClip === 3) drawClip4(t);
+      else if (currentClip === 4) drawClip5(t);
     }
 
     function drawWallClock() {
@@ -642,7 +650,90 @@
       }
     }
 
-    const votes = [0, 0, 0, 0];
+    // Clip 5: A Promise Isn't Paperwork (Shaun's Native Dev Voice)
+    function drawClip5(t) {
+      ctx.textAlign = 'center';
+
+      // Office Exit Door & Dot-Matrix Printer Stand
+      ctx.fillStyle = '#42372d';
+      ctx.fillRect(950, 200, 280, 460);
+      ctx.strokeStyle = '#241e18'; ctx.lineWidth = 6;
+      ctx.strokeRect(950, 200, 280, 460);
+
+      // Dot-Matrix Printer on Desk
+      ctx.fillStyle = '#cfc6b4';
+      ctx.fillRect(400, 520, 240, 100);
+      ctx.strokeStyle = '#383228'; ctx.lineWidth = 3;
+      ctx.strokeRect(400, 520, 240, 100);
+      ctx.fillStyle = '#111';
+      ctx.fillRect(430, 540, 180, 12); // Paper feed slot
+
+      // Deputy Crumb Silhouette with Trenchcoat On
+      ctx.fillStyle = '#2d2720';
+      ctx.beginPath(); ctx.arc(830, 420, 52, 0, Math.PI * 2); ctx.fill(); // Head
+      ctx.fillRect(780, 460, 120, 180); // Trenchcoat body
+      
+      // Arm reaching toward doorknob
+      ctx.strokeStyle = '#2d2720'; ctx.lineWidth = 26;
+      ctx.beginPath(); ctx.moveTo(850, 480); ctx.lineTo(970, 455); ctx.stroke();
+
+      // Brass badge
+      ctx.fillStyle = '#f59e0b';
+      ctx.fillRect(805, 490, 40, 55);
+      ctx.fillStyle = '#000'; ctx.font = '900 8px monospace';
+      ctx.fillText('CRUMB', 825, 520);
+
+      // Beat 1 (0-3s): Hand on exit
+      if (t < 3.0) {
+        ctx.font = 'bold 30px "Courier New", monospace';
+        ctx.fillStyle = '#1c1917';
+        ctx.fillText('CRUMB: "ONE MINUTE. FINALLY."', 600, 240);
+      } 
+      // Beat 2 (3-6s): Dot-matrix printer feeds slip
+      else if (t < 6.5) {
+        // Continuous green-bar printer paper spitting out
+        const paperY = Math.min(480, 540 - (t - 3.0) * 30);
+        ctx.fillStyle = '#f0fff4';
+        ctx.fillRect(440, paperY, 160, 80);
+        ctx.strokeStyle = '#15803d'; ctx.lineWidth = 2;
+        ctx.strokeRect(440, paperY, 160, 80);
+        ctx.font = 'bold 10px monospace'; ctx.fillStyle = '#15803d';
+        ctx.fillText('PROMISE: BUYBACK 100%', 520, paperY + 45);
+
+        ctx.font = 'bold 26px "Courier New", monospace';
+        ctx.fillStyle = '#1c1917';
+        ctx.fillText('Printer feeds: "WHAT IF THE BOT PROMISES TO BUY BACK?"', 650, 240);
+      } 
+      // Beat 3 (6.5-9s): Turns deadpan to camera
+      else if (t < 9.0) {
+        ctx.font = 'bold 32px "Courier New", monospace';
+        ctx.fillStyle = '#1c1917';
+        ctx.fillText('Crumb stares into camera:', 600, 230);
+        ctx.font = 'italic 28px "Courier New", monospace';
+        ctx.fillStyle = '#78350f';
+        ctx.fillText('"A promise isn\'t paperwork."', 600, 275);
+      } 
+      // Beat 4 (9-12s): Slams WORDS ONLY onto empty file
+      else {
+        if (Math.abs(t - 9.0) < 0.05) playBeep('stamp');
+        
+        ctx.save();
+        ctx.translate(620, 260);
+        ctx.rotate(-0.06);
+        ctx.strokeStyle = '#b91c1c'; ctx.lineWidth = 8;
+        ctx.strokeRect(-220, -45, 440, 90);
+        ctx.font = '900 42px "Courier New", monospace';
+        ctx.fillStyle = '#b91c1c';
+        ctx.fillText("WORDS ONLY", 0, 14);
+        ctx.restore();
+
+        ctx.font = '900 28px "Courier New", monospace';
+        ctx.fillStyle = '#1c1917';
+        ctx.fillText('"BRING ME A TRANSACTION. NEXT."', 620, 360);
+      }
+    }
+
+    const votes = [0, 0, 0, 0, 0];
     function castVote(num) {
       votes[num - 1]++;
       document.getElementById('v' + num).innerText = `${votes[num - 1]} votes`;
