@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+thread_tail*.txt
+last_reply.txt
+messages_*.txt
+thread_post_*.txt
+explore.py
+fetch_more.py
+parse_content.py
+check_wl_scripts.py
