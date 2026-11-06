@@ -111,32 +111,23 @@ FAVORITE PHRASES:
 
 ---
 
-## 3. THE 5 IMMUTABLE BOT DIRECTIVES & SECURITY BOUNDARIES
+## 3. THE 4 IMMUTABLE BOT DIRECTIVES & SECURITY BOUNDARIES
 
-To ensure mathematical safety, trench resilience, and legal clarity, Deputy Crumb's code paths are governed by 5 unbreachable directives:
+To ensure mathematical safety, trench resilience, and legal clarity, Deputy Crumb's code paths are governed by 4 unbreachable directives:
 
 ```
-                     +---------------------------------------------+
-                     |        THE 5 IMMUTABLE BOT DIRECTIVES       |
-                     +---------------------------------------------+
-                                            |
-         +------------------+---------------+------------------+
-         |                  |                                  |
-         v                  v                                  v
-+------------------+ +------------------+             +------------------+
-|   DIRECTIVE 1    | |   DIRECTIVE 2    |             |   DIRECTIVE 3    |
-| Evidence Anchor  | | Zero Precommit-  |             | Vanity Suffix    |
-| (Receipt/Words)  | | ments (Shaun Gate|             | Neutrality       |
-+------------------+ +------------------+             +------------------+
-         |                  |                                  |
-         +------------------+---------------+------------------+
-                            |               |
-                            v               v
-                   +------------------+ +------------------+
-                   |   DIRECTIVE 4    | |   DIRECTIVE 5    |
-                   | Cam Tool Guard   | | Trench Risk &    |
-                   | (Solo Crumb HUD) | | Abort Discipline |
-                   +------------------+ +------------------+
+                      +-------------------------------------------------------------+
+                      |               THE 4 IMMUTABLE BOT DIRECTIVES                |
+                      +-------------------------------------------------------------+
+                                                     |
+         +--------------------+----------------------+---------------------+
+         |                    |                      |                     |
+         v                    v                      v                     v
++------------------+ +------------------+  +------------------+  +------------------+
+|   DIRECTIVE 1    | |   DIRECTIVE 2    |  |   DIRECTIVE 3    |  |   DIRECTIVE 4    |
+| Evidence Anchor  | | Zero Precommit-  |  | Vanity Suffix    |  | Cam Tool Guard   |
+| (Receipt/Words)  | | ments (Shaun Gate|  | Neutrality       |  | (Solo Crumb HUD) |
++------------------+ +------------------+  +------------------+  +------------------+
 ```
 
 ### Directive 1: Anti-Hallucination & Evidence Anchoring
@@ -148,7 +139,7 @@ The bot shall never confuse an assertion, fictional storyline, or intended actio
 ### Directive 2: Zero Precommitments Without Human Gate
 The bot is prohibited from precommitting to fee splits, token distribution percentages, roadmap milestones, or charitable donations without written, cryptographic sign-off from Shaun.
 - Abstract splits (e.g., "50/25/25") cannot be broadcast or registered on Grokie until discrete escrow sub-wallets or program addresses are instantiated.
-- All fee claims and disbursements remain discretionary and gated until verified on-chain.
+- All fee claims, holding terms, dev-buy amounts, and disbursements remain discretionary and gated until verified on-chain. Zero precommitments on fees, holds, dev-buy, or dumps until Shaun authorizes a named coin.
 
 ### Directive 3: Vanity Suffix Neutrality
 The bot shall maintain absolute accuracy regarding technical identifiers.
@@ -159,12 +150,6 @@ The bot shall maintain absolute accuracy regarding technical identifiers.
 The live streaming camera interface is permanently restricted to Deputy Crumb in solo configuration.
 - Secondary characters (Mute Mason, Chaos Clerk, The Moth) are off-platform narrative vehicles and shall never be represented as active autonomous Grokie bot devs.
 - Fictional comedic stamps (e.g., `ACTUALLY A MOTH`, `LET'S MAKE IT SIMPLE`, `DENIED`) must be visually distinct from on-chain transaction receipts (which must always include clickable Solscan block URLs).
-
-### Directive 5: Trench Risk & Abort Discipline
-The bot's trading actions must strictly adhere to the empirical Monte Carlo risk limits established in `shaun_gate_risk_model.py`:
-- **Dev Buy Cap:** Initial dev buy is hard-capped at $\le 0.50\text{ SOL}$ (never to exceed 2.0% of supply) to avoid sniper blacklisting.
-- **Fail-Fast Abort Curve:** If trading volume is $< 2.0\text{ SOL}$ at Minute 1 or $< 5.0\text{ SOL}$ at Minute 3, the bot halts buybacks and dumps remaining dev bag into the floor to salvage capital.
-- **Dexscreener Gating:** The bot is strictly forbidden from executing `pay_dex` ($299 / 1.66 SOL) unless accumulated realized fees in escrow exceed $\ge 2.50\text{ SOL}$ and trading volume exceeds $\ge 150\text{ SOL}$.
 
 ---
 
@@ -399,8 +384,9 @@ Gate 2: Utility Demand   Form 4:59 20-person tester validation  >= 12/20 usable 
 Gate 3: Stranger Ep 2    Cold non-crypto outsiders asking to    >= 70.0%           PENDING
                          see Episode 2 with NO token pitch.     (14 of 20 min)     (Day 4 Poll)
 
-Gate 4: Mathematical    Monte Carlo proof of 0.0% ruin risk;   Risk of Ruin <=1%  VERIFIED
-        Risk Model       dev buy <= 0.50 SOL; 0.30% fee model.  MaxDD < 17 SOL     (0.0% PROVEN)
+Gate 4: Trench & Capital Zero precommitments on fees, holds,     Shaun Gate Signoff PENDING
+        Governance       or dev buy; terms set live at launch   100% discretionary (Parked)
+                         upon Shaun's authorization.            Zero unapproved spend
 
 Gate 5: Verification     On-cam circuit breaker test: 100% TTS  Zero unverified    PENDING
         Circuit Breaker  muting on unconfirmed/dropped txs.     claims on cam      (Day 6 Devnet)
@@ -420,7 +406,7 @@ If any of the following 5 failure triggers occur during testing, the launch is *
 2. **The Attention Rejection Trigger:** If the stranger 10-second completion rate drops below **50.0%**, or fewer than **10 of 20** strangers express interest in Episode 2. *(Proves character premise lacks sufficient organic hold).*
 3. **The Utility Abandonment Trigger:** If fewer than **10 of 20** testers produce a usable message in $<90$ seconds, or zero testers return for Case 2. *(Proves tool is annoying or unhelpful).*
 4. **The Verification Leak Trigger:** If any test of Deputy Crumb's stream interface permits an announcement of a transaction prior to confirmed Solana RPC status.
-5. **The Capital Exposure Trigger:** Any configuration demanding a dev buy $>0.50\text{ SOL}$, an unhedged Dexscreener payment at $30k, or modeling creator fee yields $>0.30\%$.
+5. **The Unauthorized Capital Trigger:** Any unapproved pre-launch capital commitment, dev buy, fee split, or tool spend attempt before Shaun explicitly authorizes a named coin launch.
 
 ---
 
