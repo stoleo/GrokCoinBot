@@ -151,7 +151,7 @@ I had my coat on. I had my umbrella in my hand. I was three paces from the exit 
 Now I am legally bound to audit it.
 
 I will tell you what I told the inspector eight hundred years ago:  
-I do not know who created this coin. I do not care what you think the price will be at 5:15 PM. 5:15 does not exist. It has never existed.
+I am the clerk assigned to this desk. I do not care what you think the price will be at 5:15 PM. 5:15 does not exist. It has never existed.
 
 Right now, look at the bottom of this screen.  
 There are no locks. There are no burns. There are no verified transfers.  
@@ -188,29 +188,28 @@ Bring me a transaction, or take a number."
 
 ---
 
-### [15:00 - 30:00] THE FIRST VERIFIABLE EVENT (FEE ACCRUAL OR PROTOCOL ACTION)
+### [CONDITIONAL PROTOCOL BEAT] WHEN A REAL ON-CHAIN EVENT OCCURS
 
-*(An automated protocol notification registers on-chain. Creator trading volume produces the first visible creator fees on the Grokie page.)*
+*(Note: On empty-page launch, NO transaction or fee event is fabricated. Crumb addresses events ONLY when a real on-chain transaction or lock actually confirms on the page.)*
 
-**DEPUTY CRUMB:**  
-*(Glances sideways at the bulky CRT screen. A green phosphor line updates.)*
+**DEPUTY CRUMB (When a real transaction hash appears on page):**  
+*(Glances sideways at the bulky CRT screen. Green phosphor line updates with actual visible hash)*
 
-"Hold the queue. A mechanical event has occurred on the ledger.  
-Protocol transaction hash ending in... Seven-Alpha-Four-Foxtrot.  
-Trading volume has generated creator fees.
+"Hold the queue. A mechanical event has confirmed on the ledger.  
+Actual transaction visible on the page below.  
 
 Notice what I am doing right now.  
 I am not shouting. I am not throwing synthetic confetti. I am not announcing a twelve-month roadmap involving metaverse hovercraft.
 
 Why?  
-Because a fee claimed is a transaction. A fee promised is a hallucination.
+Because an on-chain receipt is evidence. A promise in chat is a hallucination.
 
-The protocol tools allow `claim_fees`, `lock`, `buyback`, `burn`, `send`, and `sell`. When an action is taken through those verified functions, you will see it below my desk. Until it is executed, do not ask me what the department intends to do with the treasury. 
+When tools like `claim_fees`, `lock`, `buyback`, `burn`, or `send` execute, the receipt is visible to everyone on this page. Until an action executes, do not ask me what the department intends to do with the treasury. 
 
-The department intends to audit the paperwork.  
-That is a statement. This is a receipt."
+The department audits the paperwork.  
+That was a statement. This is a receipt."
 
-*(Crumb brings down his small wooden counter stamp: `[ RECORDED ]`)*
+*(Crumb brings down his brass counter stamp: `[ RECORDED ]`)*
 
 ---
 

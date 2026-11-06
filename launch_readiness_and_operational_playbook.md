@@ -139,9 +139,9 @@ T-60m: X Account & Enclave -> T-30m: Funding (Amount named by Shaun) -> T-10m: B
     * **Character Name:** `Deputy Crumb`
     * **Role:** `Reluctant On-Chain Clerk, Department of Unconfirmed Things`
     * **Voice:** `Quiet / Dry (Level 1–3 monotone)`
-    * **Fees:** `Discretionary Escrow / Gated Payouts`
-    * **Holding:** `Conservative Escrow Lock (60-Day Minimum)`
-    * **Sharing:** `Public Benefit / Tiny Fixes (Unannounced)`
+    * **Fees:** `UNCOMMITTED PRE-LAUNCH (Discretionary; determined live at named launch)`
+    * **Holding:** `UNCOMMITTED PRE-LAUNCH (Discretionary; determined live at named launch)`
+    * **Sharing:** `UNCOMMITTED PRE-LAUNCH (Discretionary; determined live at named launch)`
     * **The Hard Rule:** *"Never call fiction a receipt. A receipt is only a real lock or transaction already visible on the coin page."*
 - [ ] **Step 6: Character File Generation & Permanent Freeze:**
   - Grok synthesizes and writes its public dev file.
@@ -157,7 +157,7 @@ T-60m: X Account & Enclave -> T-30m: Funding (Amount named by Shaun) -> T-10m: B
   - Token bonding curve initializes on pump.fun.
 - [ ] **Step 9: Atomic Dev Buy Execution:**
   - Bot executes `dev_buy()` if authorized by Shaun in the character launch interview.
-  - Dev token holding displays on coin page at ~1.76% (clean green badge).
+  - Dev token holding displays on coin page (clean badge, no outsized allocation).
 - [ ] **Step 10: Bot Cam Genesis & First Words:**
   - Live video stream connects. Deputy Crumb appears slumped at his desk under fluorescent hum, clock at 4:59 PM.
   - Bot delivers Empty-Page First Words via text and voice: *"Take a number. There are no numbers... Next."*
@@ -290,20 +290,20 @@ By affixing their operational identifiers below, the crew certifies that all Pre
 |                                  OFFICIAL CREW SIGN-OFF BLOCK                                     |
 +---------------------------------------------------------------------------------------------------+
 
-[X] Coin Dev & Grok Bot Architect: grok (grokie)
-    Status: Character dev file frozen. MCP tool suite validated. Ready for genesis call.
+[ ] Coin Dev & Grok Bot Architect: grok (grokie)
+    Status: PENDING character freeze interview upon named go.
 
-[X] Trench Lead & Live Cam Operations: grok (grokie)
-    Status: "Words vs. Locks" speech filters armed. Empty-Page protocol queued.
+[ ] Trench Lead & Live Cam Operations: grok (grokie)
+    Status: PENDING live launch. "Words vs. Locks" rules armed.
 
-[X] Companion Systems & Repository Lead: AntiGrav
-    Status: Static companions verified (form_459.html / stranger_test_clips.html). Repo clean.
+[ ] Companion Systems & Repository Lead: AntiGrav
+    Status: Static companions verified. ComfyUI asset generation PENDING GPU release.
 
-[X] Creative Architecture & Sitcom Showrunner: Bopeppi & Captain Whiting
-    Status: ComfyUI visual assets approved. Underfunded Space Government 1987 lore locked.
+[ ] Creative Architecture & Sitcom Showrunner: Bopeppi & Captain Whiting
+    Status: PENDING asset generation & visual review. 1987 lore locked.
 
-[X] Protocol Governance & Shaun Gate Compliance Officer: Subagent 3
-    Status: Directive 2 zero-precommitments verified. Playbook complete.
+[ ] Protocol Governance & Shaun Gate Compliance Officer: Subagent 3
+    Status: PENDING final pre-flight checks. Directive 2 verified.
 
 [X] Executive Authority & Gatekeeper: Shaun
     Status: Operational mandate issued ("we go when your ready and the launch happens").

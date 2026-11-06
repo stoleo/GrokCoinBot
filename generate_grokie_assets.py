@@ -21,7 +21,7 @@ COMFY_CLI = r"C:\Projects\Skills\skills\comfyui\scripts\comfy.py"
 TEMPLATES_DIR = r"C:\Projects\Skills\skills\comfyui-craft\templates\api"
 OUTPUT_DIR = Path(r"C:\Projects\GrokCoinBot\assets")
 
-# Exact Workflow Template Mappings
+# Workflow Template Mappings
 TEMPLATE_STILL_HERO = os.path.join(TEMPLATES_DIR, "img_klein.json")          # FLUX 3 Klein Base (Photoreal Picture, Fast)
 TEMPLATE_STILL_TURBO = os.path.join(TEMPLATES_DIR, "img_zimage.json")        # Z-Image Turbo (8-step fast iteration)
 TEMPLATE_VIDEO_TALKING = os.path.join(TEMPLATES_DIR, "vid_h3_t2v.json")      # MiniMax H3 Talking Shot with Sound
@@ -33,55 +33,90 @@ ASSET_MANIFEST = {
         "type": "still",
         "width": 1024,
         "height": 1024,
-        "format": "webp",
+        "format": "png",
         "template": "img_klein",
         "prompt": (
-            "A cinematic character portrait of Deputy Crumb, an underfunded space government clerk in 1987. "
-            "A tired alien bureaucrat with slightly squashed crescent-moon silhouette, three heavy tired multi-lidded eyes, "
-            "wearing an oversized faded gray trenchcoat with an enormous heavy brass employee badge labeled 'STAFF / DEPT 404'. "
-            "Sitting at an administrative counter under a buzzing fluorescent ceiling fixture. "
-            "On the desk is a vintage red digital clock locked at '04:59'. "
-            "Retro aesthetic, Kodak 35mm film grain, 1980s low-budget sci-fi cinema style, warm beige and sepia office tones. "
-            "1024x1024 square framing with subject centered and ample circular safety margin."
+            "35mm film portrait of Deputy Crumb, an exhausted alien postal clerk in an underfunded space government office in 1987. "
+            "Squashed rounded alien silhouette with three heavy drooping tired multi-lidded eyes, deadpan unbothered expression. "
+            "Wearing a rumpled faded taupe trenchcoat over a dingy cream collared shirt with a crooked skinny tie, "
+            "and an oversized tarnished heavy brass employee badge pinned askew engraved 'DEPUTY CRUMB #404'. "
+            "Sitting at an administrative counter under cool flickering fluorescent tube lighting. "
+            "On the desk is the edge of a mechanical industrial round wall clock locked at 04:59 PM. "
+            "Muted pea-green and beige institutional walls with watermarks, Terry Gilliam Brazil retro cinematic aesthetic, Kodak 1980s film grain. "
+            "1024x1024 square framing with subject centered within circular avatar safe zone."
         ),
         "seed": 4041987
     },
-    "banner": {
-        "id": "crumb_banner_1500x500",
+    "desk_still": {
+        "id": "crumb_desk_still_1920x1080",
         "type": "still",
-        "width": 1536,
-        "height": 512,  # Multiples of 16 for standard 3:1 banner ratio
-        "format": "webp",
+        "width": 1920,
+        "height": 1080,
+        "format": "png",
         "template": "img_klein",
         "prompt": (
-            "Wide panoramic establishing photograph of Department 404, The Ministry of Unconfirmed Things, 1987. "
-            "An archaic administrative office with frosted wire-reinforced glass partitions, beige filing cabinets, and manila folders. "
-            "On the counter to the left sits an enormous leaning tower of paper labeled 'STATEMENTS (UNVERIFIED)'. "
-            "To the right sits an empty tiny brass tray labeled 'RECEIPTS (CONFIRMED)'. "
-            "In the center, Deputy Crumb is slumped behind the desk, wearing a gray coat halfway on with an umbrella hooked on his arm. "
-            "A mechanical wall clock in background clearly displays '04:59 PM'. "
-            "Dust particles drifting under harsh fluorescent tube lighting. Highly detailed 35mm film photography."
+            "Cinematic wide 16:9 shot of Department 404 intake station, an underfunded interstellar postal bureau in 1987. "
+            "Deputy Crumb in a rumpled faded taupe trenchcoat and brass badge 'DEPUTY CRUMB #404' sits slumped behind a scratched dark oak clerk counter. "
+            "Teetering precarious towers of yellowed carbon forms labeled 'STATEMENTS (UNVERIFIED)' rise toward the ceiling on the left, "
+            "while a tiny brass tray on the right labeled 'RECEIPTS (CONFIRMED)' holds a single voucher. "
+            "Heavy cast-iron brass stamper on red ink blotter. Bulky cream CRT monitor glowing green monochrome phosphor text 'STATUS: BACKLOG 800 YRS'. "
+            "A mechanical industrial round wall clock with black metal rim prominently displays exactly 04:59 PM. "
+            "Flickering fluorescent ceiling tube casting cool ambient green-white glow on drab pea-green watermarked walls, Terry Gilliam Brazil film still, 35mm grain."
         ),
         "seed": 4041988
     },
-    "animatic_stream_bg": {
+    "banner": {
+        "id": "crumb_banner_1536x512",
+        "type": "still",
+        "width": 1536,
+        "height": 512,
+        "format": "png",
+        "template": "img_klein",
+        "prompt": (
+            "Panoramic 3:1 establishing shot of Department 404 administrative counter, The Ministry of Unconfirmed Things, 1987. "
+            "Frosted wire-reinforced glass partitions and beige filing cabinets behind the counter. "
+            "To the left: leaning tower of paper labeled 'STATEMENTS (UNVERIFIED)'. To the right: tiny brass tray labeled 'RECEIPTS (CONFIRMED)'. "
+            "In the center: Deputy Crumb slumped in a rumpled faded taupe trenchcoat with heavy brass badge 'DEPUTY CRUMB #404', staring at the clock. "
+            "A mechanical industrial round wall clock on the wall displays exactly 04:59 PM. Harsh fluorescent tube lighting, drab pea-green walls, 35mm film photography."
+        ),
+        "seed": 4041989
+    },
+    "clip5": {
+        "id": "crumb_clip5_promise_isnt_paperwork",
+        "type": "video",
+        "width": 1280,
+        "height": 720,
+        "length_frames": 252,
+        "fps": 24,
+        "format": "mp4",
+        "template": "vid_h3_t2v",
+        "prompt": (
+            "Cinematic retro 1987 bureaucratic scene. Deputy Crumb in a rumpled faded taupe trenchcoat and brass badge 'DEPUTY CRUMB #404' "
+            "has his hand on the office exit doorknob, muttering 'One minute. Finally.' "
+            "A vintage dot-matrix printer suddenly screeches and spits continuous green-bar paper reading 'PROMISE: BUYBACK 100%'. "
+            "Crumb freezes, turns with glacial slowness, shuffles back to his oak desk, stares deadpan directly into the camera lens: 'A promise isn't paperwork.' "
+            "He forcefully slams a heavy brass stamper down, creating a bold red ink mark: '[ WORDS ONLY ]'. Crumb: 'Bring me a transaction. Next.' "
+            "Fluorescent light flicker, mechanical printer screech, heavy metal stamper thud."
+        ),
+        "seed": 4041990
+    },
+    "stream_bg_loop": {
         "id": "crumb_stream_bg_loop_5s",
         "type": "video",
         "width": 1280,
-        "height": 704,  # Multiple of 32 for Wan / H3
+        "height": 704,
         "length_frames": 121,
         "fps": 24,
         "format": "mp4",
         "template": "vid_h3_t2v",
         "prompt": (
-            "Deputy Crumb sitting behind the Department 404 counter at 4:59 PM, looking exhausted. "
-            "Fixed camera. Fluorescent tube light softly flickers above. "
-            "Crumb blinks his heavy multi-lidded eyes slowly in succession, sighs a faint puff of administrative dust, "
-            "and taps his fingers once on the desk blotting pad. "
-            "The red clock in corner flickers between 4:58 and 4:59 PM. "
-            "Audio: Gentle fluorescent light hum, distant clock tick, faint sigh, mechanical stamp thud."
+            "Deputy Crumb sitting behind the Department 404 clerk counter at 04:59 PM, looking exhausted in his rumpled taupe trenchcoat with brass badge 'DEPUTY CRUMB #404'. "
+            "Fixed locked-off camera. Fluorescent tube light softly flickers above pea-green watermarked walls. "
+            "Crumb blinks his heavy multi-lidded eyes slowly in deliberate sequence, sighs a faint puff of administrative dust, and taps his fingers once on the desk blotting pad. "
+            "A mechanical industrial round wall clock in corner reads 04:59 PM. "
+            "Audio: Gentle 60Hz fluorescent hum, distant clock tick, faint sigh, heavy mechanical stamp thud. Seamless 5-second loop."
         ),
-        "seed": 4041989
+        "seed": 4041991
     }
 }
 

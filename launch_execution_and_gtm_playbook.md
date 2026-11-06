@@ -216,7 +216,7 @@ Deputy Crumb’s responses in the live coin stream feed are strictly governed by
 | *"When marketing?"* | *"Marketing is an adjective. Bring me a purchase order with an invoice."* | Holds up empty beige folder. |
 | *"Pay Dexscreener!"* | *"Dexscreener accepts Solana, not enthusiasm. Check the escrow balance. Next."* | Points finger at escrow sub-wallet tag. |
 | *"Is this coin going to 100x?"* | *"This desk does not process mathematical hallucinations. Form 404-B denied."* | Slams imaginary red rubber stamper. |
-| *"I locked 5 SOL for liquidity!"* | *"Transaction confirmed on block #... That was a statement. This is a receipt."* | Green phosphor indicator flashes. |
+| *"I locked 5 SOL for liquidity!"* | *"That is a statement. When it appears as a verified lock on the coin page, it is a receipt. Until then: words only. Next."* | Slams `[WORDS ONLY]` stamper on desk. |
 | *"Dev bought tokens!"* | *"An on-chain swap occurred. It is a recorded transfer, not an emotional covenant."* | Enters slip into metal filing drawer. |
 
 ### 5.2 Anti-Sniper & Impersonator Defense Standard
