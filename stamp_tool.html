@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Department 404 — Official Verification Stamp Counter</title>
+  <style>
+    :root {
+      --wall-bg: #d7d0c0;
+      --wall-dark: #c4bcab;
+      --folder-bg: #ebe3d3;
+      --folder-border: #9e917d;
+      --paper: #f7f3eb;
+      --ink: #1c1917;
+      --typewriter: 'Courier New', Courier, monospace;
+      --stamp-red: #b91c1c;
+      --stamp-green: #15803d;
+      --stamp-purple: #6b21a8;
+      --muted: #645e54;
+      --brass: #b45309;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--wall-bg);
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(255, 255, 240, 0.65) 0%, transparent 60%),
+        repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 0, 0, 0.025) 3px);
+      color: var(--ink);
+      font-family: var(--typewriter);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 24px 16px 60px 16px;
+    }
+
+    .fixture {
+      width: 100%;
+      max-width: 800px;
+      background: #eee8d8;
+      border: 1px solid #b8af9e;
+      border-bottom: 3px solid #8f8573;
+      padding: 8px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      font-weight: bold;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #524b40;
+      margin-bottom: 20px;
+    }
+
+    .counter-card {
+      width: 100%;
+      max-width: 800px;
+      background: var(--folder-bg);
+      border: 2px solid var(--folder-border);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+
+    h1 {
+      font-size: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 6px;
+      color: #292524;
+    }
+    .subtitle {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+
+    .input-group {
+      margin-bottom: 18px;
+    }
+    label {
+      display: block;
+      font-size: 11px;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 6px;
+      color: #44403c;
+    }
+    textarea, input[type="text"] {
+      width: 100%;
+      padding: 10px 12px;
+      font-family: var(--typewriter);
+      font-size: 14px;
+      background: var(--paper);
+      border: 1px solid #a8a29e;
+      color: var(--ink);
+      resize: vertical;
+    }
+    textarea:focus, input[type="text"]:focus {
+      outline: 2px solid var(--brass);
+      background: #fff;
+    }
+
+    .stamp-selector {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .stamp-btn {
+      padding: 12px;
+      font-family: var(--typewriter);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.05em;
+      border: 2px dashed #a8a29e;
+      background: #f5f5f4;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.15s;
+    }
+    .stamp-btn:hover {
+      background: #e7e5e4;
+      transform: translateY(-1px);
+    }
+    .stamp-btn.active {
+      border: 2px solid var(--stamp-red);
+      background: #fef2f2;
+      color: var(--stamp-red);
+    }
+    .stamp-btn.receipt.active {
+      border-color: var(--stamp-green);
+      background: #f0fdf4;
+      color: var(--stamp-green);
+    }
+    .stamp-btn.moth.active {
+      border-color: var(--stamp-purple);
+      background: #faf5ff;
+      color: var(--stamp-purple);
+    }
+
+    .voucher-preview {
+      width: 100%;
+      max-width: 800px;
+      background: #fff;
+      border: 1px solid #d6d3d1;
+      padding: 24px;
+      position: relative;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      margin-bottom: 20px;
+      background-image: repeating-linear-gradient(0deg, #fff, #fff 24px, #f1f5f9 25px);
+    }
+
+    .voucher-header {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 2px solid #292524;
+      padding-bottom: 8px;
+      margin-bottom: 16px;
+      font-size: 11px;
+      font-weight: bold;
+    }
+    .voucher-claim {
+      font-size: 16px;
+      line-height: 1.6;
+      margin-bottom: 24px;
+      min-height: 60px;
+      white-space: pre-wrap;
+    }
+    .voucher-footer {
+      display: flex;
+      justify-content: space-between;
+      border-top: 1px dashed #78716c;
+      padding-top: 10px;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    /* Red Stamp Overlay */
+    .stamp-mark {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(-7deg);
+      border: 5px solid var(--stamp-red);
+      color: var(--stamp-red);
+      font-size: 32px;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 10px 24px;
+      border-radius: 4px;
+      pointer-events: none;
+      mask-image: radial-gradient(circle, black 70%, rgba(0,0,0,0.4) 100%);
+      opacity: 0.92;
+      transition: transform 0.1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .stamp-mark.receipt {
+      border-color: var(--stamp-green);
+      color: var(--stamp-green);
+    }
+    .stamp-mark.moth {
+      border-color: var(--stamp-purple);
+      color: var(--stamp-purple);
+    }
+
+    .action-row {
+      display: flex;
+      gap: 12px;
+    }
+    .btn {
+      padding: 12px 24px;
+      font-family: var(--typewriter);
+      font-size: 13px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      border: 1px solid #78716c;
+      background: #292524;
+      color: #fafaf9;
+      box-shadow: 0 4px 0 #0c0a09;
+      transition: all 0.1s;
+    }
+    .btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 5px 0 #0c0a09;
+    }
+    .btn:active {
+      transform: translateY(2px);
+      box-shadow: 0 1px 0 #0c0a09;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="fixture">
+    <span>The Ministry of Unconfirmed Things · Dept 404</span>
+    <span>Clock: 04:59 PM (Perpetual)</span>
+  </div>
+
+  <div class="counter-card">
+    <h1>Official Verification Stamp Counter</h1>
+    <p class="subtitle">"That is a statement. This is a receipt. They do not share a room." — Deputy Crumb</p>
+
+    <div class="input-group">
+      <label for="claimInput">Enter Unverified Statement or Promise:</label>
+      <textarea id="claimInput" rows="3" placeholder="e.g. 'Dev bag locked for 60 days, buyback at $30k, trust the process!'">"We are going to buy back 100% of the supply and burn it tomorrow."</textarea>
+    </div>
+
+    <div class="input-group">
+      <label for="submitterInput">Filing Party / Influencer Handle (Optional):</label>
+      <input type="text" id="submitterInput" value="@AnonymousTrader">
+    </div>
+
+    <label>Select Departmental Stamp:</label>
+    <div class="stamp-selector">
+      <button class="stamp-btn active" onclick="selectStamp('WORDS ONLY', 'red')">[ WORDS ONLY ]</button>
+      <button class="stamp-btn receipt" onclick="selectStamp('RECEIPT ATTACHED', 'receipt')">[ RECEIPT ATTACHED ]</button>
+      <button class="stamp-btn" onclick="selectStamp('RETURN TO SENDER', 'red')">[ RETURN TO SENDER ]</button>
+      <button class="stamp-btn moth" onclick="selectStamp('ACTUALLY A MOTH', 'moth')">[ ACTUALLY A MOTH ]</button>
+    </div>
+
+    <label>Voucher Preview (Right-Click or Click Below to Export):</label>
+    <div class="voucher-preview" id="voucher">
+      <div class="voucher-header">
+        <span>MINISTRY FORM 88-X · INTAKE VOUCHER</span>
+        <span id="filingPartyDisplay">PARTY: @AnonymousTrader</span>
+      </div>
+      <div class="voucher-claim" id="voucherClaimDisplay">"We are going to buy back 100% of the supply and burn it tomorrow."</div>
+      <div class="voucher-footer">
+        <span>STATION: DEPT 404</span>
+        <span>AUDITOR: DEPUTY CRUMB</span>
+        <span>TIME: 04:59 PM</span>
+      </div>
+      <div class="stamp-mark" id="stampMark">[ WORDS ONLY ]</div>
+    </div>
+
+    <div class="action-row">
+      <button class="btn" onclick="slamStamp()">Slam Stamp 🔨</button>
+      <button class="btn" style="background:#0284c7;" onclick="copyVoucherText()">Copy Quote Tweet 📋</button>
+    </div>
+  </div>
+
+  <script>
+    let currentStamp = 'WORDS ONLY';
+    let currentStyle = 'red';
+
+    const claimInput = document.getElementById('claimInput');
+    const submitterInput = document.getElementById('submitterInput');
+    const voucherClaimDisplay = document.getElementById('voucherClaimDisplay');
+    const filingPartyDisplay = document.getElementById('filingPartyDisplay');
+    const stampMark = document.getElementById('stampMark');
+
+    claimInput.addEventListener('input', () => {
+      voucherClaimDisplay.innerText = claimInput.value || '"(No statement filed)"';
+    });
+    submitterInput.addEventListener('input', () => {
+      filingPartyDisplay.innerText = 'PARTY: ' + (submitterInput.value || 'ANONYMOUS');
+    });
+
+    function selectStamp(stampText, styleClass) {
+      currentStamp = stampText;
+      currentStyle = styleClass;
+      document.querySelectorAll('.stamp-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.innerText.includes(stampText));
+      });
+      stampMark.innerText = `[ ${stampText} ]`;
+      stampMark.className = 'stamp-mark ' + (styleClass !== 'red' ? styleClass : '');
+      slamStamp();
+    }
+
+    function slamStamp() {
+      // Audio click via Web Audio API
+      try {
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'square';
+        osc.frequency.setValueAtTime(140, audioCtx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(30, audioCtx.currentTime + 0.12);
+        gain.gain.setValueAtTime(0.4, audioCtx.currentTime);
+        gain.gain.linearRampToValueAtTime(0.01, audioCtx.currentTime + 0.12);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.14);
+      } catch (e) {}
+
+      // Physical animation slam
+      const randomRot = (Math.random() * 8 - 4).toFixed(1);
+      stampMark.style.transform = `translate(-50%, -50%) scale(1.4) rotate(${randomRot}deg)`;
+      setTimeout(() => {
+        stampMark.style.transform = `translate(-50%, -50%) scale(1.0) rotate(${randomRot}deg)`;
+      }, 70);
+    }
+
+    function copyVoucherText() {
+      const text = `STATEMENT: ${claimInput.value}\n\nSTAMP: [ ${currentStamp} ]\nAUDITOR: Deputy Crumb (Dept 404)\n\n"That is a statement. This is a receipt. Bring me a transaction. Next."`;
+      navigator.clipboard.writeText(text).then(() => {
+        alert('Copied to clipboard! Ready to paste as quote tweet on X.');
+      });
+    }
+  </script>
+</body>
+</html>

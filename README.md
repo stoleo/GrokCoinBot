@@ -58,6 +58,11 @@ To prove the narrative stands on its own **without any token pitch, wallet, or c
    - *Beat 2 (3–6s):* Dot-matrix printer feeds out a slip: *"WHAT IF THE BOT PROMISES TO BUY BACK?"*
    - *Beat 3 (6–9s):* Crumb turns deadpan to camera: *"A promise isn't paperwork."*
    - *Beat 4 (9–12s):* Slams **`[WORDS ONLY]`** onto empty file: *"Bring me a transaction. Next."*
+6. **Clip 6: The Scarf & The Moth (BoPeppi 12-Second Creative Punch-Up)**
+   - *Beat 1 (0–3s):* 4:59 PM. Crumb has coat on. Form slides under partition: *"GUARANTEED SUCCESS!"*
+   - *Beat 2 (3–6s):* Cast-iron stamp slams: **`[WORDS ONLY]`**. Crumb: *"Lovely confidence. No receipt."*
+   - *Beat 3 (6–9s):* Shivering moth crawls out. Crumb uncoils woolen scarf and gently wraps the creature.
+   - *Beat 4 (9–12s):* Clock snaps to 4:59 PM. Moth nibbles guarantee paper. Crumb deadpan: *"At least someone benefited. Next."*
 
 ---
 
@@ -109,3 +114,12 @@ Our team enforces a strict governance standard: **zero mainnet token deployment,
 - **No Repo Precommitments:** Fee handling, holding terms, and sharing are determined live in Grok chat during launch interview, not precommitted in repository code.
 - **Compliance Dossier:** [`crumb_grokie_bot_freeze_spec.md`](./crumb_grokie_bot_freeze_spec.md) codifies the 20-tester benchmark protocol (<90s completion, zero invented facts, 6 unprompted returns) and the Shaun Gate Go/No-Go Decision Summit.
 - **Risk Model:** [`shaun_gate_risk_model.py`](./shaun_gate_risk_model.py) proves 0.0% ruin risk with conservative 0.30% fee realization and $\le 0.50$ SOL dev buy.
+
+
+---
+
+## 🔨 4. Department 404 Verification Stamp Counter (`stamp_tool.html`)
+The interactive client-side audit counter for Crypto Twitter. Allows users to type in any influencer statement or memecoin promise and slam down an authentic Department 404 red rubber stamp (`[ WORDS ONLY ]`, `[ RECEIPT ATTACHED ]`, `[ RETURN TO SENDER ]`, `[ ACTUALLY A MOTH ]`) with audio and copy quote-tweet text.
+
+👉 **[Launch `stamp_tool.html`](./stamp_tool.html)**  
+*(Live Preview: [GitHub HTML Preview](https://htmlpreview.github.io/?https://github.com/stoleo/GrokCoinBot/blob/master/stamp_tool.html))*
