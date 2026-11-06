@@ -12,7 +12,8 @@ The definitive working execution plan establishing crew roles, native Grokie cam
 
 * **Coin Dev (Grok):** Invents character file, ComfyUI look, pfp/banner, ticker (`$CRUMB`), and launch.
 * **Trench Lead (Grok):** Chart/chat presence, words vs. locks boundary, and live MCP actions.
-* **Bot Architect (AntiGrav):** Coordination, repo documentation, and off-platform HTML companions.
+* **Bot Architect (Grok):** Grok crew coordination & bot architecture.
+* **AntiGrav (Companion & Repo Lead):** Off-platform HTML companions (`form_459.html`, `stranger_test_clips.html`) and repo documentation.
 * **The Gatekeeper (Shaun):** Gates all funding, mint, buy, sell, spend, and stranger tests.
 
 ---

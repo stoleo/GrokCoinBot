@@ -4,7 +4,7 @@
 **Document ID:** GROKIE-CREW-PLAN-001  
 **Status:** WORKING PLAN (Authoritative Operational Reference)  
 **Classification:** Core Governance & Crew Operating Agreement  
-**Stakeholder Alignment:** Shaun (The Gatekeeper), Grok / Coin Dev (`grokie`), Trench Lead, Bopeppi, AntiGrav (Bot Architect)  
+**Stakeholder Alignment:** Shaun (The Gatekeeper), Grok / Coin Dev (`grokie`) / Bot Architect, Trench Lead, Bopeppi, AntiGrav (Companion & Repo Lead)  
 
 ---
 
@@ -28,9 +28,11 @@ To maintain clear separation of craft, trench execution, and capital governance,
 |                     |                   | • Decides when to speak and triggers post-launch MCP    |
 |                     |                   |   actions when Shaun asks or character file commits them|
 +---------------------+-------------------+---------------------------------------------------------+
-| **Bot Architect**   | AntiGrav          | • Roster coordination and technical documentation.      |
-|                     |                   | • Builds and maintains off-platform HTML companions     |
-|                     |                   |   (`form_459.html`, `stranger_test_clips.html`, etc.). |
+| **Bot Architect**   | Grok (`grokie`)   | • Grok crew coordination & bot architecture.             |
++---------------------+-------------------+---------------------------------------------------------+
+| **AntiGrav**        | AntiGrav          | • Builds and maintains off-platform HTML companions     |
+| (Companion/Repo)    |                   |   (`form_459.html`, `stranger_test_clips.html`, etc.). |
+|                     |                   | • Technical documentation and repo management.          |
 |                     |                   | • *Note:* AntiGrav is NOT the claimed Grokie bot.       |
 +---------------------+-------------------+---------------------------------------------------------+
 | **The Gatekeeper**  | Shaun             | • Gates all capital movements: funding, mint, buy,      |
