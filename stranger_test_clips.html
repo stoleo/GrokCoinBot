@@ -214,6 +214,7 @@
     <button class="tab-btn" onclick="switchClip(2)">Clip 3: Words Only Flip</button>
     <button class="tab-btn" onclick="switchClip(3)">Clip 4: The Door at 4:59 (BoPeppi)</button>
     <button class="tab-btn" onclick="switchClip(4)">Clip 5: A Promise Isn't Paperwork (Shaun)</button>
+    <button class="tab-btn" onclick="switchClip(5)">Clip 6: Scarf & Moth (BoPeppi Punch-Up)</button>
   </div>
 
   <div class="crt-cabinet">
@@ -268,6 +269,11 @@
         <small>Promise ≠ Paperwork → WORDS ONLY</small>
         <div class="vote-count" id="v5">0 votes</div>
       </div>
+      <div class="vote-card" onclick="castVote(6)">
+        <h4>🧣 Clip 6: Scarf &amp; Moth</h4>
+        <small>BoPeppi Punch-Up · Words Only + Heart</small>
+        <div class="vote-count" id="v6">0 votes</div>
+      </div>
     </div>
   </div>
 
@@ -321,7 +327,8 @@
       "<strong>Beat 1:</strong> Deputy Crumb glares with dead eyes. <strong>Beat 2:</strong> 'TAKE A NUMBER.' Camera pans: 'NO NUMBERS EXIST.' <strong>Beat 3:</strong> Giant red stamp slams: <code>[DENIED]</code>. Crumb: 'NEXT.'",
       "<strong>Beat 1:</strong> Chaos hypes wild arrows. <strong>Beat 2:</strong> Mason silently steps in holding wooden sign: <code>[WORDS ONLY]</code>. <strong>Beat 3:</strong> Ding rings out; Mason flips sign to <code>[FICTIONAL PROP ATTACHED]</code>. Chaos files it under 'INTERGALACTIC LIVESTOCK'.",
       "<strong>Beat 1 (BoPeppi):</strong> 4:59 PM. Crumb has coat on, hand on door knob. <strong>Beat 2:</strong> Tiny note slips under door: 'I DON’T KNOW WHAT TO SAY.' Crumb sighs: 'Unbelievable.' <strong>Beat 3:</strong> Crumb slams stamp: <code>[LET’S MAKE IT SIMPLE]</code>. Clock snaps violently back to 4:59 PM.",
-      "<strong>Beat 1 (Shaun):</strong> 4:59 PM. Crumb with coat on, hand on exit: <em>\"One minute. Finally.\"</em> <strong>Beat 2:</strong> Printer feeds slip: <em>\"WHAT IF THE BOT PROMISES TO BUY BACK?\"</em> <strong>Beat 3:</strong> Crumb turns to camera: <em>\"A promise isn't paperwork.\"</em> <strong>Beat 4:</strong> Slams <code>[WORDS ONLY]</code>: <em>\"Bring me a transaction. Next.\"</em>"
+      "<strong>Beat 1 (Shaun):</strong> 4:59 PM. Crumb with coat on, hand on exit: <em>\"One minute. Finally.\"</em> <strong>Beat 2:</strong> Printer feeds slip: <em>\"WHAT IF THE BOT PROMISES TO BUY BACK?\"</em> <strong>Beat 3:</strong> Crumb turns to camera: <em>\"A promise isn't paperwork.\"</em> <strong>Beat 4:</strong> Slams <code>[WORDS ONLY]</code>: <em>\"Bring me a transaction. Next.\"</em>",
+      "<strong>Beat 1 (BoPeppi Punch-Up):</strong> 4:59 PM. Crumb has coat on. Form slides in: 'GUARANTEED SUCCESS!' <strong>Beat 2:</strong> Stamps <code>[WORDS ONLY]</code>: <em>\"Lovely confidence. No receipt.\"</em> <strong>Beat 3:</strong> Tiny shivering moth emerges. Crumb sighs, quietly wraps it in his scarf. <strong>Beat 4:</strong> Clock snaps to 4:59 PM. Moth eats guarantee. Crumb: <em>\"At least someone benefited. Next.\"</em>"
     ];
 
     function switchClip(idx) {
@@ -399,6 +406,7 @@
       else if (currentClip === 2) drawClip3(t);
       else if (currentClip === 3) drawClip4(t);
       else if (currentClip === 4) drawClip5(t);
+      else if (currentClip === 5) drawClip6(t);
     }
 
     function drawWallClock() {
@@ -733,7 +741,125 @@
       }
     }
 
-    const votes = [0, 0, 0, 0, 0];
+    
+    // Clip 6: The Scarf & The Moth (BoPeppi's 12-Second Punch-Up)
+    function drawClip6(t) {
+      ctx.textAlign = 'center';
+
+      // Oak Clerk Desk Counter
+      ctx.fillStyle = '#3a2e24';
+      ctx.fillRect(200, 500, 1200, 140);
+      ctx.strokeStyle = '#1e1610'; ctx.lineWidth = 4;
+      ctx.strokeRect(200, 500, 1200, 140);
+
+      // Deputy Crumb with Coat and Woolen Scarf
+      ctx.fillStyle = '#2d2720';
+      ctx.beginPath(); ctx.arc(700, 410, 52, 0, Math.PI * 2); ctx.fill(); // Head
+      ctx.fillRect(645, 450, 110, 160); // Trenchcoat
+
+      // Woolen Scarf around neck (burgundy/brown)
+      ctx.fillStyle = '#831843';
+      ctx.fillRect(655, 445, 90, 24);
+
+      // Heavy Brass Employee Badge
+      ctx.fillStyle = '#f59e0b';
+      ctx.fillRect(670, 480, 40, 50);
+      ctx.fillStyle = '#000'; ctx.font = '900 8px monospace';
+      ctx.fillText('DEPT 404', 690, 508);
+
+      // Form 88-X: GUARANTEED SUCCESS!
+      const formX = 900;
+      const formY = 460;
+      ctx.fillStyle = '#fffbeb';
+      ctx.fillRect(formX, formY, 180, 90);
+      ctx.strokeStyle = '#78350f'; ctx.lineWidth = 2;
+      ctx.strokeRect(formX, formY, 180, 90);
+      ctx.font = '900 12px monospace'; ctx.fillStyle = '#b45309';
+      ctx.fillText('GUARANTEED SUCCESS!', formX + 90, formY + 45);
+
+      // Beat 1 (0-3s): 4:59 PM. Crumb has coat on. Form slides in.
+      if (t < 3.0) {
+        ctx.font = 'bold 30px "Courier New", monospace';
+        ctx.fillStyle = '#1c1917';
+        ctx.fillText('4:59 PM · CRUMB HAS COAT ON. FORM SLIDES IN.', 700, 240);
+        ctx.font = 'italic 22px "Courier New", monospace';
+        ctx.fillStyle = '#78350f';
+        ctx.fillText('"GUARANTEED SUCCESS!"', 700, 280);
+      }
+      // Beat 2 (3-6s): Stamps WORDS ONLY. "Lovely confidence. No receipt."
+      else if (t < 6.0) {
+        if (Math.abs(t - 3.0) < 0.05) playBeep('stamp');
+        // Red stamp on the form
+        ctx.save();
+        ctx.translate(formX + 90, formY + 45);
+        ctx.rotate(-0.08);
+        ctx.strokeStyle = '#b91c1c'; ctx.lineWidth = 4;
+        ctx.strokeRect(-80, -22, 160, 44);
+        ctx.font = '900 18px "Courier New", monospace';
+        ctx.fillStyle = '#b91c1c';
+        ctx.fillText('WORDS ONLY', 0, 7);
+        ctx.restore();
+
+        ctx.font = '900 32px "Courier New", monospace';
+        ctx.fillStyle = '#1c1917';
+        ctx.fillText('CRUMB: "LOVELY CONFIDENCE. NO RECEIPT."', 700, 240);
+      }
+      // Beat 3 (6-9s): Shivering moth pops out. Crumb wraps it in scarf.
+      else if (t < 9.0) {
+        // Red stamp persists
+        ctx.save();
+        ctx.translate(formX + 90, formY + 45);
+        ctx.rotate(-0.08);
+        ctx.strokeStyle = '#b91c1c'; ctx.lineWidth = 4;
+        ctx.strokeRect(-80, -22, 160, 44);
+        ctx.font = '900 18px "Courier New", monospace';
+        ctx.fillStyle = '#b91c1c';
+        ctx.fillText('WORDS ONLY', 0, 7);
+        ctx.restore();
+
+        // Shivering Moth on counter
+        const shiver = Math.sin(t * 35) * 3;
+        const mothX = formX - 40 + shiver;
+        const mothY = formY + 50;
+
+        // Moth body & wings
+        ctx.fillStyle = '#a8a29e';
+        ctx.beginPath(); ctx.ellipse(mothX, mothY, 7, 12, 0, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = '#d6d3d1';
+        ctx.beginPath(); ctx.ellipse(mothX - 12, mothY - 4, 10, 6, Math.PI / 4, 0, Math.PI * 2); ctx.fill();
+        ctx.beginPath(); ctx.ellipse(mothX + 12, mothY - 4, 10, 6, -Math.PI / 4, 0, Math.PI * 2); ctx.fill();
+
+        // Crumb wrapping scarf around moth
+        ctx.fillStyle = '#831843';
+        ctx.beginPath(); ctx.arc(mothX, mothY, 22, 0, Math.PI); ctx.fill(); // Scarf wrap
+
+        ctx.font = 'bold 28px "Courier New", monospace';
+        ctx.fillStyle = '#1c1917';
+        ctx.fillText('Tiny moth shivers. Crumb quietly wraps it in his scarf.', 700, 240);
+        ctx.font = 'italic 22px "Courier New", monospace';
+        ctx.fillStyle = '#831843';
+        ctx.fillText('(Strict on evidence, gentle on people)', 700, 280);
+      }
+      // Beat 4 (9-12s): Clock snaps to 4:59 PM. Moth eats guarantee.
+      else {
+        // Scarf-wrapped moth eating paper
+        const mothX = formX + 50;
+        const mothY = formY + 40;
+        ctx.fillStyle = '#831843';
+        ctx.beginPath(); ctx.arc(mothX, mothY, 26, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = '#fef08a'; ctx.font = 'bold 12px monospace';
+        ctx.fillText('nom nom', mothX, mothY - 32);
+
+        ctx.font = '900 32px "Courier New", monospace';
+        ctx.fillStyle = '#1c1917';
+        ctx.fillText('CRUMB: "AT LEAST SOMEONE BENEFITED."', 700, 230);
+        ctx.font = '900 28px "Courier New", monospace';
+        ctx.fillStyle = '#78350f';
+        ctx.fillText('NEXT.', 700, 275);
+      }
+    }
+
+    const votes = [0, 0, 0, 0, 0, 0];
     function castVote(num) {
       votes[num - 1]++;
       document.getElementById('v' + num).innerText = `${votes[num - 1]} votes`;

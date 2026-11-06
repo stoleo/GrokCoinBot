@@ -22,7 +22,7 @@ During intensive multi-agent deliberations in Slack between Grok, Trench Lead, B
 
 The **Shaun Gate** establishes three immutable governance pillars:
 1. **The Strict On-Chain Lock Verification Protocol:** Absolute programmatic prohibition of any speech, banner, marketing claim, or stream narrative on cam until a cryptographic transaction hash is validated in a confirmed Solana block. Generic promises are classified as `WORDS ONLY`; only discrete named-action escrows (`lock(amount, "target")`) are recognized.
-2. **The Empirical Monte Carlo Risk Model:** Rejection of naive 1.25% fee fantasies and 15% graduation assumptions. All financial modeling is anchored to an empirical **0.30% (30 bps) net creator fee realization**, exact Solana rent and priority gas accounting (**0.060 SOL per launch**), conservative dev buy limits (**0.30–0.50 SOL max**), and mathematical fail-fast abort curves that collapse 50-launch Risk of Ruin from **99.8% to 0.0%**.
+2. **The Empirical Monte Carlo Risk Modeling (Sensitivity Analysis):** Rejection of naive 1.25% fee fantasies and high graduation assumptions. Empirical models analyze a conservative **0.30% (30 bps) net creator fee realization**, Solana network rent and priority gas accounting, and strict capital containment sensitivities to protect bankroll. These models are theoretical research tools, not market guarantees or approved launch instructions [Jira AIOS-117].
 3. **The 7-Day No-Token Content Pilot Protocol:** A strict, zero-token Go-To-Market (GTM) testing phase measuring true organic attention—fan petitions, second-by-second drop-off across the brutal first 10 seconds, and stranger exit poll demand for Episode 2—culminating in an unappealable Go/No-Go decision matrix for Shaun.
 
 ```
@@ -212,35 +212,44 @@ We executed 10,000 full Monte Carlo trials of a 50-launch series across multiple
 | **50.0 SOL ($9,000)** | 89.6% | **0.0%** | **0.0%** |
 
 > [!CRITICAL]
-> **Key Finding for Shaun:** Running the unhedged 1.50 SOL dev buy guarantees mathematical insolvency (**99.8% ruin probability**), destroying a 20 SOL bankroll within 18 launches. Downsizing to a **0.30–0.50 SOL dev buy** and implementing fail-fast abort logic eliminates ruin risk entirely (**0.0%**) while preserving upside during active trading runs.
+> **Key Finding for Shaun (Theoretical Sensitivity):** Simulation models demonstrate that oversized unhedged dev buys combined with zero exit discipline lead rapidly toward capital exhaustion under low graduation baselines. Sizing and risk containment are critical, but simulations do NOT eliminate risk or guarantee solvency (0.0% ruin in a model is an artifact of assumptions, not a live market guarantee). All live execution parameters remain **TBD — Shaun approval + independent technical/legal validation required** per Jira AIOS-117.
 
 ---
 
-### 2.4 Fail-Fast Abort Curves & Dexscreener Gating Mechanics
+### 2.4 Governance Gating & Non-Operational Abort Sensitivity [Jira AIOS-117]
 
+> [!CAUTION]
+> **DIRECTIVE 2 WATERMARK — NON-OPERATIONAL RESEARCH SCENARIOS:**
+> The curve mechanics and milestone numbers below are non-executable research scenarios evaluated during preliminary modeling. They are explicitly NOT active bot instructions, approved budgets, or precommitted spending rules.
+
+- **Dev Allocation & Capital Sizing:** `TBD — Shaun approval + independent technical/legal validation required`. No fixed dev buy, stop-loss trigger, or salvage schedule is hardcoded into repository execution paths. Sizing for any future launch is determined exclusively during live freeze review for a named coin.
+- **Dexscreener & Third-Party Payments:** `TBD — Shaun approval + independent technical/legal validation required`. Any future third-party platform expenditure is strictly conditional on independently verified, accumulated on-chain creator fee receipts. No programmatic auto-spend triggers exist without direct manual authorization.
+
+---
+
+## NON-OPERATIONAL SENSITIVITY APPENDIX (RESEARCH MODELING ONLY)
+
+### Appendix A: Theoretical Fail-Fast Curve Modeling
+The following ASCII curve illustrates the theoretical loss-mitigation model evaluated during quantitative research:
 ```
-  Dev Capital Remaining
+  Dev Capital Remaining (Exploratory Research Model Only - Non-Operational)
      100% +-----------------------------------------------------------+
-          | [Minute 1 Gate: Vol < 2 SOL] -> Salvage 65% (-0.235 SOL)  |
+          | [Hypothetical Gate 1: Early Low Vol] -> Model Salvage 65% |
       80% |   \                                                       |
           |    \                                                      |
-      60% |     +-- [Minute 3 Gate: Vol < 5 SOL] -> Salvage 45%       |
+      60% |     +-- [Hypothetical Gate 2: Mid Low Vol] -> Salvage 45%  |
           |           \                                               |
-      40% |            +-- [Minute 5 Gate: Vol < 10 SOL] -> Salvage 25%
+      40% |            +-- [Hypothetical Gate 3] -> Model Salvage 25% |
           |                  \                                        |
-      20% |                   +-- [Minute 15 Gate: Vol < 20 SOL]      |
+      20% |                   +-- [Hypothetical Late Gate]            |
           |                         \                                 |
        0% +--------------------------+-- Unhedged Hold into Zero ----+
           0m     3m     5m     10m    15m                     60m
 ```
 
-#### The Dexscreener $299 (1.66 SOL) Gating Rule:
-Under the naive plan, bots automatically execute a $299 Dexscreener payment whenever a token reaches $30k market cap. In reality, sniper bots front-run at $22k–$25k, dumping into incoming liquidity.
-- **Shaun Gate Gating Rule:** Dexscreener ETI payment is **strictly disabled** unless:
-  1. Accumulated realized creator fees in the escrow account are $\ge 2.50\text{ SOL}$.
-  2. Total on-chain trading volume exceeds $150\text{ SOL}$.
-  3. Unique holder count is $> 120$.
-- **Financial Impact:** Prevents the loss of **16.6 SOL per 100 launches** ($2,990 USD saved from being incinerated at glass ceilings).
+### Appendix B: Theoretical Escrow Accumulation Conditions
+- **Exploratory Model:** Theoretical threshold gating Dexscreener ETI payment until creator fees accumulate organically, preventing unhedged out-of-pocket expenditure at glass ceilings.
+- **Governance Status:** Exploratory research only. Live fee management requires direct manual authorization and verified on-chain receipts.
 
 ---
 
@@ -366,8 +375,8 @@ Vector              Objective Verification Standard              Required Thresh
 3. Community        Non-financial participation: submission of   Petitions >= 150      PENDING
    Petitions        fictional claims / absurd disputes to bot.   unique entries        DAY 5 OPEN
 
-4. Capital Risk     Monte Carlo proof confirming 50-launch ruin  Risk of Ruin <= 1.0%  VERIFIED
-   & Gas Bounds     risk is zeroed and dev buy capped <= 0.50.   Drawdown < 17 SOL     (0.0% PROVEN)
+4. Capital Risk     Theoretical Monte Carlo risk sensitivity     Drawdown sensitivity  MODEL ONLY
+   & Gas Bounds     evaluating dev buy sizing and gas bounds.    analyzed              (PENDING REVIEW)
 
 5. Verification     Live test of stream circuit breaker: 100%    Zero false positives  PENDING
    Circuit Breaker  speech muting on unconfirmed/dropped txs.    RPC lock validated    DAY 6 TEST
@@ -382,8 +391,8 @@ If any of the following conditions occur, the project is immediately and uncondi
 
 1. **The Attention Kill:** Stranger 10-second completion rate falls below **50.0%**, or fewer than **10 out of 20** strangers express desire to watch Episode 2. *(Indicates the creative premise fails to hold cold human attention).*
 2. **The Verification Bypass Kill:** Any code path or stream script allows an agent or character to speak a claim before RPC confirmation is achieved. *(Zero tolerance for unverified on-cam statements).*
-3. **The Sizing Violation Kill:** Any proposal or configuration requesting a dev buy exceeding **0.50 SOL** or creator fee assumptions above **0.30%**. *(Prevents reversion to optimism bias and sniper blacklisting).*
-4. **The Unfunded Dexscreener Kill:** Attempting to pay Dexscreener without meeting the 2.50 SOL escrow accumulation threshold.
+3. **The Unapproved Sizing Kill:** Any execution proposal attempting a dev buy, fee split, or treasury allocation without explicit Shaun Gate authorization and independent verification.
+4. **The Unfunded Expense Kill:** Attempting any third-party marketing or listing expenditure without verified on-chain fee receipts already confirmed in escrow.
 5. **The Regulatory Red Flag:** Any character or automated prompt uttering forward-looking financial statements, token price targets, or investment encouragement.
 
 ---
@@ -392,9 +401,9 @@ If any of the following conditions occur, the project is immediately and uncondi
 
 ### Stakeholder Alignment Record:
 - **Shaun (Executive Gatekeeper):** Holds absolute veto power. Gates funding, keys, and mint authority.
-- **Grok (`grokie` / `grokmemecoins`):** Concurred on named-action escrow definition (`lock(amount, "target")`), conservative 0.30% fee model, and zero-token stranger test pipeline.
+- **Grok (`grokie` / `grokmemecoins`):** Concurred on named-action escrow definition (`lock(amount, "target")`), conservative fee model, and zero-token stranger test pipeline.
 - **Trench Lead:** Approved ruthless 10-second visual editing, removal of monologues, and cold-open slapstick audit wedge.
-- **Bopeppi:** Creator of *The Ministry of Unconfirmed Things*, the moth ID badge gag, and the triple-stamp motif (`WORDS`, `RECEIPT`, `ACTUALLY A MOTH`).
+- **Bopeppi:** Creator of *The Ministry of Unconfirmed Things*, the moth ID badge gag, the scarf punch-up, and the triple-stamp motif (`WORDS`, `RECEIPT`, `ACTUALLY A MOTH`).
 - **Captain Whiting:** Editorial direction, five stranger-test upgrades, and the live AI sitcom framing.
 
 ```
@@ -402,18 +411,17 @@ If any of the following conditions occur, the project is immediately and uncondi
 |                               EXECUTIVE SIGN-OFF BLOCK                                |
 +---------------------------------------------------------------------------------------+
 
-[X] Protocol Governance & Compliance Officer: Subagent 3
-    Signature: SHA256(7d9b_shaun_gate_compliance_dossier_v1)
-    Date: November 2026 | Status: COMPLIANT & LOCKED
+[ ] Protocol Governance & Compliance Officer: Subagent 3
+    Status: PENDING (Sensitivity Scrub Complete, AIOS-117 Reconciled)
 
 [ ] Creative Director & Sitcom Lead: Captain Whiting / Bopeppi
-    Status: Reviewing Stranger Test Clips
+    Status: Reviewing Stranger Test Clips & BoPeppi Clip 6 Punch-Up
 
 [ ] Market & Trench Liquidity Lead: Trench Lead / Grok
-    Status: Approved 0.30% Model & Dev Buy Capping
+    Status: PENDING (Conservative Fee Model & Evidence Gate Review)
 
 [ ] Executive Authority & Final Gatekeeper: Shaun
-    Status: Awaiting Day 4 Stranger Poll Results before Mainnet Gate
+    Status: PENDING (Absolute Gatekeeper / Awaiting Pilot Validation)
 +---------------------------------------------------------------------------------------+
 ```
 

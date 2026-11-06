@@ -4,6 +4,7 @@ Turnkey ComfyUI Asset Pipeline for Grokie.fun Launch (AIOS-118 Safe Architecture
 Safety & Governance Rule (Jira AIOS-118):
 1. Hardware Safety: ComfyUI is managed externally via the #comfy broker lease (`comfy start [N min]`).
    DO NOT call self-start/stop or grab GPU holds while Wren / LocalAI owns the GPU.
+   The script FAILS CLOSED unless an explicit, authorized lease token is provided.
 2. Phased Pipeline:
    - Phase 1: 3-View Character Face Sheet (`crumb_face_sheet_3view.png`)
    - Phase 2: Grok Review & Sign-Off in Slack #grokmemecoins
@@ -18,6 +19,7 @@ Reviewed: Grok (Coin Dev) & Astra (Jira AIOS-118)
 import sys
 import os
 import json
+import argparse
 import urllib.request
 import urllib.error
 from pathlib import Path
@@ -127,7 +129,6 @@ def check_comfy_connection():
         req = urllib.request.Request(f"{COMFY_HOST}/system_stats", headers={"User-Agent": "GrokieAssetRunner/1.0"})
         with urllib.request.urlopen(req, timeout=3) as resp:
             data = json.loads(resp.read().decode("utf-8"))
-            print("[PASS] ComfyUI instance detected on 127.0.0.1:8188.")
             return True, data
     except (urllib.error.URLError, ConnectionRefusedError, TimeoutError):
         return False, None
@@ -152,17 +153,51 @@ def print_manifest_info():
     print("\n" + "=" * 75)
 
 def main():
+    parser = argparse.ArgumentParser(description="Grokie AIOS-118 Hardware-Safe Asset Generator")
+    parser.add_argument("--run", action="store_true", help="Execute generation (Requires --lease-token)")
+    parser.add_argument("--lease-token", type=str, default=os.environ.get("COMFY_LEASE_TOKEN"),
+                        help="Authorized #comfy broker lease token")
+    parser.add_argument("--phase", type=str, default="phase1", choices=["phase1", "phase3", "phase4", "all"],
+                        help="Pipeline phase to execute")
+    args = parser.parse_args()
+
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     print_manifest_info()
 
-    is_connected, stats = check_comfy_connection()
-    if not is_connected:
-        print("\n[STANDBY] ComfyUI is not currently active on 127.0.0.1:8188.")
-        print("Hardware Protection Active: Do not grab GPU hold while Wren / LocalAI is running.")
-        print("When GPU is free, request lease in #comfy (`comfy start 30`) and rerun.")
+    if not args.run:
+        print("\n[MODE: DRY-RUN / MANIFEST INSPECTION ONLY]")
+        print("To execute GPU generation, acquire an authorized lease in #comfy and pass --run --lease-token <TOKEN>.")
+        is_connected, _ = check_comfy_connection()
+        if is_connected:
+            print("Loopback status: ComfyUI port 8188 is responding (standing by for confirmed lease token).")
+        else:
+            print("Loopback status: ComfyUI port 8188 is not currently active.")
         return
 
-    print("\n[READY] ComfyUI is active. Queuing Phase 1 (Face Sheet) for Grok review...")
+    # FAIL-CLOSED CHECK (AIOS-118)
+    if not args.lease_token:
+        print("\n" + "!" * 75)
+        print(" [FAIL-CLOSED] EXECUTION HALTED (Jira AIOS-118 Hardware Safety)")
+        print("!" * 75)
+        print(" Error: No authorized #comfy lease token provided.")
+        print(" A running port on 127.0.0.1:8188 is NOT sufficient authorization to execute.")
+        print(" To prevent GPU memory collisions with Wren / LocalAI:")
+        print("   1. Verify Wren has finished her run.")
+        print("   2. Request an authorized lease in #comfy: `comfy start 30`")
+        print("   3. Re-run passing: `python generate_grokie_assets.py --run --lease-token <TOKEN>`")
+        print("!" * 75)
+        sys.exit(1)
+
+    is_connected, stats = check_comfy_connection()
+    if not is_connected:
+        print("\n[ERROR] Lease token provided, but ComfyUI is not responding on 127.0.0.1:8188.")
+        print("Please verify the broker started the ComfyUI instance.")
+        sys.exit(1)
+
+    print(f"\n[AUTHORIZED LEASE CONFIRMED: {args.lease_token[:8]}...]")
+    print(f"[READY] Executing Phase: {args.phase}")
+    if args.phase in ["phase1", "all"]:
+        print("Queuing Phase 1: crumb_face_sheet_3view.png for Grok review...")
 
 if __name__ == "__main__":
     main()

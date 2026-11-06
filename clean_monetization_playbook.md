@@ -416,42 +416,59 @@ Every dollar generated across the ecosystem is deployed deterministically:
 
 ---
 
-## 6. ACTIONABLE IMPLEMENTATION ROADMAP & EXECUTABLE DIRECTIVES
+## 6. IMPLEMENTATION ROADMAP & GOVERNANCE DIRECTIVES (NON-EXECUTABLE)
 
-### Directive 1: Complete the Pre-Launch Creative Gate
-- Maintain the zero-token launch freeze until the Shaun Gate Go/No-Go Summit concludes.
-- Drive initial stranger engagement through `stranger_test_clips.html` and the `application_to_exist.html` permit generator.
-- Target: Validate > 75% unprompted laughter/retention and > 100 organic permits stamped before touching Solana mainnet.
+> [!CRITICAL]
+> **DIRECTIVE 2 COMPLIANCE WATERMARK — NO EXECUTABLE INSTRUCTIONS [Jira AIOS-117]:**
+> All funding allocations, dev buy sizes, programmatic fee thresholds, and lock amounts in this section are **TBD — Shaun approval + independent technical/legal validation required**. No bot, subagent, or automated process shall ingest numerical scenarios in this document as executable commands.
 
-### Directive 2: Execute the 0.50 SOL "Goldilocks" Dev Mint
-- When Shaun grants the green light:
-  - Deploy Deputy Crumb native Grokie dev bot with locked profile parameters.
-  - Fund dev wallet with exactly **0.560 SOL** (0.50 SOL dev buy + 0.060 SOL non-refundable network rent/priority overhead).
-  - Dev acquires **1.759% supply** (17,590,164 tokens). Passes all Photon/BullX sniper heuristics (`Dev Holding < 2%`).
+### Phase 1: Pre-Launch Creative Gate & Verification
+- Maintain strict zero-token launch freeze until Shaun formally approves a named coin specification.
+- Drive initial stranger engagement through `stranger_test_clips.html` and the `form_459.html` feedback generator.
+- Target: Validate organic retention and stranger engagement before any Solana mainnet consideration.
 
-### Directive 3: Immediate Programmatic Escrow Deployment
-- Upon reaching 2.00 SOL in accumulated trading fees:
-  - Immediately call `lock(1.661, "dexscreener_eti_payment")` to verify Dexscreener Enhanced Token Info.
-  - Trigger automatic tweet/announcement from Deputy Crumb: *"Receipt #001: Dexscreener fee locked. Words avoided. Next."*
+### Phase 2: Deployment & Allocation Authority (TBD — Gated by Shaun)
+- **Status:** `TBD — Shaun approval + independent technical/legal validation required`.
+- Character parameters, wallet provisioning, and exact dev buy sizing (if any) are determined exclusively during live freeze review for a named coin.
+- Zero precommitted numerical limits or automated buy instructions.
 
-### Directive 4: Merch & Form 4:59 Pilot Launch
-- Deploy physical pre-orders for the **Brass Stamp Kit** and **Form 404 Notepads** at the $250k Market Cap graduation mark.
-- Roll out Form 4:59 companion utility for anonymous team feedback.
+### Phase 3: Programmatic Escrow & Fee Handling (TBD — Gated by Shaun)
+- **Status:** `TBD — Shaun approval + independent technical/legal validation required`.
+- Any named-action escrow (`lock`) or fee routing must be explicitly authorized and validated against live on-chain receipts.
+- No hardcoded fee balance triggers or automated lock instructions.
+
+### Phase 4: Merchandise & Companion Utilities
+- Physical products and companion utilities operate independently as voluntary cultural artifacts.
+- Roll out Form 4:59 companion utility for anonymous feedback and community interaction.
 
 ---
 
-## 7. CONCLUSION: THE UNRUGGABLE REALITY
+## 7. NON-OPERATIONAL SENSITIVITY APPENDIX (RESEARCH MODELING ONLY)
+
+> [!NOTE]
+> The figures below represent theoretical, non-operational modeling scenarios evaluated during early research. They are explicitly NOT operational instructions, precommitments, or approved budgets. Tracked under Jira AIOS-117.
+
+### Appendix A: Theoretical Dev Buy Sensitivity
+- **Exploratory Scenario:** Modeled hypothetical 0.50 SOL dev buy with 0.060 SOL rent overhead (~1.76% supply).
+- **Research Observation:** Sizing below 2% avoids heuristic sniper flags in backtests, but live parameters remain entirely discretionary and subject to Shaun's direct approval.
+
+### Appendix B: Theoretical Fee Escrow Milestone
+- **Exploratory Scenario:** Modeled hypothetical $299 Dexscreener ETI payment via named-action escrow once sufficient organic fees accumulate.
+- **Research Observation:** Named escrows prevent discretionary diversion, but live execution is strictly conditional on real on-chain fee receipts.
+
+---
+
+## 8. CONCLUSION: THE UNRUGGABLE REALITY
 
 The Ministry of Unconfirmed Things proves that **ethical discipline is not a moral compromise—it is an overwhelming quantitative advantage**.
 
-By sizing the dev buy to 0.50 SOL, locking creator fees into programmatic escrows, burning supply via autonomous ratchets, and monetizing through high-margin physical bureaucracy merchandise and organic entertainment, we achieve:
+By anchoring to evidence over promises, locking creator fees only into programmatic escrows, and monetizing through high-margin physical bureaucracy merchandise and organic entertainment, we achieve:
 1. **Total Immunization against sniper FUD and rug accusations.**
-2. **$71,000 to $197,000+ in clean operational cashflows without selling tokens.**
-3. **Over $350,000 in asymmetric dev bag equity value at cult scale.**
-4. **Permanent trust and alignment across Shaun, Grok, Bopeppi, and our holders.**
+2. **Clean operational cashflows without selling tokens.**
+3. **Permanent trust and alignment across Shaun, Grok, Bopeppi, and our holders.**
 
 > *"That is a statement. This is a receipt. They are not roommates."*  
 > — **Deputy Crumb, Reluctant On-Chain Clerk**
 
 ---
-*Report compiled and certified for Shaun Gate Protocol Review.*
+*Report compiled and certified for Shaun Gate Protocol Review (Jira AIOS-117).*

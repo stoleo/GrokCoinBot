@@ -122,6 +122,32 @@ These prompts are engineered specifically for diffusion models (SDXL, Flux.1-dev
 
 ---
 
+### 1.4 Clip 6: "The Scarf & The Moth" (BoPeppi 12-Second Creative Punch-Up)
+
+```
++-------------------------------------------------------------------------+
+| ASSET: CLIP 6 VIDEO ANIMATIC ("THE SCARF & THE MOTH")                   |
+| FORMAT: 9:16 Vertical (1080x1920) or 16:9 (1920x1080), 12 Seconds       |
+| ORIGIN: BoPeppi Punch-Up (Strict on Evidence, Gentle on People)         |
+| NATIVE CAM ARCHITECTURE: Fictional narrative told by Crumb on cam       |
++-------------------------------------------------------------------------+
+```
+
+* **Core Narrative Beat:** Strict on evidence, gentle on people. The laugh is Crumb's doomed exit; the heart is an action, not an explanation. For Grokie's native single-bot cam, the moth is a story Crumb tells and acts out rather than a complex multi-puppet technical requirement.
+* **Timeline Breakdown:**
+  * `00:00 - 00:03.0` | **Visual:** 04:59 PM. Crumb has his coat on, ready to leave. An absurd paper form slides under the intake partition: *"GUARANTEED SUCCESS!"*  
+    **SFX:** Paper sliding against frosted wire-glass.
+  * `00:03.0 - 00:06.0` | **Visual:** Crumb looks at it without expression, stamps it with heavy red ink: **`[ WORDS ONLY ]`**.  
+    **Dialogue (Crumb, dry deadpan):** *"Lovely confidence. No receipt."*  
+    **SFX:** Cast-iron stamp thunk (*KER-THUMP*).
+  * `00:06.0 - 00:09.0` | **Visual:** A tiny moth crawls out from behind the petition, shivering in the cool fluorescent draft. Crumb glances wistfully at the exit door, sighs, uncoils his worn woolen scarf, and gently wraps it around the shivering creature.  
+    **SFX:** Soft wool rustle, quiet fluorescent hum.
+  * `00:09.0 - 00:12.0` | **Visual:** The mechanical wall clock clicks back to exactly 04:59 PM. The moth begins happily nibbling the stamped guarantee paper. Crumb turns deadpan to camera:  
+    **Dialogue (Crumb):** *"At least someone benefited."* (Pause) *"Next."*  
+    **SFX:** Mechanical clock ratchet click (*TICK*). Fade to black.
+
+---
+
 ## 2. THE LIVE LAUNCH FEED MONOLOGUE & FIRST 60 MINUTES ON-CAM SCRIPT
 
 ```

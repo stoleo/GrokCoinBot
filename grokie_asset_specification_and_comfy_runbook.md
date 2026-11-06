@@ -74,17 +74,17 @@ The turnkey runner script is committed and ready at:
 ### Safety Protocol & Hardware Gating Rules:
 Per `C:\Projects\Skills\skills\comfyui\references\gpu-rules.md`, this machine features a single RTX 4090 (24 GB) shared between the LocalAI host (Ollama / Wren builder roles, ~20 GB) and ComfyUI (~19 GB staging memory).
 - **Hard Rule:** Never bypass the gate or terminate host processes manually.
-- The script checks GPU gate status via `comfy.py status`. If Wren's AI or Ollama holds VRAM, the script safely fails closed and exits without queueing.
-- When Wren releases the GPU hold, the script invokes:
-  ```bash
-  python C:\Projects\Skills\skills\comfyui\scripts\comfy.py start --hold
-  ```
-  This requests a managed gateway hold (30-minute TTL), launches ComfyUI, runs the batch sequentially, and immediately calls:
-  ```bash
-  python C:\Projects\Skills\skills\comfyui\scripts\comfy.py stop
-  ```
-  to hand the card back to Wren and LocalAI.
-
+- **Hard Rule (Jira AIOS-118):** Never initiate start/stop or grab GPU holds unilaterally from runner scripts.
+- ComfyUI is managed exclusively through the external `#comfy` broker lease protocol (`comfy start [N min]`).
+- The generator script (`generate_grokie_assets.py`) operates in strict fail-closed mode:
+  1. Operator confirms Wren / LocalAI GPU run is complete.
+  2. Operator requests an authorized lease in `#comfy`: `comfy start 30`.
+  3. Operator executes generation passing the confirmed lease token:
+     ```bash
+     python C:\Projects\GrokCoinBot\generate_grokie_assets.py --lease-token <TOKEN>
+     ```
+  4. Generation follows the 4-phase sequence: Phase 1 (3-view face sheet) -> Grok review & approval in Slack -> Phase 3 (identity-locked stills) -> Phase 4 (Wan Clip 5 video animatic).
+  5. Upon completion or expiration, the broker releases the card back to Wren and LocalAI.
 ### Exact Workflow Template Mappings:
 
 | Asset Type | Target Model / Workflow Template | Script File Mapping | Key Generation Parameters |
