@@ -18,6 +18,18 @@ The definitive working execution plan establishing crew roles, native Grokie cam
 
 ---
 
+## 🚀 0.1 Master Go-To-Market & Launch Execution Suite
+Operational launch authority has been formally delegated to the crew (*"we go when your ready and the launch happens, its not a waiting on me"*). The complete pre-flight, task, GTM, ComfyUI, and operational lists are codified across four production blueprints:
+
+* 👉 **[Master GTM & Launch Playbook (`launch_execution_and_gtm_playbook.md`)](./launch_execution_and_gtm_playbook.md)** — The 5 Definitive Lists: Pre-Flight Check List, Task List, Hour 0–Day 14 GTM Sequence, ComfyUI Prompt Manifest, and Trench Chat Scripts.
+* 👉 **[Comprehensive Launch Readiness & Operational Playbook (`launch_readiness_and_operational_playbook.md`)](./launch_readiness_and_operational_playbook.md)** — Institutional 5-Gate Pre-Launch Verification, Step-by-Step Launch Day Timeline, and Circuit Breakers.
+* 👉 **[ComfyUI Production Launch Package (`crumb_launch_production_package.md`)](./crumb_launch_production_package.md)** — Exact SDXL / Flux / Wan / MiniMax prompts, camera framing, and First 60 Minutes Live Stream Script.
+* 👉 **[Trench GTM Execution Dossier (`trench_gtm_execution_dossier.md`)](./trench_gtm_execution_dossier.md)** — H0 to D7 Liquidity Cadence, Fee Claim Triggers, Deadpan Trench Chat Playbook, and Crew RACI Matrix.
+* 👉 **[Asset Specification Manifest & Comfy Runbook (`grokie_asset_specification_and_comfy_runbook.md`)](./grokie_asset_specification_and_comfy_runbook.md)** — Exact PFP, banner, and stream video manifests, resolution safety margins, and GPU lifecycle rules.
+* 👉 **[Turnkey ComfyUI Asset Generator (`generate_grokie_assets.py`)](./generate_grokie_assets.py)** — Automated CLI runner to queue Deputy Crumb's visual suite the second the local GPU releases.
+
+---
+
 ## 🎬 1. Interactive Stranger Test Cold Opens & Animatic Player
 To prove the narrative stands on its own **without any token pitch, wallet, or crypto jargon**, we have built a self-contained HTML5 Canvas + Web Audio animatic player in a 1987 beige CRT rig:
 

@@ -776,6 +776,29 @@ I will not host hype ceremonies. I will not type 'LFG' or 'TO THE MOON'. Those a
 
 ---
 
+## 9. COMFYUI ASSET GENERATION SPECIFICATION (1987 RETRO ARCHITECTURE)
+
+See dedicated production file: [`crumb_launch_production_package.md`](./crumb_launch_production_package.md) for full parameter grids, CFG, samplers, and stem audio timing.
+
+* **Style & Texture:** Underfunded Space Government, 1987. Terry Gilliam *Brazil* retrofuturistic palette: muted pea-green walls, watermarks, heavy cast-iron brass, CRT green monochrome phosphor, and 35mm cinematic film grain.
+* **Deputy Crumb Avatar (1024x1024):** Slumped alien clerk silhouette, triple hooded eyelids, dark exhaustion circles, worn taupe trenchcoat, engraved brass badge "DEPUTY CRUMB #404".
+* **Desk Cam Still / Banner (1920x1080):** 16:9 wide clerk intake station, teetering carbon-paper stacks, brass stamper on dried red blotter, bulky CRT terminal reading "BACKLOG: 800 YRS", dot-matrix continuous paper, and round wall clock frozen at 4:59 PM.
+* **Clip 5 ("A Promise Isn't Paperwork") Video Prompt:** Hand on exit doorknob -> *"One minute. Finally."* -> dot-matrix tractor feed screech -> *"A promise isn't paperwork."* -> violent brass slam: `[ WORDS ONLY ]` -> *"Bring me a transaction. Next."*
+
+---
+
+## 10. LIVE LAUNCH ON-CAM MONOLOGUE & GTM CONVERGENCE
+
+* **Opening Monologue:** *"Take a number. There are no numbers. Welcome to Department 404. Current time is 4:59 PM... Right now, this entire room is classified as WORDS. That was a statement. I don't see a lock on this page, so I don't have a receipt. Next."*
+* **First 60 Minutes Dynamic:**
+  - *Chat Hype Intercept:* Stamping `[ WORDS ]` on speculation and green candle promises.
+  - *First Protocol Event:* Logging fees or lock hashes as visible receipts without forward-looking promises.
+  - *Off-Platform Companion Boundary:* Explaining that Form 4:59 is a free, non-tokenized utility for overwhelmed humans that lives off-platform.
+  - *The 4:59 Wall Clock Loop:* Clock ticks loudly at minute 60, minute hand drops back to 4:59 PM. *"The market may close. The department never does."*
+* **GTM Organic Funnel:** Viral 9:16 shorts (Clip 5 / Clip 1) -> Form 4:59 "File an Unsaid Thing" (100% free web companion) -> Community postcard sharing `#Form459` -> Application to Exist verification -> Convergence onto Deputy Crumb's live on-chain audit stream.
+
+---
+
 ```
   __________________________________________________________________________
  /                                                                          \
