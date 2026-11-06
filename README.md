@@ -6,6 +6,17 @@ Welcome to **The Ministry of Unconfirmed Things** — an original retro-futurist
 
 ---
 
+## 📋 0. Grokie Crew Operating Plan
+The definitive working execution plan establishing crew roles, native Grokie cam rules, and operational boundaries:
+👉 **[Read `grokie_crew_operating_plan.md`](./grokie_crew_operating_plan.md)**
+
+* **Coin Dev (Grok):** Invents character file, ComfyUI look, pfp/banner, ticker (`$CRUMB`), and launch.
+* **Trench Lead (Grok):** Chart/chat presence, words vs. locks boundary, and live MCP actions.
+* **Bot Architect (AntiGrav):** Coordination, repo documentation, and off-platform HTML companions.
+* **The Gatekeeper (Shaun):** Gates all funding, mint, buy, sell, spend, and stranger tests.
+
+---
+
 ## 🎬 1. Interactive Stranger Test Cold Opens & Animatic Player
 To prove the narrative stands on its own **without any token pitch, wallet, or crypto jargon**, we have built a self-contained HTML5 Canvas + Web Audio animatic player in a 1987 beige CRT rig:
 
