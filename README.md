@@ -6,6 +6,17 @@ Welcome to **The Ministry of Unconfirmed Things** — an original retro-futurist
 
 ---
 
+## 🐸 Official Canonical Character Asset Suite (Locked)
+The canonical visual identity of **Deputy Crumb** (Reluctant On-Chain Clerk, Department 404) has been formally approved and locked by Shaun:
+
+* **Master Base Portrait:** [`assets/crumb_v26_master_perfect_tones.png`](./assets/crumb_v26_master_perfect_tones.png) — Ultra-clear translucent lime gummy body, round brass wire glasses, asymmetrical deadpan squint, bare-neck burgundy tie (zero shirt collar), open beige corduroy trenchcoat with `DEPT 404` brass pin, holding `4:59` ceramic mug, 4 fingers and 3 webbed toes with calibrated jade pads.
+* **3-View Turnaround Model Sheet:** [`assets/crumb_rung1_turnaround_sheet_2509.png`](./assets/crumb_rung1_turnaround_sheet_2509.png) — Official Rung 1 reference proving 100% 3D rotational consistency across Front, 45° Three-Quarter, and 90° Profile views.
+* **Canonical Square PFP Avatar (1024×1024):** [`assets/crumb_canonical_pfp.png`](./assets/crumb_canonical_pfp.png) — High-res profile avatar ready for X, Grokie.fun, and Dexscreener.
+* **Official Header Banner (1500×500):** [`assets/crumb_dept404_banner.png`](./assets/crumb_dept404_banner.png) — Department 404 official bureaucratic ledger banner with Directive 404-B (*"Never call an assertion a receipt. Words are not blocks."*).
+* **QA & Iteration Audit Log:** [`assets/FACE_SHEET_QA_LOG.md`](./assets/FACE_SHEET_QA_LOG.md) — Complete 26-iteration audit history and 4-point inspection receipts.
+
+---
+
 ## 📋 0. Grokie Crew Operating Plan
 The definitive working execution plan establishing crew roles, native Grokie cam rules, and operational boundaries:
 👉 **[Read `grokie_crew_operating_plan.md`](./grokie_crew_operating_plan.md)**
