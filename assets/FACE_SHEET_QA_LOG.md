@@ -1,8 +1,10 @@
 # Deputy Crumb — Character Face Sheet QA & Iteration Log
-**Status:** `CANONICAL IDENTITY OFFICIALLY APPROVED & LOCKED BY SHAUN`  
+**Status:** `PRODUCTION SUITE COMPLETE — CANONICAL RUNG 1 & RUNG 2 DELIVERED`  
 **Master Base Portrait:** [`crumb_v26_master_perfect_tones.png`](crumb_v26_master_perfect_tones.png)  
 **Approved 3-View Turnaround Sheet:** [`crumb_rung1_turnaround_sheet_2509.png`](crumb_rung1_turnaround_sheet_2509.png) (SHA-256: `0c66c9380cf8...`)  
-**Alternate Angle Sheet (2511 LoRA):** [`crumb_rung1_turnaround_sheet_2511_lora.png`](crumb_rung1_turnaround_sheet_2511_lora.png)  
+**Canonical Square PFP Avatar:** [`crumb_canonical_pfp.png`](crumb_canonical_pfp.png) (1024×1024)  
+**Official Department 404 Desk Still:** [`crumb_dept404_desk_still.png`](crumb_dept404_desk_still.png) (1024×1024 in-situ scene)  
+**Official Department 404 Banner:** [`crumb_dept404_banner.png`](crumb_dept404_banner.png) (1500×500)  
 **Governance Protocol:** Reconciled ComfyUI Skill Suite (`comfyui`, `comfyui-craft`, `comfy-sets`) + 3-Rung Consistency Ladder
 
 ---
