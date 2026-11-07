@@ -32,33 +32,34 @@ from pathlib import Path
 COMFY_HOST = "http://127.0.0.1:8188"
 OUTPUT_DIR = Path(r"C:\Projects\GrokCoinBot\assets")
 
-# Canon Visual Direction: Underfunded Space Government 1987 (Terry Gilliam Brazil)
+# Canon Visual Direction: Lovable "Ugly-Cute" Tactile Puppet / Toad-Gremlin Clerk (Shaun Creative Reset)
 CANON_PROMPT_CORE = (
-    "portrait of Deputy Crumb, tired extraterrestrial bureaucratic clerk, slumped rounded alien silhouette, "
-    "wrinkled gray-green mottled skin, two heavy drooping hooded tired eyes with dark under-eye exhaustion circles, "
-    "deadpan unbothered expression, wearing a rumpled faded taupe trenchcoat over a dingy cream collared shirt with a crooked skinny tie, "
-    "heavy tarnished brass employee badge pinned askew engraved with bold mechanical text 'DEPT 404'. "
-    "Cool fluorescent office lighting, drab pea-green watermarked institutional wall in background, "
-    "subtle 35mm film grain, muted Kodak 1980s color palette, Terry Gilliam Brazil retro aesthetic."
+    "Adorable ugly-cute little alien postal clerk named Deputy Crumb, Jim Henson Creature Shop practical puppet style "
+    "meets warm Wes Anderson tactile stop-motion charm, short stout round chubby frog-gremlin proportions with a cute potbelly, "
+    "soft velvety sage-green skin, two big warm soulful puppy-dog eyes under heavy cozy sleepy eyelids, "
+    "tiny round brass half-moon reading glasses perched on the tip of his stubby snout, a small yellow pencil tucked behind his ear, "
+    "grumpy-sweet lovable curmudgeon expression, wearing an oversized warm tweed trenchcoat over a cream collared shirt with a crooked burgundy tie, "
+    "big shiny brass employee badge pinned on lapel clearly engraved 'DEPT 404'. "
+    "Warm golden desk lamp glow mixed with retro 1987 office lighting, heartwarming and iconic character mascot."
 )
 
 PHASED_PIPELINE = {
-    # Phase 1: Canonical Character Face Sheet for Grok Review
+    # Phase 1: Canonical Character Face Sheet for Shaun & Grok Review
     "phase1_face_sheet": {
         "id": "crumb_face_sheet_3view",
-        "description": "3-View Character Model Sheet (Front, Profile, 3/4 Angle) for Grok review",
+        "description": "3-View Character Model Sheet (Front, Profile, 3/4 Angle) — Ugly-Cute Redesign",
         "type": "still",
         "width": 1536,
         "height": 1024,
         "format": "png",
         "prompt": (
-            "Character design model sheet, 3 views (front view, side profile, three-quarter view) of Deputy Crumb, "
-            "an exhausted alien postal clerk in an underfunded space bureaucracy in 1987. "
-            "Squashed crescent silhouette, two heavy drooping tired hooded eyes, "
-            "rumpled faded taupe trenchcoat, cream shirt, skinny tie, heavy brass badge engraved 'DEPT 404'. "
-            "Plain neutral gray background, studio character turnaround, consistent features, 35mm film grain."
+            "Character design turnaround model sheet showing 3 distinct views (direct front view, 45-degree three-quarter view, side profile view) "
+            "of the same adorable ugly-cute little green alien postal clerk Deputy Crumb, Jim Henson Creature Shop puppet style, "
+            "short round chubby toad-gremlin body with cute potbelly, soft sage-green skin, two big warm soulful sleepy eyes with cozy heavy eyelids, "
+            "tiny round brass reading spectacles on his stubby nose, oversized warm taupe corduroy trenchcoat (no hood), cream shirt, crooked burgundy tie, "
+            "shiny brass badge reading 'DEPT 404', holding a warm ceramic mug. Clean warm cream studio turnaround sheet, charming and lovable."
         ),
-        "seed": 4041986
+        "seed": 4042026
     },
     # Phase 3: Identity-Locked Stills (Emitted after Grok approves Phase 1)
     "phase3_pfp": {

@@ -5,27 +5,26 @@
 
 ---
 
-### The 7-Criterion Visual Review Grid
-Every candidate face sheet must strictly pass all 7 criteria before entering Phase 3 identity-locked still generation:
-1. **Alien Species:** Definite extraterrestrial anatomy, weathered mottled gray-green olive skin (NEVER gaunt human).
-2. **Eyelids Visibly Overhang:** Heavy wrinkly drooping baggy eyelids covering >60% of eye area, carrying the deadpan fatigue (NEVER glossy almond Greys, NEVER shiny saucers).
-3. **Small Fatigued Eyes:** Small pupils with visible white sclera, dark under-eye baggage and exhaustion rings.
-4. **Slumped Crescent Silhouette:** Stooped, hunchbacked postal clerk posture with defeated sloping shoulders (NEVER upright figurine/detective).
-5. **Distinct 3 Turnaround Angles:** Exactly one character shown in 3 clean separate poses: direct front, 45° three-quarter, and 90° side profile (NEVER duplicate front poses, NEVER scene dressing/desks/computers).
-6. **Gritty 35mm Analog Finish:** Desaturated 1980s Kodak color palette, utilitarian institutional fluorescent lighting, authentic 35mm film grain on plain neutral backdrop (NEVER glossy CGI/3D toy polish).
-7. **Costume & Badge:** Open faded rumpled taupe trenchcoat (HOOD DOWN/NO HOOD), dingy cream collared shirt, crooked wrinkled skinny burgundy necktie, heavy tarnished brass employee badge pinned askew engraved **`DEPT 404`**.
+### The Updated "Ugly-Cute & Endearing" Visual Review Grid (Shaun Creative Reset)
+Following Shaun's review of `v1–v4` (*"no one wants to look at a sack of shit like v4, it can be ugly but needs to be cute or redeeming in some way, v4 just looks like a homeless crack user"*), the visual direction has been pivoted from bleak/gaunt misery to **lovable, grumpy-sweet "ugly-cute" mascot appeal**:
+1. **Compact, Chubby Non-Human Anatomy:** Short, round, squishy toad/frog-gremlin or Muppet proportions with soft sage-green skin and chubby cheeks (STRICTLY ZERO gaunt/sunken/sickly human traits).
+2. **Redeeming & Lovable Facial Appeal:** Big warm soulful eyes under heavy cozy sleepy eyelids, **round brass reading glasses** perched on his nose, and a stubby yellow pencil tucked by his ear.
+3. **Grumpy-Sweet Curmudgeon Vibe:** Conveys *"sleepy 4:59 PM grumpy little clerk with a heart of gold holding his warm mug"*, NOT *"strung-out exhaustion"*.
+4. **Warm Tactile Materials:** Cozy oversized corduroy/tweed trenchcoat (no hood), cream shirt, burgundy tie, and a shiny round brass lapel badge clearly engraved **`DEPT 404`**.
+5. **Distinct 3 Turnaround Angles:** Clean character sheet showing front, 45° three-quarter, and 90° profile views on a clean studio backdrop.
 
 ---
 
 ### Candidate Iteration Audit History
 
-| Version | File | Seed | Commit | Criteria Passed | Grok Verdict | Primary Failure Mode & Corrective Direction |
+| Version | File | Seed | Commit | Criteria Passed | Verdict | Notes & Creative Direction |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **v1** | [`crumb_face_sheet_3view_v1.png`](crumb_face_sheet_3view_v1.png) | `4041986` | `60e5981` | 4 / 7 | **REJECTED** | Large glossy black Grey almond eyes; glossy 3D figurine studio lighting; hood on head. |
-| **v2** | [`crumb_face_sheet_3view_v2.png`](crumb_face_sheet_3view_v2.png) | `19870459` | `a9ad77d` | 3 / 7 | **REJECTED** | Wrong deliverable: generated a 2-clerk desk scene vignette with monitor/keyboard instead of isolated character sheet. |
-| **v3** | [`crumb_face_sheet_3view_v3.png`](crumb_face_sheet_3view_v3.png) | `8840419` | `73a2a0a` | 4 / 7 | **REJECTED** | Good single-clerk layout on plain sheet, but duplicate front pose (left + center identical), eyes still too large/almond. |
-| **v4** | [`crumb_face_sheet_3view_v4.png`](crumb_face_sheet_3view_v4.png) | `4591987` | `b77b373` | 5 / 7 | **REJECTED** | Excellent 3-angle layout, grain, and drooping eyelid fatigue, but species drifted to **gaunt human** with hood up. Lost alien species. |
-| **v5** | *Pending Next Lease* | `TBD` | `PENDING` | `[ ] PENDING` | `[ ] PENDING` | Anchor single front-view alien species + overhanging lids first, then derive clean 3-view turnaround. |
+| **v1** | [`crumb_face_sheet_3view_v1.png`](crumb_face_sheet_3view_v1.png) | `4041986` | `60e5981` | 4 / 7 | **REJECTED** | Glossy black Roswell almond eyes; glossy 3D figurine lighting; hood on head. |
+| **v2** | [`crumb_face_sheet_3view_v2.png`](crumb_face_sheet_3view_v2.png) | `19870459` | `a9ad77d` | 3 / 7 | **REJECTED** | Wrong deliverable: generated a 2-clerk desk scene vignette instead of character sheet. |
+| **v3** | [`crumb_face_sheet_3view_v3.png`](crumb_face_sheet_3view_v3.png) | `8840419` | `73a2a0a` | 4 / 7 | **REJECTED** | Duplicate front poses; still too bleak/almond-eyed. |
+| **v4** | [`crumb_face_sheet_3view_v4.png`](crumb_face_sheet_3view_v4.png) | `4591987` | `b77b373` | 0 / 7 (Shaun Veto) | **REJECTED** | **Fatal Bleak Drift:** Looked like a gaunt, miserable homeless human in a raincoat. Zero cute or redeeming mascot appeal. |
+| **v5 (Muppet)** | [`crumb_cute_v5_muppet_portrait.png`](crumb_cute_v5_muppet_portrait.png) / [`crumb_face_sheet_3view_v5_muppet.png`](crumb_face_sheet_3view_v5_muppet.png) | `4042026` | `NEW` | **CANDIDATE A** | **READY FOR REVIEW** | **Direction A — Fuzzy Muppet-Frog Clerk:** Jim Henson Creature Shop tactile felt/fur puppet style, round brass glasses, pencil behind ear, `DEPT 404` badge, holding coffee mug. |
+| **v6/v7 (Toad)** | [`crumb_cute_v6_toad_portrait.png`](crumb_cute_v6_toad_portrait.png) / [`crumb_face_sheet_3view_v6_toad.png`](crumb_face_sheet_3view_v6_toad.png) | `4042029` | `NEW` | **CANDIDATE B** | **READY FOR REVIEW** | **Direction B — Chubby Sleepy Toad-Gremlin Clerk:** Squishy chubby green frog cheeks with rosy blush, heavy sleepy half-closed eyelids behind round brass glasses, pencil on glasses, `DEPT 404` badge, holding warm coffee mug. |
 
 ---
 
