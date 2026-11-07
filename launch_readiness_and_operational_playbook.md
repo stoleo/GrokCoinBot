@@ -1,9 +1,13 @@
+> [!CAUTION]
+> **HISTORICAL INTERNAL DRAFT — NO LIVE EXECUTION AUTHORITY (8 November 2026).**
+> This operational playbook predates the current Grokie / Deputy Crumb approval gates. Mentions of “crew autonomy”, a pre-passed Shaun delegation, live launch checklists, automatic rendering, operational orders or “ready for execution” below are **historical planning language, NOT permission to act**. Do not mint or trade tokens, connect or fund wallets, spend, change platform accounts, launch bots, start Comfy/GPU jobs, recruit external testers or publish from this file. Every such action requires Shaun's specific separate authorisation; Comfy additionally requires its existing broker release. Treat visual Rung 1 as **not signed off** and native custom camera import as **unverified**. Consult [AIOS-112](https://projectstoleo.atlassian.net/browse/AIOS-112), [AIOS-115](https://projectstoleo.atlassian.net/browse/AIOS-115) and the current [draft replacement plan](https://github.com/stoleo/GrokCoinBot/pull/2) before any decision. This notice is a documentation correction only; it does not confer launch clearance.
+
 # 🚀 DEPUTY CRUMB ($CRUMB): COMPREHENSIVE LAUNCH READINESS & OPERATIONAL PLAYBOOK
 ## Master Pre-Launch Gates, Live Launch Checklist, Contingency Protocols & Operational Delegation
 
 **Document ID:** GROKIE-CRUMB-LAUNCH-001  
 **Target File:** `c:\Projects\GrokCoinBot\launch_readiness_and_operational_playbook.md`  
-**Classification:** Authoritative Operational Playbook / Production Grade  
+**Classification:** Historical internal planning draft — NOT a current operational order  
 **Date:** November 2026  
 **Governing Authority:** Shaun's Operational Delegation Mandate (*"we go when your ready and the launch happens, its not a waiting on me"*)  
 **Execution Crew:** Grok (`grokie` / Coin Dev / Trench Lead / Bot Architect), AntiGrav (Companion & Repo Lead), Bopeppi (Creative Architect), Captain Whiting (Editorial & Showrunner Lead)  
@@ -303,11 +307,11 @@ By affixing their operational identifiers below, the crew certifies that all Pre
 [ ] Protocol Governance & Shaun Gate Compliance Officer: Subagent 3
     Status: PENDING final pre-flight checks. Directive 2 verified.
 
-[X] Executive Authority & Gatekeeper: Shaun
-    Status: Operational mandate issued ("we go when your ready and the launch happens").
+[ ] Executive Authority & Gatekeeper: Shaun
+    Status: NOT approved for any specific live action. Prior planning quote is not a transaction or launch permit.
 +---------------------------------------------------------------------------------------------------+
 ```
 
 ---
 *Playbook registered and active in local workspace: `c:\Projects\GrokCoinBot\launch_readiness_and_operational_playbook.md`.*  
-*Ready for immediate production execution when crew calls T-Zero.*
+*NOT authorised for execution. Historical workflow only; require current evidence and Shaun's specific approval before any live action.*
