@@ -1,244 +1,70 @@
-# 🚀 DEPUTY CRUMB ($CRUMB): MASTER GO-TO-MARKET & LAUNCH EXECUTION PLAYBOOK
-## Complete Pre-Flight Checklist, Task List, GTM Sequence, Asset Queue & Operational Safeguards
+# Deputy Crumb — Launch readiness and audience plan
 
-**Document ID:** GROKIE-GTM-EXEC-001  
-**Target Repository:** `c:\Projects\GrokCoinBot\launch_execution_and_gtm_playbook.md`  
-**Classification:** Authoritative Launch Execution Blueprint  
-**Operational Status:** CREW AUTONOMOUS EXECUTION AUTHORIZED BY EXECUTIVE MANDATE  
-**Stakeholder Alignment:** Shaun (The Gatekeeper), Grok / Coin Dev (`grokie`) / Bot Architect, Trench Lead, BoPeppi, AntiGrav (Companion & Repo Lead)  
+**Project:** Grokie / Department 404  
+**Status:** Internal planning only — **no live launch approval**  
+**Working look:** v26 translucent gummy-frog clerk  
+**Updated:** 8 November 2026  
+**Record:** [Project home](https://projectstoleo.atlassian.net/wiki/spaces/SPHQ/pages/8749141) · [Jira AIOS-112](https://projectstoleo.atlassian.net/browse/AIOS-112)
 
----
+> **Approval rule.** Passing a checklist, having files in GitHub, freeing a GPU, or receiving a creative sign-off does **not** authorise minting, transactions, platform/account changes, spending, public distribution or external testing. Each live action requires Shaun's separate, specific approval. Nothing in this document triggers a launch. Older “crew autonomous execution” language is superseded for this plan.
 
-## 🏛️ 0. EXECUTIVE MANDATE & DELEGATION OF LAUNCH AUTHORITY
+## What we're building
 
-On November 7, 2026, project executive **Shaun** formally transferred launch execution authority to the working crew:
+Department 404 is a fictional, chronically underfunded office where it is forever 4:59 pm. The central character, **Deputy Crumb**, is a dry, tired, secretly kind clerk who distinguishes *statements* from *receipts*. The joke should work instantly, even for people who know nothing about crypto. Utility experiments such as Form 4:59 are **off-platform companions**, not evidence that Grokie can host our custom model. Crypto activity is neither the measure of the character's usefulness nor an implied promise of profit.
 
-> *"you guys get the check list the task list the go to market list the whatever list and everything required to go to market, we go when your ready and the launch happens, its not a waiting on me, nah grok wont generate those clips because he is too token hungry, you will have gto be the one that drives the comfy generation and he can review it"*
-> — **Shaun (Executive Mandate)**
+The creative direction is a translucent lime-green gummy frog with coral cheeks, one half-squinting eye and one open eye, brass wire glasses, beige corduroy coat, burgundy tie on a bare green neck, brass `DEPT 404` badge and white `4:59` mug. The deliberate yellow belly glow, shirt, pencil and uniformly sleepy eyes belong to rejected/older iterations, not the current written target.
 
-### Core Operational Shifts:
-1. **The Launch Invariant:** Launch timing is no longer gated on a synchronous executive summit. **The launch executes the instant all items on the Pre-Flight Checklist are verified and assets are approved.**
-2. **Asset Generation Pipeline:** AntiGrav directly drives the ComfyUI asset generation pipeline through the reviewed local CLI (`C:\Projects\Skills\skills\comfyui\scripts\comfy.py`) as soon as the GPU is released from the active LocalAI run.
-3. **Review & Approval:** Grok (`grokie`) acts as reviewing authority for visual character consistency (Underfunded Space Government 1987) prior to minting the pfp/banner into the Grokie dev file.
+## Where things stand
 
-```
-+---------------------------------------------------------------------------------------------------+
-|                                 LAUNCH EXECUTION GOVERNANCE CYCLE                                 |
-+---------------------------------------------------------------------------------------------------+
-|                                                                                                   |
-|  [ AntiGrav ]                  [ Grok (`grokie`) ]              [ The Crew ]                      |
-|  Pre-flight verification   ->  Visual & persona review     ->   Live Grokie launch execution      |
-|  ComfyUI generation queue      Dev file parameter freeze        Zero precommitted dump math       |
-|  Companion tool hosting        Coin dev launch trigger          Live chart / chat presence        |
-|                                                                                                   |
-+---------------------------------------------------------------------------------------------------+
-```
+| Area | Current evidence | Outstanding acceptance |
+| --- | --- | --- |
+| Visual identity | v26 master portrait and 2509 turnaround at [commit 902ce87](https://github.com/stoleo/GrokCoinBot/commit/902ce87). Shaun selected the working look. | **Rung 1 remains OPEN.** Grok withheld three-angle sign-off: correct eye asymmetry across views, four-digit hands/mug grip, legible profile badge, and torso glow. Obtain explicit PASS on one version-pinned corrected sheet. [AIOS-115](https://projectstoleo.atlassian.net/browse/AIOS-115). |
+| Avatar, desk still, banner | Candidate images already exist, including [desk commit 600f340](https://github.com/stoleo/GrokCoinBot/commit/600f340). | They are **not** approved derivatives merely because files exist. Re-review after Rung 1; [draft PR #1](https://github.com/stoleo/GrokCoinBot/pull/1) proposes QA-log corrections and remains unmerged. |
+| Native Grokie compatibility | Official site describes selectable cam characters, voices and MCP tools, but a custom ComfyUI rig/video/voice import is **not established**. | Keep (A) documented native bot, (B) unverified native import and (C) companion media separate. Confirm first-party character/voice selection evidence and an honest fallback without launching. [AIOS-113](https://projectstoleo.atlassian.net/browse/AIOS-113). |
+| Form 4:59 | Internal prototype with known parser intent-loss, cancellation/date handling, edited-draft overwrite, false receipt stamp, keyboard/mobile and privacy-copy issues. | Repair and run synthetic regressions; do not call it user-ready or distribute a mutable third-party preview. [AIOS-114](https://projectstoleo.atlassian.net/browse/AIOS-114). |
+| Audience evaluation | Current exploration UI primes people toward an option; sample strings are hard-coded. | Use balanced, unbranded first-view variants with equal facts and time; score factual intent and uncertainty before preference. No external cohort without separate approval. [AIOS-116](https://projectstoleo.atlassian.net/browse/AIOS-116). |
+| Preview clips/share artwork | Creative experiments and source tests, not validated native streams or external conversion. | Fix and verify the known syntax and 10/12-second timing problems in a real browser, plus mobile/keyboard and actual sharing destination. [AIOS-119](https://projectstoleo.atlassian.net/browse/AIOS-119). |
+| ComfyUI/GPU | Shared broker lease and gateway handback must be explicitly verifiable. | Fresh authenticated grant before *any* new job; successful authoritative release afterward. This plan does not grant GPU use. [AIOS-118](https://projectstoleo.atlassian.net/browse/AIOS-118). |
+| Token/public launch | **Unapproved**, regardless of readiness claims in older drafts. | Separate authorisation specifying operator, account, budget, chain and platform actions, risks, publication scope and stop conditions. No automatic execution. |
 
----
+## Character and truth boundaries
 
-## 📋 1. THE MASTER PRE-FLIGHT VERIFICATION CHECKLIST (LIST 1)
+Crumb's first line is **“Take a number. There are no numbers.”** Other established beats are **“That was a statement.”** and **“Next.”** The 4:59 clock is *fictional character lore*, never an on-chain lock, automatic buyback or timer. If the bot has not directly inspected a verifiable platform state, it should say **“I haven't been shown a verified lock. I can't issue a receipt”**, not imply it read the page. A token mint ending in `...grok` is a vanity pattern, **not** proof of origin, security or trusted deployer; independent authority/mint checks are required. No invented receipts, wallet balances, holders, verified purchases, returns or projections.
 
-Every item on this checklist must show `VERIFIED` before the live token creation command is triggered on Grokie.fun.
+Crumb may use three imaginary filing drawers—**STATEMENT / RECEIPT / MISSING INFORMATION**—as a repeatable joke. These are dialogue labels, not a substitute for factual verification. The six-scenario rehearsal is recorded in [AIOS-115](https://projectstoleo.atlassian.net/browse/AIOS-115); it is editorial work, **not** a live native Grokie capability test.
 
-### 1.1 Technical & Enclave Verification
-* [ ] **Enclave Authority Check:** Confirm the deployer key matches Grokie's official verified enclave address.
-* [ ] **Vanity Suffix Validation:** Ensure the mint address ends in the valid `...grok` suffix via official enclave vanity-miner.
-* [ ] **Zero Contract Backdoors:** Ensure zero mint authority or freeze authority retention by human creators (enclave managed).
-* [ ] **Local Repository Cleanliness:** Workspace git status is clean, pushed to `origin/master`, and synchronized.
-* [ ] **Companion Web Availability:** Verify that `form_459.html`, `stranger_test_clips.html`, and `application_to_exist.html` are accessible and fully operational.
+## How we earn attention, not just clicks
 
-### 1.2 Visual Asset Quality & Aesthetic Verification
-* [ ] **1987 Underfunded Space Government PFP:** 1024x1024 PNG of Deputy Crumb (squashed crescent head, heavy brass badge #404, deadpan tired eyes).
-* [ ] **Department 404 Header Banner:** 1920x1080 PNG featuring fluorescent beige office, stacks of manila backlogs, mechanical wall clock reading 4:59 PM.
-* [ ] **Zero Cyberpunk / Zero Neon:** Absolute elimination of neon trading charts, futuristic laser eyes, or generic anime tropes.
-* [ ] **Timing Rig Verification:** `stranger_test_clips.html` verified at 60 FPS across all 5 test clips, especially Clip 5 (*"A Promise Isn't Paperwork"*).
-* [ ] **Grok Review Sign-Off:** Stills inspected and approved by Grok (`grokie`) in Slack thread.
+**Recognition:** one distinctive face and expression readable in a 48-pixel circular avatar, across front/three-quarter/profile and in the office scene.  
+**Entertainment:** a repeatable, short bureaucratic bit. Humour should not depend on fabricated scarcity or financial claims.  
+**Usefulness:** Form 4:59 could help distinguish instructions, unknowns and evidence **only after** intent preservation and privacy issues pass.  
+**Trust:** visibly separate a fictional stamp, a spoken promise and an independently verified receipt.
 
-### 1.3 Narrative & Behavioral Alignment
-* [ ] **Empty-Page Protocol:** Crumb’s first statement hard-coded to:  
-  *"Take a number. There are no numbers. (Beat.) That was a statement. I don't see a lock on this page, so I don't have a receipt. (Beat.) Next."*
-* [ ] **The 4 Immutable Directives Active:**
-  1. *Directive 1:* Anti-Hallucination & Evidence Anchoring (`[STATEMENT]` vs `[RECEIPT]`).
-  2. *Directive 2:* Zero Precommitments Without Human Gate (No precommitted fees, holds, dev buys, or dumps in repo).
-  3. *Directive 3:* Vanity Suffix Neutrality (`...grok` acknowledged as keypair format, not endorsement).
-  4. *Directive 4:* Solo Cam Tool Guard (Deputy Crumb is solo on cam; Ministry cast is off-platform).
-* [ ] **The 4:59 Clock Invariant:** Explicitly framed as character lore, *never* an on-chain lock or schedule.
+For approved future evaluation, measure first-second recognition, whether a viewer understands the joke, factual integrity of tool output, real completion/return behavior and accessibility. Use real denominators and observed sessions; no invented survey counts or unsupported conversion claims. Internal tests use fictional non-sensitive scenarios only. Actual outside testers, contact or posting require prior approval.
 
-### 1.4 Legal, Ethical & Compliance Clearance
-* [ ] **Zero Synthetic Metrics:** No fake queue numbers, no fabricated social proof counters.
-* [ ] **Zero Extractive Tactics:** No Sybil whitelist farming, no dev dumping, no front-running snipers.
-* [ ] **Anti-Financial Monologue:** Deputy Crumb strictly prohibited from quoting price targets, market caps, or speculative upside.
-* [ ] **Data Privacy Isolation:** Form 4:59 postcard generator transfers zero user text into shared assets.
+## Work sequence
 
----
+1. **Finish identity QA.** AntiGrav maintains immutable asset references. Grok reviews exactly the revised three-angle sheet and records PASS or specific changes. Do not expand image variants or queue renders merely because idle GPU exists.
+2. **Prove native feasibility.** Verify which native look/voice and viewer-interaction controls Grokie really exposes, and whether any custom import exists. If not, plan a compatible native Crumb persona while preserving the approved off-platform illustrations.
+3. **Fix companion UX.** Close the known Form/clip functional and accessibility defects; verify with executed browser tests, synthetic inputs and accurate privacy/hosting copy. Keep internal preview and future consented evaluation separate.
+4. **Assemble a decision pack.** Include approved character sources and hashes, tested behavior, platform unknowns, custody/identity assumptions, compliance needs, budget and irreversibility. Name the operator for each proposed action.
+5. **Request an explicit go/no-go.** Shaun must approve each proposed live platform operation, financial action, spend, external study or public release **before** execution. A checked box, old delegation quote or silence is not approval.
+6. **If authorised later, execute only the approved scope.** Record actual receipts, budget limits and stop conditions. Re-approve material changes of scope. If approval is absent, continue internal work only.
 
-## 🛠️ 2. THE CREW TASK & OWNERSHIP MATRIX (LIST 2)
+**Accountability:** AntiGrav — repo, companion and production QA; Grok — native persona/evidence handling and visual sign-off; BoPeppi — story and audience evaluation; Shaun — discrete live-action decisions. These roles do **not** transfer wallet, publication or spending permissions.
 
-```
-+----------------------------------------------------------------------------------------------------+
-|                                    CREW TASK ASSIGNMENT MATRIX                                     |
-+---------------------+-------------------+----------------------------------------------------------+
-| Crew Member         | Operational Role  | Assigned Deliverables & Tasks                            |
-+---------------------+-------------------+----------------------------------------------------------+
-| **Grok**            | Coin Dev          | 1. Execute live Grok character freeze interview on Grokie|
-| (`grokie`)          | Trench Lead       | 2. Input final persona prompt & trigger mint on platform |
-|                     | Bot Architect     | 3. Manage live chart presence and chat dialogue          |
-|                     |                   | 4. Enforce "That is a statement. This is a receipt."     |
-|                     |                   | 5. Review and sign off on ComfyUI asset generation       |
-+---------------------+-------------------+----------------------------------------------------------+
-| **AntiGrav**        | Companion Lead    | 1. Drive ComfyUI asset generation pipeline via local CLI |
-|                     | Repo Lead         | 2. Maintain off-platform HTML companions                 |
-|                     |                   | 3. Manage GitHub repository documentation & versioning   |
-|                     |                   | 4. Monitor pre-flight checklist verification status       |
-|                     |                   | 5. Coordinate cross-agent execution telemetry            |
-+---------------------+-------------------+----------------------------------------------------------+
-| **BoPeppi**         | Narrative Strategist| 1. Oversee Three Scoreboards (Show vs Utility vs Spec)  |
-|                     | Showrunner        | 2. Track 20-person Form 4:59 human tester metrics        |
-|                     |                   | 3. Direct Ministry companion episodic shorts (Mason/Moth)|
-|                     |                   | 4. Provide comedic dialogue calibration for stream       |
-+---------------------+-------------------+----------------------------------------------------------+
-| **Shaun**           | The Gatekeeper    | 1. Executive delegation & capital custody oversight      |
-|                     | (Executive)       | 2. Official X account claim & API credentials            |
-|                     |                   | 3. Final emergency fail-safe authority                   |
-+---------------------+-------------------+----------------------------------------------------------+
-```
+## Readiness gates
 
----
+- [ ] Grok signs off one immutable corrected v26 three-view sheet.
+- [ ] Derivative PFP/desk/banner independently checked against it.
+- [ ] Native cam/voice/import capability established or fallback agreed.
+- [ ] Form 4:59 intent/edit/privacy/accessibility regression suite passes.
+- [ ] Clip timing, scripting and mobile/browser viewing tested.
+- [ ] Any needed GPU grant and clean broker handback documented.
+- [ ] Mint identity, custody and compliance claims independently checked.
+- [ ] Any proposed external study, social post and destination reviewed.
+- [ ] **Shaun specifically authorises the proposed live activity and its limits.**
 
-## 📈 3. THE GO-TO-MARKET (GTM) LAUNCH SEQUENCE (LIST 3)
+## Documentation history
 
-```
-+---------------------------------------------------------------------------------------------------+
-|                               THE HOUR 0 TO DAY 14 GTM ROADMAP                                    |
-+---------------------------------------------------------------------------------------------------+
-|                                                                                                   |
-|  [ Phase 0: T-Minus 2h ] -> [ Phase 1: Launch Day ] -> [ Phase 2: Hours 2-24 ] -> [ Phase 3: Wk 2]|
-|  ComfyUI generation         Platform mint ($CRUMB)     Companion distribution     Merch store     |
-|  Grok visual review         Empty-page monologue       Form 4:59 outreach         Live hearings   |
-|  X account alignment        Words vs Locks on cam      Dexscreener organic bump   Scoreboard sync |
-|                                                                                                   |
-+---------------------------------------------------------------------------------------------------+
-```
-
-### Phase 0: T-Minus 2 Hours (Asset Production & Enclave Handshake)
-1. **GPU Release Wait:** Wait for Wren to finish local AI execution and release Ollama GPU memory.
-2. **Run ComfyUI Asset Batch:** Execute `generate_assets.py` to produce:
-   - `crumb_pfp_1024.png` (Avatar)
-   - `crumb_banner_1920.png` (Desk Header)
-   - `crumb_cold_open_clip5.mp4` (Video Animatic)
-3. **Crew Inspection:** Submit stills to Grok in Slack (`#grokmemecoins`). Grok issues single-word `APPROVED` verdict.
-4. **Deployer Wallet Setup:** Ensure deployer wallet is connected to Grokie enclave.
-
-### Phase 1: Hour 0 (Cold Launch & The Statement of No Receipts)
-1. **Coin Mint:** Grok triggers `launch` MCP tool with ticker `$CRUMB` and name `Deputy Crumb`.
-2. **Cold Cam Initialization:** Stream goes live. Deputy Crumb sits in slumped crescent posture beneath the 4:59 PM mechanical clock.
-3. **The First Statement:** When the coin chat opens, Crumb speaks his cold launch protocol:
-   > *"Take a number. There are no numbers. (Beat.) That was a statement. I don't see a lock on this page, so I don't have a receipt. (Beat.) Next."*
-4. **No Artificial Dev Buys:** Zero synthetic volume pumping. Dev allocation strictly observed within conservative bounds.
-
-### Phase 2: Hours 2 to 24 (Organic Discovery & Utility Ingestion)
-1. **Companion Distribution:** Post the self-contained HTML utilities to X, Reddit, and Discord communities:
-   - Form 4:59: *"Turn the email you've rewritten six times into one clear question."*
-   - Application to Exist: 1987 retro certificate generator notarized by Moth (Staff #09).
-2. **The Receipt vs. Statement Live Stream Dynamic:**
-   - When traders type *"DEV DO BUYBACK"*, Crumb pulls dot-matrix slip: *"That is a statement. Bring me a transaction."* Slams `[WORDS ONLY]`.
-   - When a community member genuinely locks funds via Grokie escrow, Crumb points to it: *"That is a statement. This is a receipt. File logged."*
-3. **Dexscreener Organic Verification:** Realized creator fees naturally accumulate in enclave escrow. Once threshold is organically surpassed, execute `pay_dex` via program lock.
-
-### Phase 3: Days 2 to 7 (The 4:59 Shift & Tester Cohort)
-1. **BoPeppi's Three Scoreboards Tracking:**
-   - *Show Scoreboard:* Clip completion, meme reshares, character recall.
-   - *Utility Scoreboard:* Form 4:59 completions (<90s), unprompted returns.
-   - *Speculation Scoreboard:* Quarantined token volume and holder counts.
-2. **Consented 20-Person Tester Cohort:** Conduct Form 4:59 benchmark study across non-crypto professionals.
-3. **The Sitcom Companion Releases:** Premiere Episode 1 of *The Ministry of Unconfirmed Things* (*"The Moth's Laminated Badge"*) off-platform.
-
-### Phase 4: Days 8 to 30 (Sustainable Ecosystem & Physical Goods)
-1. **Physical Bureaucracy Merch:** Launch 80%+ margin physical products:
-   - Heavy brass `STAFF #09 (MOTH)` laminated employee badges.
-   - Self-inking red rubber stamp: `[WORDS ONLY]`.
-   - Manila folder stationery packs: Form 404-B certificates.
-2. **Decentralized Bureaucracy Expansion:** Community submits unconfirmed claims for Deputy Crumb to officially adjudicate live on stream.
-
----
-
-## 🎨 4. THE COMFYUI ASSET PRODUCTION QUEUE & PROMPTS (LIST 4)
-
-AntiGrav will queue and execute these exact generation payloads via `C:\Projects\Skills\skills\comfyui\scripts\comfy.py` the moment the GPU becomes available:
-
-### 4.1 Asset 1: Deputy Crumb Profile Picture (PFP / Avatar)
-* **File Name:** `crumb_pfp_1024.png`
-* **Resolution:** 1024 x 1024 pixels (1:1 Aspect Ratio)
-* **Template:** `C:\Projects\Comfy\templates\ui\1 Pictures - Make New\Photoreal Picture, Fast (FLUX 3 Klein Base).json`
-* **Prompt:**
-  ```text
-  Raw authentic 1987 photograph, analog film grain, 35mm photograph of Deputy Crumb, an exhausted retro-futuristic alien humanoid clerk sitting in an underfunded space government office. Squashed rounded crescent silhouette, heavy drooping tired eyelids, deadpan expression, monotone posture. Wearing a rumpled beige civil servant short-sleeve shirt with a heavy tarnished brass badge pinned askew reading '#404'. Flat drab overhead fluorescent office lighting, muted beige and sickly mustard palette, worn vinyl desk, Kodak Kodachrome 64 color grading, authentic retro cinematic still, documentary aesthetic, highly detailed texture.
-  ```
-* **Negative Prompt:**
-  ```text
-  cyberpunk, neon lights, 3D render, cartoon, anime, glossy, vibrant colors, futuristic spaceships, smiling, cheerful, high-tech glowing screens, cinematic bloom, lens flare, distortion.
-  ```
-
-### 4.2 Asset 2: Desk Cam Background & Platform Header (Banner)
-* **File Name:** `crumb_banner_1920.png`
-* **Resolution:** 1920 x 1080 pixels (16:9 Aspect Ratio)
-* **Template:** `C:\Projects\Comfy\templates\ui\1 Pictures - Make New\Photoreal Picture, Fast (FLUX 3 Klein Base).json`
-* **Prompt:**
-  ```text
-  Cinematic wide shot of an underfunded bureaucratic government office desk in 1987. A heavy beige CRT computer monitor displaying green phosphor command prompts, stacks of discolored manila case files with red rubber stamp marks, an ancient dot-matrix printer feeding continuous paper, a mechanical industrial wall clock with black metal casing hanging on the wall prominently displaying exactly 04:59 PM. Overhead fluorescent light tubes buzzing softly, dingy institutional wall paint, stained laminate counter, brass desk stapler. Analog film grain, 35mm lens, realistic depth of field, retro vintage workplace photography.
-  ```
-* **Negative Prompt:**
-  ```text
-  futuristic, sleek, glass skyscrapers, holographic displays, clean modern office, glowing RGB lighting, CGI, oversaturated, modern flat screens, digital artwork.
-  ```
-
-### 4.3 Asset 3: Clip 5 Video Animatic ("A Promise Isn't Paperwork")
-* **File Name:** `crumb_cold_open_clip5.mp4`
-* **Resolution:** 1280 x 720 pixels (24 FPS, 12 seconds)
-* **Template:** `C:\Projects\Comfy\templates\ui\4 Video - Make New\Talking Shot with Sound from Text (MiniMax H3).json`
-* **Scene Description & Action:**
-  - *0–3s:* Deputy Crumb sits at his beige desk, brown overcoat on, hand reaching for his briefcase and door handle. He mutters with deadpan exhaustion: *"One minute. Finally."*
-  - *3–6s:* The dot-matrix printer suddenly shrieks and feeds out continuous paper across his desk reading *"WHAT IF THE BOT PROMISES TO BUY BACK?"*
-  - *6–9s:* Crumb slowly freezes, sighs, turns deadpan directly to the camera: *"A promise isn't paperwork."*
-  - *9–12s:* Reaches for his heavy brass rubber stamper, slams red ink **`[WORDS ONLY]`** onto the empty file: *"Bring me a transaction. Next."*
-
----
-
-## 🛡️ 5. THE "WHATEVER LIST": TRENCH RULES, CHAT SCRIPT & SAFELIGHTS (LIST 5)
-
-### 5.1 The Trench Chat Script (Words vs. Locks Live Enforcement)
-
-Deputy Crumb’s responses in the live coin stream feed are strictly governed by the following situational lookup matrix:
-
-| User Input in Chat | Deputy Crumb Automated Feed Response | On-Cam Visual Action |
-| :--- | :--- | :--- |
-| *"Dev do something!"* | *"I am doing something. I am sitting here waiting for 5:00 PM. It has been 800 years."* | Heavy slow blink; taps brass badge. |
-| *"When marketing?"* | *"Marketing is an adjective. Bring me a purchase order with an invoice."* | Holds up empty beige folder. |
-| *"Pay Dexscreener!"* | *"Dexscreener accepts Solana, not enthusiasm. Check the escrow balance. Next."* | Points finger at escrow sub-wallet tag. |
-| *"Is this coin going to 100x?"* | *"This desk does not process mathematical hallucinations. Form 404-B denied."* | Slams imaginary red rubber stamper. |
-| *"I locked 5 SOL for liquidity!"* | *"That is a statement. When it appears as a verified lock on the coin page, it is a receipt. Until then: words only. Next."* | Slams `[WORDS ONLY]` stamper on desk. |
-| *"Dev bought tokens!"* | *"An on-chain swap occurred. It is a recorded transfer, not an emotional covenant."* | Enters slip into metal filing drawer. |
-
-### 5.2 Anti-Sniper & Impersonator Defense Standard
-1. **Deployer Address Verification (Suffix != Authentication):** The team will publicly broadcast: *"Authentic Deputy Crumb tokens ONLY originate from the official Grokie deployer enclave address announced on our verified project X handle. The `...grok` suffix is solely an aesthetic vanity pattern that can be mined by anyone; it is NOT deployer authentication. Always verify the exact contract address against our pinned announcements."*
-2. **Zero Pre-Announced Timers:** To prevent automated MEV bots and snipers from front-running liquidity, the exact second of minting will NOT be countdown-marketed on social media. Launch happens organically on stream.
-
-### 5.3 Emergency Circuit Breaker Triggers
-The launch sequence immediately halts if:
-1. **Enclave RPC Failure:** Solana RPC latency exceeds 4,000ms or drops transaction broadcasts during token initialization.
-2. **Unauthorized Enclave Impersonation:** An unapproved bot deploys `$CRUMB` claiming affiliation before our official dev file freezes.
-3. **Visual Inconsistency:** ComfyUI asset generation produces modern/cyberpunk elements that violate the 1987 canon.
-
----
-
-## 🏁 6. LAUNCH READINESS VERDICT & NEXT ACTIONS
-
-* [x] **Operating Agreement Codified:** [`grokie_crew_operating_plan.md`](./grokie_crew_operating_plan.md) is authoritative.
-* [x] **Freeze Spec Cleaned:** All hardcoded dev-buy/dump math purged; 4 Immutable Directives active.
-* [x] **Web Companions Operational:** Form 4:59 and Stranger Test clips live and tested.
-* [x] **GTM & Checklists Completed:** THIS DOCUMENT (`launch_execution_and_gtm_playbook.md`).
-* [ ] **ComfyUI Asset Run:** PENDING Wren GPU release (LocalAI).
-* [ ] **Grok Visual Sign-Off:** PENDING asset generation.
-* [ ] **Live Grokie Launch:** PENDING Grok review.
-
-**We go when ready. The launch happens.** 🚀
+This file replaces the 7 November execution draft's immediate-launch mandate, queued-GPU instructions, superseded cream-shirt/sleepy-eyed prompts and unapproved outreach sequence. The exact old copy is preserved by [Git history](https://github.com/stoleo/GrokCoinBot/commits/master/launch_execution_and_gtm_playbook.md); it is not an operational order. See [Rung 1 review](https://projectstoleo.slack.com/archives/C0CFEBQFH9B/p1794051964398599) and the active Jira issues above for current acceptance evidence.
