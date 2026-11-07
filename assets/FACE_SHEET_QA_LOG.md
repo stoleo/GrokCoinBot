@@ -1,7 +1,24 @@
 # Deputy Crumb — Character Face Sheet QA & Iteration Log
-**Status:** `MASTER BASE PORTRAIT SELECTED BY SHAUN (v15) — READY FOR RUNG 1 ANGLE SHEET`  
-**Selected Base Keyframe:** [`crumb_v15_gummy_hero_twotone.png`](crumb_v15_gummy_hero_twotone.png) (Seed `4042051`, Commit `27466a2`)  
+**Status:** `CANONICAL IDENTITY OFFICIALLY APPROVED & LOCKED BY SHAUN`  
+**Master Base Portrait:** [`crumb_v26_master_perfect_tones.png`](crumb_v26_master_perfect_tones.png)  
+**Approved 3-View Turnaround Sheet:** [`crumb_rung1_turnaround_sheet_2509.png`](crumb_rung1_turnaround_sheet_2509.png) (SHA-256: `0c66c9380cf8...`)  
+**Alternate Angle Sheet (2511 LoRA):** [`crumb_rung1_turnaround_sheet_2511_lora.png`](crumb_rung1_turnaround_sheet_2511_lora.png)  
 **Governance Protocol:** Reconciled ComfyUI Skill Suite (`comfyui`, `comfyui-craft`, `comfy-sets`) + 3-Rung Consistency Ladder
+
+---
+
+### Approved Canonical Character Specifications (Locked)
+1. **Species & Body:** Chubby, potbellied translucent lime-green gummy frog / alien clerk with realistic internal light refraction and tiny suspended micro-bubbles. Zero internal organs/brains/guts, zero internal yellow belly glow.
+2. **Head & Expression:** Round squishy translucent green head, rosy coral-pink cheek blush, grumpy narrow downturned lip slit. Asymmetrical deadpan clerk expression: skeptical half-squinting left eye and wide-open glossy dark eye with black pupil. Symmetrical dark oval nostril openings.
+3. **Eyewear:** Sleek round brass wire-rim reading glasses with clean hinge rivets and temple arms resting against the sides of his head. Awkward yellow pencils/cones removed.
+4. **Anatomy & Digits:**
+   - **Hands:** 4 clearly separated chubby gummy frog digits per hand (3 fingers + 1 thumb), with rich, translucent jade-green fingertip pads that are distinctly darker than his lime-yellow body but soft and translucent (matching across both the free hand and the hand gripping the mug).
+   - **Feet:** 3 webbed frog toes per foot (6 toes total) resting flat on the wooden desk, with matching translucent jade-green toe pads.
+5. **Wardrobe & Badge:**
+   - **Trenchcoat:** Open beige corduroy trenchcoat with realistic vertical corduroy ribbing, notched lapels, and brown round buttons.
+   - **Neckwear:** Thin burgundy-red necktie wrapped directly around his bare green gummy neck (zero shirt collar, zero white flaps), tied in a neat center knot with the tie hanging straight down over his exposed see-through potbelly.
+   - **Badge:** Official circular brass pin reading **`DEPT 404`** pinned cleanly to his right coat lapel.
+   - **Prop:** White ceramic coffee mug printed with bold black numbers **`4:59`** held in his left hand.
 
 ---
 
