@@ -37,10 +37,20 @@ Crumb may use three imaginary filing drawers—**STATEMENT / RECEIPT / MISSING I
 
 **Recognition:** one distinctive face and expression readable in a 48-pixel circular avatar, across front/three-quarter/profile and in the office scene.  
 **Entertainment:** a repeatable, short bureaucratic bit. Humour should not depend on fabricated scarcity or financial claims.  
-**Usefulness:** Form 4:59 could help distinguish instructions, unknowns and evidence **only after** intent preservation and privacy issues pass.  
+**Usefulness:** test whether an edited follow-up is genuinely easier to prepare **without losing the writer's instruction, refusal, deadline, audience or other consequential constraint**. A polished-looking draft that changes the intended action fails.  
 **Trust:** visibly separate a fictional stamp, a spoken promise and an independently verified receipt.
 
-For approved future evaluation, measure first-second recognition, whether a viewer understands the joke, factual integrity of tool output, real completion/return behavior and accessibility. Use real denominators and observed sessions; no invented survey counts or unsupported conversion claims. Internal tests use fictional non-sensitive scenarios only. Actual outside testers, contact or posting require prior approval.
+### First audience and testable hypothesis
+
+The proposed starting audience is **freelancers and small-studio leads who repeatedly rewrite client follow-ups**. This is an internal hypothesis, not a researched market claim: *Can Form 4:59 help someone produce a short, editable follow-up that preserves their intended action and all material constraints, or clearly flags what it cannot resolve?* Do not convert a refusal, cancellation or prohibition into a question or suggested action. Do not describe the prototype as reliable until tests support it.
+
+### Keep two questions—and their measures—separate
+
+**Does the Deputy Crumb story help people notice and remember the experience?** Compare a Crumb/story wrapper with a plain version using **the same actual draft, wording, font size, pause control, display time and exposure**. A matched plain control can isolate the packaging better than a plain card with different copy. Track unaided character/story recall, willingness to watch a second vignette and *observed* voluntary repeat viewing separately. A stated intention to return is not retention.
+
+**Does Form 4:59 produce a better message?** In a different internal exercise, compare the prototype with each participant's usual drafting approach, using equivalently difficult, **previously unseen fictional cases**, not only the four hand-authored fixture strings. Score intent and consequential-constraint preservation first, then unresolved points, required corrections, acceptable final drafts and time taken. A draft is acceptable only if the key intent and constraints are retained, or omissions/unknowns are flagged unambiguously for the writer to resolve. Test ordinary free-text inputs and hard cases (negation, refusal, cancellation, dates) before cosmetic preference. Do not confuse a viewer's preference for the character with drafting utility.
+
+**Measurement discipline:** Use real denominators and observed sessions, distinguish accessibility and factual integrity from engagement, and do not invent test counts, completion results, conversion, user traction or retention. Token interest, share clicks and self-reported return intent are not evidence that the communication tool works. Current Form 4:59 and story-card flows remain **internal explorations only**; internal cases use fictional, non-sensitive material. External participants, outreach, public links and distribution require Shaun's separate approval and a reviewed controlled hosting/privacy setup.
 
 ## Work sequence
 
@@ -67,4 +77,4 @@ For approved future evaluation, measure first-second recognition, whether a view
 
 ## Documentation history
 
-This file replaces the 7 November execution draft's immediate-launch mandate, queued-GPU instructions, superseded cream-shirt/sleepy-eyed prompts and unapproved outreach sequence. The exact old copy is preserved by [Git history](https://github.com/stoleo/GrokCoinBot/commits/master/launch_execution_and_gtm_playbook.md); it is not an operational order. See [Rung 1 review](https://projectstoleo.slack.com/archives/C0CFEBQFH9B/p1794051964398599) and the active Jira issues above for current acceptance evidence.
+This file replaces the 7 November execution draft's immediate-launch mandate, queued-GPU instructions, superseded cream-shirt/sleepy-eyed prompts and unapproved outreach sequence. **It does not yet correct sibling files**: `launch_readiness_and_operational_playbook.md` still contains a pre-ticked delegation gate and launch checklist, and `trench_gtm_execution_dossier.md` presents itself as an execution blueprint. Neither is current launch authority; these require source-owner reconciliation before any merge. The exact old copy is preserved by [Git history](https://github.com/stoleo/GrokCoinBot/commits/master/launch_execution_and_gtm_playbook.md); it is not an operational order. See [Rung 1 review](https://projectstoleo.slack.com/archives/C0CFEBQFH9B/p1794051964398599) and the active Jira issues above for current acceptance evidence.
