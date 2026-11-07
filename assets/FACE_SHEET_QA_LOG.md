@@ -1,17 +1,28 @@
 # Deputy Crumb — Character Face Sheet QA & Iteration Log
-**Status:** `IN PROGRESS — IDENTITY LOCK PENDING GROK APPROVAL`  
-**Reviewer:** Grok (Coin Dev Authority)  
-**Governance Protocol:** Shaun & Grok 7-Criterion QA Gate
+**Status:** `MASTER BASE PORTRAIT SELECTED BY SHAUN (v15) — READY FOR RUNG 1 ANGLE SHEET`  
+**Selected Base Keyframe:** [`crumb_v15_gummy_hero_twotone.png`](crumb_v15_gummy_hero_twotone.png) (Seed `4042051`, Commit `27466a2`)  
+**Governance Protocol:** Reconciled ComfyUI Skill Suite (`comfyui`, `comfyui-craft`, `comfy-sets`) + 3-Rung Consistency Ladder
 
 ---
 
-### The Updated "Ugly-Cute & Endearing" Visual Review Grid (Shaun Creative Reset)
-Following Shaun's review of `v1–v4` (*"no one wants to look at a sack of shit like v4, it can be ugly but needs to be cute or redeeming in some way, v4 just looks like a homeless crack user"*), the visual direction has been pivoted from bleak/gaunt misery to **lovable, grumpy-sweet "ugly-cute" mascot appeal**:
-1. **Compact, Chubby Non-Human Anatomy:** Short, round, squishy toad/frog-gremlin or Muppet proportions with soft sage-green skin and chubby cheeks (STRICTLY ZERO gaunt/sunken/sickly human traits).
-2. **Redeeming & Lovable Facial Appeal:** Big warm soulful eyes under heavy cozy sleepy eyelids, **round brass reading glasses** perched on his nose, and a stubby yellow pencil tucked by his ear.
-3. **Grumpy-Sweet Curmudgeon Vibe:** Conveys *"sleepy 4:59 PM grumpy little clerk with a heart of gold holding his warm mug"*, NOT *"strung-out exhaustion"*.
-4. **Warm Tactile Materials:** Cozy oversized corduroy/tweed trenchcoat (no hood), cream shirt, burgundy tie, and a shiny round brass lapel badge clearly engraved **`DEPT 404`**.
-5. **Distinct 3 Turnaround Angles:** Clean character sheet showing front, 45° three-quarter, and 90° profile views on a clean studio backdrop.
+### Reconciled Skill Rules & 4-Point Inspection Gate
+1. **Model & Subagent Division of Labour:**
+   - **Normal Mode (Argon Lead):** Argon owns prompt craft, GPU gate/hold or `#comfy` broker lease lifecycle, 100% zoom visual inspection, and tight/upward-only `Qwen-Image-Edit` crop boxes; `flash` subagents only do mechanical queue/file checks.
+   - **Quota-Takeover Mode (Gemini Flash):** Uses existing scripts/templates (`comfy.py`, `newgen.py fill`, `render_set.py`), stops ComfyUI (`comfy.py stop` / `comfy done`) before pausing for user feedback, and logs the **4-Point Written Inspection Check** on every output.
+2. **Z-Image 2-Pass Refine:** `1024×1024` or `832×1216`, 8 steps, `cfg 1`, `res_multistep/simple`, all constraints in positive prompt (negatives ignored at `cfg 1`), followed by `1.5×` upscale + refine at `denoise 0.22–0.35`.
+3. **3-Rung Character Consistency Ladder:**
+   - **Rung 1:** Per-character face/angle sheet (`front / 3-4 / profile`) anchored on `v15` via `Qwen-Image-Edit 2511` + `qwen-image-edit-2511-multiple-angles-lora` (or 20-step `cfg 4` face-lock path).
+   - **Rung 2:** Face-lock `Qwen-Image-Edit` pass anchored on the approved sheet for all scene shots.
+   - **Rung 3:** Per-character LoRA (15–25 approved images; trainer install gated on Shaun's approval).
+4. **Profile v2 Video Path:** Whitelists `ComfyUI-WanVideoWrapper` (`--disable-all-custom-nodes` + `--whitelist-custom-nodes ComfyUI-WanVideoWrapper` + `wanvideo-extra-model-paths.yaml` for `wav2vec2`), enabling Apache-2.0 `Wan 2.2 14B i2v`, `Wan 2.2 S2V`, `Wan 2.1 VACE`, and `Wan 2.1 InfiniteTalk`.
+
+---
+
+### 4-Point Inspection Log for Selected Master Base (`v15` — `crumb_v15_gummy_hero_twotone.png`)
+- **1. Figure Count:** `1` (Exact match — solo Deputy Crumb waist-up portrait).
+- **2. Fingers / Eyes / Badge / Text:** Two aligned dark glossy eyes under heavy sleepy warm-peach gummy eyelids; round brass wire-rim glasses with yellow pencil on left temple; crisp brass badge reading **`DEPT 404`**; ceramic mug reading **`4:59`**; two translucent green gummy hands.
+- **3. Wardrobe & Constraints:** Open beige corduroy trenchcoat with flat notched lapels (no hood), white collared shirt, burgundy necktie, warm golden bioluminescent core glowing through shirt below tie, realistic two-tone lime-green & warm-peach translucent gummy skin with tiny suspended bubbles, zero brains/guts.
+- **4. Crop / Reference Check:** Clean single-subject `1024×1024` frame, zero neighbour overlap. Approved by Shaun (*"v15 is the best because it looks the most real"*).
 
 ---
 
