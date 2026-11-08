@@ -1230,10 +1230,12 @@
         }
         return;
       }
-      if (isDraftNeedsReview || (isDraftManuallyEdited && draftProvenanceRev !== rawInputRevision)) {
+      if (isDraftNeedsReview || draftProvenanceRev !== rawInputRevision) {
         if (status) {
           status.style.color = '#fde047';
-          status.textContent = 'Source thought changed. Please choose to regenerate or keep your edited draft before copying.';
+          status.textContent = isDraftManuallyEdited
+            ? 'Source thought changed. Please choose to regenerate or keep your edited draft before copying.'
+            : 'Source thought changed since the draft was generated. Please file the petition (Stamp Docket) to update the draft before copying.';
         }
         return;
       }
