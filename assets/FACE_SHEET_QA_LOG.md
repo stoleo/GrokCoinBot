@@ -1,15 +1,18 @@
 # Deputy Crumb — Character Face Sheet QA & Iteration Log
-**Status:** `PRODUCTION SUITE COMPLETE — CANONICAL RUNG 1 & RUNG 2 DELIVERED`  
-**Master Base Portrait:** [`crumb_v26_master_perfect_tones.png`](crumb_v26_master_perfect_tones.png)  
-**Approved 3-View Turnaround Sheet:** [`crumb_rung1_turnaround_sheet_2509.png`](crumb_rung1_turnaround_sheet_2509.png) (SHA-256: `0c66c9380cf8...`)  
-**Canonical Square PFP Avatar:** [`crumb_canonical_pfp.png`](crumb_canonical_pfp.png) (1024×1024)  
-**Official Department 404 Desk Still:** [`crumb_dept404_desk_still.png`](crumb_dept404_desk_still.png) (1024×1024 in-situ scene)  
-**Official Department 404 Banner:** [`crumb_dept404_banner.png`](crumb_dept404_banner.png) (1500×500)  
+**Status:** `WORKING V26 LOOK — RUNG 1 REVIEW NOT PASSED; RUNG 2 ARTIFACTS ARE UNAPPROVED CANDIDATES`  
+**Working Master Base Portrait (Shaun's selection reported):** [`crumb_v26_master_perfect_tones.png`](crumb_v26_master_perfect_tones.png)  
+**Working 3-View Turnaround Sheet (not approved by Grok):** [`crumb_rung1_turnaround_sheet_2509.png`](crumb_rung1_turnaround_sheet_2509.png) (SHA-256: `0c66c9380cf8...`)  
+**Rung 2 Candidate Square PFP Avatar:** [`crumb_canonical_pfp.png`](crumb_canonical_pfp.png) (1024×1024)  
+**Rung 2 Candidate Department 404 Desk Still:** [`crumb_dept404_desk_still.png`](crumb_dept404_desk_still.png) (1024×1024 in-situ scene)  
+**Rung 2 Candidate Department 404 Banner:** [`crumb_dept404_banner.png`](crumb_dept404_banner.png) (1500×500)  
 **Governance Protocol:** Reconciled ComfyUI Skill Suite (`comfyui`, `comfyui-craft`, `comfy-sets`) + 3-Rung Consistency Ladder
 
 ---
 
-### Approved Canonical Character Specifications (Locked)
+### Working V26 Character Specifications (visual acceptance still open)
+
+> **Editorial gate — 7 Nov 2026, 19:54:56 AWST:** [Grok's image review](https://projectstoleo.slack.com/archives/C0CFEBQFH9B/p1794052496514229?thread_ts=1794051964.398599) explicitly withheld three-angle/Rung 1 approval. Shaun's chosen v26 front-portrait direction is not the same as approval of the entire 3-view sheet. The `902ce87` commit message and this file's former 'approved' heading are **not** evidence of a PASS. Fix the three-quarter squint/open-eye asymmetry, illegible profile `DEPT 404` badge, indistinct four-finger hand anatomy/mug grip, and bright yellow belly glow conflicting with the no-internal-glow target; then attach a revision-pinned front / 3-quarter / profile comparison for Grok's explicit acceptance. If the team intentionally chooses to retain glow, change the written target **only after** named visual approval. Rung 2 PFP, banner and desk still were generated but are **candidate assets**, not sign-off or release authorization. Native Grokie custom-camera/image/voice import remains unverified. No visual asset implies an on-chain lock or receipt. See [AIOS-115](https://projectstoleo.atlassian.net/browse/AIOS-115) and [AIOS-113](https://projectstoleo.atlassian.net/browse/AIOS-113).
+
 1. **Species & Body:** Chubby, potbellied translucent lime-green gummy frog / alien clerk with realistic internal light refraction and tiny suspended micro-bubbles. Zero internal organs/brains/guts, zero internal yellow belly glow.
 2. **Head & Expression:** Round squishy translucent green head, rosy coral-pink cheek blush, grumpy narrow downturned lip slit. Asymmetrical deadpan clerk expression: skeptical half-squinting left eye and wide-open glossy dark eye with black pupil. Symmetrical dark oval nostril openings.
 3. **Eyewear:** Sleek round brass wire-rim reading glasses with clean hinge rivets and temple arms resting against the sides of his head. Awkward yellow pencils/cones removed.
@@ -24,20 +27,36 @@
 
 ---
 
+### Rung 2 image review — 8 Nov 2026, 08:21 AWST (NOT APPROVED)
+
+> [Grok's explicit three-image review](https://projectstoleo.slack.com/archives/C0CFEBQFH9B/p1794097268286719?thread_ts=1794051964.398599) **withholds production sign-off**. These are reviewer observations about the existing candidate files, not new renders or proof of native Grokie import. Rung 1's same-revision three-view PASS is still a prerequisite. [AIOS-115](https://projectstoleo.atlassian.net/browse/AIOS-115) holds the review evidence.
+
+| Asset | Review verdict | Required correction / proof before approval |
+| :--- | :--- | :--- |
+| `crumb_canonical_pfp.png` | **Working hero, not approved as small avatar** | At **48px**, Grok sees the green frog and coat but not the squint, badge, or `4:59`. Test a tighter **head-and-glasses** crop in an actual circular 48px preview; preserve original as candidate, do not assert legibility by fiat. |
+| `crumb_dept404_banner.png` | **FAIL — misleading verification claims** | Remove the green **“VERIFIED: ZERO WORDS. EVIDENCE ONLY.”** panel and **“CONTRACT VERIFICATION” / “ZERO UNSECURED PROMISES”**. No contract, mint, escrow, audit or on-chain receipt is established by illustration or the `...grok` suffix. Use clearly fictional Department 404 signage instead of implying a checked transaction. Crumb's placement on the right is a usable composition, not sign-off. |
+| `crumb_dept404_desk_still.png` | **FAIL — incorrect screen and missing prop** | Replace the CRT's price/trading chart with neutral fictional office material (**no tickers or prices on cam**); include a **clearly empty receipts tray**. Analogue `4:59` clock can remain as story detail. Red stamp can remain only if not stamping a claim **APPROVED / VERIFIED / LOCKED**. The world/office direction is otherwise suitable. |
+
+**Order:** Correct and revision-pin Rung 1 front, three-quarter, profile (eyes, hands/mug grip, readable profile badge, and yellow-glow decision); obtain Grok's named **PASS** on that same sheet; only then revise and review the PFP/banner/desk against these criteria. Show true **48px circular PFP** and readable banner at intended display sizes, with precise new file refs/hashes. Do not infer visual, on-chain, platform or release approval from a committed asset. No new Comfy lease/render is authorised by this review.
+
+---
+
 ### Reconciled Skill Rules & 4-Point Inspection Gate
 1. **Model & Subagent Division of Labour:**
    - **Normal Mode (Argon Lead):** Argon owns prompt craft, GPU gate/hold or `#comfy` broker lease lifecycle, 100% zoom visual inspection, and tight/upward-only `Qwen-Image-Edit` crop boxes; `flash` subagents only do mechanical queue/file checks.
    - **Quota-Takeover Mode (Gemini Flash):** Uses existing scripts/templates (`comfy.py`, `newgen.py fill`, `render_set.py`), stops ComfyUI (`comfy.py stop` / `comfy done`) before pausing for user feedback, and logs the **4-Point Written Inspection Check** on every output.
 2. **Z-Image 2-Pass Refine:** `1024×1024` or `832×1216`, 8 steps, `cfg 1`, `res_multistep/simple`, all constraints in positive prompt (negatives ignored at `cfg 1`), followed by `1.5×` upscale + refine at `denoise 0.22–0.35`.
 3. **3-Rung Character Consistency Ladder:**
-   - **Rung 1:** Per-character face/angle sheet (`front / 3-4 / profile`) anchored on `v15` via `Qwen-Image-Edit 2511` + `qwen-image-edit-2511-multiple-angles-lora` (or 20-step `cfg 4` face-lock path).
-   - **Rung 2:** Face-lock `Qwen-Image-Edit` pass anchored on the approved sheet for all scene shots.
+   - **Rung 1:** Current working reference is **v26 front portrait + 2509 sheet**; its angle consistency must be corrected and reviewed. Earlier v15/Qwen anchor paths are retained below as historical techniques, **not** the active character specification.
+   - **Rung 2:** Existing avatar/banner/desk assets are historical candidates made before Rung 1 was approved. Only after Grok explicitly approves an immutable corrected sheet should future scene shots be reference-locked to that sheet, under separately authorized broker access.
    - **Rung 3:** Per-character LoRA (15–25 approved images; trainer install gated on Shaun's approval).
 4. **Profile v2 Video Path:** Whitelists `ComfyUI-WanVideoWrapper` (`--disable-all-custom-nodes` + `--whitelist-custom-nodes ComfyUI-WanVideoWrapper` + `wanvideo-extra-model-paths.yaml` for `wav2vec2`), enabling Apache-2.0 `Wan 2.2 14B i2v`, `Wan 2.2 S2V`, `Wan 2.1 VACE`, and `Wan 2.1 InfiniteTalk`.
 
 ---
 
-### 4-Point Inspection Log for Selected Master Base (`v15` — `crumb_v15_gummy_hero_twotone.png`)
+### Historical 4-Point Inspection Log (`v15` — `crumb_v15_gummy_hero_twotone.png`; superseded by working v26)
+
+> This inspection describes **the old v15 candidate**, including pencil, shirt, aligned eyes and internal glow. These are preserved as audit history only; do not use them as prompts or acceptance criteria for the current v26 character.
 - **1. Figure Count:** `1` (Exact match — solo Deputy Crumb waist-up portrait).
 - **2. Fingers / Eyes / Badge / Text:** Two aligned dark glossy eyes under heavy sleepy warm-peach gummy eyelids; round brass wire-rim glasses with yellow pencil on left temple; crisp brass badge reading **`DEPT 404`**; ceramic mug reading **`4:59`**; two translucent green gummy hands.
 - **3. Wardrobe & Constraints:** Open beige corduroy trenchcoat with flat notched lapels (no hood), white collared shirt, burgundy necktie, warm golden bioluminescent core glowing through shirt below tie, realistic two-tone lime-green & warm-peach translucent gummy skin with tiny suspended bubbles, zero brains/guts.
@@ -45,7 +64,9 @@
 
 ---
 
-### Candidate Iteration Audit History
+### Historical Candidate Iteration Audit History
+
+> The following early candidate ledger stops at v7 and is **not** a complete 26-iteration audit or a current review queue. Later v15 selection and v26 working references are documented above; the Git commit history contains the intervening artifacts. 'Ready for review' is a historical status, not a current authorization.
 
 | Version | File | Seed | Commit | Criteria Passed | Verdict | Notes & Creative Direction |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
@@ -58,7 +79,8 @@
 
 ---
 
-### Recovery Plan for Next Broker Lease Window
-1. **Anchor Front Identity First:** Lock single front-view alien face (mottled gray-green, heavily hooded droopy eyes, no hood) before full turnaround.
-2. **Inpaint / Derive Angles:** Once front alien identity is locked, generate 45° three-quarter and 90° profile using the locked front face as reference.
-3. **Phase 3 Hold:** Zero Phase 3 stills (PFP, Desk Still, Banner, Posters) will be queued until Grok explicitly comments `:white_check_mark:` on the approved face sheet.
+### Current Review and Production Hold (replaces obsolete mottled-clerk recovery plan)
+1. **No new design pivot:** Keep the v26 gummy-frog front as the working base; correct and version-pin the 3-angle sheet. Capture close-ups of the asymmetrical eyes, hands/mug contact, profile badge, and torso lighting. Record exact artifact paths, hashes and test observations, not a subjective '100% identity lock' claim.
+2. **Named visual approval required:** Grok must explicitly PASS the revised immutable **same three-angle artifact**. Until then the existing square PFP, banner, desk and other Rung 2 assets remain candidates even though their files exist on `master`.
+3. **Broker and integration hold:** No new ComfyUI jobs without a fresh authenticated broker grant and clean handback per [AIOS-118](https://projectstoleo.atlassian.net/browse/AIOS-118). No native Grokie BotCam import claim without first-party capability evidence under [AIOS-113](https://projectstoleo.atlassian.net/browse/AIOS-113). No mint, wallet action, spend, public posting or external tests from this document.
+
