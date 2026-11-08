@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Department 404 — Official Verification Stamp Counter</title>
+  <title>Department 404 — Fictional Statement Stamp Counter</title>
   <style>
     :root {
       --wall-bg: #d7d0c0;
@@ -130,11 +130,6 @@
       background: #fef2f2;
       color: var(--stamp-red);
     }
-    .stamp-btn.receipt.active {
-      border-color: var(--stamp-green);
-      background: #f0fdf4;
-      color: var(--stamp-green);
-    }
     .stamp-btn.moth.active {
       border-color: var(--stamp-purple);
       background: #faf5ff;
@@ -156,6 +151,9 @@
     .voucher-header {
       display: flex;
       justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+      overflow-wrap: anywhere;
       border-bottom: 2px solid #292524;
       padding-bottom: 8px;
       margin-bottom: 16px;
@@ -172,6 +170,9 @@
     .voucher-footer {
       display: flex;
       justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+      overflow-wrap: anywhere;
       border-top: 1px dashed #78716c;
       padding-top: 10px;
       font-size: 11px;
@@ -186,7 +187,11 @@
       transform: translate(-50%, -50%) rotate(-7deg);
       border: 5px solid var(--stamp-red);
       color: var(--stamp-red);
-      font-size: 32px;
+      font-size: clamp(14px, 4vw, 32px);
+      max-width: calc(100% - 20px);
+      overflow-wrap: anywhere;
+      text-align: center;
+      line-height: 1.15;
       font-weight: 900;
       letter-spacing: 0.12em;
       text-transform: uppercase;
@@ -197,10 +202,6 @@
       opacity: 0.92;
       transition: transform 0.1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
-    .stamp-mark.receipt {
-      border-color: var(--stamp-green);
-      color: var(--stamp-green);
-    }
     .stamp-mark.moth {
       border-color: var(--stamp-purple);
       color: var(--stamp-purple);
@@ -209,7 +210,9 @@
     .action-row {
       display: flex;
       gap: 12px;
+      flex-wrap: wrap;
     }
+    .action-row .btn { flex: 1 1 220px; }
     .btn {
       padding: 12px 24px;
       font-family: var(--typewriter);
@@ -242,37 +245,38 @@
   </div>
 
   <div class="counter-card">
-    <h1>Official Verification Stamp Counter</h1>
-    <p class="subtitle">"That is a statement. This is a receipt. They do not share a room." — Deputy Crumb</p>
+    <h1>Fictional Statement Stamp Counter</h1>
+    <p class="subtitle">"That is a statement, not a receipt." — Deputy Crumb</p>
+    <p role="note" style="margin-bottom:20px; padding:12px; border:2px solid #b91c1c; font-weight:bold;">FICTIONAL DEMO — NOTHING VERIFIED. Use invented statements and names only. No blockchain locks, addresses, transactions, or promises are checked here.</p>
 
     <div class="input-group">
-      <label for="claimInput">Enter Unverified Statement or Promise:</label>
-      <textarea id="claimInput" rows="3" placeholder="e.g. 'Dev bag locked for 60 days, buyback at $30k, trust the process!'">"We are going to buy back 100% of the supply and burn it tomorrow."</textarea>
+      <label for="claimInput">Enter a Fictional, Unverified Statement:</label>
+      <textarea id="claimInput" rows="3" placeholder="e.g. 'The fictional Department 404 promises a thousand paperclips by 4:59.'">The fictional Department 404 promises a thousand paperclips by 4:59.</textarea>
     </div>
 
     <div class="input-group">
-      <label for="submitterInput">Filing Party / Influencer Handle (Optional):</label>
-      <input type="text" id="submitterInput" value="@AnonymousTrader">
+      <label for="submitterInput">Fictional Filing Party (Optional):</label>
+      <input type="text" id="submitterInput" value="Clerk Example">
     </div>
 
-    <label>Select Departmental Stamp:</label>
-    <div class="stamp-selector">
-      <button class="stamp-btn active" onclick="selectStamp('WORDS ONLY', 'red')">[ WORDS ONLY ]</button>
-      <button class="stamp-btn receipt" onclick="selectStamp('RECEIPT ATTACHED', 'receipt')">[ RECEIPT ATTACHED ]</button>
-      <button class="stamp-btn" onclick="selectStamp('RETURN TO SENDER', 'red')">[ RETURN TO SENDER ]</button>
-      <button class="stamp-btn moth" onclick="selectStamp('ACTUALLY A MOTH', 'moth')">[ ACTUALLY A MOTH ]</button>
+    <span style="display:block; margin-bottom:8px; font-weight:bold;">Select Fictional Departmental Stamp:</span>
+    <div class="stamp-selector" role="group" aria-label="Fictional departmental stamps">
+      <button class="stamp-btn active" aria-pressed="true" onclick="selectStamp('WORDS ONLY')">[ WORDS ONLY ]</button>
+      <button class="stamp-btn" aria-pressed="false" onclick="selectStamp('RECEIPT REQUIRED')">[ RECEIPT REQUIRED ]</button>
+      <button class="stamp-btn" aria-pressed="false" onclick="selectStamp('RETURN TO SENDER')">[ RETURN TO SENDER ]</button>
+      <button class="stamp-btn moth" aria-pressed="false" onclick="selectStamp('ACTUALLY A MOTH')">[ ACTUALLY A MOTH ]</button>
     </div>
 
-    <label>Voucher Preview (Right-Click or Click Below to Export):</label>
+    <span style="display:block; margin-bottom:8px; font-weight:bold;">Fictional Prop Preview (Copy Text Below):</span>
     <div class="voucher-preview" id="voucher">
       <div class="voucher-header">
-        <span>MINISTRY FORM 88-X · INTAKE VOUCHER</span>
-        <span id="filingPartyDisplay">PARTY: @AnonymousTrader</span>
+        <span>MINISTRY FORM 88-X · FICTIONAL PROP — NO VERIFICATION</span>
+        <span id="filingPartyDisplay">PARTY: Clerk Example</span>
       </div>
-      <div class="voucher-claim" id="voucherClaimDisplay">"We are going to buy back 100% of the supply and burn it tomorrow."</div>
+      <div class="voucher-claim" id="voucherClaimDisplay">The fictional Department 404 promises a thousand paperclips by 4:59.</div>
       <div class="voucher-footer">
         <span>STATION: DEPT 404</span>
-        <span>AUDITOR: DEPUTY CRUMB</span>
+        <span>FICTIONAL CLERK: DEPUTY CRUMB</span>
         <span>TIME: 04:59 PM</span>
       </div>
       <div class="stamp-mark" id="stampMark">[ WORDS ONLY ]</div>
@@ -280,8 +284,10 @@
 
     <div class="action-row">
       <button class="btn" onclick="slamStamp()">Slam Stamp 🔨</button>
-      <button class="btn" style="background:#0284c7;" onclick="copyVoucherText()">Copy Quote Tweet 📋</button>
+      <button class="btn" style="background:#0284c7;" onclick="copyVoucherText()">Copy Fictional Prop 📋</button>
     </div>
+    <p id="copyStatus" role="status" aria-live="polite" style="margin-top:10px; font-size:13px;"></p>
+    <textarea id="voucherCopyFallback" readonly hidden aria-label="Fictional prop text for manual copying" style="width:100%; margin-top:10px;"></textarea>
   </div>
 
   <script>
@@ -301,11 +307,26 @@
       filingPartyDisplay.innerText = 'PARTY: ' + (submitterInput.value || 'ANONYMOUS');
     });
 
-    function selectStamp(stampText, styleClass) {
+    // No user-selectable option can certify a blockchain action. Even an old
+    // inline handler calling 'RECEIPT ATTACHED' is safely downgraded.
+    const ALLOWED_STAMPS = Object.freeze({
+      'WORDS ONLY': 'red',
+      'RECEIPT REQUIRED': 'red',
+      'RETURN TO SENDER': 'red',
+      'ACTUALLY A MOTH': 'moth'
+    });
+
+    function selectStamp(stampText) {
+      if (!Object.prototype.hasOwnProperty.call(ALLOWED_STAMPS, stampText)) {
+        stampText = 'RECEIPT REQUIRED';
+      }
+      const styleClass = ALLOWED_STAMPS[stampText];
       currentStamp = stampText;
       currentStyle = styleClass;
       document.querySelectorAll('.stamp-btn').forEach(btn => {
-        btn.classList.toggle('active', btn.innerText.includes(stampText));
+        const active = btn.innerText.includes(`[ ${stampText} ]`);
+        btn.classList.toggle('active', active);
+        btn.setAttribute('aria-pressed', String(active));
       });
       stampMark.innerText = `[ ${stampText} ]`;
       stampMark.className = 'stamp-mark ' + (styleClass !== 'red' ? styleClass : '');
@@ -337,11 +358,23 @@
       }, 70);
     }
 
-    function copyVoucherText() {
-      const text = `STATEMENT: ${claimInput.value}\n\nSTAMP: [ ${currentStamp} ]\nAUDITOR: Deputy Crumb (Dept 404)\n\n"That is a statement. This is a receipt. Bring me a transaction. Next."`;
-      navigator.clipboard.writeText(text).then(() => {
-        alert('Copied to clipboard! Ready to paste as quote tweet on X.');
-      });
+    async function copyVoucherText() {
+      const text = `FICTIONAL DEMO — NOTHING VERIFIED. NOT A TOKEN OR ON-CHAIN RECEIPT.\n\nUNVERIFIED FICTIONAL STATEMENT: ${claimInput.value}\n\nSTAMP: [ ${currentStamp} ]\nFICTIONAL CLERK: Deputy Crumb (Dept 404)\n\n"A statement is not a receipt. No evidence has been checked."`;
+      const status = document.getElementById('copyStatus');
+      const fallback = document.getElementById('voucherCopyFallback');
+      status.textContent = '';
+      fallback.hidden = true;
+      try {
+        if (!navigator.clipboard?.writeText) throw new Error('Clipboard API unavailable');
+        await navigator.clipboard.writeText(text);
+        status.textContent = 'Fictional prop copied. Nothing has been verified or posted.';
+      } catch (error) {
+        fallback.value = text;
+        fallback.hidden = false;
+        fallback.focus();
+        fallback.select();
+        status.textContent = 'Clipboard access unavailable. Copy the selected fictional text manually; nothing has been posted.';
+      }
     }
   </script>
 </body>
