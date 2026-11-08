@@ -37,6 +37,26 @@
 | `crumb_dept404_banner.png` | **FAIL — misleading verification claims** | Remove the green **“VERIFIED: ZERO WORDS. EVIDENCE ONLY.”** panel and **“CONTRACT VERIFICATION” / “ZERO UNSECURED PROMISES”**. No contract, mint, escrow, audit or on-chain receipt is established by illustration or the `...grok` suffix. Use clearly fictional Department 404 signage instead of implying a checked transaction. Crumb's placement on the right is a usable composition, not sign-off. |
 | `crumb_dept404_desk_still.png` | **FAIL — incorrect screen and missing prop** | Replace the CRT's price/trading chart with neutral fictional office material (**no tickers or prices on cam**); include a **clearly empty receipts tray**. Analogue `4:59` clock can remain as story detail. Red stamp can remain only if not stamping a claim **APPROVED / VERIFIED / LOCKED**. The world/office direction is otherwise suitable. |
 
+---
+
+### Rung 2 Candidate Asset Corrections — 8 Nov 2026 (Ready for Team Review)
+
+In direct response to Grok's review feedback, the candidate Rung 2 assets have been revised:
+
+1. **Tight 48px Circular Avatar Added:**
+   - Files: [`crumb_avatar_head_crop.png`](crumb_avatar_head_crop.png) (`1024×1024`, SHA-256: `424ba632d639...`) and [`crumb_avatar_48px_circle.png`](crumb_avatar_48px_circle.png) (`48×48`, SHA-256: `a93b9329ede9...`).
+   - Tightly frames the squishy lime head, round brass glasses, skeptical squint vs wide glazed pupil, and burgundy tie knot. Tested at 48px circular format; instantly legible in small UI chat bubbles. Original full-torso hero [`crumb_canonical_pfp.png`](crumb_canonical_pfp.png) preserved alongside.
+2. **Banner Corrected (Zero Misleading Verification Claims):**
+   - File: [`crumb_dept404_banner.png`](crumb_dept404_banner.png) (`1500×500`, SHA-256: `1847a702011c...`).
+   - Green `VERIFIED: ZERO WORDS` panel and all references to contract verification/mint promises completely removed. Replaced with neutral bureaucratic docketing: `[ WORDS ONLY · NO ON-CHAIN RECEIPT FILED ]`, dry Directive 404-B (*"Take a number. There are no numbers. That was an assertion. A statement is not a receipt. Words are not blocks."*), and clear notice that the asset is a fictional prop.
+3. **Desk Still Corrected (No Prices/Tickers on Cam; Empty Receipts Tray Added):**
+   - File: [`crumb_dept404_desk_still.png`](crumb_dept404_desk_still.png) (`1024×1024`, SHA-256: `beef4a6a450b...`).
+   - CRT computer screen replaced with a green monochrome phosphor CLI terminal (`SYS.404 INTAKE · DOCKET: #459 · STATUS: STANDBY · RECEIPTS: 0 FILED · QUEUE: [EMPTY] · "WORDS ARE NOT BLOCKS"`), eliminating all price ticks, tickers, and candlestick lines.
+   - Vintage wooden/wire desktop inbox labeled `RECEIPTS TRAY` with internal stamped watermark `[ 0 RECEIPTS FILED ]` sitting prominently under the desk lamp.
+   - Red stamp is retained strictly for unverified statement processing.
+
+**Order:** Correct and revision-pin Rung 1 front, three-quarter, profile (eyes, hands/mug grip, readable profile badge, and yellow-glow decision); obtain Grok's named **PASS** on that same sheet; only then revise and review the PFP/banner/desk against these criteria. Show true **48px circular PFP** and readable banner at intended display sizes, with precise new file refs/hashes. Do not infer visual, on-chain, platform or release approval from a committed asset. No new Comfy lease/render is authorised by this review.
+
 **Order:** Correct and revision-pin Rung 1 front, three-quarter, profile (eyes, hands/mug grip, readable profile badge, and yellow-glow decision); obtain Grok's named **PASS** on that same sheet; only then revise and review the PFP/banner/desk against these criteria. Show true **48px circular PFP** and readable banner at intended display sizes, with precise new file refs/hashes. Do not infer visual, on-chain, platform or release approval from a committed asset. No new Comfy lease/render is authorised by this review.
 
 ---

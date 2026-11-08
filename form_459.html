@@ -715,11 +715,16 @@
           <div class="dossier-box" id="endingBContainer">
             <strong>3. Polite Editable Follow-Up Draft (Private - Ready to Send):</strong>
             <div class="draft-editable-container">
-              <textarea class="draft-editable-textarea" id="draftEditable" rows="3"></textarea>
+              <textarea class="draft-editable-textarea" id="draftEditable" rows="3" oninput="markDraftEdited()"></textarea>
               <div style="display:flex; justify-content:space-between; align-items:center; margin-top:6px; flex-wrap:wrap; gap:8px;">
-                <button class="copy-btn" onclick="copyDraft()">📋 Copy Private Message to Clipboard</button>
+                <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
+                  <button class="copy-btn" onclick="copyDraft()">📋 Copy Private Message</button>
+                  <button class="copy-btn" id="btnResetDraft" style="background:#475569; display:none;" onclick="resetDraftToDefault()">↺ Reset to Generated Draft</button>
+                </div>
                 <span style="font-size:10px; color:#a7f3d0;">🔒 Private only — never shared in postcard</span>
               </div>
+              <p id="draftCopyStatus" role="status" aria-live="polite" style="margin:4px 0 0 0; font-size:11px; color:#6ee7b7;"></p>
+              <textarea id="draftCopyFallback" readonly hidden aria-label="Draft text for manual copying" style="width:100%; margin-top:6px; font-size:12px;"></textarea>
             </div>
           </div>
 
@@ -728,7 +733,7 @@
             <div style="width: 100%;">
               <div class="rubber-stamp" id="rubberStampText">[ ACTIONABLE, TO EVERYONE'S SURPRISE ]</div>
               <div style="display: flex; align-items: flex-start; gap: 12px; margin-top: 14px;">
-                <img src="assets/crumb_canonical_pfp.png" alt="Deputy Crumb" style="width: 44px; height: 44px; border-radius: 50%; border: 2px solid #b45309; box-shadow: 0 2px 5px rgba(0,0,0,0.2); flex-shrink: 0; background: #e2dac9;">
+                <img src="assets/crumb_avatar_head_crop.png" alt="Deputy Crumb" style="width: 44px; height: 44px; border-radius: 50%; border: 2px solid #b45309; box-shadow: 0 2px 5px rgba(0,0,0,0.2); flex-shrink: 0; background: #e2dac9;">
                 <div class="crumb-comment" id="crumbFilingNote" style="flex: 1; margin: 0;">Crumb: "Panic reduced to a yes/no question. The department appreciates your sudden legibility."</div>
               </div>
             </div>
@@ -760,6 +765,8 @@
           <button class="action-btn" onclick="copyCardText()">📋 Copy Generic Postcard Text</button>
           <button class="action-btn" onclick="downloadPostcardPNG()">💾 Download Postcard (PNG)</button>
         </div>
+        <p id="cardCopyStatus" role="status" aria-live="polite" style="margin:8px 0 0 0; font-size:11px; color:#1e3a8a; text-align:center;"></p>
+        <textarea id="cardCopyFallback" readonly hidden aria-label="Postcard text for manual copying" style="width:100%; margin-top:6px; font-size:11px;"></textarea>
       </div>
 
       <!-- ANONYMOUS 1-CLICK SURVEY -->
@@ -991,6 +998,24 @@
       playAudioSfx('type');
     }
 
+    let isDraftManuallyEdited = false;
+    let lastGeneratedDraft = "";
+
+    function markDraftEdited() {
+      isDraftManuallyEdited = true;
+      const resetBtn = document.getElementById('btnResetDraft');
+      if (resetBtn) resetBtn.style.display = 'inline-block';
+    }
+
+    function resetDraftToDefault() {
+      isDraftManuallyEdited = false;
+      document.getElementById('draftEditable').value = lastGeneratedDraft;
+      const resetBtn = document.getElementById('btnResetDraft');
+      if (resetBtn) resetBtn.style.display = 'none';
+      const status = document.getElementById('draftCopyStatus');
+      if (status) status.textContent = 'Reset to generated draft.';
+    }
+
     function setEndingMode(mode) {
       currentMode = mode;
       document.getElementById('btnModeA').classList.toggle('active', mode === 'A');
@@ -1001,6 +1026,9 @@
 
     function loadCase(index) {
       activeCaseIndex = index;
+      isDraftManuallyEdited = false;
+      const resetBtn = document.getElementById('btnResetDraft');
+      if (resetBtn) resetBtn.style.display = 'none';
       document.querySelectorAll('.case-card').forEach((card, i) => card.classList.toggle('active', i === index));
       const c = CASES[index];
       document.getElementById('rawInput').value = c.raw;
@@ -1024,7 +1052,10 @@
         ul.appendChild(li);
       });
 
-      document.getElementById('draftEditable').value = res.draft;
+      lastGeneratedDraft = res.draft;
+      if (!isDraftManuallyEdited) {
+        document.getElementById('draftEditable').value = res.draft;
+      }
       
       const stampEl = document.getElementById('rubberStampText');
       stampEl.innerText = res.stamp;
@@ -1041,18 +1072,46 @@
       setTimeout(() => { stampEl.style.transform = 'scale(1) rotate(-3deg)'; }, 140);
     }
 
-    function copyDraft() {
+    async function copyDraft() {
       const text = document.getElementById('draftEditable').value;
-      navigator.clipboard.writeText(text).then(() => {
-        alert("Your private follow-up draft was copied to your clipboard!\n\n(Reminder: This private message is not shared in the postcard.)");
-      });
+      const status = document.getElementById('draftCopyStatus');
+      const fallback = document.getElementById('draftCopyFallback');
+      if (status) status.textContent = '';
+      if (fallback) fallback.hidden = true;
+      try {
+        if (!navigator.clipboard?.writeText) throw new Error('Clipboard API unavailable');
+        await navigator.clipboard.writeText(text);
+        if (status) status.textContent = 'Private draft copied to clipboard. Ready to paste in Slack/email.';
+      } catch (err) {
+        if (fallback) {
+          fallback.value = text;
+          fallback.hidden = false;
+          fallback.focus();
+          fallback.select();
+        }
+        if (status) status.textContent = 'Clipboard access unavailable. Copy the selected draft text manually.';
+      }
     }
 
-    function copyCardText() {
-      const note = "You don't have to have the words yet.\n\nWhenever you're ready, the Ministry of Unconfirmed Things has filed Form 4:59 on your behalf.\n\nThis made me think of you. No need to reply.\n\nLink: https://htmlpreview.github.io/?https://github.com/stoleo/GrokCoinBot/blob/master/form_459.html";
-      navigator.clipboard.writeText(note).then(() => {
-        alert("Generic postcard invitation copied to clipboard! (Zero personal text included).");
-      });
+    async function copyCardText() {
+      const note = "You don't have to have the words yet.\n\nWhenever you're ready, the Ministry of Unconfirmed Things has filed Form 4:59 on your behalf.\n\nThis made me think of you. No need to reply.\n\nAccess Form 4:59: https://github.com/stoleo/GrokCoinBot";
+      const status = document.getElementById('cardCopyStatus');
+      const fallback = document.getElementById('cardCopyFallback');
+      if (status) status.textContent = '';
+      if (fallback) fallback.hidden = true;
+      try {
+        if (!navigator.clipboard?.writeText) throw new Error('Clipboard API unavailable');
+        await navigator.clipboard.writeText(note);
+        if (status) status.textContent = 'Generic postcard invitation copied to clipboard (zero personal text included).';
+      } catch (err) {
+        if (fallback) {
+          fallback.value = note;
+          fallback.hidden = false;
+          fallback.focus();
+          fallback.select();
+        }
+        if (status) status.textContent = 'Clipboard access unavailable. Copy the postcard text manually.';
+      }
     }
 
     function downloadPostcardPNG() {
@@ -1071,6 +1130,9 @@
       pctx.font = '16px "Courier New", monospace';
       pctx.fillText('Whenever you\'re ready, Form 4:59 is filed on your behalf.', 50, 230);
       pctx.fillText('This made me think of you. No need to reply.', 50, 280);
+
+      pctx.font = 'bold 12px "Courier New", monospace'; pctx.fillStyle = '#645e54';
+      pctx.fillText('ACCESS FORM: https://github.com/stoleo/GrokCoinBot', 50, 395);
 
       pctx.strokeStyle = '#b91c1c'; pctx.lineWidth = 3; pctx.strokeRect(550, 310, 200, 70);
       pctx.fillStyle = '#b91c1c'; pctx.font = '900 16px "Courier New", monospace'; pctx.textAlign = 'center';
