@@ -78,14 +78,14 @@ To prove the narrative stands on its own **without any token pitch, wallet, or c
 ---
 
 ## 📠 2. Form 4:59 — "File an Unsaid Thing" (The Utility Experiment)
-The first genuine bridge between the sitcom universe and real-world usefulness, based on BoPeppi's framing: *"You don't have to have the words yet."*
+An internal experiment testing whether a difficult follow-up can become a useful, editable draft. **Usefulness has not been established.** BoPeppi's framing remains: *"You don't have to have the words yet."*
 
 👉 **[Launch `form_459.html`](./form_459.html)**  
-*(Live Preview: [GitHub HTML Preview](https://htmlpreview.github.io/?https://github.com/stoleo/GrokCoinBot/blob/master/form_459.html))*
+*(Internal preview only: [GitHub HTML Preview](https://htmlpreview.github.io/?https://github.com/stoleo/GrokCoinBot/blob/master/form_459.html)). **Use fictional, non-sensitive examples only; third-party preview hosting and data flows have not been verified.**)*
 
 - **The Problem:** Turning a messy, anxious pile of thoughts into a clear, short, actionable follow-up without sounding aggressive.
 - **The Prototype:** Attempts to extract the point, flag unknowns and provide an editable draft plus a **fictional** Department 404 stamp. Parser regression tests have found lost prohibitions/approvals, misread cancellations and mishandled deadlines; it is **not** validated as intent-preserving. See [AIOS-114](https://projectstoleo.atlassian.net/browse/AIOS-114).
-- **A/B Experiment:** Toggle between Ending A (stamp alone) and Ending B (Crumb's editable sentence).
+- **Reviewer exploration toggle (not a controlled A/B test):** Switch between Ending A (stamp alone) and Ending B (Crumb's editable sentence). The demo defaults to B and labels it “Recommended”, so this is not a blinded comparison or evidence of relative usefulness.
 - **Privacy status:** Designed as a browser-side companion; actual hosting, third-party preview resources, data flow and retention claims require verification. Do **not** claim zero telemetry or absolute privacy without an observed network test. No wallet connection is part of the proposed Form 4:59 utility.
 - **Includes 4 Prewritten Demo Cases:**
   1. *Jess & The Landing Page* (Ambiguous ownership dread)
