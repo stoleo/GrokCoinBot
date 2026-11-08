@@ -927,9 +927,11 @@
         };
       }
 
-      // Check if text strictly matches the actively selected demo case
-      if (activeCaseIndex >= 0 && activeCaseIndex < CASES.length && clean === CASES[activeCaseIndex].raw) {
-        const found = CASES[activeCaseIndex];
+      // Check if text strictly matches any canonical demo case
+      const found = (activeCaseIndex >= 0 && activeCaseIndex < CASES.length && clean === CASES[activeCaseIndex].raw) 
+        ? CASES[activeCaseIndex] 
+        : CASES.find(c => c.raw === clean);
+      if (found) {
         return {
           point: found.point,
           unknown: found.unknown,
@@ -940,53 +942,87 @@
       }
 
       // Freeform Heuristic Breakdown Engine
-      const sentences = clean.split(/[.!?]+/).map(s => s.trim()).filter(Boolean);
+      const sentenceMatches = clean.match(/[^.!?]+[.!?]?/g) || [clean];
+      const sentences = sentenceMatches.map(s => s.trim()).filter(Boolean);
       let point = "";
       let unknown = [];
       let draft = "";
       let stamp = "";
       let note = "";
 
-      // 1. Detect Point
-      const question = sentences.find(s => /\?|who|what|when|where|if|can|could/i.test(s));
-      const urgency = sentences.find(s => /deadline|friday|tomorrow|today|urgent|fast|soon/i.test(s));
-      const guilt = sentences.find(s => /sorry|guilty|annoying|pushy|lazy|nightmare|terrible/i.test(s));
+      // 1. Detect Sentence Intent Categories
+      const cancellation = sentences.find(s => /\b(cancel|cancellation|decline|reschedule|won't be able to attend|cannot attend|can't attend|can't make|won't make)\b/i.test(s));
+      const boundary = sentences.find(s => /\b(do not|don't (publish|send|ship|deploy|merge|release|touch)|stop|pause|hold off|need to approve|must approve|requires? approval)\b/i.test(s));
+      const question = sentences.find(s => s.endsWith('?') || /\b(who|what|when|where|why|how|if|can|could|would|should|is|are|do|does)\b/i.test(s));
+      const urgency = sentences.find(s => /\b(deadline|friday|tomorrow|today|urgent|fast|soon|eod|cutoff|schedule)\b/i.test(s));
+      const guilt = sentences.find(s => /\b(sorry|guilty|annoying|pushy|lazy|nightmare|terrible|feel bad)\b/i.test(s));
 
-      if (question) {
-        point = "Clarify: " + question.replace(/^(and|but|so|well)\s+/i, '') + ".";
+      if (boundary) {
+        point = "Hold action pending prior review and explicit approval: " + boundary.replace(/^(and|but|so|well|please)\s+/i, '').replace(/[.!?]+$/, '') + ".";
+      } else if (cancellation) {
+        point = "Politely notify of schedule cancellation or non-attendance: " + cancellation.replace(/^(and|but|so|well)\s+/i, '').replace(/[.!?]+$/, '') + ".";
+      } else if (question) {
+        point = "Clarify: " + question.replace(/^(and|but|so|well)\s+/i, '').replace(/[.!?]+$/, '') + ".";
       } else if (urgency) {
-        point = "Confirm delivery expectation regarding " + urgency.replace(/^(and|but|so)\s+/i, '') + ".";
+        point = "Confirm delivery expectation regarding " + urgency.replace(/^(and|but|so)\s+/i, '').replace(/[.!?]+$/, '') + ".";
       } else if (sentences.length > 0) {
-        point = "Align directly on next steps regarding: " + sentences[0].slice(0, 80) + "...";
+        point = "Align directly on next steps regarding: " + sentences[0].replace(/[.!?]+$/, '').slice(0, 80) + "...";
       } else {
         point = "State the single pending decision in one clean sentence.";
       }
 
-      // 2. Unknown facts (DO NOT INVENT)
-      if (!/\b\d{1,2}(:\d{2})?\s*(am|pm|am|pm|today|tomorrow|monday|tuesday|wednesday|thursday|friday)\b/i.test(clean)) {
+      // 2. Unknown facts (Truthful, non-invented uncertainty)
+      const hasDateTime = /\b(\d{4}-\d{2}-\d{2}|\d{1,2}\/\d{1,2}(\/\d{2,4})?|\d{1,2}:\d{2}(\s*(am|pm))?|\d{1,2}\s*(am|pm)|today|tomorrow|yesterday|monday|tuesday|wednesday|thursday|friday|saturday|sunday)\b/i.test(clean);
+      if (!hasDateTime) {
         unknown.push("Exact date or delivery cutoff hour is unstated.");
       }
-      if (!/\b(who|assign|lead|owner|responsible)\b/i.test(clean)) {
+      const hasOwner = /\b(who|assign|assigned|lead|owner|responsible|i will|you will|they will)\b/i.test(clean);
+      if (!hasOwner) {
         unknown.push("Designated single decision-maker / task owner is unconfirmed.");
       }
       if (guilt) {
         unknown.push("Interpersonal friction or negative intent is unverified assumption.");
+      }
+      if (boundary) {
+        unknown.push("Whether the other party has already initiated the action is unconfirmed.");
       }
       if (unknown.length === 0) {
         unknown.push("Underlying external constraints have not been detailed.");
       }
 
       // 3. Draft generation (Actionable, polite, guilt-free)
-      const coreDecide = point.replace(/^(Clarify:\s*|Confirm delivery expectation regarding\s*)/i, '');
-      draft = `Hi, quick check so we can keep things moving smoothly: could we confirm ${coreDecide.toLowerCase().replace(/\.$/, '')}? Let me know what works best on your side so we can lock it in.`;
+      if (boundary) {
+        draft = "Hi, please pause and hold off on moving forward with this for now. I need to review and provide approval before we proceed. I will get back to you with notes as soon as I have reviewed.";
+      } else if (cancellation) {
+        draft = "Hi, I won't be able to make our scheduled time due to a conflict. Apologies for the late notice—please let me know if we can reschedule or handle any urgent items asynchronously.";
+      } else {
+        const coreDecide = point.replace(/^(Clarify:\s*|Confirm delivery expectation regarding\s*|Align directly on next steps regarding:\s*)/i, '').replace(/\.\.\.$/, '');
+        draft = `Hi, quick check so we can keep things moving smoothly: could we confirm ${coreDecide.toLowerCase().replace(/\.$/, '')}? Let me know what works best on your side so we can lock it in.`;
+      }
 
       // 4. Rubber Stamp
       if (currentMode === 'A') {
-        stamp = "[ OVERTHINKING FILED WITHOUT ACTION ]";
-        note = "Crumb: \"You spent 800 words negotiating with an imaginary critic. Zero messages sent.\"";
+        if (boundary) {
+          stamp = "[ UNAPPROVED ACTION BLOCKED ]";
+          note = "Crumb: \"You watched the train leave the station while typing polite suggestions.\"";
+        } else if (cancellation) {
+          stamp = "[ CALENDAR PANIC DETECTED ]";
+          note = "Crumb: \"Three paragraphs of excuses for a 15-minute conflict. State the cancellation.\"";
+        } else {
+          stamp = "[ OVERTHINKING FILED WITHOUT ACTION ]";
+          note = "Crumb: \"You spent 800 words negotiating with an imaginary critic. Zero messages sent.\"";
+        }
       } else {
-        stamp = clean.length > 120 ? "[ CLEAR ENOUGH TO SEND (REGRETTABLY) ]" : "[ ACTIONABLE, TO EVERYONE'S SURPRISE ]";
-        note = "Crumb: \"Guilt discarded at the counter. The remaining 2 sentences are actually functional.\"";
+        if (boundary) {
+          stamp = "[ BOUNDARY STATED HONESTLY ]";
+          note = "Crumb: \"Clear constraint established without interpersonal drama. Proceed upon review.\"";
+        } else if (cancellation) {
+          stamp = "[ SCHEDULE RELEASED POLITE ]";
+          note = "Crumb: \"Calendar spared. Time returned to mortal existence.\"";
+        } else {
+          stamp = clean.length > 120 ? "[ CLEAR ENOUGH TO SEND (REGRETTABLY) ]" : "[ ACTIONABLE, TO EVERYONE'S SURPRISE ]";
+          note = "Crumb: \"Guilt discarded at the counter. The remaining 2 sentences are actually functional.\"";
+        }
       }
 
       return { point, unknown, draft, stamp, note };
