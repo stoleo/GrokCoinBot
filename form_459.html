@@ -1163,6 +1163,11 @@
 
     function markDraftEdited() {
       copySessionRevision++;
+      // A visible manual-copy fallback holds the previous draft text; drop it on every edit.
+      const staleFallback = document.getElementById('draftCopyFallback');
+      if (staleFallback) { staleFallback.value = ''; staleFallback.hidden = true; }
+      const staleStatus = document.getElementById('draftCopyStatus');
+      if (staleStatus) staleStatus.textContent = '';
       isDraftManuallyEdited = true;
       const currentRaw = document.getElementById('rawInput').value;
       if (draftProvenanceRev !== rawInputRevision || currentRaw !== rawInputAtEdit) {
