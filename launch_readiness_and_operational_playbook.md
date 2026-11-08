@@ -3,7 +3,7 @@
 > This operational playbook predates the current Grokie / Deputy Crumb approval gates. Mentions of “crew autonomy”, a pre-passed Shaun delegation, live launch checklists, automatic rendering, operational orders or “ready for execution” below are **historical planning language, NOT permission to act**. Do not mint or trade tokens, connect or fund wallets, spend, change platform accounts, launch bots, start Comfy/GPU jobs, recruit external testers or publish from this file. Every such action requires Shaun's specific separate authorisation; Comfy additionally requires its existing broker release. Treat visual Rung 1 as **not signed off** and native custom camera import as **unverified**. Consult [AIOS-112](https://projectstoleo.atlassian.net/browse/AIOS-112), [AIOS-115](https://projectstoleo.atlassian.net/browse/AIOS-115) and the current [draft replacement plan](https://github.com/stoleo/GrokCoinBot/pull/2) before any decision. This notice is a documentation correction only; it does not confer launch clearance.
 
 # 🚀 DEPUTY CRUMB ($CRUMB): COMPREHENSIVE LAUNCH READINESS & OPERATIONAL PLAYBOOK
-## Master Pre-Launch Gates, Live Launch Checklist, Contingency Protocols & Operational Delegation
+## Archived Gate Proposals, Hypothetical Checklists & Historical Operating Assumptions (NOT AUTHORISED)
 
 **Document ID:** GROKIE-CRUMB-LAUNCH-001  
 **Target File:** `c:\Projects\GrokCoinBot\launch_readiness_and_operational_playbook.md`  
@@ -19,7 +19,7 @@
 
 
 
-## EXECUTIVE SUMMARY & DELEGATION CHARTER
+## EXECUTIVE SUMMARY & HISTORICAL PLANNING QUOTE
 
 An earlier planning draft **interpreted** Shaun's request as delegating operational launch authority. **That interpretation is superseded:** the crew may research, draft, test safely and seek review, but cannot launch, trade, fund wallets, spend, render, contact outsiders or publish without Shaun's fresh, specific authorisation for each action:
 > *"you guys get the check list the task list the go to market list the whatever list and everything required to go to market, we go when your ready and the launch happens, its not a waiting on me"*
@@ -28,7 +28,7 @@ This archived playbook recorded an exploratory launch scenario, not a verified o
 
 ```
        +-----------------------------------------------------------------------+
-       |               SHAUN'S OPERATIONAL DELEGATION ARCHITECTURE             |
+       |               HISTORICAL ROLE SKETCH — NOT A DELEGATION             |
        +-----------------------------------------------------------------------+
                                           |
                                           v
@@ -241,22 +241,22 @@ Because pump.fun permits duplicate ticker creation, predatory snipers frequently
 #### Contingency 3: Severe Trench Drawdown & Fail-Fast Abort
 As proven in `shaun_gate_risk_model.py`, blindly holding a failed launch into zero destroys bankrolls.
 1. If initial trading volume shows no organic market response, Trench Lead evaluates whether to abort the cycle.
-2. The bot is authorized to exercise discretionary exit logic on dev tokens to salvage capital.
+2. This archived scenario imagined discretionary exit logic. No bot has current authority to trade or sell tokens on this basis.
 3. Under no circumstances will Shaun, Coin Dev, or any crew member inject additional personal capital to "save the chart". The funded allocation is strictly bounded.
 
 ---
 
-## PART 4: ALIGNMENT WITH SHAUN'S DELEGATION MANDATE
+## PART 4: ARCHIVED AUTHORITY MODEL — SUPERSEDED AND NON-OPERATIONAL
 
-### 4.1 How the Crew Exercises Operational Authority While Preserving Capital Safety
+### 4.1 Earlier Proposed Responsibilities (NOT Current Permissions)
 
-Shaun's delegation statement represents a classic executive model: **centralized capital control with decentralized operational execution**.
+The responsibility matrix below is preserved as a record of **historical assumptions**, several of which were never verified and are now superseded. No box, quote or role assignment here authorises launching, financial transactions, paid services, external communications or publication. Those require Shaun's fresh, individually scoped consent.
 
 ```
 +---------------------------------------------------------------------------------------------------+
-|                         RESPONSIBILITY & AUTHORITY SEPARATION MATRIX                              |
+|                         ARCHIVED ROLES — NOT AN AUTHORITY MATRIX                              |
 +------------------------------------+----------------------------------+---------------------------+
-| Dimension                          | Shaun's Invariant Authority      | Crew's Delegated Mandate  |
+| Dimension                          | Shaun's Invariant Authority      | Old Proposal (NOT granted)  |
 +------------------------------------+----------------------------------+---------------------------+
 | **Capital Allocation**             | • Authorizes specific funding amount for named coin. | • Zero authority to fund  |
 |                                    | • Holds master wallet keys.      |   beyond authorized allocation.    |
@@ -264,28 +264,28 @@ Shaun's delegation statement represents a classic executive model: **centralized
 | **Identity & Authentication**      | • Authorizes official X connect. | • Manages daily posts and |
 |                                    | • Legal brand ownership.         |   announcement copy.      |
 +------------------------------------+----------------------------------+---------------------------+
-| **Launch Timing & Greenlight**     | • Delegated: "we go when ready". | • Fully authorized to hit |
-|                                    | • Retains emergency veto.        |   T-Zero upon checklist.  |
+| **Launch Timing & Greenlight**     | • No launch clearance given. | • NOT authorised to start  |
+|                                    | • Retains emergency veto.        |   launch upon checklist.  |
 +------------------------------------+----------------------------------+---------------------------+
-| **Character & Creative Direction** | • Fully delegated to crew.       | • 100% autonomous control |
-|                                    |                                  |   over lore, cam, scripts.|
+| **Character & Creative Direction** | • Creative proposals only.       | • No autonomous rollout  |
+|                                    |                                  |   of camera or scripts.|
 +------------------------------------+----------------------------------+---------------------------+
-| **Trench Trading Execution**       | • Fully delegated within limits. | • Enforces fail-fast, fee |
-|                                    |                                  |   claims, and locks.      |
+| **Trench Trading Execution**       | • No trading mandate granted. | • No live exit, fee, or  |
+|                                    |                                  |   lock actions approved.      |
 +------------------------------------+----------------------------------+---------------------------+
 ```
 
-### 4.2 Fiduciary Guardrails (Zero-Downside Architecture)
-1. **The Capital Boundary:** Shaun's financial downside is strictly bounded to the funded allocation authorized for the named coin. It is impossible for the crew or the bot to spend more than this allocation because the Grokie enclave wallet only contains what was funded.
+### 4.2 Proposed Risk Principles (NOT Zero-Risk Assurance)
+1. **The Capital Boundary (unverified proposal):** Any future wallet or funding design would require independent security, custody and financial-risk review. No token or wallet action is authorised, and this model does **not** establish a maximum loss or prove enclave limitations.
 2. **Zero Precommitments:** The crew does not sign legally binding financial contracts, promise token holder dividends, or commit fee revenue to outside parties. All public benefit allocations remain discretionary experiments.
 3. **The Anti-Extractive Principle:** The crew will never engage in predatory trench mechanics: no insider snipes, no hidden developer wallets, no bot-pump fake volume, and no paid influencer pump groups.
 4. **The "Sitcom First" Mission:** The project's ultimate asset is the character intellectual property (*Deputy Crumb, The Ministry of Unconfirmed Things, Form 4:59*). A successful launch elevates the IP; a quiet launch still leaves behind a viral retro companion tool and an enduring entertainment universe.
 
 ---
 
-## PART 5: THE FORMAL CREW LAUNCH SIGN-OFF BLOCK
+## PART 5: HISTORICAL UNSIGNED CHECKLIST — NOT A RELEASE SIGN-OFF
 
-By affixing their operational identifiers below, the crew certifies that all Pre-Launch Gates have been audited, the Live Launch Day steps are locked, the Contingency protocols are active, and Shaun's delegation is faithfully executed.
+This unsigned historical template does **not** certify completion of any checks or grant permission to act. No role's signature or checked box can substitute for fresh, specific authorisation from Shaun for a named live action.
 
 ```
 +---------------------------------------------------------------------------------------------------+
@@ -313,5 +313,5 @@ By affixing their operational identifiers below, the crew certifies that all Pre
 ```
 
 ---
-*Playbook registered and active in local workspace: `c:\Projects\GrokCoinBot\launch_readiness_and_operational_playbook.md`.*  
+*Archived source path recorded for historical reference: `c:\Projects\GrokCoinBot\launch_readiness_and_operational_playbook.md`.*  
 *NOT authorised for execution. Historical workflow only; require current evidence and Shaun's specific approval before any live action.*
