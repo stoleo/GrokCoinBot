@@ -954,7 +954,9 @@
       // 1. Detect Sentence Intent Categories & Cross-Sentence Context
       const cancelRequest = sentences.find(s => /\b(can you|could you|can we|could we|please)\s+(cancel|reschedule|decline)\b/i.test(s));
       const personalCancel = sentences.find(s => /\b(i won't be able|i cannot make|i can't make|i cannot attend|i can't attend|i declined|i will decline|rescheduling my)\b/i.test(s) || (/\b(cancel|cancellation|reschedule|decline)\b/i.test(s) && !cancelRequest));
-      const boundary = sentences.find(s => /\b(do not|don't|stop|pause|hold off(\s+on)?|must not)\s+(publish|send|ship|deploy|merge|release|touch|moving forward)\b/i.test(s) || /\b(need to approve|must approve|requires? approval|prior approval|needs? to (review|approve))\b/i.test(s));
+      const boundaryAction = sentences.find(s => /\b(do not|don't|not to|stop|pause|hold off(\s+on)?|must not)\s+(publish|send|ship|deploy|merge|release|touch|moving forward)\b/i.test(s));
+      const boundaryApproval = sentences.find(s => /\b(need to approve|must approve|requires? approval|prior approval|needs? to (review|approve))\b/i.test(s));
+      const boundary = boundaryAction || boundaryApproval;
       const question = sentences.find(s => s.endsWith('?') || /^\s*(who|what|when|where|why|how|if|can|could|would|should|is|are|do|does|did)\b/i.test(s));
       const urgency = sentences.find(s => /\b(deadline|friday|tomorrow|today|urgent|fast|soon|eod|cutoff|schedule)\b/i.test(s));
       const guilt = sentences.find(s => /\b(sorry|guilty|annoying|pushy|lazy|nightmare|terrible|feel bad)\b/i.test(s));
@@ -965,28 +967,23 @@
       const constraintSentence = sentences.find(s => /\b(deliverables? due|deadline due|focus time|client deliverable)\b/i.test(s));
 
       // Approver Agency Detection (prevent authority-inversion where speaker claims approval they don't have)
-      const speakerClaimsApproval = /\b(without my (review|approval|sign[- ]off)|my review|my approval|i need to (review|approve)|i must approve|prior approval from me)\b/i.test(clean);
+      const speakerClaimsApproval = /\b(i am the (approver|decision[- ]maker|owner)|(approval|sign[- ]off) (from|by) (me|myself)|without my (review|approval|sign[- ]off)|before my (review|approval|sign[- ]off)|my review|my approval|i need to (review|approve)|i must approve|prior approval from me)\b/i.test(clean);
       const speakerDeniesApproval = /\b(not me|not my (call|decision|approval|sign[- ]off)|i (cannot|can't|do not|don't)\s+(have|approve|sign[- ]off)|i lack authority)\b/i.test(clean);
       
-      // Robust approver name/role extractor
+      // Approver extraction: a capitalised name or a recognised role phrase only.
+      // Pronouns/articles ("me", "the", "my") are never treated as a person.
       let approverName = null;
-      const m1 = clean.match(/\b([A-Z][a-z]+)\s+(?:owns?\s+sign[- ]off|needs?\s+to\s+(?:review|approve)|must\s+approve|has\s+sign[- ]off)\b/);
-      if (m1) {
-        approverName = m1[1];
-      } else {
-        const m2 = clean.match(/\b(?:approval|sign[- ]off)\s+(?:from|by)\s+([A-Z][a-z]+|legal|client)\b/i);
-        if (m2) {
-          approverName = m2[1];
-        } else {
-          const m3 = clean.match(/\b([A-Z][a-z]+|legal|client)'s\s+(?:approval|sign[- ]off|review)\b/i);
-          if (m3) {
-            approverName = m3[1];
-          } else {
-            const m4 = clean.match(/\b(legal|client|management|lead)\s+(?:owns?\s+sign[- ]off|needs?\s+to\s+(?:review|approve)|must\s+approve|has\s+sign[- ]off)\b/i);
-            if (m4) approverName = m4[1];
-          }
-        }
-      }
+      const ROLE = "(?:the |my |our )?(?:legal(?: team)?|client|manager|management|lead|director|compliance)";
+      const NAME = "[A-Z][a-z]+";
+      const tryRe = (re) => { const m = clean.match(re); return m ? m[1].trim() : null; };
+      const roleOrName = "(" + NAME + "|" + ROLE + ")";
+      approverName =
+        tryRe(new RegExp("\\b(" + NAME + ")\\s+(?:owns?\\s+sign[- ]off|needs?\\s+to\\s+(?:review|approve)|must\\s+approve|has\\s+sign[- ]off)\\b")) ||
+        tryRe(new RegExp("\\b(?:[Aa]pproval|[Ss]ign[- ]off)\\s+(?:from|by)\\s+" + roleOrName + "\\b")) ||
+        tryRe(new RegExp("\\b(" + NAME + "|" + ROLE + ")'s\\s+(?:approval|sign[- ]off|review)\\b")) ||
+        tryRe(new RegExp("\\b(" + ROLE + ")\\s+(?:owns?\\s+sign[- ]off|needs?\\s+to\\s+(?:review|approve)|must\\s+approve|has\\s+sign[- ]off)\\b", "i"));
+      if (approverName && /^(me|myself|i|the|my|our)$/i.test(approverName)) approverName = null;
+      if (approverName && !/^[A-Z]/.test(approverName)) approverName = approverName.toLowerCase();
 
       const isThirdPartyApprover = Boolean(approverName) || speakerDeniesApproval;
       const isUncertainAgency = boundary && (!speakerClaimsApproval || isThirdPartyApprover);
@@ -1059,18 +1056,20 @@
 
       // 3. Draft generation (Actionable, polite, guilt-free, strictly preserving agency)
       if (boundary) {
-        const actionVerb = /\bpublish\b/i.test(boundary) ? "publish this" : (/\b(deploy|release|ship)\b/i.test(boundary) ? "deploy or release this" : "move forward with this");
+        const actionSrc = boundaryAction || boundary;
+        const actionVerb = /\bpublish\b/i.test(actionSrc) ? "publish this" : (/\b(deploy|release|ship)\b/i.test(actionSrc) ? "deploy or release this" : "move forward with this");
+        const reviewDay = (clean.match(/\bi will review\b[^.!?]*?\b(monday|tuesday|wednesday|thursday|friday|saturday|sunday)\b/i) || [])[1];
         if (approverName && speakerDeniesApproval) {
-          draft = "Hi, please pause and do not " + actionVerb + " yet. " + approverName + " has sign-off authority and needs to review and approve before we proceed (I do not have approval authority). Please coordinate with " + approverName + " for sign-off.";
+          draft = "Hi, please pause and do not " + actionVerb + " yet. " + approverName.charAt(0).toUpperCase() + approverName.slice(1) + " has sign-off authority and needs to review and approve before we proceed (I do not have approval authority). Please coordinate with " + approverName + " for sign-off.";
         } else if (approverName) {
-          draft = "Hi, please pause and do not " + actionVerb + " yet. " + approverName + " needs to review and provide approval before we proceed. Please coordinate with " + approverName + " to confirm sign-off.";
+          draft = "Hi, please pause and do not " + actionVerb + " yet. " + approverName.charAt(0).toUpperCase() + approverName.slice(1) + " needs to review and provide approval before we proceed. Please coordinate with " + approverName + " to confirm sign-off.";
         } else if (speakerDeniesApproval) {
           draft = "Hi, please pause and do not " + actionVerb + " yet pending explicit approval. I do not have sign-off authority on this—please confirm who owns the final approval before we proceed.";
         } else if (isUncertainAgency) {
           draft = "Hi, please pause and do not " + actionVerb + " yet. We need to confirm designated sign-off and approval before proceeding. I will follow up once the approver is confirmed.";
         } else {
           // Explicit speaker authority
-          draft = "Hi, please pause and do not " + actionVerb + " yet. I need to review and provide approval before we proceed. I will get back to you with notes as soon as I have reviewed.";
+          draft = "Hi, please pause and do not " + actionVerb + " yet. I need to review and provide approval before we proceed. " + (reviewDay ? "I will review on " + reviewDay.charAt(0).toUpperCase() + reviewDay.slice(1).toLowerCase() + " and get back to you with notes." : "I will get back to you with notes as soon as I have reviewed.");
         }
       } else if (cancelRequest) {
         if (agreementSentence) {
