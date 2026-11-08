@@ -1052,9 +1052,10 @@
         ul.appendChild(li);
       });
 
-      lastGeneratedDraft = res.draft;
+      // An empty form has no private message to copy or preserve.
+      lastGeneratedDraft = input.trim() ? res.draft : '';
       if (!isDraftManuallyEdited) {
-        document.getElementById('draftEditable').value = res.draft;
+        document.getElementById('draftEditable').value = lastGeneratedDraft;
       }
       
       const stampEl = document.getElementById('rubberStampText');
@@ -1077,7 +1078,11 @@
       const status = document.getElementById('draftCopyStatus');
       const fallback = document.getElementById('draftCopyFallback');
       if (status) status.textContent = '';
-      if (fallback) fallback.hidden = true;
+      if (fallback) { fallback.value = ''; fallback.hidden = true; }
+      if (!document.getElementById('rawInput').value.trim() || !text.trim()) {
+        if (status) status.textContent = 'Enter a message before copying a private draft.';
+        return;
+      }
       try {
         if (!navigator.clipboard?.writeText) throw new Error('Clipboard API unavailable');
         await navigator.clipboard.writeText(text);
@@ -1147,7 +1152,24 @@
 
     function clearForm() {
       activeCaseIndex = -1;
-      document.getElementById('rawInput').value = "";
+      // Reset the entire private-draft session, not just the raw input.
+      isDraftManuallyEdited = false;
+      lastGeneratedDraft = '';
+      document.getElementById('rawInput').value = '';
+      document.getElementById('draftEditable').value = '';
+      const resetBtn = document.getElementById('btnResetDraft');
+      if (resetBtn) resetBtn.style.display = 'none';
+      for (const id of ['draftCopyStatus', 'cardCopyStatus']) {
+        const status = document.getElementById(id);
+        if (status) status.textContent = '';
+      }
+      for (const id of ['draftCopyFallback', 'cardCopyFallback']) {
+        const fallback = document.getElementById(id);
+        if (fallback) {
+          fallback.value = '';
+          fallback.hidden = true;
+        }
+      }
       document.querySelectorAll('.case-card').forEach(c => c.classList.remove('active'));
       handleInput();
       processForm();
