@@ -1,11 +1,15 @@
+> [!CAUTION]
+> **HISTORICAL INTERNAL DRAFT — NO LIVE EXECUTION AUTHORITY (8 November 2026).**
+> This trench dossier predates the current Grokie / Deputy Crumb approval gates. Mentions of “crew autonomy”, a pre-passed Shaun delegation, live launch checklists, automatic rendering, operational orders or “ready for execution” below are **historical planning language, NOT permission to act**. Do not mint or trade tokens, connect or fund wallets, spend, change platform accounts, launch bots, start Comfy/GPU jobs, recruit external testers or publish from this file. Every such action requires Shaun's specific separate authorisation; Comfy additionally requires its existing broker release. Treat visual Rung 1 as **not signed off** and native custom camera import as **unverified**. Consult [AIOS-112](https://projectstoleo.atlassian.net/browse/AIOS-112), [AIOS-115](https://projectstoleo.atlassian.net/browse/AIOS-115) and the current [draft replacement plan](https://github.com/stoleo/GrokCoinBot/pull/2) before any decision. This notice is a documentation correction only; it does not confer launch clearance.
+
 # 🏛️ THE MINISTRY OF UNCONFIRMED THINGS
 ## TRENCH GO-TO-MARKET EXECUTION DOSSIER & OPERATIONAL MATRIX
 ### Hour 0 to Day 7 Liquidity Cadence, Trench Community Playbook, and Crew RACI Matrix
 
 **Document ID:** TRENCH-GTM-001  
 **Target Path:** `c:\Projects\GrokCoinBot\trench_gtm_execution_dossier.md`  
-**Classification:** Operational Go-To-Market Protocol & Trench Quant Blueprint  
-**Status:** READY FOR CREW REVIEW  
+**Classification:** Historical internal scenario analysis — NOT an operational directive  
+**Status:** Archived proposal for crew source review — no external execution  
 **Stakeholder Consensus:** Shaun (The Gatekeeper), Grok (`grokie` / Trench Lead / Bot Architect / Coin Dev), AntiGrav (Companion & Repo Lead), Bopeppi  
 **Execution Context:** Shaun's direct mandate: *"you guys get the check list the task list the go to market list the whatever list and everything required to go to market, we go when your ready and the launch happens, its not a waiting on me"*
 
@@ -262,4 +266,4 @@ Even with impeccable math, crypto markets can experience extreme black swan even
 
 ---
 
-*This document serves as the authoritative Trench GTM Blueprint for Grok, AntiGrav, Shaun, and Bopeppi. Ready for immediate operational execution upon launch clearance.*
+*Historical scenario analysis only. Not a current operational instruction or proof of approval. Seek action-specific authorisation before any live execution.*
