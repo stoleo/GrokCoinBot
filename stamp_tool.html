@@ -151,6 +151,9 @@
     .voucher-header {
       display: flex;
       justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+      overflow-wrap: anywhere;
       border-bottom: 2px solid #292524;
       padding-bottom: 8px;
       margin-bottom: 16px;
@@ -167,6 +170,9 @@
     .voucher-footer {
       display: flex;
       justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+      overflow-wrap: anywhere;
       border-top: 1px dashed #78716c;
       padding-top: 10px;
       font-size: 11px;
@@ -181,7 +187,11 @@
       transform: translate(-50%, -50%) rotate(-7deg);
       border: 5px solid var(--stamp-red);
       color: var(--stamp-red);
-      font-size: 32px;
+      font-size: clamp(14px, 4vw, 32px);
+      max-width: calc(100% - 20px);
+      overflow-wrap: anywhere;
+      text-align: center;
+      line-height: 1.15;
       font-weight: 900;
       letter-spacing: 0.12em;
       text-transform: uppercase;
@@ -200,7 +210,9 @@
     .action-row {
       display: flex;
       gap: 12px;
+      flex-wrap: wrap;
     }
+    .action-row .btn { flex: 1 1 220px; }
     .btn {
       padding: 12px 24px;
       font-family: var(--typewriter);
@@ -248,11 +260,11 @@
     </div>
 
     <span style="display:block; margin-bottom:8px; font-weight:bold;">Select Fictional Departmental Stamp:</span>
-    <div class="stamp-selector">
-      <button class="stamp-btn active" onclick="selectStamp('WORDS ONLY')">[ WORDS ONLY ]</button>
-      <button class="stamp-btn" onclick="selectStamp('RECEIPT REQUIRED')">[ RECEIPT REQUIRED ]</button>
-      <button class="stamp-btn" onclick="selectStamp('RETURN TO SENDER')">[ RETURN TO SENDER ]</button>
-      <button class="stamp-btn moth" onclick="selectStamp('ACTUALLY A MOTH')">[ ACTUALLY A MOTH ]</button>
+    <div class="stamp-selector" role="group" aria-label="Fictional departmental stamps">
+      <button class="stamp-btn active" aria-pressed="true" onclick="selectStamp('WORDS ONLY')">[ WORDS ONLY ]</button>
+      <button class="stamp-btn" aria-pressed="false" onclick="selectStamp('RECEIPT REQUIRED')">[ RECEIPT REQUIRED ]</button>
+      <button class="stamp-btn" aria-pressed="false" onclick="selectStamp('RETURN TO SENDER')">[ RETURN TO SENDER ]</button>
+      <button class="stamp-btn moth" aria-pressed="false" onclick="selectStamp('ACTUALLY A MOTH')">[ ACTUALLY A MOTH ]</button>
     </div>
 
     <span style="display:block; margin-bottom:8px; font-weight:bold;">Fictional Prop Preview (Copy Text Below):</span>
@@ -312,7 +324,9 @@
       currentStamp = stampText;
       currentStyle = styleClass;
       document.querySelectorAll('.stamp-btn').forEach(btn => {
-        btn.classList.toggle('active', btn.innerText.includes(stampText));
+        const active = btn.innerText.includes(`[ ${stampText} ]`);
+        btn.classList.toggle('active', active);
+        btn.setAttribute('aria-pressed', String(active));
       });
       stampMark.innerText = `[ ${stampText} ]`;
       stampMark.className = 'stamp-mark ' + (styleClass !== 'red' ? styleClass : '');
