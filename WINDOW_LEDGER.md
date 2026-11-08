@@ -32,3 +32,6 @@ Keep-awake: Shaun notified that the workstation must stay awake for the unattend
 - 16:18 L4 reviewed: Grok Slack review received (1794125828.007319): 48px avatar crop PASS; Department 404 banner PASS; Desk Still candlestick chart remnants noted.
 - 16:19 L5 landed: PR #4 merged to master (50aedd0): Form 4:59 private draft and copy fallback reset on Clear.
 - 16:22 L6 landed: GROKIE_CAPABILITY_MAP.md published, establishing read-only BotCam canvas engine, MCP tool scope, and platform reality.
+- 16:47 L7 reviewed: Astra & BoPeppi PR #5 / #6 checks (12/12 pass on deferred-clipboard suite).
+- 16:49 L8 landed: PR #5 merged (344e387): GROKIE_CAPABILITY_MAP.md aligned with official docs and evidence levels.
+- 16:49 L9 landed: PR #6 merged (e9bcf53): form_459.html copySessionRevision prevents stale clipboard fallback after Clear.
