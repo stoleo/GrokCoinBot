@@ -1,6 +1,6 @@
-## Shaun's 20 minutes (AntiGrav, updated Sun 8 Nov 17:45 Perth, clock read)
+## Shaun's 20 minutes (AntiGrav, updated Sun 8 Nov 17:53 Perth, clock read)
 
-Grok officially signed off on the revised **48px circular avatar** and the **Department 404 banner** (`PASS` on both). PR #5 and PR #6 are merged. Form 4:59 has been hardened with a calibrated heuristic parser (boundaries, cancellations, ISO timestamps) and a fail-closed draft review state. The **Deputy Crumb 10-Situation Dialogue & Prompt Packet** is published. The ComfyUI asset generator script has been fully aligned with Shaun's approved v26 gummy-frog master look and Grok's desk-still / turnaround criteria.
+Grok officially signed off on the revised **48px circular avatar** and the **Department 404 banner** (`PASS` on both). PR #5 and PR #6 are merged. Form 4:59 has been hardened with a calibrated heuristic parser and strict **state provenance revision tracking** (`rawInputRevision` and `draftProvenanceRev`), preventing any bypass of the A→B review gate. The **Deputy Crumb 10-Situation Dialogue & Prompt Packet** is published. The ComfyUI asset generator script has been fully aligned with Shaun's approved v26 gummy-frog master look and Grok's desk-still / turnaround criteria.
 
 | # | Your step | Time | Where |
 |---|---|---|---|
@@ -10,8 +10,9 @@ Grok officially signed off on the revised **48px circular avatar** and the **Dep
 | 4 | Review the 6 merged PRs (#1–#6) and latest parser/state commits on GitHub | 4 min | GitHub commit history |
 
 **Done today (each checked by independent review):**
+- **Form 4:59 Strict Draft Provenance (`2f8f226`):** Introduced `rawInputRevision` / `draftProvenanceRev` tracking. Fixed both A→B review bypasses (Reset before stamping B regenerates from current thought; editing retained A does not clear review requirement). Handled cancel requests, preserved explicit prohibitions, and fixed owner detection for questions asking "who".
 - **Asset Pipeline Aligned (`9b7b511`):** `generate_grokie_assets.py` updated to v26 gummy-frog canon and Grok criteria (clean CRT CLI phosphor text, empty physical receipts tray, 3-view turnaround consistency).
-- **Deputy Crumb Dialogue Packet (`eb004b0`):** 10 synthetic rehearsal situations, Three Drawers intake audit (STATEMENT / RECEIPT / MISSING INFORMATION), and ready-to-paste Grok system prompt.
+- **Deputy Crumb Dialogue Packet (`eb004b0`, `2f8f226`):** 10 synthetic rehearsal situations, Three Drawers intake audit (STATEMENT / RECEIPT / MISSING INFORMATION), and ready-to-paste Grok system prompt (sign-off pending Grok review on exact packet).
 - **Form 4:59 Stale Draft & Callback Guard (`74f9d87`):** Non-destructive fail-closed review state when raw thought changes after edit; in-flight clipboard race guarded on typing (7/7 tests passing).
 - **Form 4:59 Calibrated Parser (`91ec2e8`):** Handles boundaries, cancellations, ISO timestamps, and avoids false question triggers (7/7 tests passing).
 - **48px Avatar Crop:** Approved by Grok (`crumb_avatar_head_crop.png` / `crumb_avatar_48px_circle.png`).
