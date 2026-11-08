@@ -32,36 +32,36 @@ from pathlib import Path
 COMFY_HOST = "http://127.0.0.1:8188"
 OUTPUT_DIR = Path(r"C:\Projects\GrokCoinBot\assets")
 
-# Canon Visual Direction: Lovable "Ugly-Cute" Tactile Puppet / Toad-Gremlin Clerk (Shaun Creative Reset)
+# Canon Visual Direction: Shaun-Approved v26 Gummy-Frog Clerk & Grok Review Criteria
 CANON_PROMPT_CORE = (
-    "Adorable ugly-cute little alien postal clerk named Deputy Crumb, Jim Henson Creature Shop practical puppet style "
-    "meets warm Wes Anderson tactile stop-motion charm, short stout round chubby frog-gremlin proportions with a cute potbelly, "
-    "soft velvety sage-green skin, two big warm soulful puppy-dog eyes under heavy cozy sleepy eyelids, "
-    "tiny round brass half-moon reading glasses perched on the tip of his stubby snout, a small yellow pencil tucked behind his ear, "
-    "grumpy-sweet lovable curmudgeon expression, wearing an oversized warm tweed trenchcoat over a cream collared shirt with a crooked burgundy tie, "
-    "big shiny brass employee badge pinned on lapel clearly engraved 'DEPT 404'. "
-    "Warm golden desk lamp glow mixed with retro 1987 office lighting, heartwarming and iconic character mascot."
+    "Adorable cute little green gummy-frog postal clerk named Deputy Crumb, soft translucent jade-green gummy frog skin "
+    "with a subtle warm golden belly undertone (matching v26 master tones), signature asymmetrical eyes featuring a subtle sleepy "
+    "squint on the left eye and a wide soulful glazed open pupil on the right eye, tiny round brass half-moon reading spectacles "
+    "perched on his stubby snout, bare green neck wearing a small crooked burgundy tie, large polished brass employee badge pinned "
+    "clearly engraved 'DEPT 404'. Warm golden desk lamp glow mixed with retro 1987 bureaucratic office fluorescent lighting, "
+    "tactile stop-motion feel meets 35mm film photography, iconic character mascot."
 )
 
 PHASED_PIPELINE = {
-    # Phase 1: Canonical Character Face Sheet for Shaun & Grok Review
+    # Phase 1: Canonical Character Turnaround Model Sheet (Addressing Grok Rung 1 Criteria)
     "phase1_face_sheet": {
         "id": "crumb_face_sheet_3view",
-        "description": "3-View Character Model Sheet (Front, Profile, 3/4 Angle) — Ugly-Cute Redesign",
+        "description": "3-View Character Model Sheet (Front, Profile, 3/4 Angle) — v26 Gummy Frog Canon",
         "type": "still",
         "width": 1536,
         "height": 1024,
         "format": "png",
         "prompt": (
-            "Character design turnaround model sheet showing 3 distinct views (direct front view, 45-degree three-quarter view, side profile view) "
-            "of the same adorable ugly-cute little green alien postal clerk Deputy Crumb, Jim Henson Creature Shop puppet style, "
-            "short round chubby toad-gremlin body with cute potbelly, soft sage-green skin, two big warm soulful sleepy eyes with cozy heavy eyelids, "
-            "tiny round brass reading spectacles on his stubby nose, oversized warm taupe corduroy trenchcoat (no hood), cream shirt, crooked burgundy tie, "
-            "shiny brass badge reading 'DEPT 404', holding a warm ceramic mug. Clean warm cream studio turnaround sheet, charming and lovable."
+            "Character design turnaround model sheet showing 3 distinct clean views (direct front portrait, 45-degree three-quarter view, "
+            "exact side profile view) of the same green gummy-frog clerk Deputy Crumb. Translucent jade-green jelly skin with warm golden "
+            "belly undertone matching v26 master. Signature asymmetrical eyes preserved across all angles: sleepy half-squint left eye and "
+            "open glazed right eye. Tiny round brass reading glasses on snout, bare green neck with small crooked burgundy tie, polished "
+            "brass badge reading 'DEPT 404' clearly engraved and legible on all views including profile. Four distinct digits on hands, "
+            "holding a warm ceramic mug labeled '4:59'. Clean neutral warm beige studio turnaround sheet, sharp character consistency."
         ),
         "seed": 4042026
     },
-    # Phase 3: Identity-Locked Stills (Emitted after Grok approves Phase 1)
+    # Phase 3: Identity-Locked Stills (Addressing Grok Rung 2 Criteria)
     "phase3_pfp": {
         "id": "crumb_pfp_1024x1024",
         "description": "Official Grokie Bot Avatar / PFP (Circular Mask Safe)",
@@ -71,25 +71,30 @@ PHASED_PIPELINE = {
         "format": "png",
         "prompt": (
             CANON_PROMPT_CORE +
-            " Centered 1024x1024 portrait, subject positioned with ample circular avatar margin, sharp focus on eyes and brass badge 'DEPT 404'."
+            " Centered 1024x1024 portrait, subject positioned with generous circular avatar margin, sharp focus on spectacles, "
+            "squint/open-eye split, and brass badge 'DEPT 404'."
         ),
         "seed": 4041987
     },
     "phase3_desk_still": {
         "id": "crumb_desk_still_1920x1080",
-        "description": "Native Cam Desk Background & Platform Still",
+        "description": "Department 404 Intake Station Desk Still (Grok Compliant: CRT CLI + Empty Physical Receipts Tray)",
         "type": "still",
         "width": 1920,
         "height": 1080,
         "format": "png",
         "prompt": (
-            "Cinematic wide 16:9 shot of Department 404 intake station, an underfunded interstellar postal bureau in 1987. "
-            "Deputy Crumb in a rumpled faded taupe trenchcoat and brass badge 'DEPT 404' sits slumped behind a scratched dark oak clerk counter. "
-            "Teetering precarious towers of yellowed carbon forms labeled 'STATEMENTS (UNVERIFIED)' rise toward the ceiling on the left, "
-            "while a tiny brass tray on the right labeled 'RECEIPTS (CONFIRMED)' sits completely empty. "
-            "Heavy cast-iron brass stamper on red ink blotter. Bulky cream CRT monitor glowing green monochrome phosphor text 'STATUS: BACKLOG 800 YRS'. "
-            "A mechanical industrial round wall clock with black metal rim prominently displays exactly 04:59 PM. "
-            "Flickering fluorescent ceiling tube casting cool ambient green-white glow on drab pea-green watermarked walls, Terry Gilliam Brazil film still, 35mm grain."
+            "Cinematic wide 16:9 shot of Department 404 intake station, an underfunded bureaucratic postal bureau in 1987. "
+            "Deputy Crumb, the translucent green gummy-frog clerk in brass spectacles and burgundy tie with 'DEPT 404' badge, sits slumped "
+            "behind a scratched dark oak government counter. "
+            "On the counter: a prominent authentic physical wooden and brass inbox tray neatly labeled 'RECEIPTS' sitting under desk lamp light, "
+            "completely empty with zero papers inside. "
+            "Beside the tray: a curved retro 1980s cream CRT computer terminal monitor glowing clean green monochrome phosphor CLI text: "
+            "'SYS.404 INTAKE · STATUS: STANDBY · RECEIPTS: 0 FILED · QUEUE: [EMPTY]', strictly NO price charts, NO financial squiggles, "
+            "NO candlestick graphs. "
+            "Heavy cast-iron red ink rubber stamper resting on ink blotter. An industrial round analog wall clock prominently displays exactly 04:59 PM. "
+            "Flickering fluorescent ceiling tube casting cool ambient green-white glow on drab pea-green watermarked office walls, "
+            "Terry Gilliam Brazil film still meets Wes Anderson aesthetic, authentic 35mm film grain."
         ),
         "seed": 4041988
     },
