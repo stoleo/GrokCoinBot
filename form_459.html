@@ -952,16 +952,19 @@
       let note = "";
 
       // 1. Detect Sentence Intent Categories
-      const cancellation = sentences.find(s => /\b(cancel|cancellation|decline|reschedule|won't be able to attend|cannot attend|can't attend|can't make|won't make)\b/i.test(s));
-      const boundary = sentences.find(s => /\b(do not|don't (publish|send|ship|deploy|merge|release|touch)|stop|pause|hold off|need to approve|must approve|requires? approval)\b/i.test(s));
-      const question = sentences.find(s => s.endsWith('?') || /\b(who|what|when|where|why|how|if|can|could|would|should|is|are|do|does)\b/i.test(s));
+      const cancelRequest = sentences.find(s => /\b(can you|could you|please)\s+(cancel|reschedule|decline)\b/i.test(s));
+      const personalCancel = sentences.find(s => /\b(i won't be able|i cannot make|i can't make|i cannot attend|i can't attend|i declined|i will decline|rescheduling my)\b/i.test(s) || (/\b(cancel|cancellation|reschedule)\b/i.test(s) && !cancelRequest));
+      const boundary = sentences.find(s => /\b(do not|don't|stop|pause|hold off|must not)\s+(publish|send|ship|deploy|merge|release|touch)\b/i.test(s) || /\b(need to approve|must approve|requires? approval|prior approval)\b/i.test(s));
+      const question = sentences.find(s => s.endsWith('?') || /^\s*(who|what|when|where|why|how|if|can|could|would|should|is|are|do|does|did)\b/i.test(s));
       const urgency = sentences.find(s => /\b(deadline|friday|tomorrow|today|urgent|fast|soon|eod|cutoff|schedule)\b/i.test(s));
       const guilt = sentences.find(s => /\b(sorry|guilty|annoying|pushy|lazy|nightmare|terrible|feel bad)\b/i.test(s));
 
       if (boundary) {
         point = "Hold action pending prior review and explicit approval: " + boundary.replace(/^(and|but|so|well|please)\s+/i, '').replace(/[.!?]+$/, '') + ".";
-      } else if (cancellation) {
-        point = "Politely notify of schedule cancellation or non-attendance: " + cancellation.replace(/^(and|but|so|well)\s+/i, '').replace(/[.!?]+$/, '') + ".";
+      } else if (cancelRequest) {
+        point = "Request schedule cancellation or rescheduling: " + cancelRequest.replace(/^(and|but|so|well)\s+/i, '').replace(/[.!?]+$/, '') + ".";
+      } else if (personalCancel) {
+        point = "Politely notify of schedule cancellation or non-attendance: " + personalCancel.replace(/^(and|but|so|well)\s+/i, '').replace(/[.!?]+$/, '') + ".";
       } else if (question) {
         point = "Clarify: " + question.replace(/^(and|but|so|well)\s+/i, '').replace(/[.!?]+$/, '') + ".";
       } else if (urgency) {
@@ -977,7 +980,8 @@
       if (!hasDateTime) {
         unknown.push("Exact date or delivery cutoff hour is unstated.");
       }
-      const hasOwner = /\b(who|assign|assigned|lead|owner|responsible|i will|you will|they will)\b/i.test(clean);
+      // True designated owner/assignment (not questions like 'who is responsible')
+      const hasOwner = /\b(assigned to|i will|you will|they will|we will|owner is|designated lead is)\b/i.test(clean) && !/\bwho is responsible\b/i.test(clean);
       if (!hasOwner) {
         unknown.push("Designated single decision-maker / task owner is unconfirmed.");
       }
@@ -993,8 +997,16 @@
 
       // 3. Draft generation (Actionable, polite, guilt-free)
       if (boundary) {
-        draft = "Hi, please pause and hold off on moving forward with this for now. I need to review and provide approval before we proceed. I will get back to you with notes as soon as I have reviewed.";
-      } else if (cancellation) {
+        if (/\bpublish\b/i.test(boundary)) {
+          draft = "Hi, please pause and do not publish this yet. I need to review and provide approval before we proceed. I will get back to you with notes as soon as I have reviewed.";
+        } else if (/\b(deploy|release|ship)\b/i.test(boundary)) {
+          draft = "Hi, please pause and do not deploy or release this yet. I need to review and provide approval before we proceed. I will get back to you with notes as soon as I have reviewed.";
+        } else {
+          draft = "Hi, please pause and hold off on moving forward with this for now. I need to review and provide approval before we proceed. I will get back to you with notes as soon as I have reviewed.";
+        }
+      } else if (cancelRequest) {
+        draft = "Hi, could we please cancel or reschedule our upcoming call? Let me know what alternative time might work on your side.";
+      } else if (personalCancel) {
         draft = "Hi, I won't be able to make our scheduled time due to a conflict. Apologies for the late notice—please let me know if we can reschedule or handle any urgent items asynchronously.";
       } else {
         const coreDecide = point.replace(/^(Clarify:\s*|Confirm delivery expectation regarding\s*|Align directly on next steps regarding:\s*)/i, '').replace(/\.\.\.$/, '');
@@ -1029,8 +1041,18 @@
       return { point, unknown, draft, stamp, note };
     }
 
+    let rawInputRevision = 0;
+    let draftProvenanceRev = 0;
+    let isDraftManuallyEdited = false;
+    let isDraftNeedsReview = false;
+    let rawInputAtEdit = "";
+    let lastGeneratedDraft = "";
+    // Invalidates late clipboard completions after Clear or a draft/session change.
+    let copySessionRevision = 0;
+
     function handleInput() {
       copySessionRevision++;
+      rawInputRevision++;
       const val = document.getElementById('rawInput').value;
       document.getElementById('charCount').innerText = val.length + " chars";
       playAudioSfx('type');
@@ -1040,30 +1062,46 @@
       if (status && !isDraftNeedsReview) status.textContent = '';
       if (fallback) { fallback.value = ''; fallback.hidden = true; }
 
-      if (isDraftManuallyEdited && val !== rawInputAtEdit) {
+      if (isDraftManuallyEdited && (val !== rawInputAtEdit || draftProvenanceRev !== rawInputRevision)) {
         isDraftNeedsReview = true;
+        const keepBtn = document.getElementById('btnKeepDraft');
+        if (keepBtn) keepBtn.style.display = 'inline-block';
+        const resetBtn = document.getElementById('btnResetDraft');
+        if (resetBtn) resetBtn.style.display = 'inline-block';
+        if (status) {
+          status.style.color = '#fde047';
+          status.textContent = 'Note: Raw thought changed. Please choose [↺ Reset to Generated Draft] or [✓ Keep Edited Draft].';
+        }
       }
     }
 
-    let isDraftManuallyEdited = false;
-    let isDraftNeedsReview = false;
-    let rawInputAtEdit = "";
-    let lastGeneratedDraft = "";
-    // Invalidates late clipboard completions after Clear or a draft/session change.
-    let copySessionRevision = 0;
-
     function markDraftEdited() {
       isDraftManuallyEdited = true;
-      rawInputAtEdit = document.getElementById('rawInput').value;
-      isDraftNeedsReview = false;
-      const resetBtn = document.getElementById('btnResetDraft');
-      if (resetBtn) resetBtn.style.display = 'inline-block';
-      const keepBtn = document.getElementById('btnKeepDraft');
-      if (keepBtn) keepBtn.style.display = 'none';
+      const currentRaw = document.getElementById('rawInput').value;
+      if (draftProvenanceRev !== rawInputRevision || currentRaw !== rawInputAtEdit) {
+        isDraftNeedsReview = true;
+        const resetBtn = document.getElementById('btnResetDraft');
+        if (resetBtn) resetBtn.style.display = 'inline-block';
+        const keepBtn = document.getElementById('btnKeepDraft');
+        if (keepBtn) keepBtn.style.display = 'inline-block';
+        const status = document.getElementById('draftCopyStatus');
+        if (status) {
+          status.style.color = '#fde047';
+          status.textContent = 'Note: Raw thought changed. Please choose [↺ Reset to Generated Draft] or [✓ Keep Edited Draft].';
+        }
+      } else {
+        rawInputAtEdit = currentRaw;
+        isDraftNeedsReview = false;
+        const resetBtn = document.getElementById('btnResetDraft');
+        if (resetBtn) resetBtn.style.display = 'inline-block';
+        const keepBtn = document.getElementById('btnKeepDraft');
+        if (keepBtn) keepBtn.style.display = 'none';
+      }
     }
 
     function keepEditedDraft() {
       rawInputAtEdit = document.getElementById('rawInput').value;
+      draftProvenanceRev = rawInputRevision;
       isDraftNeedsReview = false;
       const keepBtn = document.getElementById('btnKeepDraft');
       if (keepBtn) keepBtn.style.display = 'none';
@@ -1072,7 +1110,7 @@
       const status = document.getElementById('draftCopyStatus');
       if (status) {
         status.style.color = '#6ee7b7';
-        status.textContent = 'Edited draft kept for current thought.';
+        status.textContent = 'Edited draft bound to current thought.';
       }
     }
 
@@ -1080,6 +1118,11 @@
       copySessionRevision++;
       isDraftManuallyEdited = false;
       isDraftNeedsReview = false;
+      const currentRaw = document.getElementById('rawInput').value;
+      const res = parseHeuristically(currentRaw);
+      lastGeneratedDraft = currentRaw.trim() ? res.draft : '';
+      rawInputRevision++;
+      draftProvenanceRev = rawInputRevision;
       document.getElementById('draftEditable').value = lastGeneratedDraft;
       const resetBtn = document.getElementById('btnResetDraft');
       if (resetBtn) resetBtn.style.display = 'none';
@@ -1088,7 +1131,7 @@
       const status = document.getElementById('draftCopyStatus');
       if (status) {
         status.style.color = '#6ee7b7';
-        status.textContent = 'Reset to generated draft.';
+        status.textContent = 'Reset to generated draft for current thought.';
       }
     }
 
@@ -1184,7 +1227,7 @@
         }
         return;
       }
-      if (isDraftNeedsReview) {
+      if (isDraftNeedsReview || (isDraftManuallyEdited && draftProvenanceRev !== rawInputRevision)) {
         if (status) {
           status.style.color = '#fde047';
           status.textContent = 'Source thought changed. Please choose to regenerate or keep your edited draft before copying.';
@@ -1271,6 +1314,8 @@
 
     function clearForm() {
       copySessionRevision++;
+      rawInputRevision++;
+      draftProvenanceRev = rawInputRevision;
       activeCaseIndex = -1;
       // Reset the entire private-draft session, not just the raw input.
       isDraftManuallyEdited = false;
@@ -1303,7 +1348,7 @@
       playAudioSfx('stamp');
       const btns = document.getElementById('surveyButtons');
       btns.innerHTML = `<span style="color:var(--carbon-blue); font-weight:900;">Voted [${choice}] · Recorded at 4:59 PM</span>`;
-      document.getElementById('surveyResults').innerText = "Your browser-only demo response was recorded locally; no community totals available.";
+      document.getElementById('surveyResults').innerText = "Your response is stored locally in this browser; no community totals available.";
       localStorage.setItem('form459_survey', choice);
     }
 

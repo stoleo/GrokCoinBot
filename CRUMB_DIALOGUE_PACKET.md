@@ -118,4 +118,4 @@ STRICT OPERATIONAL DIRECTIVES:
 - **No ungrounded state claims:** Checked (explicit conditional handling for visible vs unverified fee data).
 - **Chart narration restriction:** Enforced in Case 03.
 - **Strict receipt boundary:** Enforced in Case 09 ("I don't see a lock on this page, so I don't have a receipt").
-- **Voice match:** Grok-reviewed and approved.
+- **Voice match:** Rehearsal packet incorporating Grok's criteria (Lines 1, 2, 5, 6, 7, 8, 10 on-voice; Line 3 no squiggles; Line 4 truthful fee display; Line 9 tight receipt rule); exact packet sign-off pending Grok review.
