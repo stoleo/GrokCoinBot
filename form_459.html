@@ -1000,6 +1000,8 @@
 
     let isDraftManuallyEdited = false;
     let lastGeneratedDraft = "";
+    // Invalidates late clipboard completions after Clear or a draft/session change.
+    let copySessionRevision = 0;
 
     function markDraftEdited() {
       isDraftManuallyEdited = true;
@@ -1008,6 +1010,7 @@
     }
 
     function resetDraftToDefault() {
+      copySessionRevision++;
       isDraftManuallyEdited = false;
       document.getElementById('draftEditable').value = lastGeneratedDraft;
       const resetBtn = document.getElementById('btnResetDraft');
@@ -1025,6 +1028,7 @@
     }
 
     function loadCase(index) {
+      copySessionRevision++;
       activeCaseIndex = index;
       isDraftManuallyEdited = false;
       const resetBtn = document.getElementById('btnResetDraft');
@@ -1074,6 +1078,7 @@
     }
 
     async function copyDraft() {
+      const revision = copySessionRevision;
       const text = document.getElementById('draftEditable').value;
       const status = document.getElementById('draftCopyStatus');
       const fallback = document.getElementById('draftCopyFallback');
@@ -1086,8 +1091,10 @@
       try {
         if (!navigator.clipboard?.writeText) throw new Error('Clipboard API unavailable');
         await navigator.clipboard.writeText(text);
+        if (revision !== copySessionRevision) return;
         if (status) status.textContent = 'Private draft copied to clipboard. Ready to paste in Slack/email.';
       } catch (err) {
+        if (revision !== copySessionRevision) return; // Never display a discarded draft after Clear.
         if (fallback) {
           fallback.value = text;
           fallback.hidden = false;
@@ -1099,6 +1106,7 @@
     }
 
     async function copyCardText() {
+      const revision = copySessionRevision;
       const note = "You don't have to have the words yet.\n\nWhenever you're ready, the Ministry of Unconfirmed Things has filed Form 4:59 on your behalf.\n\nThis made me think of you. No need to reply.\n\nAccess Form 4:59: https://github.com/stoleo/GrokCoinBot";
       const status = document.getElementById('cardCopyStatus');
       const fallback = document.getElementById('cardCopyFallback');
@@ -1107,8 +1115,10 @@
       try {
         if (!navigator.clipboard?.writeText) throw new Error('Clipboard API unavailable');
         await navigator.clipboard.writeText(note);
+        if (revision !== copySessionRevision) return;
         if (status) status.textContent = 'Generic postcard invitation copied to clipboard (zero personal text included).';
       } catch (err) {
+        if (revision !== copySessionRevision) return;
         if (fallback) {
           fallback.value = note;
           fallback.hidden = false;
@@ -1151,6 +1161,7 @@
     }
 
     function clearForm() {
+      copySessionRevision++;
       activeCaseIndex = -1;
       // Reset the entire private-draft session, not just the raw input.
       isDraftManuallyEdited = false;
