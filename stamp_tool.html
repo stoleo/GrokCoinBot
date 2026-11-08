@@ -274,6 +274,8 @@
       <button class="btn" onclick="slamStamp()">Slam Stamp 🔨</button>
       <button class="btn" style="background:#0284c7;" onclick="copyVoucherText()">Copy Fictional Prop 📋</button>
     </div>
+    <p id="copyStatus" role="status" aria-live="polite" style="margin-top:10px; font-size:13px;"></p>
+    <textarea id="voucherCopyFallback" readonly hidden aria-label="Fictional prop text for manual copying" style="width:100%; margin-top:10px;"></textarea>
   </div>
 
   <script>
@@ -342,11 +344,23 @@
       }, 70);
     }
 
-    function copyVoucherText() {
+    async function copyVoucherText() {
       const text = `FICTIONAL DEMO — NOTHING VERIFIED. NOT A TOKEN OR ON-CHAIN RECEIPT.\n\nUNVERIFIED FICTIONAL STATEMENT: ${claimInput.value}\n\nSTAMP: [ ${currentStamp} ]\nFICTIONAL CLERK: Deputy Crumb (Dept 404)\n\n"A statement is not a receipt. No evidence has been checked."`;
-      navigator.clipboard.writeText(text).then(() => {
-        alert('Fictional prop copied. Nothing has been verified; do not present this as a real receipt.');
-      });
+      const status = document.getElementById('copyStatus');
+      const fallback = document.getElementById('voucherCopyFallback');
+      status.textContent = '';
+      fallback.hidden = true;
+      try {
+        if (!navigator.clipboard?.writeText) throw new Error('Clipboard API unavailable');
+        await navigator.clipboard.writeText(text);
+        status.textContent = 'Fictional prop copied. Nothing has been verified or posted.';
+      } catch (error) {
+        fallback.value = text;
+        fallback.hidden = false;
+        fallback.focus();
+        fallback.select();
+        status.textContent = 'Clipboard access unavailable. Copy the selected fictional text manually; nothing has been posted.';
+      }
     }
   </script>
 </body>
