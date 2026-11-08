@@ -958,6 +958,7 @@
       const question = sentences.find(s => s.endsWith('?') || /^\s*(who|what|when|where|why|how|if|can|could|would|should|is|are|do|does|did)\b/i.test(s));
       const urgency = sentences.find(s => /\b(deadline|friday|tomorrow|today|urgent|fast|soon|eod|cutoff|schedule)\b/i.test(s));
       const guilt = sentences.find(s => /\b(sorry|guilty|annoying|pushy|lazy|nightmare|terrible|feel bad)\b/i.test(s));
+      const cancellation = cancelRequest || personalCancel;
 
       if (boundary) {
         point = "Hold action pending prior review and explicit approval: " + boundary.replace(/^(and|but|so|well|please)\s+/i, '').replace(/[.!?]+$/, '') + ".";
@@ -1180,6 +1181,8 @@
       lastGeneratedDraft = input.trim() ? res.draft : '';
       if (!isDraftManuallyEdited) {
         document.getElementById('draftEditable').value = lastGeneratedDraft;
+        draftProvenanceRev = rawInputRevision;
+        rawInputAtEdit = input;
         isDraftNeedsReview = false;
         const keepBtn = document.getElementById('btnKeepDraft');
         if (keepBtn) keepBtn.style.display = 'none';
