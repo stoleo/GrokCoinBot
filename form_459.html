@@ -719,6 +719,7 @@
               <div style="display:flex; justify-content:space-between; align-items:center; margin-top:6px; flex-wrap:wrap; gap:8px;">
                 <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
                   <button class="copy-btn" onclick="copyDraft()">📋 Copy Private Message</button>
+                  <button class="copy-btn" id="btnKeepDraft" style="background:#059669; display:none;" onclick="keepEditedDraft()">✓ Keep Edited Draft</button>
                   <button class="copy-btn" id="btnResetDraft" style="background:#475569; display:none;" onclick="resetDraftToDefault()">↺ Reset to Generated Draft</button>
                 </div>
                 <span style="font-size:10px; color:#a7f3d0;">🔒 Private only — never shared in postcard</span>
@@ -1029,30 +1030,66 @@
     }
 
     function handleInput() {
+      copySessionRevision++;
       const val = document.getElementById('rawInput').value;
       document.getElementById('charCount').innerText = val.length + " chars";
       playAudioSfx('type');
+
+      const status = document.getElementById('draftCopyStatus');
+      const fallback = document.getElementById('draftCopyFallback');
+      if (status && !isDraftNeedsReview) status.textContent = '';
+      if (fallback) { fallback.value = ''; fallback.hidden = true; }
+
+      if (isDraftManuallyEdited && val !== rawInputAtEdit) {
+        isDraftNeedsReview = true;
+      }
     }
 
     let isDraftManuallyEdited = false;
+    let isDraftNeedsReview = false;
+    let rawInputAtEdit = "";
     let lastGeneratedDraft = "";
     // Invalidates late clipboard completions after Clear or a draft/session change.
     let copySessionRevision = 0;
 
     function markDraftEdited() {
       isDraftManuallyEdited = true;
+      rawInputAtEdit = document.getElementById('rawInput').value;
+      isDraftNeedsReview = false;
       const resetBtn = document.getElementById('btnResetDraft');
       if (resetBtn) resetBtn.style.display = 'inline-block';
+      const keepBtn = document.getElementById('btnKeepDraft');
+      if (keepBtn) keepBtn.style.display = 'none';
+    }
+
+    function keepEditedDraft() {
+      rawInputAtEdit = document.getElementById('rawInput').value;
+      isDraftNeedsReview = false;
+      const keepBtn = document.getElementById('btnKeepDraft');
+      if (keepBtn) keepBtn.style.display = 'none';
+      const resetBtn = document.getElementById('btnResetDraft');
+      if (resetBtn) resetBtn.style.display = 'inline-block';
+      const status = document.getElementById('draftCopyStatus');
+      if (status) {
+        status.style.color = '#6ee7b7';
+        status.textContent = 'Edited draft kept for current thought.';
+      }
     }
 
     function resetDraftToDefault() {
       copySessionRevision++;
       isDraftManuallyEdited = false;
+      isDraftNeedsReview = false;
       document.getElementById('draftEditable').value = lastGeneratedDraft;
       const resetBtn = document.getElementById('btnResetDraft');
       if (resetBtn) resetBtn.style.display = 'none';
+      const keepBtn = document.getElementById('btnKeepDraft');
+      if (keepBtn) keepBtn.style.display = 'none';
       const status = document.getElementById('draftCopyStatus');
-      if (status) status.textContent = 'Reset to generated draft.';
+      if (status) {
+        status.style.color = '#6ee7b7';
+        status.textContent = 'Reset to generated draft.';
+      }
     }
 
     function setEndingMode(mode) {
@@ -1067,8 +1104,12 @@
       copySessionRevision++;
       activeCaseIndex = index;
       isDraftManuallyEdited = false;
+      isDraftNeedsReview = false;
+      rawInputAtEdit = "";
       const resetBtn = document.getElementById('btnResetDraft');
       if (resetBtn) resetBtn.style.display = 'none';
+      const keepBtn = document.getElementById('btnKeepDraft');
+      if (keepBtn) keepBtn.style.display = 'none';
       document.querySelectorAll('.case-card').forEach((card, i) => card.classList.toggle('active', i === index));
       const c = CASES[index];
       document.getElementById('rawInput').value = c.raw;
@@ -1096,6 +1137,22 @@
       lastGeneratedDraft = input.trim() ? res.draft : '';
       if (!isDraftManuallyEdited) {
         document.getElementById('draftEditable').value = lastGeneratedDraft;
+        isDraftNeedsReview = false;
+        const keepBtn = document.getElementById('btnKeepDraft');
+        if (keepBtn) keepBtn.style.display = 'none';
+      } else {
+        if (input !== rawInputAtEdit) {
+          isDraftNeedsReview = true;
+          const keepBtn = document.getElementById('btnKeepDraft');
+          if (keepBtn) keepBtn.style.display = 'inline-block';
+          const resetBtn = document.getElementById('btnResetDraft');
+          if (resetBtn) resetBtn.style.display = 'inline-block';
+          const status = document.getElementById('draftCopyStatus');
+          if (status) {
+            status.style.color = '#fde047';
+            status.textContent = 'Note: Raw thought changed since draft was edited. Please choose whether to regenerate or keep your edit before copying.';
+          }
+        }
       }
       
       const stampEl = document.getElementById('rubberStampText');
@@ -1121,14 +1178,27 @@
       if (status) status.textContent = '';
       if (fallback) { fallback.value = ''; fallback.hidden = true; }
       if (!document.getElementById('rawInput').value.trim() || !text.trim()) {
-        if (status) status.textContent = 'Enter a message before copying a private draft.';
+        if (status) {
+          status.style.color = '#6ee7b7';
+          status.textContent = 'Enter a message before copying a private draft.';
+        }
+        return;
+      }
+      if (isDraftNeedsReview) {
+        if (status) {
+          status.style.color = '#fde047';
+          status.textContent = 'Source thought changed. Please choose to regenerate or keep your edited draft before copying.';
+        }
         return;
       }
       try {
         if (!navigator.clipboard?.writeText) throw new Error('Clipboard API unavailable');
         await navigator.clipboard.writeText(text);
         if (revision !== copySessionRevision) return;
-        if (status) status.textContent = 'Private draft copied to clipboard. Ready to paste in Slack/email.';
+        if (status) {
+          status.style.color = '#6ee7b7';
+          status.textContent = 'Private draft copied to clipboard. Ready to paste in Slack/email.';
+        }
       } catch (err) {
         if (revision !== copySessionRevision) return; // Never display a discarded draft after Clear.
         if (fallback) {
@@ -1137,7 +1207,10 @@
           fallback.focus();
           fallback.select();
         }
-        if (status) status.textContent = 'Clipboard access unavailable. Copy the selected draft text manually.';
+        if (status) {
+          status.style.color = '#6ee7b7';
+          status.textContent = 'Clipboard access unavailable. Copy the selected draft text manually.';
+        }
       }
     }
 
@@ -1201,11 +1274,15 @@
       activeCaseIndex = -1;
       // Reset the entire private-draft session, not just the raw input.
       isDraftManuallyEdited = false;
+      isDraftNeedsReview = false;
+      rawInputAtEdit = '';
       lastGeneratedDraft = '';
       document.getElementById('rawInput').value = '';
       document.getElementById('draftEditable').value = '';
       const resetBtn = document.getElementById('btnResetDraft');
       if (resetBtn) resetBtn.style.display = 'none';
+      const keepBtn = document.getElementById('btnKeepDraft');
+      if (keepBtn) keepBtn.style.display = 'none';
       for (const id of ['draftCopyStatus', 'cardCopyStatus']) {
         const status = document.getElementById(id);
         if (status) status.textContent = '';
