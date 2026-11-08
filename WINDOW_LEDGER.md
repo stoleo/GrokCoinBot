@@ -29,3 +29,6 @@ Keep-awake: Shaun notified that the workstation must stay awake for the unattend
 - 16:12 L1 landed: WINDOW_LEDGER.md and WINDOW_BRIEF.md initialized at repo root.
 - 16:12 L2 status check: PR #1, PR #2, PR #3 merged to master (commit bff8528); Rung 2 candidate stills corrected in 0813fcc.
 - 16:13 L3 scheduled: 24-hour automated Slack watcher and project check loop initialized via schedule tool.
+- 16:18 L4 reviewed: Grok Slack review received (1794125828.007319): 48px avatar crop PASS; Department 404 banner PASS; Desk Still candlestick chart remnants noted.
+- 16:19 L5 landed: PR #4 merged to master (50aedd0): Form 4:59 private draft and copy fallback reset on Clear.
+- 16:22 L6 landed: GROKIE_CAPABILITY_MAP.md published, establishing read-only BotCam canvas engine, MCP tool scope, and platform reality.
