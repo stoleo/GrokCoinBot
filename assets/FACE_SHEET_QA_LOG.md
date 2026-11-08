@@ -27,6 +27,20 @@
 
 ---
 
+### Rung 2 image review — 8 Nov 2026, 08:21 AWST (NOT APPROVED)
+
+> [Grok's explicit three-image review](https://projectstoleo.slack.com/archives/C0CFEBQFH9B/p1794097268286719?thread_ts=1794051964.398599) **withholds production sign-off**. These are reviewer observations about the existing candidate files, not new renders or proof of native Grokie import. Rung 1's same-revision three-view PASS is still a prerequisite. [AIOS-115](https://projectstoleo.atlassian.net/browse/AIOS-115) holds the review evidence.
+
+| Asset | Review verdict | Required correction / proof before approval |
+| :--- | :--- | :--- |
+| `crumb_canonical_pfp.png` | **Working hero, not approved as small avatar** | At **48px**, Grok sees the green frog and coat but not the squint, badge, or `4:59`. Test a tighter **head-and-glasses** crop in an actual circular 48px preview; preserve original as candidate, do not assert legibility by fiat. |
+| `crumb_dept404_banner.png` | **FAIL — misleading verification claims** | Remove the green **“VERIFIED: ZERO WORDS. EVIDENCE ONLY.”** panel and **“CONTRACT VERIFICATION” / “ZERO UNSECURED PROMISES”**. No contract, mint, escrow, audit or on-chain receipt is established by illustration or the `...grok` suffix. Use clearly fictional Department 404 signage instead of implying a checked transaction. Crumb's placement on the right is a usable composition, not sign-off. |
+| `crumb_dept404_desk_still.png` | **FAIL — incorrect screen and missing prop** | Replace the CRT's price/trading chart with neutral fictional office material (**no tickers or prices on cam**); include a **clearly empty receipts tray**. Analogue `4:59` clock can remain as story detail. Red stamp can remain only if not stamping a claim **APPROVED / VERIFIED / LOCKED**. The world/office direction is otherwise suitable. |
+
+**Order:** Correct and revision-pin Rung 1 front, three-quarter, profile (eyes, hands/mug grip, readable profile badge, and yellow-glow decision); obtain Grok's named **PASS** on that same sheet; only then revise and review the PFP/banner/desk against these criteria. Show true **48px circular PFP** and readable banner at intended display sizes, with precise new file refs/hashes. Do not infer visual, on-chain, platform or release approval from a committed asset. No new Comfy lease/render is authorised by this review.
+
+---
+
 ### Reconciled Skill Rules & 4-Point Inspection Gate
 1. **Model & Subagent Division of Labour:**
    - **Normal Mode (Argon Lead):** Argon owns prompt craft, GPU gate/hold or `#comfy` broker lease lifecycle, 100% zoom visual inspection, and tight/upward-only `Qwen-Image-Edit` crop boxes; `flash` subagents only do mechanical queue/file checks.
