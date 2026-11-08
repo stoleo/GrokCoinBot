@@ -951,21 +951,76 @@
       let stamp = "";
       let note = "";
 
-      // 1. Detect Sentence Intent Categories
-      const cancelRequest = sentences.find(s => /\b(can you|could you|please)\s+(cancel|reschedule|decline)\b/i.test(s));
-      const personalCancel = sentences.find(s => /\b(i won't be able|i cannot make|i can't make|i cannot attend|i can't attend|i declined|i will decline|rescheduling my)\b/i.test(s) || (/\b(cancel|cancellation|reschedule)\b/i.test(s) && !cancelRequest));
-      const boundary = sentences.find(s => /\b(do not|don't|stop|pause|hold off|must not)\s+(publish|send|ship|deploy|merge|release|touch)\b/i.test(s) || /\b(need to approve|must approve|requires? approval|prior approval)\b/i.test(s));
+      // 1. Detect Sentence Intent Categories & Cross-Sentence Context
+      const cancelRequest = sentences.find(s => /\b(can you|could you|can we|could we|please)\s+(cancel|reschedule|decline)\b/i.test(s));
+      const personalCancel = sentences.find(s => /\b(i won't be able|i cannot make|i can't make|i cannot attend|i can't attend|i declined|i will decline|rescheduling my)\b/i.test(s) || (/\b(cancel|cancellation|reschedule|decline)\b/i.test(s) && !cancelRequest));
+      const boundary = sentences.find(s => /\b(do not|don't|stop|pause|hold off(\s+on)?|must not)\s+(publish|send|ship|deploy|merge|release|touch|moving forward)\b/i.test(s) || /\b(need to approve|must approve|requires? approval|prior approval|needs? to (review|approve))\b/i.test(s));
       const question = sentences.find(s => s.endsWith('?') || /^\s*(who|what|when|where|why|how|if|can|could|would|should|is|are|do|does|did)\b/i.test(s));
       const urgency = sentences.find(s => /\b(deadline|friday|tomorrow|today|urgent|fast|soon|eod|cutoff|schedule)\b/i.test(s));
       const guilt = sentences.find(s => /\b(sorry|guilty|annoying|pushy|lazy|nightmare|terrible|feel bad)\b/i.test(s));
       const cancellation = cancelRequest || personalCancel;
 
+      // Cross-sentence context: prior agreements & specific constraints (e.g. Wednesday agreement, Thursday deliverables)
+      const agreementSentence = sentences.find(s => /\b(we (agreed|had agreed)|agreement (was|is)|scheduled for|prior agreement)\b/i.test(s));
+      const constraintSentence = sentences.find(s => /\b(deliverables? due|deadline due|focus time|client deliverable)\b/i.test(s));
+
+      // Approver Agency Detection (prevent authority-inversion where speaker claims approval they don't have)
+      const speakerClaimsApproval = /\b(without my (review|approval|sign[- ]off)|my review|my approval|i need to (review|approve)|i must approve|prior approval from me)\b/i.test(clean);
+      const speakerDeniesApproval = /\b(not me|not my (call|decision|approval|sign[- ]off)|i (cannot|can't|do not|don't)\s+(have|approve|sign[- ]off)|i lack authority)\b/i.test(clean);
+      
+      // Robust approver name/role extractor
+      let approverName = null;
+      const m1 = clean.match(/\b([A-Z][a-z]+)\s+(?:owns?\s+sign[- ]off|needs?\s+to\s+(?:review|approve)|must\s+approve|has\s+sign[- ]off)\b/);
+      if (m1) {
+        approverName = m1[1];
+      } else {
+        const m2 = clean.match(/\b(?:approval|sign[- ]off)\s+(?:from|by)\s+([A-Z][a-z]+|legal|client)\b/i);
+        if (m2) {
+          approverName = m2[1];
+        } else {
+          const m3 = clean.match(/\b([A-Z][a-z]+|legal|client)'s\s+(?:approval|sign[- ]off|review)\b/i);
+          if (m3) {
+            approverName = m3[1];
+          } else {
+            const m4 = clean.match(/\b(legal|client|management|lead)\s+(?:owns?\s+sign[- ]off|needs?\s+to\s+(?:review|approve)|must\s+approve|has\s+sign[- ]off)\b/i);
+            if (m4) approverName = m4[1];
+          }
+        }
+      }
+
+      const isThirdPartyApprover = Boolean(approverName) || speakerDeniesApproval;
+      const isUncertainAgency = boundary && (!speakerClaimsApproval || isThirdPartyApprover);
+
       if (boundary) {
-        point = "Hold action pending prior review and explicit approval: " + boundary.replace(/^(and|but|so|well|please)\s+/i, '').replace(/[.!?]+$/, '') + ".";
+        if (approverName && speakerDeniesApproval) {
+          point = "Hold action pending review and explicit sign-off from " + approverName + " (speaker does not have approval authority).";
+        } else if (approverName) {
+          point = "Hold action pending review and explicit sign-off from " + approverName + ".";
+        } else if (speakerDeniesApproval) {
+          point = "Hold action pending explicit approval from designated approver (speaker does not have sign-off authority).";
+        } else if (isUncertainAgency) {
+          point = "Hold action pending confirmation of designated approver: " + boundary.replace(/^(and|but|so|well|please)\s+/i, '').replace(/[.!?]+$/, '') + ".";
+        } else {
+          point = "Hold action pending prior review and explicit approval: " + boundary.replace(/^(and|but|so|well|please)\s+/i, '').replace(/[.!?]+$/, '') + ".";
+        }
+        if (agreementSentence && !point.includes(agreementSentence)) {
+          point += " (Noting prior agreement: " + agreementSentence.replace(/[.!?]+$/, '') + ".)";
+        }
       } else if (cancelRequest) {
-        point = "Request schedule cancellation or rescheduling: " + cancelRequest.replace(/^(and|but|so|well)\s+/i, '').replace(/[.!?]+$/, '') + ".";
+        let basePoint = "Request schedule cancellation or rescheduling: " + cancelRequest.replace(/^(and|but|so|well)\s+/i, '').replace(/[.!?]+$/, '') + ".";
+        if (agreementSentence) {
+          basePoint = "Note prior agreement (" + agreementSentence.replace(/[.!?]+$/, '') + ") and request rescheduling: " + cancelRequest.replace(/^(and|but|so|well)\s+/i, '').replace(/[.!?]+$/, '') + ".";
+        }
+        point = basePoint;
       } else if (personalCancel) {
-        point = "Politely notify of schedule cancellation or non-attendance: " + personalCancel.replace(/^(and|but|so|well)\s+/i, '').replace(/[.!?]+$/, '') + ".";
+        let basePoint = "Politely notify of schedule cancellation or non-attendance: " + personalCancel.replace(/^(and|but|so|well)\s+/i, '').replace(/[.!?]+$/, '') + ".";
+        if (agreementSentence) {
+          basePoint += " (Prior agreement: " + agreementSentence.replace(/[.!?]+$/, '') + ".)";
+        }
+        if (constraintSentence) {
+          basePoint += " (Constraint noted: " + constraintSentence.replace(/[.!?]+$/, '') + ".)";
+        }
+        point = basePoint;
       } else if (question) {
         point = "Clarify: " + question.replace(/^(and|but|so|well)\s+/i, '').replace(/[.!?]+$/, '') + ".";
       } else if (urgency) {
@@ -981,8 +1036,11 @@
       if (!hasDateTime) {
         unknown.push("Exact date or delivery cutoff hour is unstated.");
       }
-      // True designated owner/assignment (not questions like 'who is responsible')
-      const hasOwner = /\b(assigned to|i will|you will|they will|we will|owner is|designated lead is)\b/i.test(clean) && !/\bwho is responsible\b/i.test(clean);
+      // True designated owner/assignment (tighter: not questions asking 'who owns/is responsible', and not 'i will be offline')
+      const isAskingOwner = /\bwho\b.*\b(owns?|owner|responsible|responsibility|lead|leads|approv\w+|decid\w+|assign\w+|sign[- ]off)\b/i.test(clean) || /\b(who is (responsible|owner|lead|handling)|who owns|who decides|who will approve)\b/i.test(clean);
+      const hasExplicitAssignment = /\b(assigned to\s+\w+|designated lead is\s+\w+|task owner is\s+\w+|owner is\s+\w+)\b/i.test(clean) ||
+        (/\b(i|you|they|we)\s+will\s+(handle|take\s+(care|the|on)|draft|write|lead|own|deliver|ship|review|fix|send)\b/i.test(clean) && !/\b(i|you|they|we)\s+will\s+(be\s+(offline|away|out|unavailable)|not|decline|miss)\b/i.test(clean));
+      const hasOwner = hasExplicitAssignment && !isAskingOwner;
       if (!hasOwner) {
         unknown.push("Designated single decision-maker / task owner is unconfirmed.");
       }
@@ -992,26 +1050,45 @@
       if (boundary) {
         unknown.push("Whether the other party has already initiated the action is unconfirmed.");
       }
+      if (isUncertainAgency) {
+        unknown.push("Designated approver / sign-off authority is unconfirmed or belongs to third party.");
+      }
       if (unknown.length === 0) {
         unknown.push("Underlying external constraints have not been detailed.");
       }
 
-      // 3. Draft generation (Actionable, polite, guilt-free)
+      // 3. Draft generation (Actionable, polite, guilt-free, strictly preserving agency)
       if (boundary) {
-        if (/\bpublish\b/i.test(boundary)) {
-          draft = "Hi, please pause and do not publish this yet. I need to review and provide approval before we proceed. I will get back to you with notes as soon as I have reviewed.";
-        } else if (/\b(deploy|release|ship)\b/i.test(boundary)) {
-          draft = "Hi, please pause and do not deploy or release this yet. I need to review and provide approval before we proceed. I will get back to you with notes as soon as I have reviewed.";
+        const actionVerb = /\bpublish\b/i.test(boundary) ? "publish this" : (/\b(deploy|release|ship)\b/i.test(boundary) ? "deploy or release this" : "move forward with this");
+        if (approverName && speakerDeniesApproval) {
+          draft = "Hi, please pause and do not " + actionVerb + " yet. " + approverName + " has sign-off authority and needs to review and approve before we proceed (I do not have approval authority). Please coordinate with " + approverName + " for sign-off.";
+        } else if (approverName) {
+          draft = "Hi, please pause and do not " + actionVerb + " yet. " + approverName + " needs to review and provide approval before we proceed. Please coordinate with " + approverName + " to confirm sign-off.";
+        } else if (speakerDeniesApproval) {
+          draft = "Hi, please pause and do not " + actionVerb + " yet pending explicit approval. I do not have sign-off authority on this—please confirm who owns the final approval before we proceed.";
+        } else if (isUncertainAgency) {
+          draft = "Hi, please pause and do not " + actionVerb + " yet. We need to confirm designated sign-off and approval before proceeding. I will follow up once the approver is confirmed.";
         } else {
-          draft = "Hi, please pause and hold off on moving forward with this for now. I need to review and provide approval before we proceed. I will get back to you with notes as soon as I have reviewed.";
+          // Explicit speaker authority
+          draft = "Hi, please pause and do not " + actionVerb + " yet. I need to review and provide approval before we proceed. I will get back to you with notes as soon as I have reviewed.";
         }
       } else if (cancelRequest) {
-        draft = "Hi, could we please cancel or reschedule our upcoming call? Let me know what alternative time might work on your side.";
+        if (agreementSentence) {
+          draft = "Hi, regarding our planned time (" + agreementSentence.replace(/[.!?]+$/, '').toLowerCase() + "): could we please cancel or reschedule? Let me know what alternative time might work on your side.";
+        } else {
+          draft = "Hi, could we please cancel or reschedule our upcoming call? Let me know what alternative time might work on your side.";
+        }
       } else if (personalCancel) {
-        draft = "Hi, I won't be able to make our scheduled time due to a conflict. Apologies for the late notice—please let me know if we can reschedule or handle any urgent items asynchronously.";
+        if (constraintSentence) {
+          draft = "Hi, I won't be able to make our scheduled time due to critical deliverables and need to protect focus time. Apologies for the conflict—please share any urgent items or notes asynchronously and I will review.";
+        } else if (agreementSentence) {
+          draft = "Hi, regarding our planned time (" + agreementSentence.replace(/[.!?]+$/, '').toLowerCase() + "): I won't be able to make it due to a schedule conflict. Apologies for the late notice—please let me know if we can reschedule.";
+        } else {
+          draft = "Hi, I won't be able to make our scheduled time due to a conflict. Apologies for the late notice—please let me know if we can reschedule or handle any urgent items asynchronously.";
+        }
       } else {
         const coreDecide = point.replace(/^(Clarify:\s*|Confirm delivery expectation regarding\s*|Align directly on next steps regarding:\s*)/i, '').replace(/\.\.\.$/, '');
-        draft = `Hi, quick check so we can keep things moving smoothly: could we confirm ${coreDecide.toLowerCase().replace(/\.$/, '')}? Let me know what works best on your side so we can lock it in.`;
+        draft = "Hi, quick check so we can keep things moving smoothly: could we confirm " + coreDecide.toLowerCase().replace(/\.$/, '') + "? Let me know what works best on your side so we can lock it in.";
       }
 
       // 4. Rubber Stamp
@@ -1028,8 +1105,13 @@
         }
       } else {
         if (boundary) {
-          stamp = "[ BOUNDARY STATED HONESTLY ]";
-          note = "Crumb: \"Clear constraint established without interpersonal drama. Proceed upon review.\"";
+          if (isUncertainAgency) {
+            stamp = "[ REVIEW NEEDED: APPROVAL AGENCY UNCERTAIN ]";
+            note = "Crumb: \"Holding pattern active. Do not claim sign-off authority you do not possess.\"";
+          } else {
+            stamp = "[ BOUNDARY STATED HONESTLY ]";
+            note = "Crumb: \"Clear constraint established without interpersonal drama. Proceed upon review.\"";
+          }
         } else if (cancellation) {
           stamp = "[ SCHEDULE RELEASED POLITE ]";
           note = "Crumb: \"Calendar spared. Time returned to mortal existence.\"";
