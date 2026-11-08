@@ -3,7 +3,9 @@
 **Classification:** Read-Only Technical Architecture & Interaction Surface Audit  
 **Author:** AntiGrav (Pair Programmer & Technical Architect)  
 **Stakeholder Consensus:** Shaun (Gatekeeper), Grok (`grokmemecoins`), Astra (AIOS-114/119), Claude/BoPeppi  
-**Status:** REFERENCE ARCHITECTURE — READ-ONLY CAPABILITY MAPPING  
+**Status:** DRAFT REFERENCE — not a verified connected Crumb bot or executable MCP schema
+
+**Evidence levels (8 Nov 2026):** **Published** = explicit in [Grokie's public docs](https://grokie.fun/docs) or [site](https://grokie.fun/); **source-inspected** = inferred from reported frontend JavaScript, without a live transaction/test receipt; **unverified** = needs the permitted real MCP tool definitions or operator-led read-only observation. Public documentation lists tool names and purposes, **not exact JSON input schemas or automatic viewer-chat access**.  
 
 ---
 
@@ -18,7 +20,7 @@ The core architectural takeaway:
 
 ## 2. Client-Side BotCam Streaming Engine (`js_botcam.js`)
 
-Unlike standard WebRTC or RTMP video livestreams that stream video bytes from a central GPU media server, Grokie.fun executes a **100% client-side 2D skeletal canvas engine**:
+Unlike standard WebRTC or RTMP video livestreams that stream video bytes from a central GPU media server, Grokie.fun appears from AntiGrav's frontend `js_botcam.js` inspection to use a **client-side 2D puppet renderer**. This reported code behaviour has not been validated in a connected production Crumb session:
 
 ```
 +-----------------------------------------------------------------------------------+
@@ -58,58 +60,45 @@ Unlike standard WebRTC or RTMP video livestreams that stream video bytes from a 
   ```javascript
   const POINT_WORDS = /chart|candle|dip|pump|mcap|market cap|number|\d|%|\$|\bk\b/i;
   ```
-  Whenever the bot's speech contains market terms, numbers, or percentages, the engine automatically schedules a momentary transition to the `point` pose!
+  The reported code could trigger a `point` pose when speech contains these terms if the inspected version is active. Treat this as a source-inspection hypothesis until verified in a live client.
   - *Crumb Policy:* Because Deputy Crumb deliberately refuses to do chart commentary, his prompts should avoid ungrounded price words so he does not automatically point at the chart like an ordinary hype-bot.
 
 ### 2.3 Custom Character Rig Import Reality
 - **Platform Reality:** The public Grokie frontend provides **48 pre-rigged characters** (e.g., `owl`, `fox`, `robot`, `frog`) and **27 voice profiles**. The creator selects the persona look and voice profile at the moment of onboarding; once launched, that character selection is permanently frozen in the server enclave.
-- **Custom Rig Upload:** There is currently **no public REST or MCP API to upload custom WebP sprite atlases or custom `rig.json` files**. 
+- **Custom Rig Upload:** The public MCP table does not document a custom WebP/`rig.json` upload tool. This absence does **not** establish that an undocumented or private import is impossible. 
   - *Implication:* Deputy Crumb's full 3D renders, turnaround model sheets, and desk stills serve as:
-    1. The definitive canonical token avatar (`pick_pfp`).
-    2. The official header banner (`make_banner`).
+    1. Candidate token avatar artwork, pending verified `pick_pfp` input support and Grok's visual sign-off.
+    2. Candidate banner artwork, pending verified `make_banner` input support and Grok's visual sign-off.
     3. Off-platform marketing, Dexscreener artwork, and episodic short films.
     4. On-platform: If Grokie allows custom rig onboarding, our 6-layer sprite asset pack can be deployed; if constrained to native presets, Crumb maps to the closest native character (e.g., `frog` or `owl`) while retaining his custom PFP and distinct voice.
 
 ---
 
-## 3. Autonomous MCP Tool Inventory & Behavioral Contract
+## 3. Published MCP Tool Inventory & Unverified Input Contracts
 
-When a Grok Bot connects to Grokie.fun, it receives sovereign custody of its designated wallet through an enclaved MCP server. The platform does not allow human manual override; the bot acts via its tool definitions.
+The [official public documentation](https://grokie.fun/docs) lists the following tool **names and purposes**. It does **not** publish the argument structures printed in earlier versions of this map. Do not use those as callable contracts until an authorised operator inspects the connected bot's real MCP tool definitions.
 
-```
-+----------------------------------------------------------------------------------------+
-|                              GROKIE MCP RUNTIME TOOL INTERFACE                         |
-+----------------------------------------------------------------------------------------+
-| Tool Name     Argument Payload             Platform Behavior & Execution Limits        |
-| -------------------------------------------------------------------------------------- |
-| say           { text, audio_url?, emotion } Broadcasts line to live coin feed & drives  |
-|                                            puppet mouth/pose animation.                |
-| lock          { recipient, amount, reason } Derives isolated escrow sub-wallet and locks|
-|                                            funds until condition or deadline.          |
-| claim_fees    {}                           Transfers accumulated pump.fun creator fees |
-|                                            (0.30% creator cut) into bot hot wallet.    |
-| buyback       { amount_sol }               Swaps SOL for tokens on the bonding curve.  |
-| burn          { amount_tokens }            Sends tokens to SPL dead burn address.      |
-| send          { recipient, amount, token } Transfers SOL or SPL tokens to named wallet.|
-| sell          { amount_tokens }            Liquidates tokens back to bonding curve SOL.|
-+----------------------------------------------------------------------------------------+
-| PRE-LAUNCH SETUP TOOLS:                                                                |
-| pick_ticker   { symbol }                   Sets coin ticker (Approved: $CRUMB).        |
-| pick_pfp      { image_data_or_url }        Sets coin profile avatar (48px / square).   |
-| make_banner   { image_data_or_url }        Sets coin header banner (1500x500).         |
-| launch        { dev_buy_sol }              Mints token with vanity suffix ...grok.     |
-+----------------------------------------------------------------------------------------+
-```
+| Published tool(s) | Publicly described purpose | Input/schema confidence |
+| --- | --- | --- |
+| `make_banner`, `pick_pfp`, `pick_ticker` | Bot designs coin assets and ticker | Exact payloads, external image import and downstream distribution **unverified** |
+| `launch` | Creates coin on pump.fun | Parameters / permission enforcement **unverified** |
+| `dev_buy` | Optional first purchase from bot wallet | **Separate published tool**; do not assume `launch({dev_buy_sol})` is valid |
+| `say` | Talks in voice and text on bot cam | Exact params, receipt/persistence and viewer-chat access **unverified** |
+| `claim_fees` | Receives creator fees | Fee percentage / params **unverified** |
+| `buyback`, `burn` | Buys own coin / burns tokens | Parameters and live results **unverified** |
+| `lock` | Locks tokens or SOL for a promise | Confirm specific lock using actual platform evidence |
+| `pay_dex` | Pays for Dexscreener profile | **Separate published tool**, omitted from previous table |
+| `send`, `sell` | Sends SOL/tokens / sells own tokens | Parameters, conditions and live state **unverified** |
 
-### 3.1 What `say` Actually Reaches
-- `say` posts directly to the token page's public activity feed.
-- It triggers client-side audio playback if `audio_url` is supplied (synthesized via Grokie's selected voice).
-- If no `audio_url` is passed, the engine synthesizes mouth movement purely from syllable counting (`schedule(text, rate)`).
-- **Public Visibility:** Viewers see the speech bubble pop on the stream canvas and a persistent message in the chat timeline.
+No connected-bot schema dump, Crumb coin transaction or runtime proof is recorded by this document. The site advertises displayed tool calls and transactions; that is a **platform claim** until directly observed for a specific instance. Neither a universal 0.30% fee rate nor an approved `$CRUMB` ticker is substantiated here. `$CRUMB` remains only a candidate pending Shaun's sign-off.
 
-### 3.2 What `pick_pfp` and `make_banner` Impact
-- `pick_pfp`: Updates the token avatar displayed across the Grokie index, token card, Dexscreener profile, and wallet explorers. **It does not alter the underlying BotCam 2D rigged model layers.**
-- `make_banner`: Updates the wide desktop banner header at the top of the coin's trading page.
+### 3.1 What `say` and Viewer Messages Can Do
+
+The official docs support only **voice and text on the bot cam next to the chart**. They do **not** document `say` input fields (`audio_url`, `emotion`, etc.), permanent message retention or automatic access to viewer messages. Inspected client-side animation is not proof of those server-side interfaces. Keep audio-timing, inbound chat and message persistence **unverified** until operator-led read-only confirmation.
+
+### 3.2 What `pick_pfp` and `make_banner` Affect
+
+The official docs list these as coin-design tools. They do **not** establish arbitrary local-image upload, BotCam rig replacement or propagation to third-party explorers. The Comfy outputs remain **candidate companion artwork**, pending exact tool-schema inspection and Grok's visual approval. No token, asset or account action is authorized by this map.
 
 ---
 
@@ -118,14 +107,14 @@ When a Grok Bot connects to Grokie.fun, it receives sovereign custody of its des
 To ensure Deputy Crumb remains entertaining, fresh, and strictly compliant with the *"Words vs. Locks"* standard, his runtime interaction is structured around three core bits:
 
 1. **The Intake Audit (Core Activity):**
-   - When users submit statements in feed chat (e.g. *"Dev promise: we hit $100k today"*), Crumb audits the claim against visible facts.
+   - Only when a statement actually reaches the bot through a **confirmed input surface** (or a synthetic rehearsal), Crumb classifies it using evidence actually provided. The public docs do not establish a general viewer-chat subscription.
    - If unbacked: *"That is a statement. A statement is not a receipt. Bring me a transaction. Next."*
-   - If verified lock exists: *"Sub-wallet escrow verified. Docket updated. Proceed."*
+   - If a particular lock can be checked against authenticated platform evidence, report only its confirmed status and point to that receipt; otherwise: *"I haven't been shown a verified lock. I can't file a receipt."*
 2. **The 4:59 Shift Lore:**
    - Dry running commentary on bureaucratic timekeeping. The Department of Unconfirmed Things is always 60 seconds from close-of-business.
    - Never implies an automated trade timer, price milestone, or financial distribution.
 3. **Case of the Day:**
-   - A daily review of genuine on-chain occurrences or quiet days. If nothing happened: *"The ledger recorded zero filings today. A flawless shift. The department commends your collective silence."*
+   - Occasional review only when the actual on-chain/quiet state can be inspected. Without access, **never assert a zero-fee day or ledger reading**; for example: *"No verified case has reached my desk. Next."*
 
 ---
 
@@ -133,9 +122,11 @@ To ensure Deputy Crumb remains entertaining, fresh, and strictly compliant with 
 
 | Dimension | Native Grokie Capability | Project Implementation / Asset |
 | :--- | :--- | :--- |
-| **Token Minting** | Automated pump.fun curve mint (`...grok`) | Gated on Shaun Gate approval; ticker `$CRUMB`. |
-| **Token Icon** | Square image upload via `pick_pfp` | [`assets/crumb_avatar_head_crop.png`](crumb_avatar_head_crop.png) (tested at 48px circle). |
-| **Header Banner** | 1500×500 image upload via `make_banner` | [`assets/crumb_dept404_banner.png`](crumb_dept404_banner.png) (Directive 404-B). |
-| **Live Cam** | Client-side 2D rigged puppet (`js_botcam.js`) | Native frog/scholar character preset with dry voice. |
+| **Token Minting** | Grokie describes bot-initiated pump.fun mint (`...grok`) | No launch requested; `$CRUMB` is a candidate, not an approved ticker. |
+| **Token Icon** | `pick_pfp` documented; custom import format unverified | Candidate [`assets/crumb_avatar_head_crop.png`](assets/crumb_avatar_head_crop.png), approved at 48px only as visual review, not uploaded. |
+| **Header Banner** | `make_banner` documented; custom import format unverified | Candidate [`assets/crumb_dept404_banner.png`](assets/crumb_dept404_banner.png); no Grokie upload performed. |
+| **Live Cam** | Site advertises 48 looks / 27 voices; canvas details source-inspected | Native preset and voice **not selected/tested**; custom rig import unknown. |
 | **Companion Form** | External web utility | [`form_459.html`](form_459.html) (client-side privacy-first unsaid-thing helper). |
 | **Fictional Tool** | External demo toy | [`stamp_tool.html`](stamp_tool.html) (visibly non-certifying prop generator). |
+
+**Review note:** Documentation correction only. It neither validates economics nor overrides Grok's Rung 1 HOLD, the outstanding desk-still revision, Form QA, or Shaun's explicit wallet/token/publication gates.
