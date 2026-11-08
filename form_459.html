@@ -980,10 +980,13 @@
       approverName =
         tryRe(new RegExp("\\b(" + NAME + ")\\s+(?:owns?\\s+sign[- ]off|needs?\\s+to\\s+(?:review|approve)|must\\s+approve|has\\s+sign[- ]off)\\b")) ||
         tryRe(new RegExp("\\b(?:[Aa]pproval|[Ss]ign[- ]off)\\s+(?:from|by)\\s+" + roleOrName + "\\b")) ||
+        tryRe(new RegExp("\\b(?:until|before|unless|once|after)\\s+(" + NAME + "|" + ROLE + ")\\s+(?:approves?|signs?\\s+off|reviews?|has\\s+approved)\\b", "i")) ||
         tryRe(new RegExp("\\b(" + NAME + "|" + ROLE + ")'s\\s+(?:approval|sign[- ]off|review)\\b")) ||
         tryRe(new RegExp("\\b(" + ROLE + ")\\s+(?:owns?\\s+sign[- ]off|needs?\\s+to\\s+(?:review|approve)|must\\s+approve|has\\s+sign[- ]off)\\b", "i"));
       if (approverName && /^(me|myself|i|the|my|our)$/i.test(approverName)) approverName = null;
-      if (approverName && !/^[A-Z]/.test(approverName)) approverName = approverName.toLowerCase();
+      if (approverName && /^(the|my|our)\s/i.test(approverName)) approverName = approverName.charAt(0).toLowerCase() + approverName.slice(1);
+      if (approverName && !/^[A-Z]/.test(approverName) && !/^(the|my|our)\s/.test(approverName)) approverName = approverName.toLowerCase();
+      if (approverName && /^[A-Z][a-z]+$/.test(approverName) && /^(the|this|that|what|who|it|we|they|he|she|you)$/i.test(approverName)) approverName = null;
 
       const isThirdPartyApprover = Boolean(approverName) || speakerDeniesApproval;
       const isUncertainAgency = boundary && (!speakerClaimsApproval || isThirdPartyApprover);
@@ -1057,12 +1060,13 @@
       // 3. Draft generation (Actionable, polite, guilt-free, strictly preserving agency)
       if (boundary) {
         const actionSrc = boundaryAction || boundary;
+        const agreeNote = agreementSentence ? " (Per our earlier agreement: " + agreementSentence.replace(/[.!?]+$/, '').replace(/^(and|but|so|well)\s+/i, '') + ".)" : "";
         const actionVerb = /\bpublish\b/i.test(actionSrc) ? "publish this" : (/\b(deploy|release|ship)\b/i.test(actionSrc) ? "deploy or release this" : "move forward with this");
         const reviewDay = (clean.match(/\bi will review\b[^.!?]*?\b(monday|tuesday|wednesday|thursday|friday|saturday|sunday)\b/i) || [])[1];
         if (approverName && speakerDeniesApproval) {
-          draft = "Hi, please pause and do not " + actionVerb + " yet. " + approverName.charAt(0).toUpperCase() + approverName.slice(1) + " has sign-off authority and needs to review and approve before we proceed (I do not have approval authority). Please coordinate with " + approverName + " for sign-off.";
+          draft = "Hi, please pause and do not " + actionVerb + " yet. " + approverName.charAt(0).toUpperCase() + approverName.slice(1) + " has sign-off authority and needs to review and approve before we proceed (I do not have approval authority). Please coordinate with " + approverName + " for sign-off." + agreeNote;
         } else if (approverName) {
-          draft = "Hi, please pause and do not " + actionVerb + " yet. " + approverName.charAt(0).toUpperCase() + approverName.slice(1) + " needs to review and provide approval before we proceed. Please coordinate with " + approverName + " to confirm sign-off.";
+          draft = "Hi, please pause and do not " + actionVerb + " yet. " + approverName.charAt(0).toUpperCase() + approverName.slice(1) + " needs to review and provide approval before we proceed. Please coordinate with " + approverName + " to confirm sign-off." + agreeNote;
         } else if (speakerDeniesApproval) {
           draft = "Hi, please pause and do not " + actionVerb + " yet pending explicit approval. I do not have sign-off authority on this—please confirm who owns the final approval before we proceed.";
         } else if (isUncertainAgency) {
@@ -1158,6 +1162,7 @@
     }
 
     function markDraftEdited() {
+      copySessionRevision++;
       isDraftManuallyEdited = true;
       const currentRaw = document.getElementById('rawInput').value;
       if (draftProvenanceRev !== rawInputRevision || currentRaw !== rawInputAtEdit) {
