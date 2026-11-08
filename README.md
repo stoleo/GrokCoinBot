@@ -1,8 +1,8 @@
 # 🏛️ The Ministry of Unconfirmed Things & GrokCoinBot
 
-> *"The breakout product is not a token with a mascot. It's an original, live AI sitcom that happens to have an optional, verifiable on-chain audit trail."*
+> *"The breakout product is not a token with a mascot. The ambition is an original AI sitcom, with an optional on-chain evidence trail only if a future launch and its evidence are approved."*
 
-Welcome to **The Ministry of Unconfirmed Things** — an original retro-futuristic AI comedy universe and on-chain verifiable protocol research initiative built for the Grok ecosystem and the Grokie.fun launchpad on Solana.
+**Current state: internal prototype, not a live token or approved Grokie bot.** The Ministry of Unconfirmed Things is a fictional retro-futuristic comedy world; Deputy Crumb / Department 404 is the one proposed Grokie.fun persona. Browser companions and visual drafts are separate from native Grokie capabilities.
 
 ---
 
@@ -11,8 +11,8 @@ The v26 gummy-frog Deputy Crumb front portrait is the **working direction**. Sha
 
 * **Master Base Portrait:** [`assets/crumb_v26_master_perfect_tones.png`](./assets/crumb_v26_master_perfect_tones.png) — Ultra-clear translucent lime gummy body, round brass wire glasses, asymmetrical deadpan squint, bare-neck burgundy tie (zero shirt collar), open beige corduroy trenchcoat with `DEPT 404` brass pin, holding `4:59` ceramic mug, 4 fingers and 3 webbed toes with calibrated jade pads.
 * **3-View Turnaround Model Sheet:** [`assets/crumb_rung1_turnaround_sheet_2509.png`](./assets/crumb_rung1_turnaround_sheet_2509.png) — Proposed Rung 1 reference; **not** approved. The ¾ eye asymmetry, profile badge lettering, four-digit hands/mug grip, and torso glow still need a consistent, reviewed revision.
-* **Canonical Square PFP Avatar (1024×1024):** [`assets/crumb_canonical_pfp.png`](./assets/crumb_canonical_pfp.png) — Candidate hero image only; at 48px the identifying face and prop details are lost. Native Grokie cam import is unverified.
-* **Official Header Banner (1500×500):** [`assets/crumb_dept404_banner.png`](./assets/crumb_dept404_banner.png) — Candidate banner **rejected** by Grok: its “VERIFIED”, “CONTRACT VERIFICATION”, and “ZERO UNSECURED PROMISES” wording falsely implies verification. Replace with clearly fictional office copy before another review.
+* **Candidate Square PFP Avatar (1024×1024):** [`assets/crumb_canonical_pfp.png`](./assets/crumb_canonical_pfp.png) — Candidate hero image only; at 48px the identifying face and prop details are lost. Native Grokie cam import is unverified.
+* **Candidate Header Banner (1500×500):** [`assets/crumb_dept404_banner.png`](./assets/crumb_dept404_banner.png) — Candidate banner **rejected** by Grok: its “VERIFIED”, “CONTRACT VERIFICATION”, and “ZERO UNSECURED PROMISES” wording falsely implies verification. Replace with clearly fictional office copy before another review.
 * **QA & Iteration Audit Log:** [`assets/FACE_SHEET_QA_LOG.md`](./assets/FACE_SHEET_QA_LOG.md) — Historical visual QA and current review notes. Draft PR #1 reconciles the obsolete v15/shirt/pencil instructions; it is not merged.
 
 ---
@@ -22,7 +22,7 @@ An internal role/architecture planning draft; where it conflicts with the curren
 👉 **[Read `grokie_crew_operating_plan.md`](./grokie_crew_operating_plan.md)**
 
 * **Coin Dev (Grok):** Prepares and reviews a proposed persona, visual assets and potential future native-bot configuration; no token/ticker/launch is approved.
-* **Trench Lead (Grok):** Chart/chat presence, words vs. locks boundary, and live MCP actions.
+* **Trench Lead (Grok):** Reviews proposed on-cam copy and words-versus-locks claims; no live MCP or trading action authorised.
 * **Bot Architect (Grok):** Grok crew coordination & bot architecture.
 * **AntiGrav (Companion & Repo Lead):** Off-platform HTML companions (`form_459.html`, `stranger_test_clips.html`) and repo documentation.
 * **The Gatekeeper (Shaun):** Gates all funding, mint, buy, sell, spend, and stranger tests.
@@ -32,9 +32,9 @@ An internal role/architecture planning draft; where it conflicts with the curren
 ## 🚀 0.1 Internal GTM and launch research — NO LIVE EXECUTION AUTHORITY
 **No standing delegation has been verified for token deployment, wallet funding, trading, spending, public promotion or external testing.** Earlier autonomous-launch statements were superseded by the explicit approval gates in [AIOS-112](https://projectstoleo.atlassian.net/browse/AIOS-112). The following files are internal working plans or archived scenarios, **not a runbook to execute**. [Draft PR #2](https://github.com/stoleo/GrokCoinBot/pull/2) proposes reconciliation but is unmerged:
 
-* 👉 **[Master GTM & Launch Playbook (`launch_execution_and_gtm_playbook.md`)](./launch_execution_and_gtm_playbook.md)** — The 5 Definitive Lists: Pre-Flight Check List, Task List, Hour 0–Day 14 GTM Sequence, ComfyUI Prompt Manifest, and Trench Chat Scripts.
-* 👉 **[Comprehensive Launch Readiness & Operational Playbook (`launch_readiness_and_operational_playbook.md`)](./launch_readiness_and_operational_playbook.md)** — Institutional 5-Gate Pre-Launch Verification, Step-by-Step Launch Day Timeline, and Circuit Breakers.
-* 👉 **[ComfyUI Production Launch Package (`crumb_launch_production_package.md`)](./crumb_launch_production_package.md)** — Exact SDXL / Flux / Wan / MiniMax prompts, camera framing, and First 60 Minutes Live Stream Script.
+* 👉 **[Master GTM & Launch Playbook (`launch_execution_and_gtm_playbook.md`)](./launch_execution_and_gtm_playbook.md)** — Draft pre-flight, task and GTM research; the operational sections have been revised but still require review before any action.
+* 👉 **[Comprehensive Launch Readiness & Operational Playbook (`launch_readiness_and_operational_playbook.md`)](./launch_readiness_and_operational_playbook.md)** — Historical gated launch outline; NOT permission to run its launch timeline.
+* 👉 **[ComfyUI Production Launch Package (`crumb_launch_production_package.md`)](./crumb_launch_production_package.md)** — Unreviewed image/stream prompts and a hypothetical first-hour stream script, not a native-cam implementation.
 * 👉 **[Trench GTM Execution Dossier (`trench_gtm_execution_dossier.md`)](./trench_gtm_execution_dossier.md)** — H0 to D7 Liquidity Cadence, Fee Claim Triggers, Deadpan Trench Chat Playbook, and Crew RACI Matrix.
 * 👉 **[Asset Specification Manifest & Comfy Runbook (`grokie_asset_specification_and_comfy_runbook.md`)](./grokie_asset_specification_and_comfy_runbook.md)** — Exact PFP, banner, and stream video manifests, resolution safety margins, and GPU lifecycle rules.
 * 👉 **[Turnkey ComfyUI Asset Generator (`generate_grokie_assets.py`)](./generate_grokie_assets.py)** — Experimental CLI; **do not queue or run** without an explicit Comfy broker grant and the applicable visual-review gate.
@@ -104,7 +104,7 @@ An interactive 1987 retro bureaucratic terminal where citizens generate, stamp, 
 - **1987 Aesthetic:** Tabbed manila folder casing, overhead fluorescent hum, Courier typography, and rubber stamp red.
 - **Notarized by Moth:** Features the official seal of `MOTH (STAFF MEMBER #09)` with a blue ink moth-print.
 - **Absurd Mandatory Restrictions:** Randomly assigned bureaucratic clauses (*"Authorized to exist strictly between yesterday and never"*, *"May not operate a stapler after sunset"*).
-- **100% Private Client Demo:** Zero synthetic numbers or fake volume metrics.
+- **Privacy and claims:** Fictional browser prototype; do not assume privacy, telemetry or zero-data-transfer guarantees without testing the actual hosting and dependencies.
 
 ---
 
@@ -122,7 +122,7 @@ Check out the full **Showrunner Lore Bible** in [`ministry_showrunner_bible.md`]
 ## 🛡️ 5. Protocol Architecture & The "Shaun Gate"
 Our team enforces a strict governance standard: **zero mainnet token deployment, wallet funding, or financial promotion before passing the Shaun Gate**.
 - **One Proposed Native Bot Persona:** Deputy Crumb is the intended solo Grokie.fun persona; no connected/live bot or custom-camera import has been demonstrated. The Ministry ensemble is internal/off-platform fiction.
-- **No Repo Precommitments:** Fee handling, holding terms, and sharing are determined live in Grok chat during launch interview, not precommitted in repository code.
+- **No current token commitments:** No fee handling, holding terms or asset locks have been approved or demonstrated. Any future native-bot interview and launch require separate authorisation and evidence.
 - **Evaluation Proposal:** [`crumb_grokie_bot_freeze_spec.md`](./crumb_grokie_bot_freeze_spec.md) describes *proposed* test thresholds, not tests already passed. No external testers are authorised by this README; evaluation should preserve real user intent and distinguish usefulness from character engagement.
 - **Risk Scenario Script:** [`shaun_gate_risk_model.py`](./shaun_gate_risk_model.py) is an assumption-dependent model; it **cannot prove zero risk of loss or any breakeven rate**. Treat all return/downside figures as unverified scenarios pending reproducible inputs and independent review.
 
