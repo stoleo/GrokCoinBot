@@ -35,3 +35,6 @@ Keep-awake: Shaun notified that the workstation must stay awake for the unattend
 - 16:47 L7 reviewed: Astra & BoPeppi PR #5 / #6 checks (12/12 pass on deferred-clipboard suite).
 - 16:49 L8 landed: PR #5 merged (344e387): GROKIE_CAPABILITY_MAP.md aligned with official docs and evidence levels.
 - 16:49 L9 landed: PR #6 merged (e9bcf53): form_459.html copySessionRevision prevents stale clipboard fallback after Clear.
+- 17:15 L10 landed: form_459.html calibrated heuristic parser for boundaries, cancellations, and ISO timestamps (commit 91ec2e8). Verified 7/7 unit tests passing on test harness.
+- 17:19 L11 landed: form_459.html fail-closed draft review state and async callback invalidation on typing (commit 74f9d87). Prevents stale draft pairing across unrelated inputs and blocks deferred clipboard race conditions (verified 7/7 on test harness).
+- 17:20 L12 landed: CRUMB_DIALOGUE_PACKET.md published (commit eb004b0). Implements the Three Drawers intake audit (STATEMENT, RECEIPT, MISSING INFORMATION), 10 synthetic rehearsal situations adhering to Grok's review criteria (no chart narration, truthful state only, tight receipt rule), and ready-to-paste Grok prompt injection.
